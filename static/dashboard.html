@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Fireball-x Dashboard</title>
+
+    <script type="text/javascript" src="fire://page-init.js"></script>
+    <script>
+        var ipc = require('ipc');
+        var Fire = {
+            sendToCore: function ( message ) {
+                'use strict';
+                var args = [].slice.call( arguments );
+                ipc.send.apply( ipc, ['send2core'].concat( args ) );
+            },
+        };
+    </script>
+
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+
+            overflow: hidden;
+            color: #ddd;
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <fire-dashboard></fire-dashboard>
+
+    <script type="text/javascript" src="fire://src/core/core.js"></script>
+
+    <link rel="stylesheet" href="fire://ext/fontawesome/css/font-awesome.css">
+
+    <link rel="import" href="fire://ext/polymer/polymer.html">
+    <link rel="import" href="fire://src/editor-ui/editor-ui.html">
+    <link rel="import" href="fire://src/editor/fire-dashboard/fire-dashboard.html">
+</body>
+</html>

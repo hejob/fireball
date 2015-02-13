@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>Code-Editor</title>
+    <style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+
+        overflow: hidden;
+        color: #ddd;
+        background-color: #474747;
+    }
+
+    @font-face {
+        font-family: 'DejaVu Sans Mono';
+        src: url('fire://static/fonts/DejaVuSansMono.ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .CodeMirror-hints {
+        position: absolute;
+        z-index: 10;
+        overflow: hidden;
+        list-style: none;
+
+        margin: 0;
+        padding: 4px;
+
+        -webkit-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+        -moz-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+        box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+        border: 1px solid #333;
+
+        background: #2a2a2a;
+        font-size: 80%;
+        font-family: 'DejaVu Sans Mono';
+
+        max-height: 20em;
+        overflow-y: auto;
+    }
+
+    .CodeMirror-hint {
+        margin: 0;
+        padding: 3px 7px
+        max-width: 19em;
+        overflow: hidden;
+        white-space: pre;
+        color: #aaa;
+        cursor: pointer;
+    }
+
+    li.CodeMirror-hint-active {
+        background: #2865c7;
+        color: #aaa;
+    }
+
+
+    </style>
+    <script type="text/javascript" src="fire://page-init.js"></script>
+</head>
+
+<body>
+    <code-editor fit></code-editor>
+
+    <script type="text/javascript" src="fire://ext/pixi/bin/pixi.dev.js"></script>
+
+    <script type="text/javascript" src="fire://src/core/core.js"></script>
+    <script type="text/javascript" src="fire://src/engine/engine.js"></script>
+    <script type="text/javascript" src="fire://src/editor-share/editor-share.js"></script>
+    <script type="text/javascript" src="fire://src/editor/editor.js"></script>
+
+    <link rel="stylesheet" href="fire://ext/fontawesome/css/font-awesome.css">
+
+    <link rel="import" href="fire://ext/polymer/polymer.html">
+    <link rel="import" href="fire://src/editor-ui/editor-ui.html">
+    <link rel="import" href="code-editor.html">
+</body>
+</html>

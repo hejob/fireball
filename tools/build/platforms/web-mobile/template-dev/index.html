@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Fireball-x | <%=project%></title>
+
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1,target-densitydpi=device-dpi" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+
+    <style>
+        body {
+            text-align: center;
+            background-color: white;
+            font-family: Helvetica, Verdana, Arial, sans-serif;
+        }
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        a:link, a:visited {
+            color: #000;
+        }
+        a:active, a:hover {
+            color: #666;
+        }
+        p.header {
+            font-size: small;
+        }
+        p.footer {
+            font-size: x-small;
+        }
+    </style>
+
+    <script src="pixi.dev.js"></script>
+    <script src="firaball-x.dev.js"></script>
+    <script src="project.dev.js"></script>
+    <script src="boot.js"></script>
+</head>
+<body>
+    <p class="header"><%=project%></p>
+
+    <canvas id="GameCanvas" width="<%=width%>" height="<%=height%>" oncontextmenu="event.preventDefault()"></canvas>
+
+    <p class="footer">Created with <a href="http://fireball-x.com/" title="Go to fireball-x.com">Fireball-x</a></p>
+</body>
+</html>

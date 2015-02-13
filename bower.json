@@ -1,0 +1,33 @@
+{
+    "name": "fireball-editor",
+    "version": "0.1.3",
+    "homepage": "https://github.com/fireball-x/editor",
+    "authors": [
+        "Johnny Wu <KarasAya@gmail.com>"
+    ],
+    "description": "Fireball-x Editor",
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "3rd",
+        "bower_components",
+        "ext",
+        "node_modules",
+        "test"
+    ],
+    "dependencies": {
+        "FileSaver": "fireball-x/FileSaver.js",
+        "dustjs-linkedin": "",
+        "fontawesome": "",
+        "mousetrap": "",
+        "chroma-js": "",
+        "pace": "",
+        "pixi": "2.2.3",
+        "polymer": "Polymer/polymer#~0.5.4",
+        "web-animations-js": "web-animations/web-animations-js#master",
+        "fire-core": "fireball-x/core#master",
+        "svg.js": ""
+    },
+    "devDependencies": {}
+}

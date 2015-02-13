@@ -1,0 +1,1 @@
+function getUserHome(){return process.env["win32"===process.platform?"USERPROFILE":"HOME"]}var Path=require("path"),PluginLoader=require("./base/external-plugin-loader"),pluginDir=Path.join(getUserHome(),".fireball-x"),loader=new PluginLoader("global plugins",pluginDir);loader.init(),module.exports=loader;
