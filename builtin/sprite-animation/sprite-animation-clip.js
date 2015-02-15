@@ -6,7 +6,7 @@ var SpriteAnimationClip = Fire.define('Fire.SpriteAnimationClip', Fire.CustomAss
     this._frameInfoFrames = null; // the array of the end frame of each frame info
 });
 
-Fire.addCustomAssetMenu(SpriteAnimationClip, "New Sprite Animation");
+Fire.addCustomAssetMenu(SpriteAnimationClip, "Create/New Sprite Animation");
 
 SpriteAnimationClip.WrapMode = (function (t) {
     t[t.Default = 0] = 'Default';

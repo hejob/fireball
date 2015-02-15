@@ -158,6 +158,16 @@ gulp.task(BUILD_ + 'web-desktop',[
     //})
 });
 
+// web-mobile
+gulp.task(BUILD_ + 'web-mobile',[
+    'compile',
+    'copy-deps',
+    'build-resources',
+    'build-settings'
+], function (done) {
+    buildAndCopyWeb(paths.template_web_mobile, done);
+});
+
 // default
 gulp.task('default', ['build']);
 

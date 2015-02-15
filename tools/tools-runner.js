@@ -6,7 +6,7 @@ var WinCMDTools = ['gulp'];
 var cwd;
 var standalone = typeof Fire === 'undefined';
 if (standalone) {
-    Fire = require('../src/core/core.dev');
+    Fire = require('../src/core/core');
     FIRE_PATH = Path.dirname(__dirname);
     cwd = process.cwd();
 }
@@ -61,7 +61,7 @@ var ToolsRunner = {
         args.unshift('--gulpfile', gulpfile);
         args.unshift('--cwd', cwd);   // to prevent cwd changed by --gulpfile
         return this.spawn('gulp', args, callback);
-    },
+    }
 };
 
 module.exports = ToolsRunner;

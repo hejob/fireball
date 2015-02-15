@@ -1,10 +1,10 @@
 (function () {
     var NativeAudioContext = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext);
-    var nativeAC = null;
-
     if ( !NativeAudioContext ) {
         return;
     }
+
+    var nativeAC = new NativeAudioContext();
 
     function loader (url, callback, onProgress) {
         var cb = callback && function (xhr, error) {
