@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Color - Fireball Game API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.4</span>
+                    <p class="description">Fireball Game API: your toolbox</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>Color Class</h1>
+                <div class="box meta">
+                
+                
+                        <div class="foundat">
+                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2941"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2941</code></a>
+                        </div>
+                
+                            Module: <a href="../modules/Fire.html">Fire</a>
+                
+                </div>
+                
+                
+                <div class="box intro">
+                    <p>A class represents RGBA color</p>
+                
+                </div>
+                
+                <!-- Class member index -->
+                
+                <a name="index" class="anchor-link"></a>
+                <div class="index">
+                <h2>Index</h2>
+                
+                    <div id="api-options">
+                        Show:
+                        <label for="api-show-inherited">
+                            <input type="checkbox" id="api-show-inherited">
+                            Inherited
+                        </label>
+                
+                        <label for="api-show-protected">
+                            <input type="checkbox" id="api-show-protected">
+                            Protected
+                        </label>
+                
+                        <label for="api-show-private">
+                            <input type="checkbox" id="api-show-private">
+                            Private
+                        </label>
+                        <label for="api-show-deprecated">
+                            <input type="checkbox" id="api-show-deprecated">
+                            Deprecated
+                        </label>
+                
+                    </div>
+                
+                
+                
+                
+                
+                    <div class="index-section methods">
+                        <h3>Methods</h3>
+                
+                        <ul class="index-list methods">
+                
+                                <li class="index-item method constructor">
+                                    <a href="#method_Color">Color</a>
+                
+                                    <span class="flag constructor">constructor</span>
+                
+                                </li>
+                
+                                <li class="index-item method">
+                                    <a href="#method_clone">clone</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_color">color</a>
+                
+                                </li>
+                        </ul>
+                    </div>
+                
+                </div>
+                
+                
+                <div class="class-detail">
+                
+                
+                
+                    <div class="constructor">
+                        <h2>Constructor</h2>
+                        <a name="method_Color" class="anchor-link"></a>
+                        <div class="method item">
+                            <h3 class="name"><code>Color</code>
+                        
+                                <div class="args">
+                                    <span class="paren">(</span><ul class="args-list inline commas">
+                                        <li class="arg">
+                                                <code>r</code>
+                                        </li>
+                                        <li class="arg">
+                                                <code>g</code>
+                                        </li>
+                                        <li class="arg">
+                                                <code>b</code>
+                                        </li>
+                                        <li class="arg">
+                                                <code>a</code>
+                                        </li>
+                                    </ul><span class="paren">)</span>
+                                </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                            </h3>
+                        
+                            <div class="meta">
+                                        <p>
+                                        Defined in
+                                <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2941"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2941</code></a>
+                                </p>
+                        
+                        
+                        
+                            </div>
+                        
+                            <div class="extended-detail">
+                        
+                                <div class="description">
+                                    
+                                </div>
+                        
+                                    <div class="params">
+                                        <h4>Parameters:</h4>
+                        
+                                        <ul class="params-list">
+                                            <li class="param">
+                                                    <code class="param-name">r</code>
+                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+                        
+                                                <div class="param-description">
+                                                    <ul>
+                        <li>red component of the color</li>
+                        </ul>
+                        
+                                                </div>
+                        
+                                            </li>
+                                            <li class="param">
+                                                    <code class="param-name">g</code>
+                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+                        
+                                                <div class="param-description">
+                                                    <ul>
+                        <li>green component of the color</li>
+                        </ul>
+                        
+                                                </div>
+                        
+                                            </li>
+                                            <li class="param">
+                                                    <code class="param-name">b</code>
+                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+                        
+                                                <div class="param-description">
+                                                    <ul>
+                        <li>blue component of the color</li>
+                        </ul>
+                        
+                                                </div>
+                        
+                                            </li>
+                                            <li class="param">
+                                                    <code class="param-name">a</code>
+                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+                        
+                                                <div class="param-description">
+                                                    <ul>
+                        <li>alpha component of the color</li>
+                        </ul>
+                        
+                                                </div>
+                        
+                                            </li>
+                                        </ul>
+                                    </div>
+                        
+                        
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="methods-detail">
+                        <h2>Methods</h2>
+                
+                            <a name="method_clone" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>clone</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Color.html" class="crosslink">Color</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2958"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2958</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Clone a new color from the current color.</p>
+                            
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Color.html" class="crosslink">Color</a></span>:
+                                                    <p>Newly created color.</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_color" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>color</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code class="optional">[r=0]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[g=0]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[b=0]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[a=1]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Color.html" class="crosslink">Color</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3072"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3072</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>The convenience method to create a new &lt;% crosslink Fire.Color Color %&gt;</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[r=0]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[g=0]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[b=0]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[a=1]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Color.html" class="crosslink">Color</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                
+                        <div class="no-visible-items-message">
+                            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+                        </div>
+                
+                    </div>
+                
+                
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

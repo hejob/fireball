@@ -1,0 +1,3374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fire - Fireball Game API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.4</span>
+                    <p class="description">Fireball Game API: your toolbox</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>Fire Class</h1>
+                <div class="box meta">
+                
+                
+                        <div class="foundat">
+                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l870"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:870</code></a>
+                        </div>
+                
+                            Module: <a href="../modules/Fire.html">Fire</a>
+                
+                </div>
+                
+                
+                <div class="box intro">
+                    <p>Global object with properties and methods you can access from anywhere</p>
+                
+                </div>
+                
+                <!-- Class member index -->
+                
+                <a name="index" class="anchor-link"></a>
+                <div class="index">
+                <h2>Index</h2>
+                
+                    <div id="api-options">
+                        Show:
+                        <label for="api-show-inherited">
+                            <input type="checkbox" id="api-show-inherited">
+                            Inherited
+                        </label>
+                
+                        <label for="api-show-protected">
+                            <input type="checkbox" id="api-show-protected">
+                            Protected
+                        </label>
+                
+                        <label for="api-show-private">
+                            <input type="checkbox" id="api-show-private">
+                            Private
+                        </label>
+                        <label for="api-show-deprecated">
+                            <input type="checkbox" id="api-show-deprecated">
+                            Deprecated
+                        </label>
+                
+                    </div>
+                
+                
+                    <div class="index-section properties">
+                        <h3>Properties</h3>
+                
+                        <ul class="index-list properties">
+                                <li class="index-item property">
+                                    <a href="#property__metaClass">_metaClass</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property__ObjectFlags">_ObjectFlags</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property__ObjectFlags.Hide">_ObjectFlags.Hide</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property__ObjectFlags.HideInEditor">_ObjectFlags.HideInEditor</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property__ObjectFlags.HideInGame">_ObjectFlags.HideInGame</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Boolean">Boolean</a>
+                
+                                </li>
+                                <li class="index-item property private">
+                                    <a href="#property_class.__props__">class.__props__</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_EditorOnly">EditorOnly</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Float">Float</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_HideInInspector">HideInInspector</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Integer">Integer</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_isRetina">isRetina</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_NonSerialized">NonSerialized</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_ReadOnly">ReadOnly</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_String">String</a>
+                
+                                </li>
+                        </ul>
+                    </div>
+                
+                
+                
+                    <div class="index-section methods">
+                        <h3>Methods</h3>
+                
+                        <ul class="index-list methods">
+                
+                
+                                <li class="index-item method private">
+                                    <a href="#method__appendProp">_appendProp</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method__getClassById">_getClassById</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method__getClassId">_getClassId</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method__getPropertyDescriptor">_getPropertyDescriptor</a>
+                
+                                </li>
+                                <li class="index-item method private">
+                                    <a href="#method__isFireClass">_isFireClass</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method__setClassId">_setClassId</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_addon">addon</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_attr">attr</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_class.get">class.get</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_class.getset">class.getset</a>
+                
+                                        <span class="flag static">static</span>
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_class.prop">class.prop</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_class.set">class.set</a>
+                
+                                        <span class="flag static">static</span>
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_Custom">Custom</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_define">define</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_Enum">Enum</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_EnumList">EnumList</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_extend">extend</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_Fire.DisplayName">Fire.DisplayName</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_getClassByName">getClassByName</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_getClassName">getClassName</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_isChildClassOf">isChildClassOf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_mixin">mixin</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_Nullable">Nullable</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_ObjectType">ObjectType</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_padLeft">padLeft</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_Range">Range</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_RawType">RawType</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_setClassName">setClassName</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_Tooltip">Tooltip</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_unregisterClass">unregisterClass</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_Watch">Watch</a>
+                
+                                </li>
+                        </ul>
+                    </div>
+                
+                </div>
+                
+                
+                <div class="class-detail">
+                
+                    <div class="properties-detail">
+                        <h2>Properties</h2>
+                
+                            <a name="property__metaClass" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>_metaClass</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1456"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1456</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>the metaclass of the &quot;fire class&quot; created by Fire.define, all its static members
+                            will inherited by fire class.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__ObjectFlags" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>_ObjectFlags</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l60"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:60</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Mark object with different flags.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__ObjectFlags.Hide" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>_ObjectFlags.Hide</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l100"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:100</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Hide in game view, hierarchy, and scene view... etc.
+                            This flag is readonly, it can only be used as an argument of scene.createEntity() or Entity.createWithFlags()</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__ObjectFlags.HideInEditor" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>_ObjectFlags.HideInEditor</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l86"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:86</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>This flag is readonly, it can only be used as an argument of scene.createEntity() or Entity.createWithFlags()</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__ObjectFlags.HideInGame" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>_ObjectFlags.HideInGame</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l76"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:76</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Hide in game and hierarchy.
+                            This flag is readonly, it can only be used as an argument of scene.createEntity() or Entity.createWithFlags()</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Boolean" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Boolean</code>
+                                <span class="type">Unknown</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1204"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1204</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Indicates that the type of elements in array or the type of value in dictionary is boolean.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_class.__props__" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>class.__props__</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1464"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1464</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_EditorOnly" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>EditorOnly</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1148"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1148</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>The EditorOnly attribute marks a variable to be serialized in editor project, but non-serialized
+                            in exported products.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Float" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Float</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1168"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1168</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Indicates that the type of elements in array or the type of value in dictionary is double.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_HideInInspector" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>HideInInspector</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1343"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1343</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Makes a property not show up in the Inspector but be serialized.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Integer" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Integer</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1160"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1160</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Specify that the input value must be integer in Inspector.
+                            Also used to indicates that the type of elements in array or the type of value in dictionary is integer.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_isRetina" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>isRetina</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l31"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:31</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>check if running in retina display</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_NonSerialized" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>NonSerialized</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1134"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1134</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>By default, all properties declared by &quot;Class.prop&quot; is serializable.
+                            The NonSerialized attribute marks a variable to not be serialized,
+                            so you can keep a property show in the Editor and Fireball will not attempt to serialize it.
+                            See {% crosslink EditorOnly Fire.EditorOnly %} for more details.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_ReadOnly" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>ReadOnly</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1361"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1361</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>The ReadOnly attribute indicates that the property field is disabled in Inspector.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_String" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>String</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1214"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1214</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Indicates that the type of elements in array or the type of value in dictionary is string.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                
+                        <div class="no-visible-items-message">
+                            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+                        </div>
+                
+                    </div>
+                
+                
+                
+                    <div class="methods-detail">
+                        <h2>Methods</h2>
+                
+                            <a name="method__appendProp" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>_appendProp</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>name</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1429"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1429</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>both getter and prop must register the name into <strong>props</strong> array</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">name</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>prop name</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method__getClassById" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>_getClassById</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>classId</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l336"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:336</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Get the registered class by id</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">classId</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                                                    <p>constructor</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method__getClassId" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>_getClassId</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>obj</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l356"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:356</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Get class id of the object</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">obj</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>instance or constructor</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method__getPropertyDescriptor" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>_getPropertyDescriptor</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>obj</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>name</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l115"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:115</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>!#en Get property descriptor
+                            descriptor is blah blah
+                            !#zh 获取 property 的描述物体
+                            描述物体是这样的</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">obj</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>!#en do how many times !#zh 表示做几次的参数</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">name</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method__isFireClass" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>_isFireClass</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>constructor</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    </span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1684"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1684</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Checks whether the constructor is created by Fire.define</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">constructor</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method__setClassId" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>_setClassId</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>classId</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>constructor</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l289"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:289</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Register the class by specified id, if its classname is not defined, the class name will also be set.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">classId</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">constructor</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_addon" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>addon</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>obj</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>sourceObj</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l146"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:146</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>copy all properties not defined in obj from arguments[1...n]</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">obj</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <p>object to extend its properties</p>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">sourceObj</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <p>source object to copy properties from</p>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the result obj</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_attr" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>attr</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>constructor</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>propertyName</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[attributes]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a> | Undefined</span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1033"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1033</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Tag the class with any meta attributes, then return all current attributes assigned to it.
+                            This function holds only the attributes, not their implementations.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">constructor</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the class or instance. If instance, the attribute will be dynamic and only available for the specified instance.</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">propertyName</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the name of property or function, used to retrieve the attributes</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[attributes]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the attribute table to mark, new attributes will merged with existed attributes. Attribute whose key starts with &#39;_&#39; will be ignored.</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a> | Undefined</span>:
+                                                    <p>return all attributes associated with the property. if none undefined will be returned</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                        <div class="example">
+                                            <h4>Example:</h4>
+                            
+                                            <div class="example-content">
+                                                <p> var klass = function () { this.value = 0.5 };
+                             Fire.attr(klass, &#39;value&#39;);              // return undefined
+                             Fire.attr(klass, &#39;value&#39;, {}).min = 0;  // assign new attribute table associated with &#39;value&#39;, and set its min = 0
+                             Fire.attr(klass, &#39;value&#39;, {             // set values max and default
+                                 max: 1,
+                                 default: 0.5,
+                             });
+                             Fire.attr(klass, &#39;value&#39;);              // return { default: 0.5, min: 0, max: 1 }</p>
+                            
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <a name="method_class.get" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>class.get</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>name</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>getter</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>attribute</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1552"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1552</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>该方法定义的变量<strong>不会</strong>被序列化，默认会在inspector中显示。
+                            如果传入参数包含Fire.HideInInspector则不在inspector中显示。</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">name</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the getter property</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">getter</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the getter function which returns the real property</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">attribute</code>
+                                                        <span class="type">...object</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>additional property attributes, any number of attributes can be added</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                                                    <p>the class itself</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_class.getset" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>class.getset</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>name</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>getter</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>setter</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>attribute</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                                    <span class="flag static">static</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1639"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1639</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>该方法定义的变量<strong>不会</strong>被序列化，默认会在inspector中显示。
+                            如果传入参数包含Fire.HideInInspector则不在inspector中显示。</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">name</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the getter property</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">getter</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the getter function which returns the real property</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">setter</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the setter function</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">attribute</code>
+                                                        <span class="type">...object</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>additional property attributes, any number of attributes can be added</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                                                    <p>the class itself</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_class.prop" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>class.prop</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>name</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>defaultValue</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>attribute</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1470"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1470</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Add new instance field, propertie, or method made available on the class.
+                            该方法定义的变量默认情况下都会被序列化，也会在inspector中显示。
+                            如果传入属性包含Fire.HideInInspector则仍会序列化但不在inspector中显示。
+                            如果传入属性包含Fire.NonSerialized则不会序列化并且不会在inspector中显示。
+                            如果传入属性包含Fire.EditorOnly则只在编辑器下序列化，打包时不序列化。</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">name</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the property name</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">defaultValue</code>
+                                                        <span class="type"></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the default value</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">attribute</code>
+                                                        <span class="type">...object</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>additional property attributes, any number of attributes can be added</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                                                    <p>the class itself</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_class.set" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>class.set</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>name</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>setter</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                                    <span class="flag static">static</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1614"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1614</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>该方法定义的变量<strong>不会</strong>被序列化，除非有对应的getter否则不在inspector中显示。</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">name</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the setter property</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">setter</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the setter function</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                                                    <p>the class itself</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_Custom" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>Custom</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>name</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1332"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1332</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Makes a custom property</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">name</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the enum attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_define" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>define</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>className</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[baseOrConstructor]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[constructor]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1736"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1736</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Creates a FireClass and returns its constructor function.
+                            You can also creates a sub-class by supplying a baseClass parameter.
+                            See {% crosslink extend Fire.extend %} for more details.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">className</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the name of class that is used to deserialize this class</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[baseOrConstructor]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>!#en The base class to inherit from.<pre><code>                                  !#zh 如果你的父类不是由Fire.define定义的，那么必须传入第三个参数(constructor)，否则会被当成创建新类而非继承类。如果你不需要构造函数，可以传入null。
+                            </code></pre></li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[constructor]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>a constructor function that is used to instantiate this class,<pre><code>                            if not supplied, the constructor of base class will be called automatically
+                            </code></pre></li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                                                    <p>the defined class</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_Enum" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>Enum</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>enumType</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1236"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1236</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Makes a property show up as a enum in Inspector.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">enumType</code>
+                                                        <span class="type">(string)</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the enum attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_EnumList" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>EnumList</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>enumList</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1247"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1247</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Makes a property show up as a enum in Inspector.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">enumList</code>
+                                                        <span class="type">(array)</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the enum attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_extend" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>extend</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>cls</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>base</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l194"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:194</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Derive the class from the supplied base class.
+                            Both classes are just native javascript constructors, not created by Fire.define, so
+                            usually you will want to inherit using {% crosslink Fire.define define %} instead.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">cls</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">base</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the baseclass to inherit</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                                                    <p>the result class</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_Fire.DisplayName" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>Fire.DisplayName</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>name</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1350"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1350</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Set a custom property name for display in the editor</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">name</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_getClassByName" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>getClassByName</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>classname</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l346"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:346</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Get the registered class by name</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">classname</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                                                    <p>constructor</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_getClassName" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>getClassName</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>obj</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l221"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:221</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Get class name of the object, if object is just a {} (and which class named &#39;Object&#39;), it will return null.
+                            (modified from <a href="http://stackoverflow.com/questions/1249531/how-to-get-a-javascript-objects-class">the code from this stackoverflow post</a>)</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">obj</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>instance or constructor</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_isChildClassOf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>isChildClassOf</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>subclass</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>superclass</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1696"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1696</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Checks whether subclass is child of superclass or equals to superclass</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">subclass</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">superclass</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_mixin" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>mixin</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>obj</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>source</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l168"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:168</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>copy all properties from arguments[1...n] to obj</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">obj</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">source</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the result obj</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_Nullable" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>Nullable</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>boolPropName</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>hasValueByDefault</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1381"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1381</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">boolPropName</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">hasValueByDefault</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_ObjectType" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>ObjectType</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>ctor</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1224"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1224</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Makes a property only accept the supplied object type in Inspector.
+                            If the type is derived from Fire.Asset, it will be serialized to uuid.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">ctor</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the special type you want</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_padLeft" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>padLeft</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>text</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>width</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>ch</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l876"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:876</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">text</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">width</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">ch</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_Range" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>Range</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>min:</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>max:</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1419"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1419</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">min:</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <p>null mins infinite</p>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">max:</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <p>null mins infinite</p>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_RawType" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>RawType</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code class="optional">[typename]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1258"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1258</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Makes a property referenced to a javascript host object which needs to load before deserialzation.
+                            The property will not be serialized but will be referenced to the loaded host object while deserialzation.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[typename]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_setClassName" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>setClassName</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>className</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>constructor</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l299"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:299</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Register the class by specified name</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">className</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">constructor</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_Tooltip" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>Tooltip</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>tooltip</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1370"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1370</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Specify a tooltip for a property</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">tooltip</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_unregisterClass" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>unregisterClass</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code class="optional">[constructor]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l313"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:313</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>If you dont need a class (which defined by Fire.define or Fire.setClassName) anymore,
+                            You should unregister the class so that Fireball will not keep its reference anymore.
+                            Please note that its still your responsibility to free other references to the class.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[constructor]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the class you will want to unregister, any number of classes can be added</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_Watch" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>Watch</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>names</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>callback</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l1406"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:1406</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">names</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the name of target property to watch, array is also acceptable.</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">callback</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the callback function to invoke when target property(s) is changed.</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>the attribute</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                
+                        <div class="no-visible-items-message">
+                            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+                        </div>
+                
+                    </div>
+                
+                
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

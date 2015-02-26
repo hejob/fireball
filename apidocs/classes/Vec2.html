@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vec2 - Fireball Game API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.4</span>
+                    <p class="description">Fireball Game API: your toolbox</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>Vec2 Class</h1>
+                <div class="box meta">
+                
+                
+                        <div class="foundat">
+                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2175"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2175</code></a>
+                        </div>
+                
+                            Module: <a href="../modules/Fire.html">Fire</a>
+                
+                </div>
+                
+                
+                <div class="box intro">
+                    
+                </div>
+                
+                <!-- Class member index -->
+                
+                <a name="index" class="anchor-link"></a>
+                <div class="index">
+                <h2>Index</h2>
+                
+                    <div id="api-options">
+                        Show:
+                        <label for="api-show-inherited">
+                            <input type="checkbox" id="api-show-inherited">
+                            Inherited
+                        </label>
+                
+                        <label for="api-show-protected">
+                            <input type="checkbox" id="api-show-protected">
+                            Protected
+                        </label>
+                
+                        <label for="api-show-private">
+                            <input type="checkbox" id="api-show-private">
+                            Private
+                        </label>
+                        <label for="api-show-deprecated">
+                            <input type="checkbox" id="api-show-deprecated">
+                            Deprecated
+                        </label>
+                
+                    </div>
+                
+                
+                    <div class="index-section properties">
+                        <h3>Properties</h3>
+                
+                        <ul class="index-list properties">
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Vec2">Fire.Vec2</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_one">one</a>
+                
+                                </li>
+                        </ul>
+                    </div>
+                
+                
+                
+                    <div class="index-section methods">
+                        <h3>Methods</h3>
+                
+                        <ul class="index-list methods">
+                
+                                <li class="index-item method constructor">
+                                    <a href="#method_Vec2">Vec2</a>
+                
+                                    <span class="flag constructor">constructor</span>
+                
+                                </li>
+                
+                                <li class="index-item method">
+                                    <a href="#method_add">add</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_addSelf">addSelf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_angle">angle</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_cross">cross</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_div">div</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_divSelf">divSelf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_dot">dot</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_Fire.v2">Fire.v2</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_mag">mag</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_magSqr">magSqr</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_mul">mul</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_mulSelf">mulSelf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_neg">neg</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_negSelf">negSelf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_normalize">normalize</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_normalizeSelf">normalizeSelf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_rotate">rotate</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_rotateSelf">rotateSelf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_scale">scale</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_scaleSelf">scaleSelf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_signAngle">signAngle</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_sub">sub</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_subSelf">subSelf</a>
+                
+                                </li>
+                        </ul>
+                    </div>
+                
+                </div>
+                
+                
+                <div class="class-detail">
+                
+                    <div class="properties-detail">
+                        <h2>Properties</h2>
+                
+                            <a name="property_Fire.Vec2" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Vec2</code>
+                                <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2526"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2526</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>This is a property accessible from {% crosslink Fire Fire %} global object</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_one" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>one</code>
+                                <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2189"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2189</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>return a Vec2 object with x = 1 and y = 1</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                
+                        <div class="no-visible-items-message">
+                            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+                        </div>
+                
+                    </div>
+                
+                
+                    <div class="constructor">
+                        <h2>Constructor</h2>
+                        <a name="method_Vec2" class="anchor-link"></a>
+                        <div class="method item">
+                            <h3 class="name"><code>Vec2</code>
+                        
+                                <div class="args">
+                                    <span class="paren">(</span><ul class="args-list inline commas">
+                                        <li class="arg">
+                                                <code>x</code>
+                                        </li>
+                                        <li class="arg">
+                                                <code>y</code>
+                                        </li>
+                                    </ul><span class="paren">)</span>
+                                </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                            </h3>
+                        
+                            <div class="meta">
+                                        <p>
+                                        Defined in
+                                <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2175"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2175</code></a>
+                                </p>
+                        
+                        
+                        
+                            </div>
+                        
+                            <div class="extended-detail">
+                        
+                                <div class="description">
+                                    
+                                </div>
+                        
+                                    <div class="params">
+                                        <h4>Parameters:</h4>
+                        
+                                        <ul class="params-list">
+                                            <li class="param">
+                                                    <code class="param-name">x</code>
+                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+                        
+                                                <div class="param-description">
+                                                     
+                                                </div>
+                        
+                                            </li>
+                                            <li class="param">
+                                                    <code class="param-name">y</code>
+                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+                        
+                                                <div class="param-description">
+                                                     
+                                                </div>
+                        
+                                            </li>
+                                        </ul>
+                                    </div>
+                        
+                        
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="methods-detail">
+                        <h2>Methods</h2>
+                
+                            <a name="method_add" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>add</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[out]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2242"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2242</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Adds tow vectors, and returns the new result.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[out]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>optional, the receiving vector</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_addSelf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>addSelf</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2230"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2230</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Adds this vector. If you want to save result to another vector, use add() instead.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>returns this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_angle" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>angle</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2458"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2458</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Get angle between this and vector</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                                                    <p>from 0 to Math.PI</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_cross" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>cross</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code class="optional">[vector]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2394"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2394</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Cross product</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[vector]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_div" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>div</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[out]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2346"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2346</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Divides two vectors, and returns the new result.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[out]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>optional, the receiving vector</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_divSelf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>divSelf</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2334"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2334</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Divides two vectors. If you want to save result to another vector, use div() instead.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>returns this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_dot" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>dot</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code class="optional">[vector]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2384"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2384</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Dot product</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[vector]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_Fire.v2" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>Fire.v2</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code class="optional">[x=0]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[y=0]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2533"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2533</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>The convenience method to create a new {% crosslink Vec2 Vec2 %}</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[x=0]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[y=0]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_mag" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>mag</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2404"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2404</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Magnitude</p>
+                            
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_magSqr" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>magSqr</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2413"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2413</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Magnitude Sqaure</p>
+                            
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_mul" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>mul</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>num</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[out]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2294"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2294</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Multiplies by a number, and returns the new result.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">num</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[out]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>optional, the receiving vector</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_mulSelf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>mulSelf</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>num</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2282"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2282</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Multiplies this by a number. If you want to save result to another vector, use mul() instead.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">num</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>returns this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_neg" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>neg</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code class="optional">[out]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2371"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2371</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Negates the components, and returns the new result.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[out]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>optional, the receiving vector</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_negSelf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>negSelf</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2360"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2360</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Negates the components. If you want to save result to another vector, use neg() instead.</p>
+                            
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>returns this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_normalize" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>normalize</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code class="optional">[out]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2444"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2444</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Get normalized vector</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[out]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>optional, the receiving vector</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_normalizeSelf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>normalizeSelf</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2422"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2422</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Normalize self</p>
+                            
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_rotate" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>rotate</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>radians</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[out]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2494"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2494</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>rotate</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">radians</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[out]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>optional, the receiving vector</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_rotateSelf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>rotateSelf</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>radians</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2508"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2508</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>rotate self</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">radians</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_scale" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>scale</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[out]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2320"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2320</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Multiplies two vectors, and returns the new result.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[out]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>optional, the receiving vector</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_scaleSelf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>scaleSelf</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2308"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2308</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Multiplies two vectors.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>returns this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_signAngle" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>signAngle</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2479"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2479</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Get angle between this and vector with direction</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                                                    <p>from -MathPI to Math.PI</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_sub" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>sub</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[out]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2268"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2268</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Subtracts one vector from this, and returns the new result.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[out]</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>optional, the receiving vector</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>the result</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_subSelf" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>subSelf</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>vector</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2256"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2256</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Subtracts one vector from this. If you want to save result to another vector, use sub() instead.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>returns this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                
+                        <div class="no-visible-items-message">
+                            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+                        </div>
+                
+                    </div>
+                
+                
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
