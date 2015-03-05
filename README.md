@@ -40,4 +40,4 @@ Visit http://docs.fireball-x.com to learn how to use Fireball Game Engine.
 
 - If you have questions about a specific page of documentation, use the disqus sidebar on the left of [Fireball Documentation Site](http://docs.fireball-x.com).
 - If you have any suggestion/feedback/problem, feel free to [submit an issue](https://github.com/fireball-x/fireball/issues).
-- If you want to contribute to this project, please read [Contributing Guidelines](https://github.com/fireball-x/fireball/edit/master/CONTRIBUTING.md).
+- If you want to contribute to this project, please read [Contributing Guidelines](https://github.com/fireball-x/fireball/blob/master/CONTRIBUTING.md).
