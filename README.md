@@ -26,3 +26,18 @@ gulp run
 ```
 
 ## Use Distribute Version
+
+1. Download distribute version from [release page](https://github.com/fireball-x/fireball/releases).
+2. Extract the zip file to a folder of its own. This folder can locate anywhere on your disk.
+3. Click `Fireball.app` on Mac or `fireball.exe` on Windonws to launch fireball.
+4. Have fun!
+
+## Get Started
+
+Visit http://docs.fireball-x.com to learn how to use Fireball Game Engine.
+
+## Feedback & Contribution
+
+- If you have questions about a specific page of documentation, use the disqus sidebar on the left of [Fireball Documentation Site](http://docs.fireball-x.com).
+- If you have any suggestion/feedback/problem, feel free to [submit an issue](https://github.com/fireball-x/fireball/issues).
+- If you want to contribute to this project, please read [Contributing Guidelines](https://github.com/fireball-x/fireball/edit/master/CONTRIBUTING.md).
