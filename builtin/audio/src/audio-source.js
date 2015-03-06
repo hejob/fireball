@@ -1,6 +1,6 @@
 
 var AudioSource = (function () {
-    var AudioSource = Fire.define("Fire.AudioSource", Fire.Component, function () {
+    var AudioSource = Fire.extend("Fire.AudioSource", Fire.Component, function () {
         this._playing = false; //-- 声源暂停或者停止时候为false
         this._paused = false;//-- 来区分声源是暂停还是停止
 
@@ -154,7 +154,7 @@ var AudioSource = (function () {
     };
 
     AudioSource.prototype.onLoad = function () {
-        if ( !Fire.Engine.isPlaying && this._playing ) {
+        if (this._playing ) {
             this.stop();
         }
     };
@@ -167,7 +167,7 @@ var AudioSource = (function () {
     };
 
     AudioSource.prototype.onEnable = function () {
-        if (this.playOnAwake && Fire.Engine.isPlaying) {
+        if (this.playOnAwake) {
             this.play();
         }
     };

@@ -2,9 +2,7 @@ var SpriteAnimationClip = require('sprite-animation-clip');
 var SpriteAnimationState = require('sprite-animation-state');
 
 // 定义一个名叫Sprite Animation 组件
-var SpriteAnimation = Fire.define('Fire.SpriteAnimation', Fire.Component, function () {
-    Fire.Component.call(this);
-
+var SpriteAnimation = Fire.extend('Fire.SpriteAnimation', Fire.Component, function () {
     this.animations = [];
     this._nameToState = {};
     this._curAnimation = null;
@@ -62,7 +60,6 @@ SpriteAnimation.prototype.init = function () {
 };
 
 SpriteAnimation.prototype.play = function (animState, time) {
-    console.log('play');
     this._curAnimation = animState;
     if (this._curAnimation !== null) {
         this._curIndex = -1;

@@ -1,6 +1,6 @@
 // AudioClipInspector
 
-var AudioClipInspector = Fire.define('Fire.AudioClipInspector', Fire.AssetInspector, null);
+var AudioClipInspector = Fire.extend('Fire.AudioClipInspector', Fire.AssetInspector);
 
 AudioClipInspector.prop('length', 0, Fire.ReadOnly);
 AudioClipInspector.prop('samples', 0, Fire.Integer, Fire.ReadOnly);

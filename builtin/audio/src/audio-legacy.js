@@ -8,11 +8,11 @@
     function loader (url, callback, onProgress) {
         var audio = document.createElement("audio");
         audio.addEventListener("canplaythrough", function () {
-            callback(audio);
+            callback(null, audio);
         }, false);
         audio.addEventListener('error', function (e) {
-            callback(null, 'LoadAudioClip: "' + url +
-                    '" seems to be unreachable or the file is empty. InnerMessage: ' + this.error);
+            callback('LoadAudioClip: "' + url +
+                    '" seems to be unreachable or the file is empty. InnerMessage: ' + e, null);
         }, false);
 
         audio.src = url;

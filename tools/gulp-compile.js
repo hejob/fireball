@@ -2,15 +2,18 @@ var Path = require('fire-path');
 var Fs = require('fs');
 var Readable = require('stream').Readable;
 var Format = require('util').format;
+var Nomnom = require('nomnom');
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var del = require('del');
 var es = require('event-stream');
+
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
-
-var Nomnom = require('nomnom');
+var buffer = require('vinyl-buffer');
+var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
 
 //var bufferify = require('vinyl-buffer');
 
@@ -30,22 +33,23 @@ Nomnom.script('gulp --gulpfile gulp-compile.js');
 Nomnom.option('project', {
     string: '-p PROJECT, --project=PROJECT',
     help: 'the project to compile',
-    required: true,
+    required: true
 });
 Nomnom.option('platform', {
     string: '--platform=PLATFORM',
     help: 'the target platform to compile',
-    'default': 'editor',
+    'default': 'editor'
 });
 Nomnom.option('dest', {
     string: '--dest=DEST',
     help: 'the path for the output files',
-    'default': 'library/bundle.js',
+    'default': 'library/bundle.js'
 });
 Nomnom.option('debug', {
     string: '-d, --debug',
     help: 'script debugging',
-    flag: true,
+    default: false,
+    flag: true
 });
 
 var opts = Nomnom.parse();
@@ -70,7 +74,7 @@ var paths = {
     tmpdir: 'temp',
 
     dest: opts.dest,
-    proj: Path.resolve(opts.project),
+    proj: Path.resolve(opts.project)
 };
 
 paths.pluginSettings = Path.join(paths.proj, paths.pluginSettings);
@@ -92,7 +96,7 @@ function getUserHome () {
     return process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
 }
 
-paths.globalPluginDir = Path.join(getUserHome(), '.fireball-x');
+paths.globalPluginDir = Path.join(getUserHome(), '.fireball');
 paths.builtinPluginDir = Path.resolve('builtin');
 
 opts.compileGlobalPlugin = false;
@@ -102,26 +106,26 @@ var bundleInfos = {
     "all_in_one": {
         suffix: '',
         scriptGlobs: [],
-        scripts: [],
+        scripts: []
     },
     // builtin plugin runtime
     "builtin": {
         suffix: '.builtin',     // 编辑器下，插件编译出来的脚本会带上相应的后缀
         scriptGlobs: [],
-        scripts: [],
+        scripts: []
     },
     // global plugin runtime
     "global": {
         suffix: '.global',
         scriptGlobs: [],
-        scripts: [],
+        scripts: []
     },
     // project runtime scripts (plugin included)
     "project": {
         suffix: '.project',
         scriptGlobs: [],
-        scripts: [],
-    },
+        scripts: []
+    }
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -191,7 +195,7 @@ gulp.task('getExternScripts', function (callback) {
 
     function updatePluginSetting (setting, callback) {
         var defaultSetting = {
-            enable: true,
+            enable: true
         };
         function doUpdatePluginSetting (entries, pluginDir, cb) {
             // get available plugins
@@ -235,7 +239,7 @@ gulp.task('getExternScripts', function (callback) {
             }
             updatePluginSetting(setting, getExternScripts);
         }
-    })
+    });
 });
 
 gulp.task('getScriptGlobs', ['parseProjectPlugins', 'getExternScripts'], function () {
@@ -274,9 +278,9 @@ function addMetaData () {
                     console.error('Failed to read meta file.');
                     callback(err);
                 }
-                else {
-                    // external plugin script, no uuid
-                }
+                //else {
+                //    external plugin script, no uuid
+                //}
             }
             else {
                 try {
@@ -331,7 +335,7 @@ function precompile (info, destDir) {
     // https://github.com/gulpjs/gulp/blob/master/docs/API.md#options
     // https://github.com/isaacs/node-glob#options
     var GlobOptions = {
-        cwd: paths.proj,
+        cwd: paths.proj
         //nodir: true,  // not worked
         //nocase = true;  // Windows 上用不了nocase，会有bug: https://github.com/isaacs/node-glob/issues/123
         //nonull: true,
@@ -355,9 +359,8 @@ function precompile (info, destDir) {
 function browserifyTask (srcPaths, destDir, destFile) {
     var opts = {
         debug: debug,
-        basedir: tempScriptDir,
+        basedir: tempScriptDir
     };
-
     // https://github.com/substack/node-browserify#methods
     var b = browserify(opts);
     for (var i = 0; i < srcPaths.length; ++i) {
@@ -367,14 +370,19 @@ function browserifyTask (srcPaths, destDir, destFile) {
         opts.expose = Path.basename(file, Path.extname(file));
         b.require('./' + file, opts);
     }
-    var bundle = b.bundle();
-    return bundle.on('error', function (error) {
+    var bundle = b.bundle()
+        .on('error', function (error) {
             console.error(gutil.colors.red('Compile error:'), error.message);
             process.exit(1);
         })
-        .pipe(source(destFile))
-        .pipe(gulp.dest(destDir))
-        ;
+        .pipe(source(destFile));
+    if ( !debug ) {
+        bundle = bundle.pipe(buffer())
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(uglify())
+            .pipe(sourcemaps.write('./'));
+    }
+    return bundle.pipe(gulp.dest(destDir));
 }
 
 function createTask(taskname, info) {

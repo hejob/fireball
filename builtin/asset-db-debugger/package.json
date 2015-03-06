@@ -1,9 +1,9 @@
 {
     "name": "asset-db-debugger",
     "version": "0.1.0",
-    "description": "The AssetDB debugger for Fireball-x Engine",
+    "description": "The AssetDB debugger for Fireball Engine",
     "author": "Johnny Wu <KarasAya@gmail.com>",
-    "fireball-x": {
+    "fireball": {
         "main": "editor/main.js",
         "menus": [
             {

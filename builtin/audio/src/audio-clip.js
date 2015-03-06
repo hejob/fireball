@@ -1,5 +1,5 @@
 Fire.AudioClip = (function () {
-    var AudioClip = Fire.define("Fire.AudioClip", Fire.Asset, null);
+    var AudioClip = Fire.extend("Fire.AudioClip", Fire.Asset);
 
     AudioClip.prop('rawData', null, Fire.RawType('audio'));
 

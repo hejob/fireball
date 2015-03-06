@@ -1,6 +1,6 @@
 ;window.onload = function () {
     function loadProjectSettings (callback) {
-        Fire._JsonLoader('settings.json', function (json, error) {
+        Fire._JsonLoader('settings.json', function (error, json) {
             if (error) {
                 Fire.error(error);
             }
@@ -16,8 +16,10 @@
     Fire.AssetLibrary.init('resource/library');
     // load scene
     loadProjectSettings(function (project) {
-        Fire.Engine.loadScene(project.scenes[0], null, function () {
-            Fire.Engine.play();
-        });
+        Fire.Engine._loadSceneByUuid(project.scenes[0], null,
+            function () {
+                Fire.Engine.play();
+            }
+        );
     });
 };

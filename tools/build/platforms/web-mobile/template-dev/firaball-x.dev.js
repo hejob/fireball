@@ -94,6 +94,7 @@ var ObjectFlags = {
     IsOnEnableCalled: 1 << 12,
     IsOnLoadCalled: 1 << 13,
     IsOnStartCalled: 1 << 14,
+    IsEditorOnEnabledCalled: 1 << 15
 
 };
 
@@ -109,17 +110,19 @@ Fire._ObjectFlags = ObjectFlags;
 
 var PersistentMask = ~(ToDestroy | Dirty | ObjectFlags.Destroying |     // can not clone these flags
                        ObjectFlags.IsOnEnableCalled |
+                       ObjectFlags.IsEditorOnEnabledCalled |
                        ObjectFlags.IsOnLoadCalled |
                        ObjectFlags.IsOnStartCalled);
 
 /**
- *
- * Get property descriptor
+ * !#en Get property descriptor
+ * descriptor is blah blah
+ * !#zh 获取 property 的描述物体
+ * 描述物体是这样的
  * @method _getPropertyDescriptor
- * @param {object} obj
+ * @param {object} obj - !#en !#zh 获取属性的对象
  * @param {string} name
  * @return {Object}
- *
  */
 function _getPropertyDescriptor(obj, name) {
     if (obj) {
@@ -133,7 +136,80 @@ function _copyprop(name, source, target) {
     Object.defineProperty(target, name, pd);
 }
 
-Fire.JS = {
+var JS = Fire.JS = {
+
+    /**
+     * copy all properties not defined in obj from arguments[1...n]
+     * @method addon
+     * @param {object} obj object to extend its properties
+     * @param {object} sourceObj source object to copy properties from
+     * @return {object} the result obj
+     */
+    addon: function (obj) {
+        'use strict';
+        obj = obj || {};
+        for (var i = 1, length = arguments.length; i < length; i++) {
+            var source = arguments[i];
+            for ( var name in source) {
+                if ( !(name in obj) ) {
+                    _copyprop( name, source, obj);
+                }
+            }
+        }
+        return obj;
+    },
+
+    /**
+     * copy all properties from arguments[1...n] to obj
+     * @method mixin
+     * @param {object} obj
+     * @param {object} source
+     * @return {object} the result obj
+     */
+    mixin: function (obj) {
+        'use strict';
+        obj = obj || {};
+        for (var i = 1, length = arguments.length; i < length; i++) {
+            var source = arguments[i];
+            if (source) {
+                if (typeof source !== 'object') {
+                    Fire.error('Fire.mixin called on non-object:', source);
+                    continue;
+                }
+                for ( var name in source) {
+                    _copyprop( name, source, obj);
+                }
+            }
+        }
+        return obj;
+    },
+
+    /**
+     * Derive the class from the supplied base class.
+     * Both classes are just native javascript constructors, not created by Fire.define, so
+     * usually you will want to inherit using {% crosslink Fire.define define %} instead.
+     *
+     * @method extend
+     * @param {function} cls
+     * @param {function} base - the baseclass to inherit
+     * @return {function} the result class
+     */
+    extend: function (cls, base) {
+        if ( !base ) {
+            Fire.error('The base class to extend from must be non-nil');
+            return;
+        }
+        if ( !cls ) {
+            Fire.error('The class to extend must be non-nil');
+            return;
+        }
+        for (var p in base) if (base.hasOwnProperty(p)) cls[p] = base[p];
+        function __() { this.constructor = cls; }
+        __.prototype = base.prototype;
+        cls.prototype = new __();
+        return cls;
+    },
+
     clear: function (obj) {
         var keys = Object.keys(obj);
         for (var i = 0; i < keys.length; i++) {
@@ -143,88 +219,13 @@ Fire.JS = {
 };
 
 /**
- *
- * copy all properties not defined in obj from arguments[1...n]
- * @method addon
- * @param {object} obj object to extend its properties
- * @param {object} sourceObj source object to copy properties from
- * @return {object} the result obj
- */
-Fire.addon = function (obj) {
-    'use strict';
-    obj = obj || {};
-    for (var i = 1, length = arguments.length; i < length; i++) {
-        var source = arguments[i];
-        for ( var name in source) {
-            if ( !(name in obj) ) {
-                _copyprop( name, source, obj);
-            }
-        }
-    }
-    return obj;
-};
-
-/**
- *
- * copy all properties from arguments[1...n] to obj
- * @method mixin
- * @param {object} obj
- * @param {object} source
- * @return {object} the result obj
- */
-Fire.mixin = function (obj) {
-    'use strict';
-    obj = obj || {};
-    for (var i = 1, length = arguments.length; i < length; i++) {
-        var source = arguments[i];
-        if (source) {
-            if (typeof source !== 'object') {
-                Fire.error('Fire.mixin called on non-object:', source);
-                continue;
-            }
-            for ( var name in source) {
-                _copyprop( name, source, obj);
-            }
-        }
-    }
-    return obj;
-};
-
-/**
- * Derive the class from the supplied base class.
- * Both classes are just native javascript constructors, not created by Fire.define, so
- * usually you will want to inherit using {% crosslink Fire.define define %} instead.
- *
- * @method extend
- * @param {function} cls
- * @param {function} base - the baseclass to inherit
- * @return {function} the result class
- *
- */
-Fire.extend = function (cls, base) {
-    if ( !base ) {
-        Fire.error('The base class to extend from must be non-nil');
-        return;
-    }
-    if ( !cls ) {
-        Fire.error('The class to extend must be non-nil');
-        return;
-    }
-    for (var p in base) if (base.hasOwnProperty(p)) cls[p] = base[p];
-    function __() { this.constructor = cls; }
-    __.prototype = base.prototype;
-    cls.prototype = new __();
-    return cls;
-};
-
-/**
  * Get class name of the object, if object is just a {} (and which class named 'Object'), it will return null.
  * (modified from <a href="http://stackoverflow.com/questions/1249531/how-to-get-a-javascript-objects-class">the code from this stackoverflow post</a>)
  * @method getClassName
  * @param {object|function} obj - instance or constructor
  * @return {string}
  */
-Fire.getClassName = function (obj) {
+JS.getClassName = function (obj) {
     if (typeof obj === 'function' && obj.prototype.__classname__) {
         return obj.prototype.__classname__;
     }
@@ -291,7 +292,7 @@ Fire.getClassName = function (obj) {
      * @param {string} classId
      * @param {function} constructor
      */
-    Fire._setClassId = getRegister('__cid__', _idToClass);
+    JS._setClassId = getRegister('__cid__', _idToClass);
 
     var doSetClassName = getRegister('__classname__', _nameToClass);
 
@@ -301,23 +302,23 @@ Fire.getClassName = function (obj) {
      * @param {string} className
      * @param {function} constructor
      */
-    Fire.setClassName = function (className, constructor) {
+    JS.setClassName = function (className, constructor) {
         doSetClassName(className, constructor);
         // auto set class id
         if (className && !constructor.prototype.hasOwnProperty('__cid__')) {
-            Fire._setClassId(className, constructor);
+            JS._setClassId(className, constructor);
         }
     };
 
     /**
      * If you dont need a class (which defined by Fire.define or Fire.setClassName) anymore,
-     * You should unregister the class so that Fireball-x will not keep its reference anymore.
+     * You should unregister the class so that Fireball will not keep its reference anymore.
      * Please note that its still your responsibility to free other references to the class.
      *
      * @method unregisterClass
      * @param {function} [constructor] - the class you will want to unregister, any number of classes can be added
      */
-    Fire.unregisterClass = function (constructor) {
+    JS.unregisterClass = function (constructor) {
         'use strict';
         for (var i = 0; i < arguments.length; i++) {
             var p = arguments[i].prototype;
@@ -338,7 +339,7 @@ Fire.getClassName = function (obj) {
      * @param {string} classId
      * @return {function} constructor
      */
-    Fire._getClassById = function (classId) {
+    JS._getClassById = function (classId) {
         return _idToClass[classId];
     };
 
@@ -348,7 +349,7 @@ Fire.getClassName = function (obj) {
      * @param {string} classname
      * @return {function} constructor
      */
-    Fire.getClassByName = function (classname) {
+    JS.getClassByName = function (classname) {
         return _nameToClass[classname];
     };
 
@@ -358,7 +359,7 @@ Fire.getClassName = function (obj) {
      * @param {object|function} obj - instance or constructor
      * @return {string}
      */
-    Fire._getClassId = function (obj) {
+    JS._getClassId = function (obj) {
         if (typeof obj === 'function' && obj.prototype.__cid__) {
             return obj.prototype.__cid__;
         }
@@ -397,21 +398,41 @@ else {
     var _d2r = Math.PI/180.0;
     var _r2d = 180.0/Math.PI;
 
-    Fire.mixin ( Math, {
+    /**
+     * Helper class for math operation
+     * @class Math
+     * @static
+     */
+    JS.mixin ( Math, {
         TWO_PI: 2.0 * Math.PI,
         HALF_PI: 0.5 * Math.PI,
 
-        // degree to radius
+        /**
+         * degree to radius
+         * @method deg2rad
+         * @param {number} degree
+         * @return {number}
+         */
         deg2rad: function ( degree ) {
             return degree * _d2r;
         },
 
-        // radius to degree
+        /**
+         * radius to degree
+         * @method rad2deg
+         * @param {number} radius
+         * @return {number}
+         */
         rad2deg: function ( radius ) {
             return radius * _r2d;
         },
 
-        // let radius in -pi to pi
+        /**
+         * let radius in -pi to pi
+         * @method rad180
+         * @param {number} radius
+         * @return {number}
+         */
         rad180: function ( radius ) {
             if ( radius > Math.PI || radius < -Math.PI ) {
                 radius = (radius + Math.TOW_PI) % Math.TOW_PI;
@@ -419,7 +440,12 @@ else {
             return radius;
         },
 
-        // let radius in 0 to 2pi
+        /**
+         * let radius in 0 to 2pi
+         * @method rad360
+         * @param {number} radius
+         * @return {number}
+         */
         rad360: function ( radius ) {
             if ( radius > Math.TWO_PI )
                 return radius % Math.TOW_PI;
@@ -428,7 +454,13 @@ else {
             return radius;
         },
 
-        // let degree in -180 to 180
+        /**
+         * let degree in -180 to 180
+         * @method deg180
+         * @param {number} degree
+         * @return {number}
+         */
+
         deg180: function ( degree ) {
             if ( degree > 180.0 || degree < -180.0 ) {
                 degree = (degree + 360.0) % 360.0;
@@ -436,7 +468,12 @@ else {
             return degree;
         },
 
-        // let degree in 0 to 360
+        /**
+         * let degree in 0 to 360
+         * @method deg360
+         * @param {number} degree
+         * @return {number}
+         */
         deg360: function ( degree ) {
             if ( degree > 360.0 )
                 return degree % 360.0;
@@ -460,11 +497,13 @@ else {
         },
 
         /**
-         * @param {Fire.Rect} out
-         * @param {Fire.Vec2} p0
-         * @param {Fire.Vec2} p1
-         * @param {Fire.Vec2} p2
-         * @param {Fire.Vec2} p3
+         * @method calculateMaxRect
+         * @param {Rect} out
+         * @param {Vec2} p0
+         * @param {Vec2} p1
+         * @param {Vec2} p2
+         * @param {Vec2} p3
+         * @return {Vec2}
          */
         calculateMaxRect: function (out, p0, p1, p2, p3) {
             var minX = Math.min(p0.x, p1.x, p2.x, p3.x);
@@ -476,12 +515,16 @@ else {
             out.width = maxX - minX;
             out.height = maxY - minY;
             return out;
-        },
+        }
 
     } );
 
 })();
 
+/**
+ * @class Intersection
+ * @static
+ */
 Fire.Intersection = (function () {
     var Intersection = {};
 
@@ -503,6 +546,15 @@ Fire.Intersection = (function () {
 
         return false;
     }
+
+    /**
+     * @method lineLine
+     * @param {Fire.Vec2} a1
+     * @param {Fire.Vec2} a2
+     * @param {Fire.Vec2} b1
+     * @param {Fire.Vec2} b2
+     * @return {boolean}
+     */
     Intersection.lineLine = _lineLine;
 
     function _lineRect ( a1, a2, b ) {
@@ -525,6 +577,14 @@ Fire.Intersection = (function () {
 
         return false;
     }
+
+    /**
+     * @method lineRect
+     * @param {Fire.Vec2} a1
+     * @param {Fire.Vec2} a2
+     * @param {Fire.Vec2} b
+     * @return {boolean}
+     */
     Intersection.lineRect = _lineRect;
 
     function _linePolygon ( a1, a2, b ) {
@@ -641,6 +701,7 @@ Fire.Intersection = (function () {
      * The CallbacksHandler is an abstract class that can register and unregister callbacks by key.
      * Subclasses should implement their own methods about how to invoke the callbacks.
      * @class CallbacksHandler
+     * @constructor
      */
     var CallbacksHandler = (function () {
         this._callbackTable = {};
@@ -649,6 +710,7 @@ Fire.Intersection = (function () {
     Fire._CallbacksHandler = CallbacksHandler;
 
     /**
+     * @method add
      * @param {string} key
      * @param {function} callback
      * @return {boolean} whether the key is new
@@ -678,7 +740,7 @@ Fire.Intersection = (function () {
     /**
      * Check if the specified key has any registered callback. If a callback is also specified,
      * it will only return true if the callback is registered.
-     *
+     * @method has
      * @param {string} key
      * @param {function} [callback]
      * @return {boolean}
@@ -695,6 +757,7 @@ Fire.Intersection = (function () {
     };
 
     /**
+     * @method removeAll
      * @param {string} key
      */
     CallbacksHandler.prototype.removeAll = function (key) {
@@ -702,6 +765,7 @@ Fire.Intersection = (function () {
     };
 
     /**
+     * @method remove
      * @param {string} key
      * @param {function} callback
      * @return {boolean} removed
@@ -723,15 +787,23 @@ Fire.Intersection = (function () {
     /**
      * The callbacks invoker to handle and invoke callbacks by key
      * @class CallbacksInvoker
+     * @extends CallbacksHandler
+     * @constructor
      */
     var CallbacksInvoker = function () {
-        this._callbackTable = {};
+        this._callbackTable = {}; // 直接赋值，省得调用父构造函数
     };
-    Fire.extend(CallbacksInvoker, CallbacksHandler);
+    JS.extend(CallbacksInvoker, CallbacksHandler);
 
+    /**
+     * This is a property accessible from {% crosslink Fire Fire %} global object
+     * @property Fire.CallbacksInvoker
+     * @type CallbacksInvoker
+     */
     Fire.CallbacksInvoker = CallbacksInvoker;
 
     /**
+     * @method invoke
      * @param {string} key
      * @param {*} [p1]
      * @param {*} [p2]
@@ -749,6 +821,7 @@ Fire.Intersection = (function () {
     };
 
     /**
+     * @method invokeAndRemove
      * @param {string} key
      * @param {*} [p1]
      * @param {*} [p2]
@@ -769,6 +842,7 @@ Fire.Intersection = (function () {
     };
 
     /**
+     * @method bindKey
      * @param {string} key
      * @param {boolean} [remove=false] - remove callbacks after invoked
      * @return {function} the new callback which will invoke all the callbacks binded with the same supplied key
@@ -793,6 +867,19 @@ Fire.Intersection = (function () {
     return CallbacksInvoker;
 })();
 
+/**
+ * @module Fire
+ * @class Fire
+ * @static
+ */
+
+/**
+ * @method padLeft
+ * @param {string} text
+ * @param {number} width
+ * @param {string} ch
+ * @return {string}
+ */
 Fire.padLeft = function ( text, width, ch ) {
     text = text.toString();
     width -= text.length;
@@ -929,7 +1016,7 @@ function _isDomNode(obj) {
  * @return {boolean} is {} ?
  */
 var _isPlainEmptyObj_DEV = function (obj) {
-    if (obj.constructor !== ({}).constructor) {
+    if (!obj || obj.constructor !== ({}).constructor) {
         return false;
     }
     // jshint ignore: start
@@ -947,23 +1034,21 @@ var _cloneable_DEV = function (obj) {
  * Tag the class with any meta attributes, then return all current attributes assigned to it.
  * This function holds only the attributes, not their implementations.
  *
- * @method Fire.attr
- * @param {function|object} constructor - the class or instance. If instance, the attribute will be dynamic and only
- *                                        available for the specified instance.
+ * @method attr
+ * @param {function|object} constructor - the class or instance. If instance, the attribute will be dynamic and only available for the specified instance.
  * @param {string} propertyName - the name of property or function, used to retrieve the attributes
- * @param {object|*} [attributes] - the attribute table to mark, new attributes will merged with existed attributes.
- *                                Attribute whose key starts with '_' will be ignored.
+ * @param {object} [attributes] - the attribute table to mark, new attributes will merged with existed attributes. Attribute whose key starts with '_' will be ignored.
  * @return {object|undefined} return all attributes associated with the property. if none undefined will be returned
  *
  * @example
- * var klass = function () { this.value = 0.5 };
- * Fire.attr(klass, 'value');              // return undefined
- * Fire.attr(klass, 'value', {}).min = 0;  // assign new attribute table associated with 'value', and set its min = 0
- * Fire.attr(klass, 'value', {             // set values max and default
- *     max: 1,
- *     default: 0.5,
- * });
- * Fire.attr(klass, 'value');              // return { default: 0.5, min: 0, max: 1 }
+ *  var klass = function () { this.value = 0.5 };
+ *  Fire.attr(klass, 'value');              // return undefined
+ *  Fire.attr(klass, 'value', {}).min = 0;  // assign new attribute table associated with 'value', and set its min = 0
+ *  Fire.attr(klass, 'value', {             // set values max and default
+ *      max: 1,
+ *      default: 0.5,
+ *  });
+ *  Fire.attr(klass, 'value');              // return { default: 0.5, min: 0, max: 1 }
  */
 Fire.attr = function (constructor, propertyName, attributes) {
     var key = '_attr$' + propertyName;
@@ -1008,7 +1093,7 @@ Fire.attr = function (constructor, propertyName, attributes) {
                         attrs[name] = attributes[name];
                     }
                 }
-                return Fire.addon({}, attrs, instance.constructor.prototype[key]);
+                return JS.addon({}, attrs, instance.constructor.prototype[key]);
             }
             else {
                 instance[key] = attributes;
@@ -1019,7 +1104,7 @@ Fire.attr = function (constructor, propertyName, attributes) {
             // get
             attrs = instance[key];
             if (typeof attrs === 'object') {
-                return Fire.addon({}, attrs, instance.constructor.prototype[key]);
+                return JS.addon({}, attrs, instance.constructor.prototype[key]);
             }
             else {
                 return attrs;
@@ -1050,9 +1135,10 @@ Callbacks: {
  * By default, all properties declared by "Class.prop" is serializable.
  * The NonSerialized attribute marks a variable to not be serialized,
  * so you can keep a property show in the Editor and Fireball will not attempt to serialize it.
+ * See {% crosslink EditorOnly Fire.EditorOnly %} for more details.
  *
- * @property {object} Fire.NonSerialized
- * @see Fire.EditorOnly
+ * @property NonSerialized
+ * @type object
  */
 Fire.NonSerialized = {
     serializable: false,
@@ -1063,8 +1149,8 @@ Fire.NonSerialized = {
  * The EditorOnly attribute marks a variable to be serialized in editor project, but non-serialized
  * in exported products.
  *
- * @property {object} Fire.EditorOnly
- * @see Fire.NonSerialized
+ * @property EditorOnly
+ * @type object
  */
 Fire.EditorOnly = {
     editorOnly: true,
@@ -1074,79 +1160,101 @@ Fire.EditorOnly = {
 /**
  * Specify that the input value must be integer in Inspector.
  * Also used to indicates that the type of elements in array or the type of value in dictionary is integer.
- * @property {object} Fire.HideInInspector
+ * @property Integer
+ * @type object
  */
 Fire.Integer = { type: 'int' };
 
 /**
  * Indicates that the type of elements in array or the type of value in dictionary is double.
- * @property {object} Fire.HideInInspector
+ * @property Float
+ * @type object
  */
 Fire.Float = { type: 'float' };
 
 Fire.SingleText = { textMode: 'single' };
 Fire.MultiText = { textMode: 'multi' };
 
-function getTypeChecker (type, attrName) {
+function getTypeChecker (type, attrName, objectTypeCtor) {
     return function (constructor, mainPropName) {
         var mainPropAttrs = Fire.attr(constructor, mainPropName) || {};
         if (mainPropAttrs.type !== type) {
-            Fire.warn('Can only indicate one type attribute for %s.%s.', Fire.getClassName(constructor), mainPropName);
+            Fire.warn('Can only indicate one type attribute for %s.%s.', JS.getClassName(constructor), mainPropName);
             return;
         }
         if (!mainPropAttrs.hasOwnProperty('default')) {
             return;
         }
-        var isContainer = Array.isArray(mainPropAttrs.default) || _isPlainEmptyObj_DEV(mainPropAttrs.default);
+        var defaultVal = mainPropAttrs.default;
+        if (typeof defaultVal === 'undefined') {
+            return;
+        }
+        var isContainer = Array.isArray(defaultVal) || _isPlainEmptyObj_DEV(defaultVal);
         if (isContainer) {
             return;
         }
-        var defType = typeof mainPropAttrs.default;
-        if (defType === type) {
-            Fire.warn('No needs to indicate the "%s" attribute for %s.%s, which its default value is type of %s.',
-                       attrName, Fire.getClassName(constructor), mainPropName, type);
+        var defaultType = typeof defaultVal;
+        if (defaultType === type) {
+            if (type === 'object') {
+                if (defaultVal && !(defaultVal instanceof objectTypeCtor)) {
+                    Fire.warn('The default value of %s.%s is not instance of %s.',
+                               JS.getClassName(constructor), mainPropName, JS.getClassName(objectTypeCtor));
+                }
+                else {
+                    return;
+                }
+            }
+            else {
+                Fire.warn('No needs to indicate the "%s" attribute for %s.%s, which its default value is type of %s.',
+                           attrName, JS.getClassName(constructor), mainPropName, type);
+            }
         }
         else {
             Fire.warn('Can not indicate the "%s" attribute for %s.%s, which its default value is type of %s.',
-                       attrName, Fire.getClassName(constructor), mainPropName, defType);
+                       attrName, JS.getClassName(constructor), mainPropName, defaultType);
         }
         delete mainPropAttrs.type;
     };
 }
 /**
  * Indicates that the type of elements in array or the type of value in dictionary is boolean.
- * @property {object} Fire.HideInInspector
+ * @property Boolean
+ * @type
  */
 Fire.Boolean = {
     type: 'boolean',
-    _onAfterProp: getTypeChecker('boolean', 'Fire.Boolean'),
+    _onAfterProp: getTypeChecker('boolean', 'Fire.Boolean')
 };
 
 /**
  * Indicates that the type of elements in array or the type of value in dictionary is string.
- * @property {object} Fire.HideInInspector
+ * @property String
+ * @type object
  */
 Fire.String = {
     type: 'string',
-    _onAfterProp: getTypeChecker('string', 'Fire.String'),
+    _onAfterProp: getTypeChecker('string', 'Fire.String')
 };
 
 /**
  * Makes a property only accept the supplied object type in Inspector.
  * If the type is derived from Fire.Asset, it will be serialized to uuid.
  *
- * @method Fire.ObjectType
- * @param {function} ctor - the special type you want
+ * @method ObjectType
+ * @param {function} constructor - the special type you want
  * @return {object} the attribute
  */
-Fire.ObjectType = function (ctor) {
-    return { type: 'object', ctor: ctor };
+Fire.ObjectType = function (constructor) {
+    return {
+        type: 'object',
+        ctor: constructor,
+    };
 };
 
 /**
  * Makes a property show up as a enum in Inspector.
  *
- * @method Fire.Enum
+ * @method Enum
  * @param {(string)} enumType
  * @return {object} the enum attribute
  */
@@ -1157,7 +1265,7 @@ Fire.Enum = function (enumType) {
 /**
  * Makes a property show up as a enum in Inspector.
  *
- * @method Fire.EnumList
+ * @method EnumList
  * @param {(array)} enumList
  * @return {object} the enum attribute
  */
@@ -1169,7 +1277,7 @@ Fire.EnumList = function (enumList) {
  * Makes a property referenced to a javascript host object which needs to load before deserialzation.
  * The property will not be serialized but will be referenced to the loaded host object while deserialzation.
  *
- * @method Fire.RawType
+ * @method RawType
  * @param {string} [typename]
  * @return {object} the attribute
  */
@@ -1242,8 +1350,8 @@ Fire.RawType = function (typename) {
 /**
  * Makes a custom property
  *
- * @method Fire.Custom
- * @param {(string)} name
+ * @method Custom
+ * @param {string} name
  * @return {object} the enum attribute
  */
 Fire.Custom = function (type) {
@@ -1252,8 +1360,8 @@ Fire.Custom = function (type) {
 
 /**
  * Makes a property not show up in the Inspector but be serialized.
- *
- * @property {object} Fire.HideInInspector
+ * @property HideInInspector
+ * @type object
  */
 Fire.HideInInspector = { hideInInspector: true };
 
@@ -1270,7 +1378,8 @@ Fire.DisplayName = function (name) {
 
 /**
  * The ReadOnly attribute indicates that the property field is disabled in Inspector.
- * @property {object} Fire.ReadOnly
+ * @property ReadOnly
+ * @type object
  */
 Fire.ReadOnly = {
     readOnly: true
@@ -1279,7 +1388,7 @@ Fire.ReadOnly = {
 /**
  * Specify a tooltip for a property
  *
- * @method Fire.Tooltip
+ * @method Tooltip
  * @param {string} tooltip
  * @return {object} the attribute
  */
@@ -1288,6 +1397,7 @@ Fire.Tooltip = function (tooltip) {
 };
 
 /**
+ * @method Nullable
  * @param {string} boolPropName
  * @param {boolean} hasValueByDefault
  * @return {object} the attribute
@@ -1312,7 +1422,8 @@ Fire.Nullable = function (boolPropName, hasValueByDefault) {
 };
 
 /**
- * @param {string[]|string} names - the name of target property to watch, array is also acceptable.
+ * @method Watch
+ * @param {string} names - the name of target property to watch, array is also acceptable.
  * @param {function} callback - the callback function to invoke when target property(s) is changed.
  * @return {object} the attribute
  */
@@ -1324,17 +1435,21 @@ Fire.Watch = function (names, callback) {
 };
 
 /**
- * @param {number|null} min: null mins infinite
- * @param {number|null} max: null mins infinite
+ * @method Range
+ * @param {number} min: null mins infinite
+ * @param {number} max: null mins infinite
  * @return {object} the attribute
  */
 Fire.Range = function (min, max) {
    return { min: min, max: max };
 };
 
-// helper functions for defining Classes
-
-// both getter and prop must register the name into __props__ array
+/**
+ * both getter and prop must register the name into __props__ array
+ * @method _appendProp
+ * @param {string} name - prop name
+ * @private
+ */
 var _appendProp = function (name/*, isGetter*/) {
     var JsVarReg = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
     if (!JsVarReg.test(name)) {
@@ -1359,6 +1474,8 @@ var _appendProp = function (name/*, isGetter*/) {
 /**
  * the metaclass of the "fire class" created by Fire.define, all its static members
  * will inherited by fire class.
+ * @property _metaClass
+ * @type object
  */
 var _metaClass = {
 
@@ -1388,7 +1505,7 @@ var _metaClass = {
             if (Array.isArray(defaultValue)) {
                 // check array empty
                 if (defaultValue.length > 0) {
-                    Fire.error('Default array must be empty, set default value of ' + Fire.getClassName(this) + '.prop("' + name +
+                    Fire.error('Default array must be empty, set default value of ' + JS.getClassName(this) + '.prop("' + name +
                         '", ...) to null or [], and initialize in constructor please. (just like "this.' +
                         name + ' = [...];")');
                     return this;
@@ -1397,7 +1514,7 @@ var _metaClass = {
             else if (!_isPlainEmptyObj_DEV(defaultValue)) {
                 // check cloneable
                 if (!_cloneable_DEV(defaultValue)) {
-                    Fire.error('Do not set default value to non-empty object, unless the object defines its own "clone" function. Set default value of ' + Fire.getClassName(this) + '.prop("' + name +
+                    Fire.error('Do not set default value to non-empty object, unless the object defines its own "clone" function. Set default value of ' + JS.getClassName(this) + '.prop("' + name +
                         '", ...) to null or {}, and initialize in constructor please. (just like "this.' +
                         name + ' = {foo: bar};")');
                     return this;
@@ -1408,8 +1525,8 @@ var _metaClass = {
         for (var base = this.$super; base; base = base.$super) {
             // 这个循环只能检测到最上面的FireClass的父类，如果再上还有父类，将不做检测。（Fire.extend 将 prototype.constructor 设为子类）
             if (base.prototype.hasOwnProperty(name)) {
-                Fire.error('Can not declare ' + Fire.getClassName(this) + '.' + name +
-                           ', it is already defined in the prototype of ' + Fire.getClassName(base));
+                Fire.error('Can not declare ' + JS.getClassName(this) + '.' + name +
+                           ', it is already defined in the prototype of ' + JS.getClassName(base));
                 return;
             }
         }
@@ -1465,7 +1582,7 @@ var _metaClass = {
 
         var d = Object.getOwnPropertyDescriptor(this.prototype, name);
         if (d && d.get) {
-            Fire.error(Fire.getClassName(this) + ': the getter of "' + name + '" is already defined!');
+            Fire.error(JS.getClassName(this) + ': the getter of "' + name + '" is already defined!');
             return this;
         }
         var displayInInspector = true;
@@ -1474,7 +1591,7 @@ var _metaClass = {
             for (var i = AttrArgStart; i < arguments.length; i++) {
                 var attr = arguments[i];
                 if (attr._canUsedInGetter === false) {
-                    Fire.error('Can not apply the specified attribute to the getter of "' + Fire.getClassName(this) + '.' + name + '", attribute index: ' + (i - AttrArgStart));
+                    Fire.error('Can not apply the specified attribute to the getter of "' + JS.getClassName(this) + '.' + name + '", attribute index: ' + (i - AttrArgStart));
                     continue;
                 }
                 Fire.attr(this, name, attr);
@@ -1485,10 +1602,10 @@ var _metaClass = {
                 }
                 if (attr.serializable === false || attr.editorOnly === true) {
                     Fire.warn('No need to use Fire.NonSerialized or Fire.EditorOnly for the getter of ' +
-                        Fire.getClassName(this) + '.' + name + ', every getter is actually non-serialized.');
+                        JS.getClassName(this) + '.' + name + ', every getter is actually non-serialized.');
                 }
                 if (attr.hasOwnProperty('default')) {
-                    Fire.error(Fire.getClassName(this) + ': Can not set default value of a getter!');
+                    Fire.error(JS.getClassName(this) + ': Can not set default value of a getter!');
                     return this;
                 }
             }
@@ -1501,7 +1618,7 @@ var _metaClass = {
         else {
             var index = this.__props__.indexOf(name);
             if (index >= 0) {
-                Fire.error(Fire.getClassName(this) + '.' + name + ' is already defined!');
+                Fire.error(JS.getClassName(this) + '.' + name + ' is already defined!');
                 return this;
             }
         }
@@ -1516,6 +1633,7 @@ var _metaClass = {
      * 该方法定义的变量**不会**被序列化，除非有对应的getter否则不在inspector中显示。
      *
      * @method class.set
+     * @static
      * @param {string} name - the setter property
      * @param {function} setter - the setter function
      * @return {function} the class itself
@@ -1523,7 +1641,7 @@ var _metaClass = {
     set: function (name, setter) {
         var d = Object.getOwnPropertyDescriptor(this.prototype, name);
         if (d && d.set) {
-            Fire.error(Fire.getClassName(this) + ': the setter of "' + name + '" is already defined!');
+            Fire.error(JS.getClassName(this) + ': the setter of "' + name + '" is already defined!');
             return this;
         }
         // ================================================================
@@ -1540,7 +1658,8 @@ var _metaClass = {
      * 该方法定义的变量**不会**被序列化，默认会在inspector中显示。
      * 如果传入参数包含Fire.HideInInspector则不在inspector中显示。
      *
-     * @method class.get
+     * @method class.getset
+     * @static
      * @param {string} name - the getter property
      * @param {function} getter - the getter function which returns the real property
      * @param {function} setter - the setter function
@@ -1583,7 +1702,7 @@ var _createInstanceProps = function (instance, itsClass) {
 /**
  * Checks whether the constructor is created by Fire.define
  *
- * @method Fire._isFireClass
+ * @method _isFireClass
  * @param {function} constructor
  * @return {boolean}
  * @private
@@ -1595,7 +1714,7 @@ Fire._isFireClass = function (constructor) {
 /**
  * Checks whether subclass is child of superclass or equals to superclass
  *
- * @method Fire.isChildClassOf
+ * @method isChildClassOf
  * @param {function} subclass
  * @param {function} superclass
  * @return {boolean}
@@ -1632,47 +1751,7 @@ Fire.isChildClassOf = function (subclass, superclass) {
     return false;
 };
 
-/**
- * Creates a FireClass and returns its constructor function.
- * You can also creates a sub-class by supplying a baseClass parameter.
- *
- * @method Fire.define
- * @param {string} className - the name of class that is used to deserialize this class
- * @param {function} [baseOrConstructor] - The base class to inherit from.
- *                                         如果你的父类不是由Fire.define定义的，那么必须传入第三个参数(constructor)，否则会被当成创建新类而非继承类。
- *                                         如果你不需要构造函数，可以传入null。
- * @param {function} [constructor] - a constructor function that is used to instantiate this class,
- *                                   if not supplied, the constructor of base class will be called automatically
- * @return {function} the defined class
- *
- * @see Fire.extend
- */
-Fire.define = function (className, baseOrConstructor, constructor) {
-    'use strict';
-    // check arguments
-    var isInherit = false;
-    switch (arguments.length) {
-        case 2:
-            isInherit = Fire._isFireClass(baseOrConstructor);
-            break;
-        case 3:
-            isInherit = true;
-            break;
-    }
-    var baseClass;
-    if (isInherit) {
-        baseClass = baseOrConstructor;
-    }
-    else {
-        constructor = baseOrConstructor;
-    }
-
-    if (constructor) {
-        _checkCtor(constructor);
-    }
-
-    var fireClass = _createCtor(isInherit, constructor, baseClass);
-
+function _initClass(className, fireClass) {
     // occupy some non-inherited static members
     for (var staticMember in _metaClass) {
         Object.defineProperty(fireClass, staticMember, {
@@ -1680,39 +1759,99 @@ Fire.define = function (className, baseOrConstructor, constructor) {
             // __props__ is writable
             writable: staticMember === '__props__',
             // __props__ is enumerable so it can be inherited by Fire.extend
-            enumerable: staticMember === '__props__',
+            enumerable: staticMember === '__props__'
         });
     }
+}
 
-    // inherit
-    if (isInherit) {
-        Fire.extend(fireClass, baseClass);
+Fire._doDefine = function (className, baseClass, constructor) {
+    var fireClass = _createCtor(constructor, baseClass);
+    _initClass(className, fireClass);
+
+    if (baseClass) {
+        // inherit
+        JS.extend(fireClass, baseClass);
         fireClass.$super = baseClass;
         if (baseClass.__props__) {
             // copy __props__
             fireClass.__props__ = baseClass.__props__.slice();
         }
     }
-    Fire.setClassName(className, fireClass);
+
+    JS.setClassName(className, fireClass);
 
     return fireClass;
 };
 
-function _createCtor (isInherit, constructor, baseClass) {
-    var fireClass;
-    if (constructor) {
-        // constructor provided
-        fireClass = function () {
-            _createInstanceProps(this, fireClass);
-            constructor.apply(this, arguments);
-        };
+/**
+ * Defines a FireClass using the given constructor.
+ *
+ * @method define
+ * @param {string} [className] - the name of class that is used to deserialize this class
+ * @param {function} [constructor] - a constructor function that is used to instantiate this class
+ * @return {function} the constructor of newly defined class
+ */
+Fire.define = function (className, constructor) {
+    return Fire.extend(className, null, constructor);
+};
+
+/**
+ * Creates a sub FireClass based on the specified baseClass parameter.
+ * See also {% crosslink extend Fire.JS.extend %}.
+ *
+ * @method extend
+ * @param {string} [className] - the name of class that is used to deserialize this class
+ * @param {function} baseClass - !#en The base class to inherit from
+ *                               !#zh 继承的基类
+ * @param {function} [constructor] - a constructor function that is used to instantiate this class,
+ *                                   if not supplied, the constructor of baseClass will be called automatically.
+ * @return {function} the constructor of newly defined class
+ */
+Fire.extend = function (className, baseClass, constructor) {
+    if (typeof className === 'function') {
+        if (constructor) {
+            Fire.error('[Fire.extend] invalid type of arguments');
+            return null;
+        }
+        constructor = baseClass;
+        baseClass = className;
+        className = '';
+    }
+    if (typeof className === 'string') {
+        return Fire._doDefine(className, baseClass, constructor);
+    }
+    else if (className) {
+        Fire.error('[Fire.extend] unknown typeof first argument');
     }
     else {
-        if (isInherit) {
-            // auto call base constructor
+        Fire.error('[Fire.extend] first argument must be non-nil');
+    }
+    return null;
+};
+
+function _createCtor (constructor, baseClass) {
+    var fireClass;
+    if (constructor) {
+        _checkCtor(constructor);
+        if (baseClass) {
+            fireClass = function () {
+                baseClass.apply(this, arguments);
+                _createInstanceProps(this, fireClass);
+                constructor.apply(this, arguments);
+            };
+        }
+        else {
             fireClass = function () {
                 _createInstanceProps(this, fireClass);
+                constructor.apply(this, arguments);
+            };
+        }
+    }
+    else {
+        if (baseClass) {
+            fireClass = function () {
                 baseClass.apply(this, arguments);
+                _createInstanceProps(this, fireClass);
             };
         }
         else {
@@ -1726,14 +1865,18 @@ function _createCtor (isInherit, constructor, baseClass) {
 }
 
 function _checkCtor (ctor) {
+    if (Fire._isFireClass(ctor)) {
+        Fire.error("Constructor can not be another FireClass");
+        return;
+    }
     if (typeof ctor !== 'function') {
         Fire.error("Constructor of FireClass must be function type");
         return;
     }
     if (ctor.length > 0) {
-        // To make a unified FireClass serialization process,
+        // fireball-x/dev#138: To make a unified FireClass serialization process,
         // we don't allow parameters for constructor when creating instances of FireClass.
-        // For advance user, construct arguments can get from 'arguments'.
+        // For advance user, construct arguments can still get from 'arguments'.
         Fire.warn("Can not instantiate FireClass with arguments.");
         return;
     }
@@ -1743,7 +1886,7 @@ function _checkCtor (ctor) {
  * @private
  */
 Fire._fastDefine = function (className, constructor, serializableFields) {
-    Fire.setClassName(className, constructor);
+    JS.setClassName(className, constructor);
     constructor.__props__ = serializableFields;
     for (var i = 0; i < serializableFields.length; i++) {
         Fire.attr(constructor, serializableFields[i], Fire.HideInInspector);
@@ -1752,6 +1895,10 @@ Fire._fastDefine = function (className, constructor, serializableFields) {
 
 // The utils for path operation
 
+/**
+ * @class Path
+ * @static
+ */
 if (Fire.isNode) {
     Fire.Path = require('path');
 }
@@ -1829,7 +1976,7 @@ else {
 }
 
 /**
- * @method Fire.Path.setExtname
+ * @method setExtname
  * @param {string} path
  * @param {string} newExtension - extension to replace with
  * @return {string} result
@@ -1841,7 +1988,7 @@ Fire.Path.setExtname = function (path, newExtension) {
 };
 
 /**
- * @method Fire.Path.setEndWithSep
+ * @method setEndWithSep
  * @param {string} path
  * @param {boolean} [endWithSep = true]
  * @return {string} result
@@ -1860,6 +2007,10 @@ Fire.Path.setEndWithSep = function (path, endWithSep) {
     return path;
 };
 
+/**
+ * @class FObject
+ * @constructor
+ */
 FObject = (function () {
 
     // constructor
@@ -1878,18 +2029,10 @@ FObject = (function () {
      * Checks whether the object is not destroyed
      * @method Fire.isValid
      * @return {boolean} whether it is not destroyed
-     * @see Fire.FObject#isValid
      */
     Fire.isValid = function (object) {
         return !!object && !(object._objFlags & Destroyed);
     };
-    Object.defineProperty(FObject, 'isValid', {
-        value: function (object) {
-            Fire.warn('FObject.isValid is deprecated, use Fire.isValid instead please');
-            return Fire.isValid(object);
-        },
-        enumerable: false
-    });
 
     // internal static
 
@@ -1919,7 +2062,8 @@ FObject = (function () {
     // instance
 
     /**
-     * @property {boolean} Fire.FObject#name
+     * @property name
+     * @type boolean
      */
     Object.defineProperty(FObject.prototype, 'name', {
         get: function () {
@@ -1931,11 +2075,6 @@ FObject = (function () {
         enumerable: false
     });
 
-    /**
-     * Checks whether the object is not destroyed
-     * @property {boolean} Fire.FObject#isValid
-     * @see Fire.FObject#destroy
-     */
     Object.defineProperty(FObject.prototype, 'isValid', {
         get: function () {
             return !(this._objFlags & Destroyed);
@@ -1946,9 +2085,8 @@ FObject = (function () {
      * Destroy this FObject, and release all its own references to other resources.
      * After destory, this FObject is not usable any more.
      * You can use Fire.isValid(obj) (or obj.isValid if obj is non-nil) to check whether the object is destroyed before accessing it.
-     * @method Fire.FObject#destroy
+     * @method destroy
      * @return {boolean} whether it is the first time the destroy being called
-     * @see Fire.isValid
      */
     FObject.prototype.destroy = function () {
         if (this._objFlags & Destroyed) {
@@ -1991,6 +2129,8 @@ FObject = (function () {
         }
     };
 
+    FObject.prototype._onPreDestroy = null;
+
     FObject.prototype._destroyImmediate = function () {
         if (this._objFlags & Destroyed) {
             Fire.error('object already destroyed');
@@ -2016,11 +2156,10 @@ var HashObject = (function () {
     /**
      * 提供获取对象ID的功能，该ID全局唯一但不会被序列化，可用于索引对象。
      * 如果你将对象索引起来，必须记住清除索引，否则对象将永远不会被销毁。
-     * @class Fire.HashObject
+     * @class HashObject
+     * @static
      */
-    var HashObject = Fire.define('Fire.HashObject', Fire.FObject, function () {
-        FObject.call(this);
-
+    var HashObject = Fire.extend('Fire.HashObject', Fire.FObject, function () {
         Object.defineProperty(this, '_hashCode', {
             value: 0,
             writable: true,
@@ -2038,7 +2177,9 @@ var HashObject = (function () {
     var globalId = 0;
 
     /**
-     * @member {number} Fire.HashObject#hashCode
+     * @property hashCode
+     * @type number
+     * @readOnly
      */
     Object.defineProperty ( HashObject.prototype, 'hashCode', {
         get: function () {
@@ -2047,7 +2188,9 @@ var HashObject = (function () {
     });
 
     /**
-     * @member {string} Fire.HashObject#id
+     * @property id
+     * @type string
+     * @readOnly
      */
     Object.defineProperty ( HashObject.prototype, 'id', {
         get: function () {
@@ -2062,14 +2205,25 @@ Fire.HashObject = HashObject;
 
 Vec2 = (function () {
 
+    /**
+     * @class Vec2
+     * @constructor
+     * @param {number} x
+     * @param {number} y
+     */
     function Vec2( x, y ) {
         this.x = (typeof x === 'number' ? x : 0.0);
         this.y = (typeof y === 'number' ? y : 0.0);
     }
-    Fire.setClassName('Fire.Vec2', Vec2);
+    JS.setClassName('Fire.Vec2', Vec2);
 
     // static
 
+    /**
+     * return a Vec2 object with x = 1 and y = 1
+     * @property one
+     * @type Vec2
+     */
     Object.defineProperty(Vec2, 'one', {
         get: function () {
             return new Vec2(1.0, 1.0);
@@ -2108,9 +2262,9 @@ Vec2 = (function () {
 
     /**
      * Adds this vector. If you want to save result to another vector, use add() instead.
-     * @method Fire.Vec2#addSelf
-     * @param {Fire.Vec2} vector
-     * @return {Fire.Vec2} returns this
+     * @method addSelf
+     * @param {Vec2} vector
+     * @return {Vec2} returns this
      */
     Vec2.prototype.addSelf = function (vector) {
         this.x += vector.x;
@@ -2120,10 +2274,10 @@ Vec2 = (function () {
 
     /**
      * Adds tow vectors, and returns the new result.
-     * @method Fire.Vec2#add
-     * @param {Fire.Vec2} vector
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2} the result
+     * @method add
+     * @param {Vec2} vector
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2} the result
      */
     Vec2.prototype.add = function (vector, out) {
         out = out || new Vec2();
@@ -2134,9 +2288,9 @@ Vec2 = (function () {
 
     /**
      * Subtracts one vector from this. If you want to save result to another vector, use sub() instead.
-     * @method Fire.Vec2#subSelf
-     * @param {Fire.Vec2} vector
-     * @return {Fire.Vec2} returns this
+     * @method subSelf
+     * @param {Vec2} vector
+     * @return {Vec2} returns this
      */
     Vec2.prototype.subSelf = function (vector) {
         this.x -= vector.x;
@@ -2146,10 +2300,10 @@ Vec2 = (function () {
 
     /**
      * Subtracts one vector from this, and returns the new result.
-     * @method Fire.Vec2#sub
-     * @param {Fire.Vec2} vector
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2} the result
+     * @method sub
+     * @param {Vec2} vector
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2} the result
      */
     Vec2.prototype.sub = function (vector, out) {
         out = out || new Vec2();
@@ -2160,9 +2314,9 @@ Vec2 = (function () {
 
     /**
      * Multiplies this by a number. If you want to save result to another vector, use mul() instead.
-     * @method Fire.Vec2#mulSelf
+     * @method mulSelf
      * @param {number} num
-     * @return {Fire.Vec2} returns this
+     * @return {Vec2} returns this
      */
     Vec2.prototype.mulSelf = function (num) {
         this.x *= num;
@@ -2172,10 +2326,10 @@ Vec2 = (function () {
 
     /**
      * Multiplies by a number, and returns the new result.
-     * @method Fire.Vec2#mul
+     * @method mul
      * @param {number} num
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2} the result
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2} the result
      */
     Vec2.prototype.mul = function (num, out) {
         out = out || new Vec2();
@@ -2186,9 +2340,9 @@ Vec2 = (function () {
 
     /**
      * Multiplies two vectors.
-     * @method Fire.Vec2#scaleSelf
-     * @param {Fire.Vec2} vector
-     * @return {Fire.Vec2} returns this
+     * @method scaleSelf
+     * @param {Vec2} vector
+     * @return {Vec2} returns this
      */
     Vec2.prototype.scaleSelf = function (vector) {
         this.x *= vector.x;
@@ -2198,10 +2352,10 @@ Vec2 = (function () {
 
     /**
      * Multiplies two vectors, and returns the new result.
-     * @method Fire.Vec2#scale
-     * @param {Fire.Vec2} vector
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2} the result
+     * @method scale
+     * @param {Vec2} vector
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2} the result
      */
     Vec2.prototype.scale = function (vector, out) {
         out = out || new Vec2();
@@ -2212,9 +2366,9 @@ Vec2 = (function () {
 
     /**
      * Divides two vectors. If you want to save result to another vector, use div() instead.
-     * @method Fire.Vec2#divSelf
-     * @param {Fire.Vec2} vector
-     * @return {Fire.Vec2} returns this
+     * @method divSelf
+     * @param {Vec2} vector
+     * @return {Vec2} returns this
      */
     Vec2.prototype.divSelf = function (vector) {
         this.x /= vector.x;
@@ -2224,10 +2378,10 @@ Vec2 = (function () {
 
     /**
      * Divides two vectors, and returns the new result.
-     * @method Fire.Vec2#div
-     * @param {Fire.Vec2} vector
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2} the result
+     * @method div
+     * @param {Vec2} vector
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2} the result
      */
     Vec2.prototype.div = function (vector, out) {
         out = out || new Vec2();
@@ -2238,8 +2392,8 @@ Vec2 = (function () {
 
     /**
      * Negates the components. If you want to save result to another vector, use neg() instead.
-     * @method Fire.Vec2#negSelf
-     * @return {Fire.Vec2} returns this
+     * @method negSelf
+     * @return {Vec2} returns this
      */
     Vec2.prototype.negSelf = function () {
         this.x = -this.x;
@@ -2249,9 +2403,9 @@ Vec2 = (function () {
 
     /**
      * Negates the components, and returns the new result.
-     * @method Fire.Vec2#neg
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2} the result
+     * @method neg
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2} the result
      */
     Vec2.prototype.neg = function (out) {
         out = out || new Vec2();
@@ -2262,8 +2416,8 @@ Vec2 = (function () {
 
     /**
      * Dot product
-     * @method Fire.Vec2#dot
-     * @param {Fire.Vec2} [vector]
+     * @method dot
+     * @param {Vec2} [vector]
      * @return {number} the result
      */
     Vec2.prototype.dot = function (vector) {
@@ -2272,8 +2426,8 @@ Vec2 = (function () {
 
     /**
      * Cross product
-     * @method Fire.Vec2#cross
-     * @param {Fire.Vec2} [vector]
+     * @method cross
+     * @param {Vec2} [vector]
      * @return {number} the result
      */
     Vec2.prototype.cross = function (vector) {
@@ -2282,7 +2436,7 @@ Vec2 = (function () {
 
     /**
      * Magnitude
-     * @method Fire.Vec2#mag
+     * @method mag
      * @return {number} the result
      */
     Vec2.prototype.mag = function () {
@@ -2291,7 +2445,7 @@ Vec2 = (function () {
 
     /**
      * Magnitude Sqaure
-     * @method Fire.Vec2#magSqr
+     * @method magSqr
      * @return {number} the result
      */
     Vec2.prototype.magSqr = function () {
@@ -2300,8 +2454,8 @@ Vec2 = (function () {
 
     /**
      * Normalize self
-     * @method Fire.Vec2#normalizeSelf
-     * @return {Fire.Vec2} this
+     * @method normalizeSelf
+     * @return {Vec2} this
      */
     Vec2.prototype.normalizeSelf = function () {
         var magSqr = this.x * this.x + this.y * this.y;
@@ -2322,9 +2476,9 @@ Vec2 = (function () {
 
     /**
      * Get normalized vector
-     * @method Fire.Vec2#normalize
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2} result
+     * @method normalize
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2} result
      */
     Vec2.prototype.normalize = function (out) {
         out = out || new Vec2();
@@ -2336,8 +2490,8 @@ Vec2 = (function () {
 
     /**
      * Get angle between this and vector
-     * @method Fire.Vec2#angle
-     * @param {Fire.Vec2} vector
+     * @method angle
+     * @param {Vec2} vector
      * @return {number} from 0 to Math.PI
      */
     Vec2.prototype.angle = function (vector) {
@@ -2357,8 +2511,8 @@ Vec2 = (function () {
 
     /**
      * Get angle between this and vector with direction
-     * @method Fire.Vec2#signAngle
-     * @param {Fire.Vec2} vector
+     * @method signAngle
+     * @param {Vec2} vector
      * @return {number} from -MathPI to Math.PI
      */
     Vec2.prototype.signAngle = function (vector) {
@@ -2372,10 +2526,10 @@ Vec2 = (function () {
 
     /**
      * rotate
-     * @method Fire.Vec2#rotate
+     * @method rotate
      * @param {number} radians
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2} the result
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2} the result
      */
     Vec2.prototype.rotate = function (radians, out) {
         out = out || new Vec2();
@@ -2386,9 +2540,9 @@ Vec2 = (function () {
 
     /**
      * rotate self
-     * @method Fire.Vec2#rotateSelf
+     * @method rotateSelf
      * @param {number} radians
-     * @return {Fire.Vec2} this
+     * @return {Vec2} this
      */
     Vec2.prototype.rotateSelf = function (radians) {
         var sin = Math.sin(radians);
@@ -2402,15 +2556,19 @@ Vec2 = (function () {
     return Vec2;
 })();
 
+/**
+ * This is a property accessible from {% crosslink Fire Fire %} global object
+ * @property Fire.Vec2
+ * @type Vec2
+ */
 Fire.Vec2 = Vec2;
 
 /**
- * The convenience method to create a new Vec2
- * @property {function} Fire.v2
- * @param {number|number[]} [x=0]
+ * The convenience method to create a new {% crosslink Vec2 Vec2 %}
+ * @method Fire.v2
+ * @param {number} [x=0]
  * @param {number} [y=0]
- * @return {Fire.Vec2}
- * @see Fire.Vec2
+ * @return {Vec2}
  */
 Fire.v2 = function v2 (x, y) {
     if (Array.isArray(x)) {
@@ -2424,7 +2582,8 @@ Fire.v2 = function v2 (x, y) {
 /**
  * Simple matrix to do 2D affine transformations.
  * It is actually 3x3 but the last row is [0 0 1].
- * @class Fire.Matrix23
+ * @class Matrix23
+ * @constructor
  */
 var Matrix23 = function () {
     this.a = 1;
@@ -2434,7 +2593,7 @@ var Matrix23 = function () {
     this.tx = 0;
     this.ty = 0;
 };
-Fire.setClassName('Fire.Matrix23', Matrix23);
+JS.setClassName('Fire.Matrix23', Matrix23);
 Fire.Matrix23 = Matrix23;
 
 Matrix23.identity = new Matrix23();
@@ -2605,14 +2764,28 @@ Matrix23.prototype.scale = function (x, y) {
 */
 
 var Rect = (function () {
+    /**
+     * @class Rect
+     * @constructor
+     * @param {number} x
+     * @param {number} y
+     * @param {number} w
+     * @param {number} h
+     */
     function Rect( x, y, w, h ) {
         this.x = typeof x === 'number' ? x : 0.0;
         this.y = typeof y === 'number' ? y : 0.0;
         this.width = typeof w === 'number' ? w : 0.0;
         this.height = typeof h === 'number' ? h : 0.0;
     }
-    Fire.setClassName('Fire.Rect', Rect);
+    JS.setClassName('Fire.Rect', Rect);
 
+    /**
+     * @method fromVec2
+     * @param {Vec2} v1
+     * @param {Vec2} v2
+     * @return {Rect}
+     */
     Rect.fromVec2 = function ( v1, v2 ) {
         var min_x = Math.min( v1.x, v2.x );
         var min_y = Math.min( v1.y, v2.y );
@@ -2624,9 +2797,9 @@ var Rect = (function () {
 
     /**
      * Check if rect contains
-     *
-     * @param a {Fire.Rect} Rect a
-     * @param b {Fire.Rect} Rect b
+     * @method contain
+     * @param a {Rect} Rect a
+     * @param b {Rect} Rect b
      * @return {Number} The contains result, 1 is a contains b, -1 is b contains a, 0 is no contains
      */
     Rect.contain = function _Contain ( a, b ) {
@@ -2713,13 +2886,12 @@ Fire.Rect = Rect;
 
 /**
  * The convenience method to create a new Rect
- * @property {function} Fire.rect
- * @param {number|number[]} [x=0]
+ * @method Fire.rect
+ * @param {number} [x=0]
  * @param {number} [y=0]
  * @param {number} [w=0]
  * @param {number} [h=0]
- * @return {Fire.Rect}
- * @see Fire.Rect
+ * @return {Rect}
  */
 Fire.rect = function rect (x, y, w, h) {
     if (Array.isArray(x)) {
@@ -2738,7 +2910,7 @@ Fire.Polygon = (function () {
             console.warn( "Invalid polygon, the data must contains 3 or more points." );
         }
     }
-    Fire.setClassName('Fire.Polygon', Polygon);
+    JS.setClassName('Fire.Polygon', Polygon);
 
     Polygon.prototype.intersects = function ( polygon ) {
         return Intersection.polygonPolygon( this, polygon );
@@ -2799,6 +2971,21 @@ Fire.Polygon = (function () {
 
 
 var Color = (function () {
+
+    var DefaultColors = {
+        // color: [r, g, b, a]
+        white:      [1, 1, 1, 1],
+        black:      [0, 0, 0, 1],
+        transparent:[0, 0, 0, 0],
+        gray:       [0.5, 0.5, 0.5],
+        red:        [1, 0, 0],
+        green:      [0, 1, 0],
+        blue:       [0, 0, 1],
+        yellow:     [1, 235/255, 4/255],
+        cyan:       [0, 1, 1],
+        magenta:    [1, 0, 1]
+    };
+
     /**
      * A class represents RGBA color
      * @class Color
@@ -2814,7 +3001,16 @@ var Color = (function () {
         this.b = typeof b === 'number' ? b : 0.0;
         this.a = typeof a === 'number' ? a : 1.0;
     }
-    Fire.setClassName('Fire.Color', Color);
+    JS.setClassName('Fire.Color', Color);
+
+    for (var colorName in DefaultColors) {
+        var colorGetter = (function (r, g, b, a) {
+            return function () {
+                return new Color(r, g, b, a);
+            };
+        }).apply(null, DefaultColors[colorName]);
+        Object.defineProperty(Color, colorName, { get: colorGetter });
+    }
 
     /**
      * Clone a new color from the current color.
@@ -3006,6 +3202,7 @@ var _Deserializer = (function () {
         }
     };
 
+    // 和 _deserializeObject 不同的地方在于会判断 id 和 uuid
     function _deserializeObjField (self, obj, jsonObj, propName, target) {
         var id = jsonObj.__id__;
         if (typeof id === 'undefined') {
@@ -3033,6 +3230,36 @@ var _Deserializer = (function () {
     }
 
     function _deserializePrimitiveObject (self, instance, serialized) {
+        for (var propName in serialized) {
+            if (serialized.hasOwnProperty(propName)) {
+                var prop = serialized[propName];
+                if (typeof prop !== 'object') {
+                    if (propName !== '__type__'/* && k != '__id__'*/) {
+                        instance[propName] = prop;
+                    }
+                }
+                else {
+                    if (prop) {
+                        if ( !prop.__uuid__ && typeof prop.__id__ === 'undefined' ) {
+                            instance[propName] = _deserializeObject(self, prop);
+                        }
+                        else {
+                            _deserializeObjField(self, instance, prop, propName);
+                        }
+                    }
+                    else {
+                        instance[propName] = null;
+                    }
+                }
+            }
+        }
+    }
+
+    function _deserializeTypedObject (self, instance, serialized) {
+        //++self.stackCounter;
+        //if (self.stackCounter === 100) {
+        //    debugger;
+        //}
         for (var propName in instance) {    // 遍历 instance，如果具有类型，才不会把 __type__ 也读进来
             var prop = serialized[propName];
             if (typeof prop !== 'undefined' && serialized.hasOwnProperty(propName)) {
@@ -3054,6 +3281,61 @@ var _Deserializer = (function () {
                 }
             }
         }
+        //--self.stackCounter;
+    }
+
+    function _deserializeFireClass(self, obj, serialized, klass, target) {
+        var props = klass.__props__;
+        if (!props) {
+            return;
+        }
+        for (var p = 0; p < props.length; p++) {
+            var propName = props[p];
+            var attrs = Fire.attr(klass, propName);
+            // assume all prop in __props__ must have attr
+            var rawType = attrs.rawType;
+            if (!rawType) {
+                if (attrs.serializable === false) {
+                    continue;   // skip nonSerialized
+                }
+                if (!self._editor && attrs.editorOnly) {
+                    continue;   // skip editor only if not editor
+                }
+                var prop = serialized[propName];
+                if (typeof prop !== 'undefined') {
+                    if (typeof prop !== 'object') {
+                        obj[propName] = prop;
+                    }
+                    else {
+                        if (prop) {
+                            if (!prop.__uuid__ && typeof prop.__id__ === 'undefined') {
+                                obj[propName] = _deserializeObject(self, prop);
+                            }
+                            else {
+                                _deserializeObjField(self, obj, prop, propName);
+                            }
+                        }
+                        else {
+                            obj[propName] = null;
+                        }
+                    }
+                }
+            }
+            else {
+                // always load raw objects even if property not serialized
+                if (self.result.rawProp) {
+                    Fire.error('not support multi raw object in a file');
+                    // 这里假定每个asset都有uuid，每个json只能包含一个asset，只能包含一个rawProp
+                }
+                self.result.rawProp = propName;
+            }
+        }
+        if (props[props.length - 1] === '_$erialized') {
+            // save original serialized data
+            obj._$erialized = serialized;
+            // parse the serialized data as primitive javascript object, so its __id__ will be dereferenced
+            _deserializePrimitiveObject(self, obj._$erialized, serialized);
+        }
     }
 
     /**
@@ -3062,9 +3344,12 @@ var _Deserializer = (function () {
      */
     var _deserializeObject = function (self, serialized, target) {
         var propName, prop;
-        var obj = null;
+        var obj = null;     // the obj to return
         var klass = null;
         if (serialized.__type__) {
+
+            // Type Object (including FireClass)
+
             klass = self._classFinder(serialized.__type__);
             if (!klass) {
                 Fire.error('[Fire.deserialize] unknown type: ' + serialized.__type__);
@@ -3072,14 +3357,25 @@ var _Deserializer = (function () {
             }
             // instantiate a new object
             obj = new klass();
+            if ( Fire._isFireClass(klass) ) {
+                _deserializeFireClass(self, obj, serialized, klass, target);
+            }
+            else {
+                _deserializeTypedObject(self, obj, serialized);
+            }
         }
-        else if (!Array.isArray(serialized)) {
+        else if ( !Array.isArray(serialized) ) {
+
             // embedded primitive javascript object
-            obj = serialized;
+
+            obj = {};
+            _deserializePrimitiveObject(self, obj, serialized);
         }
         else {
-            // array
-            obj = serialized;
+
+            // Array
+
+            obj = new Array(serialized.length);
             for (var i = 0; i < serialized.length; i++) {
                 prop = serialized[i];
                 if (typeof prop === 'object' && prop) {
@@ -3090,66 +3386,10 @@ var _Deserializer = (function () {
                         _deserializeObjField(self, obj, prop, '' + i);
                     }
                 }
-            }
-            return obj;
-        }
-
-        // parse property
-        if (klass && Fire._isFireClass(klass)) {
-            var props = klass.__props__;
-            if (!props) {
-                return obj;
-            }
-            for (var p = 0; p < props.length; p++) {
-                propName = props[p];
-                var attrs = Fire.attr(klass, propName);
-                // assume all prop in __props__ must have attr
-                var rawType = attrs.rawType;
-                if (!rawType) {
-                    if (attrs.serializable === false) {
-                        continue;   // skip nonSerialized
-                    }
-                    if (!self._editor && attrs.editorOnly) {
-                        continue;   // skip editor only if not editor
-                    }
-                    prop = serialized[propName];
-                    if (typeof prop !== 'undefined') {
-                        if (typeof prop !== 'object') {
-                            obj[propName] = prop;
-                        }
-                        else {
-                            if (prop) {
-                                if ( !prop.__uuid__ && typeof prop.__id__ === 'undefined' ) {
-                                    obj[propName] = _deserializeObject(self, prop);
-                                }
-                                else {
-                                    _deserializeObjField(self, obj, prop, propName);
-                                }
-                            }
-                            else {
-                                obj[propName] = null;
-                            }
-                        }
-                    }
-                }
                 else {
-                    // always load raw objects even if property not serialized
-                    if (self.result.rawProp) {
-                        Fire.error('not support multi raw object in a file');
-                        // 这里假定每个asset都有uuid，每个json只能包含一个asset，只能包含一个rawProp
-                    }
-                    self.result.rawProp = propName;
+                    obj[i] = prop;
                 }
             }
-            if (props[props.length - 1] === '_$erialized') {
-                // save original serialized data
-                obj._$erialized = serialized;
-                // parse the serialized data as primitive javascript object, so its __id__ will be dereferenced
-                _deserializePrimitiveObject(self, obj._$erialized, serialized);
-            }
-        }
-        else {
-            _deserializePrimitiveObject(self, obj, serialized);
         }
         return obj;
     };
@@ -3159,6 +3399,9 @@ var _Deserializer = (function () {
 
 /**
  * Deserialize json to Fire.Asset
+ * 当指定了 target 选项时，如果 target 引用的其它 asset 的 uuid 不变，则不会改变 target 对 asset 的引用，
+ * 也不会将 uuid 保存到 result 对象中。
+ *
  * @param {(string|object)} data - the serialized Fire.Asset json string or json object.
  *                                 Note: If data is an object, it will be modified.
  * @param {Fire._DeserializeInfo} [result] - additional loading result
@@ -3167,7 +3410,7 @@ var _Deserializer = (function () {
  */
 Fire.deserialize = function (data, result, options) {
     var isEditor = (options && 'isEditor' in options) ? options.isEditor : Fire.isEditor;
-    var classFinder = (options && options.classFinder) || Fire._getClassById;
+    var classFinder = (options && options.classFinder) || JS._getClassById;
     var createAssetRefs = (options && options.createAssetRefs) || Fire.isEditorCore;
     var target;
     if (typeof data === 'string') {
@@ -3447,9 +3690,7 @@ Fire._isCloning = false;
 
 var Asset = (function () {
 
-    var Asset = Fire.define('Fire.Asset', Fire.HashObject, function () {
-        Fire.HashObject.call(this);
-
+    var Asset = Fire.extend('Fire.Asset', Fire.HashObject, function () {
         // define uuid, uuid can not destory
         Object.defineProperty(this, '_uuid', {
             value: '',
@@ -3484,7 +3725,7 @@ Fire.Asset = Asset;
 
 var CustomAsset = (function () {
 
-    var CustomAsset = Fire.define('Fire.CustomAsset', Fire.Asset);
+    var CustomAsset = Fire.extend('Fire.CustomAsset', Fire.Asset);
 
     return CustomAsset;
 })();
@@ -3506,9 +3747,7 @@ Fire.Texture = (function () {
     /**
      * @param {Image} [img] - the html image element to render
      */
-    var Texture = Fire.define('Fire.Texture', Fire.Asset, function () {
-        Texture.$super.call(this);
-
+    var Texture = Fire.extend('Fire.Texture', Fire.Asset, function () {
         var img = arguments[0];
         if (img) {
             this.image = img;
@@ -3551,9 +3790,7 @@ Fire.Sprite = (function () {
     /**
      * @param {Image} [img] - Specify the html image element to render so you can create Sprite dynamically.
      */
-    var Sprite = Fire.define('Fire.Sprite', Fire.Asset, function () {
-        Sprite.$super.call(this);
-
+    var Sprite = Fire.extend('Fire.Sprite', Fire.Asset, function () {
         var img = arguments[0];
         if (img) {
             this.texture = new Fire.Texture(img);
@@ -3596,8 +3833,7 @@ Fire.Sprite = (function () {
 
 Fire.Atlas = (function () {
 
-    var Atlas = Fire.define("Fire.Atlas", Fire.Asset, null);  // supply a null constructor to explicitly indicates that
-                                                              // inherit from Asset, because Asset not defined by Fire.define
+    var Atlas = Fire.extend("Fire.Atlas", Fire.Asset);
 
     // enum Algorithm
     Atlas.Algorithm = (function (t) {
@@ -4143,7 +4379,7 @@ Fire.AtlasUtils = AtlasUtils;
 
 var JsonAsset = (function () {
 
-    var JsonAsset = Fire.define('Fire.JsonAsset', Asset)
+    var JsonAsset = Fire.extend('Fire.JsonAsset', Asset)
                         .prop('json', null, Fire.RawType('json'));
 
     return JsonAsset;
@@ -4152,9 +4388,7 @@ var JsonAsset = (function () {
 Fire.JsonAsset = JsonAsset;
 
 Fire.TextAsset = (function () {
-    var TextAsset = Fire.define("Fire.TextAsset", Fire.Asset, function () {
-        Fire.Asset.call(this);
-    });
+    var TextAsset = Fire.extend("Fire.TextAsset", Fire.Asset);
 
     TextAsset.prop('text', '', Fire.RawType('text'));
 
@@ -4184,7 +4418,7 @@ var BitmapFont = (function () {
     //    amount: 0,
     //};
 
-    var BitmapFont = Fire.define("Fire.BitmapFont", Fire.Asset, null);
+    var BitmapFont = Fire.extend("Fire.BitmapFont", Fire.Asset);
 
     BitmapFont.prop('texture', null, Fire.ObjectType(Fire.Texture));
     BitmapFont.prop('charInfos', []);
@@ -4205,23 +4439,53 @@ Fire.BitmapFont = BitmapFont;
     // The codes below is generated by script automatically:
     // 
 
+/**
+ * !#en
+ *
+ * !#zh 除了类已经定义的变量外，以下是其它 Fireball-x 中已经使用的变量名，请避免冲突。这些变量有一些是保留用途，只有特殊情况才会声明。
+ * ### 全局变量
+ * - `Fire`
+ * - `PIXI`
+ * - `require`
+ * ### 可能定义在任意对象上的变量
+ *
+ * - `__id__`
+ * - `__type__`
+ * - `_iN$t`
+ * - `_rawext`
+ *
+ * ### 可能定义在任意类型或 prototype 上的变量
+ *
+ * - 任何以 `_attrs$` 开头的变量
+ * - `__classname__`
+ * - `__cid__`
+ *
+ * ### FireClass 上的静态变量
+ *
+ * - `get`
+ * - `set`
+ * - `getset`
+ * - `prop`
+ * - `$super`
+ * - `__props__`
+ *
+ * ### FireClass 上的成员变量
+ *
+ * - `_observing`
+ * - `_$erialized`
+ *
+ * @module Reserved-Words
+ */
+
 var Destroying = Fire._ObjectFlags.Destroying;
 var Hide = Fire._ObjectFlags.Hide;
 var HideInGame = Fire._ObjectFlags.HideInGame;
 var HideInEditor = Fire._ObjectFlags.HideInEditor;
-
 /**
- * used in _callOnEnable to ensure onEnable and onDisable will be called alternately
- * 从逻辑上来说OnEnable和OnDisable的交替调用不需要由额外的变量进行保护，但那样会使设计变得复杂
- * 例如Entity.destory调用后但还未真正销毁时，会调用所有Component的OnDisable。
- * 这时如果又有addComponent，Entity需要对这些新来的Component特殊处理。将来调度器做了之后可以尝试去掉这个标记。
+ * @module Fire
+ * @class Time
+ * @static
  */
-var IsOnEnableCalled = Fire._ObjectFlags.IsOnEnableCalled;
-
-var IsOnLoadCalled = Fire._ObjectFlags.IsOnLoadCalled;
-var IsOnStartCalled = Fire._ObjectFlags.IsOnStartCalled;
-
-//
 
 var Time = (function () {
     var Time = {};
@@ -4408,7 +4672,7 @@ var EventListeners = (function () {
     function EventListeners () {
         Fire._CallbacksHandler.call(this);
     }
-    Fire.extend(EventListeners, Fire._CallbacksHandler);
+    JS.extend(EventListeners, Fire._CallbacksHandler);
 
     /**
      * @param {Fire.Event} event
@@ -4456,9 +4720,9 @@ var EventTarget = (function () {
      * EventTarget is an object to which an event is dispatched when something has occurred.
      * Entity are the most common event targets, but other objects can be event targets too.
      *
-     * Event targets are an important part of the Fireball-x event model.
+     * Event targets are an important part of the Fireball event model.
      * The event target serves as the focal point for how events flow through the scene graph.
-     * When an event such as a mouse click or a keypress occurs, Fireball-x dispatches an event object
+     * When an event such as a mouse click or a keypress occurs, Fireball dispatches an event object
      * into the event flow from the root of the hierarchy. The event object then makes its way through
      * the scene graph until it reaches the event target, at which point it begins its return trip through
      * the scene graph. This round-trip journey to the event target is conceptually divided into three phases:
@@ -4477,7 +4741,7 @@ var EventTarget = (function () {
         this._capturingListeners = null;
         this._bubblingListeners = null;
     }
-    Fire.extend(EventTarget, HashObject);
+    JS.extend(EventTarget, HashObject);
 
     /**
      * Register an callback of a specific event type on the EventTarget.
@@ -4763,12 +5027,14 @@ var Ticker = (function () {
 })();
 
 __TESTONLY__.Ticker = Ticker;
-// Tweak PIXI
-PIXI.dontSayHello = true;
-var EMPTY_METHOD = function () {};
-PIXI.DisplayObject.prototype.updateTransform = EMPTY_METHOD;
-PIXI.DisplayObject.prototype.displayObjectUpdateTransform = EMPTY_METHOD;
-PIXI.DisplayObjectContainer.prototype.displayObjectContainerUpdateTransform = EMPTY_METHOD;
+(function () {
+    // Tweak PIXI
+    PIXI.dontSayHello = true;
+    var EMPTY_METHOD = function () {};
+    PIXI.DisplayObject.prototype.updateTransform = EMPTY_METHOD;
+    PIXI.DisplayObject.prototype.displayObjectUpdateTransform = EMPTY_METHOD;
+    PIXI.DisplayObjectContainer.prototype.displayObjectContainerUpdateTransform = EMPTY_METHOD;
+})();
 
 /**
  * The web renderer implemented rely on pixi.js
@@ -4791,7 +5057,6 @@ var RenderContext = (function () {
         width = width || 800;
         height = height || 600;
         transparent = transparent || false;
-        //showGizmos = typeof showGizmos !== 'undefined' ? showGizmos : false;
 
         var antialias = false;
         this.stage = new PIXI.Stage(0x000000);
@@ -4802,17 +5067,13 @@ var RenderContext = (function () {
             antialias: antialias
         } );
 
-        //this.showGizmos = showGizmos;
-
         // the shared render context that allows display the object which marked as Fire._ObjectFlags.HideInGame
         this.sceneView = null;
 
+        this.isSceneView = false;
+
         // binded camera, if supplied the scene will always rendered by this camera
         this._camera = null;
-
-        //// table stores pixi objects in this stage, they looked up by the id of corresponding scene objects.
-        //this._pixiObjects = {};
-
     }
 
     var emptyTexture = new PIXI.Texture(new PIXI.BaseTexture());
@@ -4876,19 +5137,17 @@ var RenderContext = (function () {
      * @param {Fire.Entity} entity
      */
     RenderContext.prototype.onRootEntityCreated = function (entity) {
-        // always create pixi node even if is scene gizmo, to keep all their indice sync with transforms' sibling indice.
-        entity._pixiObj = new PIXI.DisplayObjectContainer();
+        entity._pixiObj = this._createNode();
+    };
+
+    RenderContext.prototype._createNode = function () {
+        // always create pixi node even if is scene gizmo, to keep all their indices sync with transforms' sibling indices.
+        var node = new PIXI.DisplayObjectContainer();
         if (Engine._canModifyCurrentScene) {
             // attach node if created dynamically
-            this.root.addChild(entity._pixiObj);
+            this.root.addChild(node);
         }
-        if (this.sceneView) {
-            entity._pixiObjInScene = new PIXI.DisplayObjectContainer();
-            if (Engine._canModifyCurrentScene) {
-                // attach node if created dynamically
-                this.sceneView.root.addChild(entity._pixiObjInScene);
-            }
-        }
+        return node;
     };
 
     /**
@@ -4896,17 +5155,13 @@ var RenderContext = (function () {
      * @param {Fire.Entity} entity
      */
     RenderContext.prototype.onEntityRemoved = function (entity) {
-        if (entity._pixiObj) {
-            if (entity._pixiObj.parent) {
-                entity._pixiObj.parent.removeChild(entity._pixiObj);
-            }
-            entity._pixiObj = null;
-        }
-        if (entity._pixiObjInScene) {
-            if (entity._pixiObjInScene.parent) {
-                entity._pixiObjInScene.parent.removeChild(entity._pixiObjInScene);
-            }
-            entity._pixiObjInScene = null;
+        this._removeNode(entity._pixiObj);
+        entity._pixiObj = null;
+    };
+
+    RenderContext.prototype._removeNode = function (node) {
+        if (node && node.parent) {
+            node.parent.removeChild(node);
         }
     };
 
@@ -4915,36 +5170,31 @@ var RenderContext = (function () {
      * @param {Fire.Entity} oldParent
      */
     RenderContext.prototype.onEntityParentChanged = function (entity, oldParent) {
-        if (entity._pixiObj) {
-            if (entity._parent) {
-                entity._parent._pixiObj.addChild(entity._pixiObj);
+        this._setParentNode(entity._pixiObj, entity._parent && entity._parent._pixiObj);
+    };
+
+    RenderContext.prototype._setParentNode = function (node, parent) {
+        if (node) {
+            if (parent) {
+                parent.addChild(node);
             }
             else {
-                this.root.addChild(entity._pixiObj);
-            }
-        }
-        if (this.sceneView) {
-            if (entity._parent) {
-                entity._parent._pixiObjInScene.addChild(entity._pixiObjInScene);
-            }
-            else {
-                this.sceneView.root.addChild(entity._pixiObjInScene);
+                this.root.addChild(node);
             }
         }
     };
 
     /**
      * @param {Fire.Entity} entityParent
-     * @param {boolean} inSceneView
      * @param {Fire.Entity} [customFirstChildEntity=null]
      * @return {number}
      */
-    RenderContext._getChildrenOffset = function (entityParent, inSceneView, customFirstChildEntity) {
+    RenderContext.prototype._getChildrenOffset = function (entityParent, customFirstChildEntity) {
         if (entityParent) {
-            var pixiParent = inSceneView ? entityParent._pixiObjInScene : entityParent._pixiObj;
+            var pixiParent = this.isSceneView ? entityParent._pixiObjInScene : entityParent._pixiObj;
             var firstChildEntity = customFirstChildEntity || entityParent._children[0];
             if (firstChildEntity) {
-                var firstChildPixi = inSceneView ? firstChildEntity._pixiObjInScene : firstChildEntity._pixiObj;
+                var firstChildPixi = this.isSceneView ? firstChildEntity._pixiObjInScene : firstChildEntity._pixiObj;
                 var offset = pixiParent.children.indexOf(firstChildPixi);
                 if (offset !== -1) {
                     return offset;
@@ -4972,9 +5222,7 @@ var RenderContext = (function () {
      * @param {number} newIndex
      */
     RenderContext.prototype.onEntityIndexChanged = function (entity, oldIndex, newIndex) {
-        var array = null;
-        var siblingOffset = 0;  // skip renderers of entity
-        var lastFirstSibling = null;
+        var lastFirstSibling;
         if (newIndex === 0 && oldIndex > 0) {
             // insert to first
             lastFirstSibling = entity.getSibling(1);
@@ -4983,50 +5231,41 @@ var RenderContext = (function () {
             // move first to elsewhere
             lastFirstSibling = entity;
         }
-        var newPixiIndex = 0;
-        // game view
-        var item = entity._pixiObj;
-        if (item) {
-            siblingOffset = RenderContext._getChildrenOffset(entity._parent, false, lastFirstSibling);
-            array = item.parent.children;
-            array.splice(oldIndex + siblingOffset, 1);
-            newPixiIndex = newIndex + siblingOffset;
-            if (newPixiIndex < array.length) {
-                array.splice(newPixiIndex, 0, item);
-            }
-            else {
-                array.push(item);
-            }
+
+        if (entity._pixiObj) {
+            this._setNodeIndex(entity, oldIndex, newIndex, lastFirstSibling);
         }
-        // scene view
-        if (this.sceneView) {
-            siblingOffset = RenderContext._getChildrenOffset(entity._parent, true, lastFirstSibling);
-            item = entity._pixiObjInScene;
-            array = item.parent.children;
+    };
+
+    RenderContext.prototype._setNodeIndex = function (entity, oldIndex, newIndex, lastFirstSibling) {
+        // skip renderers of entity
+        var siblingOffset = this._getChildrenOffset(entity._parent, lastFirstSibling);
+        //
+        var node = this.isSceneView ? entity._pixiObjInScene : entity._pixiObj;
+        if (node) {
+            var array = node.parent.children;
             array.splice(oldIndex + siblingOffset, 1);
-            newPixiIndex = newIndex + siblingOffset;
+            var newPixiIndex = newIndex + siblingOffset;
             if (newPixiIndex < array.length) {
-                array.splice(newPixiIndex, 0, item);
+                array.splice(newPixiIndex, 0, node);
             }
             else {
-                array.push(item);
+                array.push(node);
             }
         }
     };
 
     RenderContext.prototype.onSceneLaunched = function (scene) {
         // attach root nodes
+        this._addToScene(scene);
+    };
+
+    RenderContext.prototype._addToScene = function (scene) {
         var entities = scene.entities;
-        var i = 0, len = entities.length;
-        for (; i < len; i++) {
-            var objInGame = entities[i]._pixiObj;
-            if (objInGame) {
-                this.root.addChild(objInGame);
-            }
-        }
-        if (this.sceneView) {
-            for (i = 0; i < len; i++) {
-                this.sceneView.root.addChild(entities[i]._pixiObjInScene);
+        for (var i = 0, len = entities.length; i < len; i++) {
+            var node = this.isSceneView? entities[i]._pixiObjInScene : entities[i]._pixiObj;
+            if (node) {
+                this.root.addChild(node);
             }
         }
     };
@@ -5046,10 +5285,6 @@ var RenderContext = (function () {
     var _onChildEntityCreated = function (entity, hasSceneView) {
         entity._pixiObj = new PIXI.DisplayObjectContainer();
         entity._parent._pixiObj.addChild(entity._pixiObj);
-        if (hasSceneView) {
-            entity._pixiObjInScene = new PIXI.DisplayObjectContainer();
-            entity._parent._pixiObjInScene.addChild(entity._pixiObjInScene);
-        }
         var children = entity._children;
         for (var i = 0, len = children.length; i < len; i++) {
             _onChildEntityCreated(children[i], hasSceneView);
@@ -5059,7 +5294,7 @@ var RenderContext = (function () {
     /**
      * create pixi nodes recursively
      * @param {Entity} entity
-     * @param {boolean} addToScene - add to pixi stage if entity is root
+     * @param {boolean} addToScene - add to pixi stage now if entity is root
      */
     RenderContext.prototype.onEntityCreated = function (entity, addToScene) {
         entity._pixiObj = new PIXI.DisplayObjectContainer();
@@ -5069,39 +5304,27 @@ var RenderContext = (function () {
         else if (addToScene) {
             this.root.addChild(entity._pixiObj);
         }
-        if (this.sceneView) {
-            entity._pixiObjInScene = new PIXI.DisplayObjectContainer();
-            if (entity._parent) {
-                entity._parent._pixiObjInScene.addChild(entity._pixiObjInScene);
-            }
-            else if (addToScene) {
-                this.sceneView.root.addChild(entity._pixiObjInScene);
-            }
-        }
-
         var children = entity._children;
         for (var i = 0, len = children.length; i < len; i++) {
             _onChildEntityCreated(children[i], this.sceneView);
         }
     };
 
+    RenderContext.prototype._addSprite = function (tex, parentNode) {
+        var sprite = new PIXI.Sprite(tex);
+        parentNode.addChildAt(sprite, 0);
+        return sprite;
+    };
+
     /**
      * @param {Fire.SpriteRenderer} target
      */
     RenderContext.prototype.addSprite = function (target) {
-        var tex = createTexture(target._sprite) || emptyTexture;
+        var tex = createTexture(target._sprite);
 
         var inGame = !(target.entity._objFlags & HideInGame);
         if (inGame) {
-            target._renderObj = new PIXI.Sprite(tex);
-            target.entity._pixiObj.addChildAt(target._renderObj, 0);
-        }
-
-        if (this.sceneView) {
-            // pixi may not share display object between stages at the same time,
-            // so another sprite is needed.
-            target._renderObjInScene = new PIXI.Sprite(tex);
-            target.entity._pixiObjInScene.addChildAt(target._renderObjInScene, 0);
+            target._renderObj = this._addSprite(tex, target.entity._pixiObj);
         }
         this.updateSpriteColor(target);
     };
@@ -5124,28 +5347,14 @@ var RenderContext = (function () {
      * @param show {boolean}
      */
     RenderContext.prototype.remove = function (target) {
-        if (target._renderObj) {
-            target._renderObj.parent.removeChild(target._renderObj);
-            target._renderObj = null;
-        }
-        if (target._renderObjInScene) {
-            target._renderObjInScene.parent.removeChild(target._renderObjInScene);
-            target._renderObjInScene = null;
-        }
+        this._removeNode(target._renderObj);
+        target._renderObj = null;
     };
 
     RenderContext.prototype.updateSpriteColor = function (target) {
-        if (target._renderObj || target._renderObjInScene) {
-            var tint = target._color.toRGBValue();
-            if (target._renderObj) {
-                target._renderObj.tint = tint;
-            }
-            if (target._renderObjInScene) {
-                target._renderObjInScene.tint = tint;
-            }
-        }
-        else {
-            Fire.error('' + target + ' must be added to render context first!');
+        var tint = target._color.toRGBValue();
+        if (target._renderObj) {
+            target._renderObj.tint = tint;
         }
     };
 
@@ -5153,17 +5362,9 @@ var RenderContext = (function () {
      * @param target {Fire.SpriteRenderer}
      */
     RenderContext.prototype.updateMaterial = function (target) {
-        if (target._renderObj || target._renderObjInScene) {
-            var tex = createTexture(target._sprite) || emptyTexture;
-            if (target._renderObj) {
-                target._renderObj.setTexture(tex);
-            }
-            if (target._renderObjInScene) {
-                target._renderObjInScene.setTexture(tex);
-            }
-        }
-        else {
-            Fire.error('' + target + ' must be added to render context first!');
+        var tex = createTexture(target._sprite);
+        if (target._renderObj) {
+            target._renderObj.setTexture(tex);
         }
     };
 
@@ -5186,20 +5387,12 @@ var RenderContext = (function () {
         mat.ty = this.renderer.height - matrix.ty;
 
         // apply matrix
-        var isGameView = this === Engine._renderContext;
-        if (isGameView) {
+        if ( !this.isSceneView ) {
             if (target._renderObj) {
                 target._renderObj.worldTransform = mat;
                 target._renderObj.worldAlpha = target._color.a;
-                return;
             }
         }
-        else if (target._renderObjInScene) {
-            target._renderObjInScene.worldTransform = mat;
-            target._renderObjInScene.worldAlpha = target._color.a;
-            return;
-        }
-        Fire.error('' + target + ' must be added to render context first!');
     };
 
     ///**
@@ -5255,11 +5448,11 @@ var RenderContext = (function () {
     function createTexture(sprite) {
         if (sprite && sprite.texture && sprite.texture.image) {
             var img = new PIXI.BaseTexture(sprite.texture.image);
-            var frame = new PIXI.Rectangle(sprite.x, sprite.y, Math.min(img.width - sprite.x, sprite.width), Math.min(img.height - sprite.y, sprite.height));
+            var frame = new PIXI.Rectangle(sprite.x, sprite.y, Math.min(img.width - sprite.x, sprite.rotatedWidth), Math.min(img.height - sprite.y, sprite.rotatedHeight));
             return new PIXI.Texture(img, frame);
         }
         else {
-            return null;
+            return emptyTexture;
         }
     }
 
@@ -5278,7 +5471,7 @@ RenderContext.prototype.checkMatchCurrentScene = function () {
         pixiSceneNodes = this.sceneView.stage.children;
         pixiSceneNodes = pixiSceneNodes[1].children;    // skip forground and background
     }
-
+    var scope = this;
     function checkMatch (ent, gameNode, sceneNode) {
         if (sceneNode && ent._pixiObjInScene !== sceneNode) {
             throw new Error('entity does not match pixi scene node: ' + ent.name);
@@ -5293,7 +5486,7 @@ RenderContext.prototype.checkMatchCurrentScene = function () {
         var childCount = ent._children.length;
         var sceneChildrenOffset;
         if (sceneNode) {
-            sceneChildrenOffset = RenderContext._getChildrenOffset(ent, true);
+            sceneChildrenOffset = scope.sceneView._getChildrenOffset(ent);
             if (sceneNode.children.length !== childCount + sceneChildrenOffset) {
                 console.error('Mismatched list of child elements in Scene view, entity: %s,\n' +
                     'pixi childCount: %s, entity childCount: %s, rcOffset: %s',
@@ -5301,7 +5494,7 @@ RenderContext.prototype.checkMatchCurrentScene = function () {
                 throw new Error('(see above error)');
             }
         }
-        var gameChildrenOffset = RenderContext._getChildrenOffset(ent, false);
+        var gameChildrenOffset = scope._getChildrenOffset(ent);
         if (gameNode.children.length !== childCount + gameChildrenOffset) {
             throw new Error('Mismatched list of child elements in Game view, entity: ' + ent.name);
         }
@@ -5331,28 +5524,29 @@ Fire._RenderContext = RenderContext;
 
 PIXI.BitmapText.prototype.updateTransform = function () { };
 
-var PixiBitmapFontUtil = {};
-
-var emptyFont = {
-    face: "None",
-    size: 1,
-    align: "left",
+Fire.BitmapFont.prototype._onPreDestroy = function () {
+    if (this._uuid) {
+        PIXI.BitmapText.fonts[this._uuid] = null;
+    }
 };
 
+var PixiBitmapFontUtil = {};
+
+var defaultFace = "None";
+
 function _getStyle(target) {
-    var font = emptyFont;
-    if (target.bitmapFont && target.bitmapFont.face) {
-        font = {
-            face: target.bitmapFont.face,
-            size: target.bitmapFont.size,
-            align: BitmapText.TextAlign[target.align],
+    if (target.bitmapFont && target.bitmapFont._uuid) {
+        return {
+            font: target.bitmapFont.size + " " + target.bitmapFont._uuid,
+            align: BitmapText.TextAlign[target.align].toLowerCase(),
         };
     }
-    var style = {
-        font: font.size + " " + font.face,
-        align: font.align,
-    };
-    return style;
+    else {
+        return {
+            font: 1 + " " + defaultFace,
+            align: "left",
+        };
+    }
 }
 
 function _setStyle(target) {
@@ -5384,14 +5578,14 @@ function _getNewMatrix23(child, tempMatrix) {
 
 function _registerFont(bitmapFont) {
     var data = {};
-    if (!bitmapFont || !bitmapFont.face) {
-        data.font = 'None';
+    if (!bitmapFont || !bitmapFont._uuid) {
+        data.face = defaultFace;
         data.size = 1;
         data.lineHeight = 1;
         data.chars = {};
     }
     else {
-        data.font = bitmapFont.face;
+        data.face = bitmapFont._uuid;
         data.size = bitmapFont.size;
         data.lineHeight = bitmapFont.lineHeight;
         data.chars = {};
@@ -5429,17 +5623,27 @@ function _registerFont(bitmapFont) {
             data.chars[second].kerning[first] = amount;
         }
     }
-    PIXI.BitmapText.fonts[data.font] = data;
+    PIXI.BitmapText.fonts[data.face] = data;
 }
 
 RenderContext.prototype.getTextSize = function (target) {
     var inGame = !(target.entity._objFlags & HideInGame);
     var w = 0, h = 0;
     if (inGame && target._renderObj) {
+        if (target._renderObj.dirty) {
+            target._renderObj.updateText();
+            target._renderObj.dirty = false;
+        }
+
         w = target._renderObj.textWidth;
         h = target._renderObj.textHeight;
     }
     else if (target._renderObjInScene) {
+        if (target._renderObjInScene.dirty) {
+            target._renderObjInScene.updateText();
+            target._renderObjInScene.dirty = false;
+        }
+
         w = target._renderObjInScene.textWidth;
         h = target._renderObjInScene.textHeight;
     }
@@ -5483,7 +5687,7 @@ RenderContext.prototype.addBitmapText = function (target) {
 PixiBitmapFontUtil.updateTransform = function (target, tempMatrix) {
     var i = 0, childrens = null, len = 0, child = null;
     var isGameView = Engine._curRenderContext === Engine._renderContext;
-    if (isGameView) {
+    if (isGameView && target._renderObj ) {
         if (target._renderObj.dirty) {
             target._renderObj.updateText();
             target._renderObj.dirty = false;
@@ -5516,7 +5720,7 @@ function ImageLoader(url, callback, onProgress) {
 
     var onload = function () {
         if (callback) {
-            callback(this);
+            callback(null, this);
         }
         image.removeEventListener('load', onload);
         image.removeEventListener('error', onerror);
@@ -5525,7 +5729,7 @@ function ImageLoader(url, callback, onProgress) {
     var onerror = function (msg, line, url) {
         if (callback) {
             var error = 'Failed to load image: ' + msg + ' Url: ' + url;
-            callback(null, error);
+            callback(error, null);
         }
         image.removeEventListener('load', onload);
         image.removeEventListener('error', onerror);
@@ -5552,10 +5756,10 @@ function _LoadFromXHR(url, callback, onProgress, responseType) {
         if (xhr.readyState === xhr.DONE) {
             if (callback) {
                 if (xhr.status === 200 || xhr.status === 0) {
-                    callback(xhr);
+                    callback(null, xhr);
                 }
                 else {
-                    callback(null, 'LoadFromXHR: Could not load "' + url + '", status: ' + xhr.status);
+                    callback('LoadFromXHR: Could not load "' + url + '", status: ' + xhr.status, null);
                 }
             }
             xhr.onreadystatechange = null;
@@ -5608,34 +5812,34 @@ function _LoadFromXHR(url, callback, onProgress, responseType) {
 }
 
 function TextLoader(url, callback, onProgress) {
-    var cb = callback && function(xhr, error) {
+    var cb = callback && function(error, xhr) {
         if (xhr && xhr.responseText) {
-            callback(xhr.responseText);
+            callback(null, xhr.responseText);
         }
         else {
-            callback(null, 'TextLoader: "' + url +
-                '" seems to be unreachable or the file is empty. InnerMessage: ' + error);
+            callback('TextLoader: "' + url +
+                '" seems to be unreachable or the file is empty. InnerMessage: ' + error, null);
         }
     };
     _LoadFromXHR(url, cb, onProgress);
 }
 
 function JsonLoader(url, callback, onProgress) {
-    var cb = callback && function(xhr, error) {
+    var cb = callback && function(error, xhr) {
         if (xhr && xhr.responseText) {
             var json;
             try {
                 json = JSON.parse(xhr.responseText);
             }
             catch (e) {
-                callback(null, e);
+                callback(e, null);
                 return;
             }
-            callback(json);
+            callback(null, json);
         }
         else {
-            callback(null, 'JsonLoader: "' + url +
-                '" seems to be unreachable or the file is empty. InnerMessage: ' + error);
+            callback('JsonLoader: "' + url +
+                '" seems to be unreachable or the file is empty. InnerMessage: ' + error, null);
         }
     };
     _LoadFromXHR(url, cb, onProgress);
@@ -5646,6 +5850,20 @@ Fire._JsonLoader = JsonLoader;
 var Component = (function () {
 
     /**
+     * used in _callOnEnable to ensure onEnable and onDisable will be called alternately
+     * 从逻辑上来说OnEnable和OnDisable的交替调用不需要由额外的变量进行保护，但那样会使设计变得复杂
+     * 例如Entity.destory调用后但还未真正销毁时，会调用所有Component的OnDisable。
+     * 这时如果又有addComponent，Entity需要对这些新来的Component特殊处理。将来调度器做了之后可以尝试去掉这个标记。
+     */
+    var IsOnEnableCalled = Fire._ObjectFlags.IsOnEnableCalled;
+
+    // IsOnEnableCalled 会收到 executeInEditMode 的影响，IsEditorOnEnabledCalled 不会
+    var IsEditorOnEnabledCalled = Fire._ObjectFlags.IsEditorOnEnabledCalled;
+    var IsOnLoadCalled = Fire._ObjectFlags.IsOnLoadCalled;
+    var IsOnStartCalled = Fire._ObjectFlags.IsOnStartCalled;
+
+    var compCtor;
+    /**
      *
      * Base class for everything attached to Entity
      * NOTE: Not allowed to use construction parameters for Component's subclasses,
@@ -5654,10 +5872,7 @@ var Component = (function () {
      * @static
      *
      */
-    var Component = Fire.define('Fire.Component', HashObject, function () {
-        HashObject.call(this);
-
-    });
+    var Component = Fire.extend('Fire.Component', HashObject, compCtor);
 
     Component.prop('entity', null, Fire.HideInInspector);
 
@@ -5732,6 +5947,23 @@ var Component = (function () {
     Component.prototype.onDestroy = null;
     Component.prototype.onPreRender = null;
 
+
+    /**
+     * @param {function|string} typeOrTypename
+     * @return {Component}
+     */
+    Component.prototype.addComponent = function (typeOrTypename) {
+        return this.entity.addComponent(typeOrTypename);
+    };
+
+    /**
+     * @param {function|string} typeOrTypename
+     * @return {Component}
+     */
+    Component.prototype.getComponent = function (typeOrTypename) {
+        return this.entity.getComponent(typeOrTypename);
+    };
+
     /**
      * This method will be invoked when the scene graph changed, which is means the parent of its transform changed,
      * or one of its ancestor's parent changed, or one of their sibling index changed.
@@ -5754,7 +5986,7 @@ var Component = (function () {
     };
 
     // Should not call onEnable/onDisable in other place
-    var _callOnEnable = function (self, enable) {
+    function _callOnEnable (self, enable) {
         if ( enable ) {
             if ( !(self._objFlags & IsOnEnableCalled) ) {
                 self._objFlags |= IsOnEnableCalled;
@@ -5762,6 +5994,7 @@ var Component = (function () {
                     self.onEnable();
                 }
             }
+
         }
         else {
             if ( self._objFlags & IsOnEnableCalled ) {
@@ -5771,7 +6004,7 @@ var Component = (function () {
                 }
             }
         }
-    };
+    }
 
     Component.prototype._onEntityActivated = function (active) {
         if ( !(this._objFlags & IsOnLoadCalled) ) {
@@ -5817,10 +6050,10 @@ var Component = (function () {
     Component.prototype._onPreDestroy = function () {
         // ensure onDisable called
         _callOnEnable(this, false);
-            // onDestroy
-            if (this.onDestroy) {
-                this.onDestroy();
-            }
+        // onDestroy
+        if (this.onDestroy) {
+            this.onDestroy();
+        }
         // remove component
         this.entity._removeComponent(this);
     };
@@ -5872,74 +6105,74 @@ Fire._RFpush = function (uuid, script) {
 Fire._RFpop = function () {
     _requiringFrame.pop();
 };
+Fire._RFget = function () {
+    return _requiringFrame[_requiringFrame.length - 1];
+};
 
+function checkCompCtor (constructor, scopeName) {
+    if (constructor) {
+        if (Fire.isChildClassOf(constructor, Component)) {
+            Fire.error(scopeName + ' Constructor can not be another Component');
+            return false;
+        }
+        if (constructor.length > 0) {
+            // To make a unified FireClass serialization process,
+            // we don't allow parameters for constructor when creating instances of FireClass.
+            // For advance user, construct arguments can get from 'arguments'.
+            Fire.error(scopeName + ' Can not instantiate Component with arguments.');
+            return false;
+        }
+    }
+    return true;
+}
 /**
  * @method defineComponent
  * @static
- * @param {function} [baseOrConstructor]
  * @param {function} [constructor]
  */
-Fire.defineComponent = function (baseOrConstructor, constructor) {
-    var args = [''];    // class name will be defined later
-    // check args
-    if (arguments.length === 0) {
-        args.push(Component);
-    }
-    else {
-        if (arguments.length === 1) {
-            if (Fire.isChildClassOf(baseOrConstructor, Component)) {
-                // base
-                args.push(baseOrConstructor);
+Fire.defineComponent = function (constructor) {
+    Fire.warn('[Fire.defineComponent] is deprecated, use Fire.extend(Fire.Component, constructor) instead');
+    return Fire.extend(Fire.Component, constructor);
+};
+
+/**
+ * @method extendComponent
+ * @static
+ * @param {function} baseClass
+ * @param {function} [constructor]
+ */
+Fire.extendComponent = function (baseClass, constructor) {
+    Fire.warn('[Fire.extendComponent] is deprecated, use Fire.extend(baseClass, constructor) instead');
+    return Fire.extend(baseClass, constructor);
+};
+
+var doDefine = Fire._doDefine;
+Fire._doDefine = function (className, baseClass, constructor) {
+    if ( Fire.isChildClassOf(baseClass, Fire.Component) ) {
+        var frame = Fire._RFget();
+        if (frame) {
+            if ( !checkCompCtor(constructor, '[Fire.extend]') ) {
+                return null;
             }
-            else {
-                if (!Fire._isFireClass(baseOrConstructor)) {
-                    if (typeof baseOrConstructor !== 'function') {
-                        Fire.error('[Fire.defineComponent] Constructor must be function type');
-                        return;
-                    }
-                    // base
-                    args.push(Component);
-                    // constructor
-                    args.push(baseOrConstructor);
+            if (frame.uuid) {
+                // project component
+                if (className) {
+                    Fire.warn('Sorry, specifying class name for Component in project scripts is not allowed. Just use Fire.extend(baseComponent, constructor) please.');
                 }
-                else {
-                    Fire.error('[Fire.defineComponent] Base class must inherit from Component');
-                    return;
-                }
             }
-        }
-        else {
-            if (Fire.isChildClassOf(baseOrConstructor, Component)) {
-                // base
-                if (typeof constructor !== 'function') {
-                    Fire.error('[Fire.defineComponent] Constructor must be function type');
-                    return;
-                }
-                // base
-                args.push(baseOrConstructor);
-                // constructor
-                args.push(constructor);
+            //else {
+            //    builtin plugin component
+            //}
+            className = className || frame.script;
+            var cls = doDefine(className, baseClass, constructor);
+            if (frame.uuid) {
+                JS._setClassId(frame.uuid, cls);
             }
-            else {
-                Fire.error('[Fire.defineComponent] Base class must inherit from Component');
-                return;
-            }
+            return cls;
         }
     }
-    //
-    var frame = _requiringFrame[_requiringFrame.length - 1];
-    if (frame) {
-        var className = frame.script;
-        args[0] = className;
-        var cls = Fire.define.apply(Fire, args);
-        if (frame.uuid) {
-            Fire._setClassId(frame.uuid, cls);
-        }
-        return cls;
-    }
-    else {
-        Fire.error('[Fire.defineComponent] Sorry, defining Component dynamically is not allowed, define during loading script please.');
-    }
+    // not component or engine component
+    return doDefine(className, baseClass, constructor);
 };
 
 var Transform = (function () {
@@ -5950,9 +6183,7 @@ var Transform = (function () {
      * @extends Component
      */
 
-    var Transform = Fire.define('Fire.Transform', Component, function () {
-        Component.call(this);
-
+    var Transform = Fire.extend('Fire.Transform', Component, function () {
         this._position = new Vec2(0, 0);
         this._scale = new Vec2(1, 1);
 
@@ -5992,6 +6223,34 @@ var Transform = (function () {
     );
 
     /**
+     * The local x position in its parent's coordinate system
+     * @member {number} x
+     * @instance
+     */
+    Object.defineProperty(Transform.prototype, 'x', {
+        get: function () {
+            return this._position.x;
+        },
+        set: function (value) {
+            this._position.x = value;
+        }
+    });
+
+    /**
+     * The local y position in its parent's coordinate system
+     * @member {number} y
+     * @instance
+     */
+    Object.defineProperty(Transform.prototype, 'y', {
+        get: function () {
+            return this._position.y;
+        },
+        set: function (value) {
+            this._position.y = value;
+        }
+    });
+
+    /**
      * The position of the transform in world space
      * @property {Fire.Vec2} Fire.Transform#worldPosition
      */
@@ -6007,6 +6266,62 @@ var Transform = (function () {
             }
             else {
                 this.position = value;
+            }
+        }
+    });
+
+    /**
+     * The x position of the transform in world space
+     * @member {number} x
+     * @instance
+     */
+    Object.defineProperty(Transform.prototype, 'worldX', {
+        get: function () {
+            return this.worldPosition.x;
+        },
+        set: function (value) {
+            if ( this._parent ) {
+                var pl2w = this._parent.getLocalToWorldMatrix();
+                var l2w = this.getLocalMatrix().prepend(pl2w);
+                if (l2w.tx !== value) {
+                    this._position.x = value;
+                    this._position.y = l2w.ty;
+                    pl2w.invert().transformPoint(this._position, this._position);
+                }
+            }
+            else {
+                this._position.x = value;
+            }
+            //将来优化做好了以后，上面的代码可以简化成下面这些
+            //var pos = this.worldPosition;
+            //if (pos.x !== value) {
+            //    pos.x = value;
+            //    this.worldPosition = pos;
+            //}
+        }
+    });
+
+    /**
+     * The y position of the transform in world space
+     * @member {number} y
+     * @instance
+     */
+    Object.defineProperty(Transform.prototype, 'worldY', {
+        get: function () {
+            return this.worldPosition.y;
+        },
+        set: function (value) {
+            if ( this._parent ) {
+                var pl2w = this._parent.getLocalToWorldMatrix();
+                var l2w = this.getLocalMatrix().prepend(pl2w);
+                if (l2w.ty !== value) {
+                    this._position.x = l2w.tx;
+                    this._position.y = value;
+                    pl2w.invert().transformPoint(this._position, this._position);
+                }
+            }
+            else {
+                this._position.y = value;
             }
         }
     });
@@ -6065,6 +6380,34 @@ var Transform = (function () {
     );
 
     /**
+     * The local x scale factor relative to the parent
+     * @member {number} x
+     * @instance
+     */
+    Object.defineProperty(Transform.prototype, 'scaleX', {
+        get: function () {
+            return this._scale.x;
+        },
+        set: function (value) {
+            this._scale.x = value;
+        }
+    });
+
+    /**
+     * The local y scale factor relative to the parent
+     * @member {number} y
+     * @instance
+     */
+    Object.defineProperty(Transform.prototype, 'scaleY', {
+        get: function () {
+            return this._scale.y;
+        },
+        set: function (value) {
+            this._scale.y = value;
+        }
+    });
+
+    /**
      * The lossy scale of the transform in world space (Read Only)
      * @property {Fire.Vec2} Fire.Transform#worldScale
      */
@@ -6072,19 +6415,6 @@ var Transform = (function () {
         get: function () {
             var l2w = this.getLocalToWorldMatrix();
             return l2w.getScale();
-        }
-    });
-
-    /**
-     * @private
-     */
-    Object.defineProperty(Transform.prototype, 'parent', {
-        get: function () {
-            Fire.error('Transform.parent is obsolete. Use Entity.parent instead.');
-            return null;
-        },
-        set: function (value) {
-            Fire.error('Transform.parent is obsolete. Use Entity.parent instead.');
         }
     });
 
@@ -6343,7 +6673,7 @@ var Renderer = (function () {
     /**
      * The base for all renderer
      */
-    var Renderer = Fire.define('Fire.Renderer', Component);
+    var Renderer = Fire.extend('Fire.Renderer', Component);
 
     ///**
     // * Returns a "local" axis aligned bounding box(AABB) of the renderer.
@@ -6436,8 +6766,7 @@ Fire.Renderer = Renderer;
 
 var SpriteRenderer = (function () {
 
-    var SpriteRenderer = Fire.define('Fire.SpriteRenderer', Renderer, function () {
-        Renderer.call(this);
+    var SpriteRenderer = Fire.extend('Fire.SpriteRenderer', Renderer, function () {
         RenderContext.initRenderer(this);
         this._hasRenderObj = false;
     });
@@ -6533,16 +6862,27 @@ var SpriteRenderer = (function () {
     };
 
     SpriteRenderer.prototype.getWorldSize = function () {
-        var size = new Fire.Vec2(0, 0);
-        size.x = this._sprite ? this._sprite.width : 0;
-        size.y = this._sprite ? this._sprite.height : 0;
-        return size;
+        return new Fire.Vec2(this.width, this.height);
     };
 
     var tempMatrix = new Fire.Matrix23();
 
     SpriteRenderer.prototype.onPreRender = function () {
         this.getSelfMatrix(tempMatrix);
+        if (this._sprite) {
+            // calculate render matrix
+            //   scale
+            tempMatrix.a = this.width / this._sprite.width;
+            tempMatrix.d = this.height / this._sprite.height;
+            //   rotate cw
+            if (this._sprite.rotated) {
+                tempMatrix.b = tempMatrix.d;
+                tempMatrix.c = -tempMatrix.a;
+                tempMatrix.a = 0;
+                tempMatrix.d = 0;
+                tempMatrix.ty -= this.height;
+            }
+        }
         tempMatrix.prepend(this.transform._worldTransform);
         Engine._curRenderContext.updateTransform(this, tempMatrix);
     };
@@ -6558,21 +6898,39 @@ var SpriteRenderer = (function () {
 
         var pivotX = 0.5;
         var pivotY = 0.5;
-        var scaleX = 1;
-        var scaleY = 1;
+
+        //var rotated = false;
         if (Fire.isValid(this._sprite)) {
+            //rotated = this._sprite.rotated;
             pivotX = this._sprite.pivot.x;
             pivotY = this._sprite.pivot.y;
-            scaleX = w / this._sprite.width;
-            scaleY = h / this._sprite.height;
         }
 
-        out.tx = - pivotX * w;
-        out.ty = (1.0 - pivotY) * h;
-        out.a = scaleX;
-        out.b = 0;
-        out.c = 0;
-        out.d = scaleY;
+        //if ( !rotated ) {
+            out.a = 1;
+            out.b = 0;
+            out.c = 0;
+            out.d = 1;
+            out.tx = - pivotX * w;
+            out.ty = (1.0 - pivotY) * h;
+        //}
+        //else {
+        //    // CCW
+        //    //out.a = 0;
+        //    //out.b = scaleY;
+        //    //out.c = -scaleX;
+        //    //out.d = 0;
+        //    //out.tx = - (pivotY - 1.0) * w;
+        //    //out.ty = - pivotX * h;
+        //
+        //    // CW
+        //    out.a = 0;
+        //    out.b = -scaleY;
+        //    out.c = scaleX;
+        //    out.d = 0;
+        //    out.tx = (1.0 - pivotX) * w;
+        //    out.ty = (1.0 - pivotY) * h;
+        //}
     };
 
     return SpriteRenderer;
@@ -6605,8 +6963,7 @@ var BitmapText = (function () {
 
 
     //-- 增加 Bitmap Text 到 组件菜单上
-    var BitmapText = Fire.define("Fire.BitmapText", Renderer, function () {
-        Renderer.call(this);
+    var BitmapText = Fire.extend("Fire.BitmapText", Renderer, function () {
         RenderContext.initRenderer(this);
     });
 
@@ -6625,7 +6982,6 @@ var BitmapText = (function () {
         function (value) {
             if (this._bitmapFont !== value) {
                 this._bitmapFont = value;
-                this.face = this._bitmapFont ? this._bitmapFont.face : 'None';
                 Engine._renderContext.setBitmapFont(this);
             }
         },
@@ -6763,8 +7119,7 @@ Fire.BitmapText = BitmapText;
 
 var Camera = (function () {
 
-    var Camera = Fire.define('Fire.Camera', Component, function () {
-        Component.call(this);
+    var Camera = Fire.extend('Fire.Camera', Component, function () {
         this._renderContext = null;
     });
     Fire.addComponentMenu(Camera, 'Camera');
@@ -6783,7 +7138,7 @@ var Camera = (function () {
         }
     );
 
-    Camera.prop('_size', 5, Fire.HideInInspector);
+    Camera.prop('_size', 0, Fire.HideInInspector);
     Camera.getset('size',
         function () {
             return this._size;
@@ -6797,8 +7152,7 @@ var Camera = (function () {
     Object.defineProperty(Camera.prototype, 'renderContext', {
         set: function (value) {
             this._renderContext = value;
-            this.size = value.size.y;
-            this._applyRenderSettings();
+//            this._applyRenderSettings();
         }
     });
 
@@ -6914,7 +7268,7 @@ var Camera = (function () {
 
     Camera.prototype._calculateTransform = function (out_matrix, out_worldPos) {
         var screenSize = (this._renderContext || Engine._renderContext).size;
-        var scale = screenSize.y / this._size;
+        var scale = this._size ? (screenSize.y / this._size) : 1;
         var tf = this.entity.transform;
         var mat = tf.getLocalToWorldMatrix();
 
@@ -6945,7 +7299,7 @@ var MissingScript = (function () {
      * Actually, this class will be used whenever a class failed to deserialize,
      * regardless of whether it is component.
      */
-    var MissingScript = Fire.define('Fire.MissingScript', Component);
+    var MissingScript = Fire.extend('Fire.MissingScript', Component);
 
     MissingScript.prototype.onLoad = function () {
         Fire.warn('The referenced script on this Component is missing!');
@@ -7055,9 +7409,7 @@ Fire._InteractionContext = InteractionContext;
 
 var Entity = (function () {
 
-    var Entity = Fire.define('Fire.Entity', EventTarget, function () {
-        EventTarget.call(this);
-
+    var Entity = Fire.extend('Fire.Entity', EventTarget, function () {
         var name = arguments[0];
 
         this._name = typeof name !== 'undefined' ? name : 'New Entity';
@@ -7083,8 +7435,10 @@ var Entity = (function () {
             }
             // invoke callbacks
             Engine._renderContext.onRootEntityCreated(this);
+
             // activate componet
             transform._onEntityActivated(true);     // 因为是刚刚创建，所以 activeInHierarchy 肯定为 true
+
         }
     });
     Entity.prop('_active', true, Fire.HideInInspector);
@@ -7180,7 +7534,7 @@ var Entity = (function () {
     Object.defineProperty(Entity.prototype, 'childCount', {
         get: function () {
             return this._children.length;
-        },
+        }
     });
 
     ////////////////////////////////////////////////////////////////////
@@ -7224,7 +7578,7 @@ var Entity = (function () {
     Object.defineProperty(Entity.prototype, 'activeInHierarchy', {
         get: function () {
             return this._activeInHierarchy;
-        },
+        }
     });
 
     ////////////////////////////////////////////////////////////////////
@@ -7250,6 +7604,7 @@ var Entity = (function () {
         // destroy components
         for (var c = 0; c < this._components.length; ++c) {
             var component = this._components[c];
+            // destroy immediate so its _onPreDestroy can be called before
             component._destroyImmediate();
         }
         // remove self
@@ -7264,6 +7619,7 @@ var Entity = (function () {
         // destroy children
         var children = this._children;
         for (var i = 0, len = children.length; i < len; ++i) {
+            // destroy immediate so its _onPreDestroy can be called before
             children[i]._destroyImmediate();
         }
     };
@@ -7317,18 +7673,36 @@ var Entity = (function () {
     // component methods
     ////////////////////////////////////////////////////////////////////
 
-    Entity.prototype.addComponent = function (constructor) {
+    /**
+     * @param {function|string} typeOrTypename
+     * @return {Component}
+     */
+    Entity.prototype.addComponent = function (typeOrTypename) {
+        var constructor;
+        if (typeof typeOrTypename === 'string') {
+            constructor = JS.getClassByName(typeOrTypename);
+            if ( !constructor ) {
+                Fire.error('[addComponent] Failed to get class "%s"');
+                if (_requiringFrame.length > 0) {
+                    Fire.error('You should not add component when the scripts are still loading.', typeOrTypename);
+                }
+                return null;
+            }
+        }
+        else {
+            if ( !typeOrTypename ) {
+                Fire.error('[addComponent] Type must be non-nil');
+                return null;
+            }
+            constructor = typeOrTypename;
+        }
         if (this._objFlags & Destroying) {
             Fire.error('isDestroying');
-            return;
-        }
-        if (!constructor) {
-            Fire.error('Argument must be non-nil');
-            return;
+            return null;
         }
         if (typeof constructor !== 'function') {
             Fire.error("The component to add must be a constructor");
-            return;
+            return null;
         }
         var component = new constructor();
         component.entity = this;
@@ -7338,6 +7712,7 @@ var Entity = (function () {
             // call onLoad/onEnable
             component._onEntityActivated(true);
         }
+
         return component;
     };
 
@@ -7352,7 +7727,7 @@ var Entity = (function () {
         }
         var constructor;
         if (typeof typeOrTypename === 'string') {
-            constructor = Fire.getClassByName(typeOrTypename);
+            constructor = JS.getClassByName(typeOrTypename);
         }
         else {
             constructor = typeOrTypename;
@@ -7435,6 +7810,10 @@ var Entity = (function () {
 
     Entity.prototype.getChild = function (index) {
         return this._children[index];
+    };
+
+    Entity.prototype.getChildren = function () {
+        return this._children.slice();
     };
 
     /**
@@ -7630,8 +8009,8 @@ var Scene = (function () {
          */
         this.camera = null;
     }
-    Fire.extend(Scene, _super);
-    Fire.setClassName("Fire.Scene", Scene);
+    JS.extend(Scene, _super);
+    JS.setClassName("Fire.Scene", Scene);
 
     ////////////////////////////////////////////////////////////////////
     // static
@@ -7642,8 +8021,8 @@ var Scene = (function () {
     // traversal operations
     ////////////////////////////////////////////////////////////////////
 
-    // 当引入DestroyImmediate后，entity和component可能会在遍历过程中变少，需要复制一个新的数组，或者做一些标记
     var visitOperationTmpl = "if(c._enabled && c._FUNC_) c._FUNC_();";
+    // 当引入DestroyImmediate后，entity和component可能会在遍历过程中变少，需要复制一个新的数组，或者做一些标记
     var visitFunctionTmpl = "\
 (function(e){\
 	var i, len=e._components.length;\
@@ -7756,7 +8135,8 @@ var Scene = (function () {
             entities.splice(index, 1);
         }
         else {
-            Fire.error('entity ' + _entity + ' not contains in roots of hierarchy');
+            Fire.error('entity ' + _entity + ' not contains in roots of hierarchy, ' +
+                       'is may caused if entity not destroyed immediate before current scene changed');
         }
     };
 
@@ -7894,8 +8274,8 @@ var LoadManager = (function () {
 
     function doLoad (loader, url, callback) {
         LoadManager._curConcurrent += 1;
-        loader(url, function doLoadCB (asset, error) {
-            callback(asset, error);
+        loader(url, function doLoadCB (error, asset) {
+            callback(error, asset);
             LoadManager._curConcurrent = Math.max(0, LoadManager._curConcurrent - 1);
             loadNext();
         });
@@ -7953,11 +8333,11 @@ var LoadManager = (function () {
                     this.loadByLoader(typeInfo.loader, rawUrl, callback);
                 }
                 else {
-                    callback(null, 'Undefined extname for the raw ' + rawType + ' file of ' + url);
+                    callback('Undefined extname for the raw ' + rawType + ' file of ' + url, null);
                 }
             }
             else {
-                callback(null, 'Unknown raw type "' + rawType + '" of ' + url);
+                callback('Unknown raw type "' + rawType + '" of ' + url, null);
             }
         },
 
@@ -8015,13 +8395,6 @@ var AssetLibrary = (function () {
     // configs
 
     /**
-     * uuid to urls
-     *
-     * 如果uuid能映射到url则优先从url加载，否则从library加载。这个步骤在最终发布版本中应该是不需要的？
-     */
-    var _uuidToUrl = {};
-
-    /**
      * 当uuid不在_uuidToUrl里面，则将uuid本身作为url加载，路径位于_libraryBase。
      */
     var _libraryBase = '';
@@ -8041,67 +8414,68 @@ var AssetLibrary = (function () {
          * uuid加载流程：
          * 1. 查找_uuidToAsset，如果已经加载过，直接返回
          * 2. 查找_uuidToCallbacks，如果已经在加载，则注册回调，直接返回
-         * 3. 查找_uuidToUrl，如果有则从指定url加载，这一步方便引擎单独测试
          * 4. 如果没有url，则将uuid直接作为路径
          * 5. 递归加载Asset及其引用到的其它Asset
          *
          * @param {string} uuid
          * @param {AssetLibrary~loadCallback} [callback] - the callback to receive the asset
          * @param {boolean} [dontCache=false] - If false, the result will cache to AssetLibrary, and MUST be unload by user manually.
-         * NOTE: loadAssetByUuid will always try to get the cached asset, no matter whether dontCache is indicated.
          * @param {Fire._DeserializeInfo} [info] - reused temp obj
+         * @param {Fire.Asset} [existingAsset] - load to existing asset in editor
+         * NOTE: loadAssetByUuid will always try to get the cached asset, unless existingAsset is supplied.
          */
-        _loadAssetByUuid: function (uuid, callback, dontCache, info) {
+        _loadAssetByUuid: function (uuid, callback, dontCache, info, existingAsset) {
             dontCache = (typeof dontCache !== 'undefined') ? dontCache : false;
             if (typeof uuid !== 'string') {
-                callback(null, '[AssetLibrary] uuid must be string');
+                callback('[AssetLibrary] uuid must be string', null);
                 return;
             }
             // step 1
-            var asset = AssetLibrary._uuidToAsset[uuid];
-            if (asset) {
-                if (callback) {
-                    callback(asset);
+            if ( !existingAsset ) {
+                var asset = AssetLibrary._uuidToAsset[uuid];
+                if (asset) {
+                    if (callback) {
+                        callback(null, asset);
+                    }
+                    return;
                 }
-                return;
             }
 
             // step 2
-            if ( !dontCache && _uuidToCallbacks.add(uuid, callback) === false) {
+            // 如果必须重新加载，则不能合并到到 _uuidToCallbacks，否则现有的加载成功后会同时触发回调，
+            // 导致提前返回的之前的资源。
+            var canShareLoadingTask = !dontCache && !existingAsset;
+            if ( canShareLoadingTask && !_uuidToCallbacks.add(uuid, callback) ) {
                 // already loading
                 return;
             }
 
-            // step 3
-            var url = _uuidToUrl && _uuidToUrl[uuid];
-
             // step 4
-            if (!url) {
-                url = _libraryBase + uuid.substring(0, 2) + Fire.Path.sep + uuid;
-            }
+            var url = _libraryBase + uuid.substring(0, 2) + Fire.Path.sep + uuid;
 
             // step 5
             LoadManager.loadByLoader(JsonLoader, url,
-                function (json, error) {
-                    if (error) {
-                        if ( !dontCache ) {
-                            _uuidToCallbacks.invokeAndRemove(uuid, null, error);
+                function (error, json) {
+                    function onDeserializedWithDepends (err, asset) {
+                        if (asset) {
+                            asset._uuid = uuid;
+                            if ( !dontCache ) {
+                                AssetLibrary._uuidToAsset[uuid] = asset;
+                            }
+                        }
+                        if ( canShareLoadingTask ) {
+                            _uuidToCallbacks.invokeAndRemove(uuid, err, asset);
                         }
                         else {
-                            callback(null, error);
+                            callback(err, asset);
                         }
-                        return;
                     }
-                    AssetLibrary.loadJson(json, url, function (asset) {
-                        asset._uuid = uuid;
-                        if ( !dontCache ) {
-                            AssetLibrary._uuidToAsset[uuid] = asset;
-                            _uuidToCallbacks.invokeAndRemove(uuid, asset);
-                        }
-                        else {
-                            callback(asset, error);
-                        }
-                    }, dontCache, info);
+                    if (json) {
+                        AssetLibrary.loadJson(json, url, onDeserializedWithDepends, dontCache, info, existingAsset);
+                    }
+                    else {
+                        onDeserializedWithDepends(error, null);
+                    }
                 }
             );
         },
@@ -8113,8 +8487,9 @@ var AssetLibrary = (function () {
          * @param {boolean} [dontCache=false] - If false, the result will cache to AssetLibrary, and MUST be unload by user manually.
          * NOTE: loadAssetByUuid will always try to get the cached asset, no matter whether dontCache is indicated.
          * @param {Fire._DeserializeInfo} [info] - reused temp obj
+         * @param {Fire.Asset} [existingAsset] - existing asset to reload
          */
-        loadJson: function (json, url, callback, dontCache, info) {
+        loadJson: function (json, url, callback, dontCache, info, existingAsset) {
             // prepare
             if (info) {
                 // info我们只是用来重用临时对象，所以每次使用前要重设。
@@ -8125,17 +8500,19 @@ var AssetLibrary = (function () {
             }
 
             // deserialize asset
-            Engine._canModifyCurrentScene = false;
-            var isScene = json && json[0] && json[0].__type__ === Fire._getClassId(Scene);
-            var asset = Fire.deserialize(json, info, {
-                classFinder: isScene ? Fire._MissingScript.safeFindClass : function (id) {
-                    var cls = Fire._getClassById(id);
-                    if (cls) {
-                        return cls;
-                    }
-                    Fire.warn('Can not get class "%s"', id);
-                    return Object;
+            var isScene = json && json[0] && json[0].__type__ === JS._getClassId(Scene);
+            var classFinder = isScene ? Fire._MissingScript.safeFindClass : function (id) {
+                var cls = JS._getClassById(id);
+                if (cls) {
+                    return cls;
                 }
+                Fire.warn('Can not get class "%s"', id);
+                return Object;
+            };
+            Engine._canModifyCurrentScene = false;
+            var asset = Fire.deserialize(json, info, {
+                classFinder: classFinder,
+                target: existingAsset
             });
             Engine._canModifyCurrentScene = true;
 
@@ -8149,30 +8526,37 @@ var AssetLibrary = (function () {
                 var attrs = Fire.attr(asset.constructor, info.rawProp);
                 var rawType = attrs.rawType;
                 ++pendingCount;
-                LoadManager.load(url, rawType, asset._rawext, function onRawObjLoaded (raw, error) {
+                LoadManager.load(url, rawType, asset._rawext, function onRawObjLoaded (error, raw) {
                     if (error) {
                         Fire.error('[AssetLibrary] Failed to load %s of %s. %s', rawType, url, error);
                     }
                     asset[rawProp] = raw;
                     --pendingCount;
                     if (pendingCount === 0) {
-                        callback(asset);
+                        callback(null, asset);
                     }
                 });
             }
+
             if (pendingCount === 0) {
-                callback(asset);
-                return;
+                callback(null, asset);
             }
+
+            /*
+             如果依赖的所有资源都要重新下载，批量操作时将会导致同时执行多次重复下载。优化方法是增加一全局事件队列，
+             队列保存每个任务的注册，启动，结束事件，任务从注册到启动要延迟几帧，每个任务都存有父任务。
+             这样通过队列的事件序列就能做到合并批量任务。
+             如果依赖的资源不重新下载也行，但要判断是否刚好在下载过程中，如果是的话必须等待下载完成才能结束本资源的加载，
+             否则外部获取到的依赖资源就会是旧的。
+             */
 
             // load depends assets
             for (var i = 0, len = info.uuidList.length; i < len; i++) {
                 var dependsUuid = info.uuidList[i];
                 var onDependsAssetLoaded = (function (dependsUuid, obj, prop) {
                     // create closure manually because its extremely faster than bind
-                    return function (dependsAsset, error) {
+                    return function (error, dependsAsset) {
                         if (error) {
-                            Fire.error('[AssetLibrary] Failed to load "' + dependsUuid + '", ' + error);
                         }
                         else {
                             dependsAsset._uuid = dependsUuid;
@@ -8182,12 +8566,13 @@ var AssetLibrary = (function () {
                         // check all finished
                         --pendingCount;
                         if (pendingCount === 0) {
-                            callback(asset);
+                            callback(null, asset);
                         }
                     };
                 })( dependsUuid, info.uuidObjList[i], info.uuidPropList[i] );
                 AssetLibrary._loadAssetByUuid(dependsUuid, onDependsAssetLoaded, dontCache, info);
             }
+
         },
 
         /**
@@ -8223,10 +8608,10 @@ var AssetLibrary = (function () {
          *
          * @method Fire.AssetLibrary.unloadAsset
          * @param {Fire.Asset|string} assetOrUuid
-         * @param {boolean} [destroyAsset=false] - When destroyAsset is true, if there are objects
+         * @param {boolean} [destroyImmediate=false] - When destroyAsset is true, if there are objects
          *                                         referencing the asset, the references will become invalid.
          */
-        unloadAsset: function (assetOrUuid, destroyAsset) {
+        unloadAsset: function (assetOrUuid, destroyImmediate) {
             var asset;
             if (typeof assetOrUuid === 'string') {
                 asset = AssetLibrary._uuidToAsset[assetOrUuid];
@@ -8235,8 +8620,10 @@ var AssetLibrary = (function () {
                 asset = assetOrUuid;
             }
             if (asset) {
-                if (destroyAsset && asset.isValid) {
+                if (destroyImmediate && asset.isValid) {
                     asset.destroy();
+                    // simulate destroy immediate
+                    FObject._deferredDestroy();
                 }
                 delete AssetLibrary._uuidToAsset[asset._uuid];
             }
@@ -8249,12 +8636,10 @@ var AssetLibrary = (function () {
          * @param {object} [uuidToUrl]
          * @private
          */
-        init: function (libraryPath, uuidToUrl) {
+        init: function (libraryPath) {
             _libraryBase = Fire.Path.setEndWithSep(libraryPath);
             //Fire.log('[AssetLibrary] library: ' + _libraryBase);
-
-            _uuidToUrl = uuidToUrl;
-        },
+        }
 
         ///**
         // * temporary flag for deserializing assets
@@ -8402,15 +8787,22 @@ var Engine = (function () {
         }
     });
 
+    /**
+     * Scene name to uuid
+     * @private
+     */
+    Engine._sceneInfos = {};
+
     // functions
 
     /**
      * @param {number} [w]
      * @param {number} [h]
      * @param {Canvas} [canvas]
+     * @param {object} [sceneInfos]
      * @return {RenderContext}
      */
-    Engine.init = function ( w, h, canvas ) {
+    Engine.init = function ( w, h, canvas, sceneInfos ) {
         if (inited) {
             Fire.error('Engine already inited');
             return;
@@ -8419,6 +8811,8 @@ var Engine = (function () {
 
         Engine._renderContext = new RenderContext( w, h, canvas );
         Engine._interactionContext = new InteractionContext();
+
+        JS.mixin(Engine._sceneInfos, sceneInfos);
 
         return Engine._renderContext;
     };
@@ -8447,16 +8841,17 @@ var Engine = (function () {
             Engine._inputContext.destruct();
             Engine._inputContext = null;
             Input._reset();
-        }
-        // reset states
-        isPlaying = false;
-        isPaused = false;
-        isLoadingScene = false; // TODO: what if loading scene ?
-        if (requestId !== -1) {
-            Ticker.cancelAnimationFrame(requestId);
-            requestId = -1;
-        }
 
+            // reset states
+            isPlaying = false;
+            isPaused = false;
+            isLoadingScene = false; // TODO: what if loading scene ?
+            if (requestId !== -1) {
+                Ticker.cancelAnimationFrame(requestId);
+                requestId = -1;
+            }
+
+        }
     };
 
     Engine.pause = function () {
@@ -8471,17 +8866,12 @@ var Engine = (function () {
         }
     };
 
-    var render = function () {
+    function render () {
         // render
         Engine._scene.render(Engine._renderContext);
+    }
 
-        // render standalone scene view test
-        if (Fire.isPureWeb && Engine._renderContext.sceneView) {
-            Engine._scene.render(Engine._renderContext.sceneView);
-        }
-    };
-
-    var doUpdate = function (updateLogic) {
+    function doUpdate (updateLogic) {
         if (Engine._scene) {
             if (updateLogic) {
                 Engine._scene.update();
@@ -8492,14 +8882,14 @@ var Engine = (function () {
             // update interaction context
             Engine._interactionContext.update(Engine._scene.entities);
         }
-    };
+    }
 
     /**
      * @method Fire.Engine.update
      * @param {float} [unused] - not used parameter, can omit
      * @private
      */
-    var update = function (unused) {
+    function update (unused) {
         if (!isPlaying) {
             return;
         }
@@ -8518,17 +8908,17 @@ var Engine = (function () {
         if (__TESTONLY__.update) {
             __TESTONLY__.update(updateLogic);
         }
-    };
+    }
     Engine.update = update;
 
     /**
      * Set current scene directly
      * @method Fire.Engine._setCurrentScene
      * @param {Scene} scene
-     * @param {function} [onUnloaded]
+     * @param {function} [onBeforeLoadScene]
      * @private
      */
-    Engine._setCurrentScene = function (scene, onPreSceneLoad) {
+    Engine._setCurrentScene = function (scene, onBeforeLoadScene) {
         if (!scene) {
             Fire.error('Argument must be non-nil');
             return;
@@ -8537,16 +8927,18 @@ var Engine = (function () {
         // TODO: allow dont destroy behaviours
         // unload scene
         var oldScene = Engine._scene;
-        // IMPORTANT! Dont cache last scene
-        AssetLibrary.unloadAsset(oldScene);
         if (Fire.isValid(oldScene)) {
-            oldScene.destroy();
-            FObject._deferredDestroy(); // simulate destroy immediate
+            // destroyed and unload
+            AssetLibrary.unloadAsset(oldScene, true);
         }
+
+        // purge destroyed entities belongs to old scene
+        FObject._deferredDestroy();
+
         Engine._scene = null;
 
-        if (onPreSceneLoad) {
-            onPreSceneLoad();
+        if (onBeforeLoadScene) {
+            onBeforeLoadScene();
         }
 
         // init scene
@@ -8559,16 +8951,34 @@ var Engine = (function () {
     };
 
     /**
-     * Load scene sync
+     * Loads the scene by its name.
      * @method Fire.Engine.loadScene
-     * @param {string} uuid - the uuid of scene asset
+     * @param {string} sceneName - the name of the scene to load
      * @param {function} [onLaunched]
      * @param {function} [onUnloaded] - will be called when the previous scene was unloaded
      */
-    Engine.loadScene = function (uuid, onLaunched, onUnloaded) {
+    Engine.loadScene = function (sceneName, onLaunched, onUnloaded) {
+        var uuid = Engine._sceneInfos[sceneName];
+        if (uuid) {
+            Engine._loadSceneByUuid(uuid, onLaunched, onUnloaded);
+        }
+        else {
+            Fire.error('[Engine.loadScene] The scene "%s" could not be loaded because it has not been added to the build settings.', sceneName);
+        }
+    };
+
+    /**
+     * Load scene
+     * @method Fire.Engine.loadScene
+     * @param {string} uuid - the uuid of the scene asset to load
+     * @param {function} [onLaunched]
+     * @param {function} [onUnloaded] - will be called when the previous scene was unloaded
+     */
+    Engine._loadSceneByUuid = function (uuid, onLaunched, onUnloaded) {
         // TODO: lookup uuid by name
         isLoadingScene = true;
-        AssetLibrary._loadAssetByUuid(uuid, function onSceneLoaded (scene, error) {
+        AssetLibrary.unloadAsset(uuid);     // force reload
+        AssetLibrary._loadAssetByUuid(uuid, function onSceneLoaded (error, scene) {
             if (error) {
                 Fire.error('Failed to load scene: ' + error);
                 isLoadingScene = false;
@@ -8606,13 +9016,17 @@ var ModifierKeyStates = (function () {
 
     /**
      * @param {string} type - The name of the event (case-sensitive), e.g. "click", "fire", or "submit"
-     * @param {MouseEvent|KeyboardEvent} nativeEvent - The original DOM event
      */
     function ModifierKeyStates (type, nativeEvent) {
         Fire.Event.call(this, type, true);
-        this.initFromNativeEvent(nativeEvent);
+
+        this.nativeEvent = null;
+        this.ctrlKey = false;
+        this.shiftKey = false;
+        this.altKey = false;
+        this.metaKey = false;
     }
-    Fire.extend(ModifierKeyStates, Fire.Event);
+    JS.extend(ModifierKeyStates, Fire.Event);
 
     /**
      * Returns the current state of the specified modifier key. true if the modifier is active (i.e., the modifier key is pressed or locked). Otherwise, false.
@@ -8626,12 +9040,15 @@ var ModifierKeyStates = (function () {
         return nativeEvent.getModifierState(keyArg);
     };
 
+    /**
+     * @param {MouseEvent|KeyboardEvent|TouchEvent} nativeEvent - The original DOM event
+     */
     ModifierKeyStates.prototype.initFromNativeEvent = function (nativeEvent) {
+        this.nativeEvent = nativeEvent;
         this.ctrlKey = nativeEvent.ctrlKey;
         this.shiftKey = nativeEvent.shiftKey;
         this.altKey = nativeEvent.altKey;
         this.metaKey = nativeEvent.metaKey;
-        this.nativeEvent = nativeEvent;
     };
 
     ModifierKeyStates.prototype._reset = function () {
@@ -8654,48 +9071,59 @@ var MouseEvent = (function () {
 
     /**
      * @param {string} type - The name of the event (case-sensitive), e.g. "click", "fire", or "submit"
-     * @param {MouseEvent} nativeEvent - The original DOM event
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
      * http://www.quirksmode.org/dom/w3c_events.html#mousepos
-     *
      */
-    function MouseEvent (type, nativeEvent) {
-        Fire.ModifierKeyStates.call(this, type, nativeEvent);
-    }
-    Fire.extend(MouseEvent, ModifierKeyStates);
-
-    MouseEvent.prototype.initFromNativeEvent = function (nativeEvent) {
-        ModifierKeyStates.prototype.initFromNativeEvent.call(this, nativeEvent);
+    function MouseEvent (type) {
+        Fire.ModifierKeyStates.call(this, type);
 
         /**
          * @property {number} button - indicates which button was pressed on the mouse to trigger the event.
          *                             (0: Left button, 1: Wheel button or middle button (if present), 2: Right button)
          */
-        this.button = nativeEvent.button;
+        this.button = 0;
 
         /**
          * @property {number} buttonStates - indicates which buttons were pressed on the mouse to trigger the event
          * @see https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent.buttons
          */
-        this.buttonStates = nativeEvent.buttons;
+        this.buttonStates = 0;
 
-        this.screenX = nativeEvent.offsetX;
-        this.screenY = nativeEvent.offsetY;
+        this.screenX = 0;
+        this.screenY = 0;
 
         /**
          * @property {number} deltaX - The X coordinate of the mouse pointer relative to the position of the last mousemove event.
          */
-        this.deltaX = nativeEvent.movementX;
+        this.deltaX = 0;
 
         /**
          * @property {number} deltaY - The Y coordinate of the mouse pointer relative to the position of the last mousemove event.
          */
-        this.deltaY = nativeEvent.movementY;
+        this.deltaY = 0;
 
         /**
          * @property {Fire.EventTarget} relatedTarget - The secondary target for the event, if there is one.
          */
+        this.relatedTarget = null;
+    }
+    JS.extend(MouseEvent, ModifierKeyStates);
+
+    var TouchEvent = window.TouchEvent;
+
+    /**
+     * @param {MouseEvent} nativeEvent - The original DOM event
+     */
+    MouseEvent.prototype.initFromNativeEvent = function (nativeEvent) {
+        ModifierKeyStates.prototype.initFromNativeEvent.call(this, nativeEvent);
+
+        this.button = nativeEvent.button;
+        this.buttonStates = nativeEvent.buttons;
+        this.screenX = nativeEvent.offsetX;
+        this.screenY = nativeEvent.offsetY;
+        this.deltaX = nativeEvent.movementX;
+        this.deltaY = nativeEvent.movementY;
         this.relatedTarget = nativeEvent.relatedTarget;
     };
 
@@ -8743,16 +9171,110 @@ var InputContext = (function () {
 
         this.renderContext = renderContext;
         this.eventRegister = new DomEventRegister(canvas);
+        this.hasTouch = 'ontouchstart' in window;
 
         // bind event
+        var scope = this;
+        function listener (event) {
+            scope.onDomInputEvent(event);
+        }
         for (var type in EventRegister.inputEvents) {
-            this.eventRegister.addEventListener(type, this.onDomInputEvent.bind(this), true);
+            //var info = EventRegister.inputEvents[type];
+            //if (!(this.hasTouch && info.constructor instanceof MouseEvent)) {
+                this.eventRegister.addEventListener(type, listener, true);
+            //}
+        }
+        if (this.hasTouch) {
+            this.simulateMouseEvent();
         }
 
-        // focus the canvas to receive keyborad events
-        this.eventRegister.addEventListener('mousedown', function () {
+        // focus the canvas to receive keyboard events
+        function focusCanvas () {
             canvas.focus();
-        }, true);
+        }
+        if (this.hasTouch) {
+            this.eventRegister.addEventListener('touchstart', focusCanvas, true);
+        }
+        else {
+            this.eventRegister.addEventListener('mousedown', focusCanvas, true);
+        }
+    };
+
+    InputContext.prototype.simulateMouseEvent = function () {
+        var scope = this;
+        // get canvas page offset
+        var canvasPageX = 0,
+            canvasPageY = 0;
+        var elem = scope.renderContext.renderer.view;
+        while (elem) {
+            canvasPageX += parseInt(elem.offsetLeft);
+            canvasPageY += parseInt(elem.offsetTop);
+            elem = elem.offsetParent;
+        }
+        //
+        function createMouseEvent (type, touchEvent) {
+            var event = new MouseEvent(type);
+            event.bubbles = true;
+            // event.cancelable = eventInfo.cancelable; (NYI)
+            var first = touchEvent.changedTouches[0] || touchEvent.touches[0];
+            event.button = 0;
+            event.buttonStates = 1;
+            if (first) {
+                event.screenX = first.pageX - canvasPageX;
+                event.screenY = first.pageY - canvasPageY;
+            }
+            return event;
+        }
+        function getTouchListener (info) {
+            var type = info.simulateType;
+            if (type) {
+                return function (touchEvent) {
+                    // gen mouse event
+                    var event = createMouseEvent(type, touchEvent);
+
+                    // inner dispatch
+                    Input._dispatchEvent(event, scope);
+
+                    // update dom event
+
+                    // Prevent simulated mouse events from firing by browser,
+                    // However, this also prevents any default browser behavior from firing (clicks, scrolling, etc)
+                    touchEvent.preventDefault();
+
+                    if (event._propagationStopped) {
+                        if (event._propagationImmediateStopped) {
+                            touchEvent.stopImmediatePropagation();
+                        }
+                        else {
+                            touchEvent.stopPropagation();
+                        }
+                    }
+                };
+            }
+            else {
+                return function (touchEvent) {
+                    touchEvent.preventDefault();
+                };
+            }
+        }
+        var SimulateInfos = {
+            touchstart: {
+                simulateType: 'mousedown'
+            },
+            touchend: {
+                simulateType: 'mouseup'
+            },
+            touchmove: {
+                simulateType: 'mousemove'
+            },
+            touchcancel: {
+                simulateType: ''
+            }
+        };
+        for (var srcType in SimulateInfos) {
+            var info = SimulateInfos[srcType];
+            this.eventRegister.addEventListener(srcType, getTouchListener(info), true);
+        }
     };
 
     InputContext.prototype.destruct = function () {
@@ -8762,7 +9284,10 @@ var InputContext = (function () {
     InputContext.prototype.onDomInputEvent = function (domEvent) {
         // wrap event
         var eventInfo = EventRegister.inputEvents[domEvent.type];
-        var event = new eventInfo.constructor(domEvent.type, domEvent);
+        var event = new eventInfo.constructor(domEvent.type);
+        if (event.initFromNativeEvent) {
+            event.initFromNativeEvent(domEvent);
+        }
         event.bubbles = eventInfo.bubbles;
         // event.cancelable = eventInfo.cancelable; (NYI)
 
@@ -8789,57 +9314,72 @@ var InputContext = (function () {
 var EventRegister = {
     inputEvents: {
         // ref: http://www.w3.org/TR/DOM-Level-3-Events/#event-types-list
-        'keydown': {
+        keydown: {
             constructor: KeyboardEvent,
             bubbles: true,
-            cancelable: true,
+            cancelable: true
         },
-        'keyup': {
+        keyup: {
             constructor: KeyboardEvent,
             bubbles: true,
-            cancelable: true,
+            cancelable: true
         },
-        'click': {
+        click: {
             constructor: MouseEvent,
             bubbles: true,
-            cancelable: true,
+            cancelable: true
         },
-        'dblclick': {
+        dblclick: {
             constructor: MouseEvent,
             bubbles: true,
-            cancelable: false,
+            cancelable: false
         },
-        'mousedown': {
+        mousedown: {
             constructor: MouseEvent,
             bubbles: true,
-            cancelable: true,
+            cancelable: true
         },
-        'mouseup': {
+        mouseup: {
             constructor: MouseEvent,
             bubbles: true,
-            cancelable: true,
+            cancelable: true
         },
-        'mousemove': {
+        mousemove: {
             constructor: MouseEvent,
             bubbles: true,
-            cancelable: true,
+            cancelable: true
         },
-        //'mouseenter': {
+        //touchstart: {
+        //    constructor: MouseEvent,
+        //    bubbles: true,
+        //    cancelable: true
+        //},
+        //touchend: {
+        //    constructor: MouseEvent,
+        //    bubbles: true,
+        //    cancelable: true
+        //},
+        //touchmove: {
+        //    constructor: MouseEvent,
+        //    bubbles: true,
+        //    cancelable: true
+        //}
+        //mouseenter: {
         //    constructor: MouseEvent,
         //    bubbles: false,
         //    cancelable: false,
         //},
-        //'mouseleave': {
+        //mouseleave: {
         //    constructor: MouseEvent,
         //    bubbles: false,
         //    cancelable: false,
         //},
-        //'mouseout': {
+        //mouseout: {
         //    constructor: MouseEvent,
         //    bubbles: true,
         //    cancelable: true,
         //},
-        //'mouseover': {
+        //mouseover: {
         //    constructor: MouseEvent,
         //    bubbles: true,
         //    cancelable: true,

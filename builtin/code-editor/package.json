@@ -1,9 +1,9 @@
 {
     "name": "code-editor",
     "version": "0.1.0",
-    "description": "The code editor plugin for Fireball-x Editor",
+    "description": "The code editor plugin for Fireball Editor",
     "author": "KamiSama <1457434343@qq.com>",
-    "fireball-x": {
+    "fireball": {
         "main": "editor/main.js",
         "windows": {
             "code-editor": {

@@ -1,8 +1,7 @@
 
 // 动画剪辑
 
-var SpriteAnimationClip = Fire.define('Fire.SpriteAnimationClip', Fire.CustomAsset, function () {
-    Fire.CustomAsset.call(this);
+var SpriteAnimationClip = Fire.extend('Fire.SpriteAnimationClip', Fire.CustomAsset, function () {
     this._frameInfoFrames = null; // the array of the end frame of each frame info
 });
 
@@ -29,7 +28,7 @@ SpriteAnimationClip.StopAction = (function (t) {
 /// The structure to descrip a frame in the sprite animation clip
 // ------------------------------------------------------------------
 
-var FrameInfo = Fire.define('FrameInfo', null)
+var FrameInfo = Fire.define('FrameInfo')
                     .prop('sprite', null, Fire.ObjectType(Fire.Sprite))
                     .prop('frames', 0, Fire.Integer);
 

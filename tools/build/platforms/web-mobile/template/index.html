@@ -3,30 +3,33 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Fireball-x | <%=project%></title>
+    <title>Fireball | <%=project%></title>
 
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1,target-densitydpi=device-dpi" />
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
     <meta name="full-screen" content="yes"/>
     <meta name="screen-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
     <meta name="360-fullscreen" content="true"/>
 
     <style>
+        html {
+            -ms-touch-action: none;
+        }
         body {
             text-align: center;
-            background-color: white;
+            background-color: black;
             font-family: Helvetica, Verdana, Arial, sans-serif;
         }
         body, canvas, div {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            -khtml-user-select: none;
+            position: absolute;
+            display: block;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
         a:link, a:visited {
-            color: #000;
+            color: #666;
         }
         a:active, a:hover {
             color: #666;
@@ -43,12 +46,20 @@
     <script src="firaball-x.js"></script>
     <script src="project.js"></script>
     <script src="boot.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            var div = document.getElementById('GameDiv');
+            var canvas = document.getElementById('GameCanvas');
+            var width = document.documentElement.clientWidth;
+            var height = document.documentElement.clientHeight;
+            div.style.width = width + "px";
+            div.style.height = height + "px";
+        });
+    </script>
 </head>
-<body>
-    <p class="header"><%=project%></p>
-
-    <canvas id="GameCanvas" width="<%=width%>" height="<%=height%>" oncontextmenu="event.preventDefault()"></canvas>
-
-    <p class="footer">Created with <a href="http://fireball-x.com/" title="Go to fireball-x.com">Fireball-x</a></p>
+<body style="padding: 0px; border: 0px; margin: 0px;">
+    <div id="GameDiv" style="position: relative; background: black;">
+        <canvas id="GameCanvas" width="<%=width%>" height="<%=height%>" oncontextmenu="event.preventDefault()"></canvas>
+    </div>
 </body>
 </html>

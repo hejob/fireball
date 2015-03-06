@@ -4,24 +4,45 @@
         return;
     }
 
-    var nativeAC = new NativeAudioContext();
+    // fix fireball-x/dev#365
+    if (!Fire.nativeAC) {
+        Fire.nativeAC = new NativeAudioContext();
+    }
 
-    function loader (url, callback, onProgress) {
-        var cb = callback && function (xhr, error) {
-            if (xhr) {
-                if (!nativeAC) {
-                    nativeAC = new NativeAudioContext();
+    // 添加safeDecodeAudioData的原因：https://github.com/fireball-x/dev/issues/318
+    function safeDecodeAudioData(context, buffer, url, callback) {
+        var timeout = false;
+        var timerId = setTimeout(function () {
+            callback('The operation of decoding audio data already timeout! Audio url: "' + url +
+                     '". Set Fire.AudioContext.MaxDecodeTime to a larger value if this error often occur. ' +
+                     'See fireball-x/dev#318 for details.', null);
+        }, AudioContext.MaxDecodeTime);
+
+        context.decodeAudioData(buffer,
+            function (decodedData) {
+                if (!timeout) {
+                    callback(null, decodedData);
+                    clearTimeout(timerId);
                 }
-                nativeAC.decodeAudioData(xhr.response, function (buffer) {
-                    callback(buffer);
-                },function (e) {
+            },
+            function (e) {
+                if (!timeout) {
                     callback(null, 'LoadAudioClip: "' + url +
-                    '" seems to be unreachable or the file is empty. InnerMessage: ' + e);
-                });
+                        '" seems to be unreachable or the file is empty. InnerMessage: ' + e);
+                    clearTimeout(timerId);
+                }
+            }
+        );
+    }
+
+    function loader(url, callback, onProgress) {
+        var cb = callback && function (error, xhr) {
+            if (xhr) {
+                safeDecodeAudioData(Fire.nativeAC, xhr.response, url, callback);
             }
             else {
-                callback(null, 'LoadAudioClip: "' + url +
-               '" seems to be unreachable or the file is empty. InnerMessage: ' + error);
+                callback('LoadAudioClip: "' + url +
+               '" seems to be unreachable or the file is empty. InnerMessage: ' + error, null);
             }
         };
         Fire.LoadManager._loadFromXHR(url, cb, onProgress, 'arraybuffer');
@@ -30,6 +51,8 @@
     Fire.LoadManager.registerRawTypes('audio', loader);
 
     var AudioContext = {};
+
+    AudioContext.MaxDecodeTime = 3000;
 
     AudioContext.getCurrentTime = function (target) {
         if ( target._paused ) {
@@ -44,12 +67,12 @@
     };
 
     AudioContext.getPlayedTime = function (target) {
-        return (nativeAC.currentTime - target._lastPlay) * target._playbackRate;
+        return (Fire.nativeAC.currentTime - target._lastPlay) * target._playbackRate;
     };
 
     //
     AudioContext.updateTime = function (target, time) {
-        target._lastPlay = nativeAC.currentTime;
+        target._lastPlay = Fire.nativeAC.currentTime;
         target._startTime = time;
 
         if ( target.isPlaying ) {
@@ -116,15 +139,15 @@
         if (!target.clip || !target.clip.rawData) { return; }
 
         // create buffer source
-        var bufferSource = nativeAC.createBufferSource();
+        var bufferSource = Fire.nativeAC.createBufferSource();
 
         // create volume control
-        var gain = nativeAC.createGain();
+        var gain = Fire.nativeAC.createGain();
 
         // connect
         bufferSource.connect(gain);
-        gain.connect(nativeAC.destination);
-        bufferSource.connect(nativeAC.destination);
+        gain.connect(Fire.nativeAC.destination);
+        bufferSource.connect(Fire.nativeAC.destination);
 
         // init parameters
         bufferSource.buffer = target.clip.rawData;
@@ -137,7 +160,7 @@
         target._buffSource = bufferSource;
         target._volumeGain = gain;
         target._startTime = at || 0;
-        target._lastPlay = nativeAC.currentTime;
+        target._lastPlay = Fire.nativeAC.currentTime;
 
         // play
         bufferSource.start( 0, this.getCurrentTime(target) );
@@ -152,22 +175,34 @@
 
     //
     AudioContext.getClipLength = function (clip) {
-        return clip.rawData.duration;
+        if (clip.rawData) {
+            return clip.rawData.duration;
+        }
+        return -1;
     };
 
     //
     AudioContext.getClipSamples = function (clip) {
-        return clip.rawData.length;
+        if (clip.rawData) {
+            return clip.rawData.length;
+        }
+        return -1;
     };
 
     //
     AudioContext.getClipChannels = function (clip) {
-        return clip.rawData.numberOfChannels;
+        if (clip.rawData) {
+            return clip.rawData.numberOfChannels;
+        }
+        return -1;
     };
 
     //
     AudioContext.getClipFrequency = function (clip) {
-        return clip.rawData.sampleRate;
+        if (clip.rawData) {
+            return clip.rawData.sampleRate;
+        }
+        return -1;
     };
 
 
