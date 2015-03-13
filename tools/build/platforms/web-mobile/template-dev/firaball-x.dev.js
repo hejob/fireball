@@ -57,6 +57,8 @@ var ToDestroy = 1 << 1;
 var DontSave = 1 << 2;
 var EditorOnly  = 1 << 3; // dont save in build
 var Dirty = 1 << 4; // used in editor
+var DontDestroy = 1 << 5; // dont destroy automatically when loading a new scene
+
 /**
  *
  * Mark object with different flags.
@@ -69,6 +71,7 @@ var ObjectFlags = {
     DontSave: DontSave,
     EditorOnly: EditorOnly,
     Dirty: Dirty,
+    DontDestroy: DontDestroy,
 
     // public flags for engine
 
@@ -108,7 +111,7 @@ ObjectFlags.Hide = ObjectFlags.HideInGame | ObjectFlags.HideInEditor;
 
 Fire._ObjectFlags = ObjectFlags;
 
-var PersistentMask = ~(ToDestroy | Dirty | ObjectFlags.Destroying |     // can not clone these flags
+var PersistentMask = ~(ToDestroy | Dirty | ObjectFlags.Destroying | DontDestroy |     // can not clone these flags
                        ObjectFlags.IsOnEnableCalled |
                        ObjectFlags.IsEditorOnEnabledCalled |
                        ObjectFlags.IsOnLoadCalled |
@@ -887,6 +890,55 @@ Fire.padLeft = function ( text, width, ch ) {
         return new Array( width + 1 ).join(ch) + text;
     }
     return text;
+};
+
+/**
+ * @method fitRatio
+ * @param {number} ratio (w/h)
+ * @param {number} destWidth
+ * @param {number} destHeight
+ * @return {array}
+ */
+Fire.fitRatio = function ( ratio, destWidth, destHeight ) {
+    var srcWidth, srcHeight;
+    if ( ratio > 1 ) {
+        srcWidth = destWidth;
+        srcHeight = srcWidth / ratio;
+    }
+    else {
+        srcHeight = destHeight;
+        srcWidth = srcHeight * ratio;
+    }
+    return Fire.fitSize( srcWidth, srcHeight, destWidth, destHeight );
+};
+
+Fire.fitSize = function ( srcWidth, srcHeight, destWidth, destHeight ) {
+    var width, height;
+    if ( srcWidth > destWidth &&
+         srcHeight > destHeight )
+    {
+        width = destWidth;
+        height = srcHeight * destWidth/srcWidth;
+
+        if ( height > destHeight ) {
+            height = destHeight;
+            width = srcWidth * destHeight/srcHeight;
+        }
+    }
+    else if ( srcWidth > destWidth ) {
+        width = destWidth;
+        height = srcHeight * destWidth/srcWidth;
+    }
+    else if ( srcHeight > destHeight ) {
+        width = srcWidth * destHeight/srcHeight;
+        height = destHeight;
+    }
+    else {
+        width = srcWidth;
+        height = srcHeight;
+    }
+
+    return [width,height];
 };
 
 //
@@ -2233,6 +2285,18 @@ Vec2 = (function () {
     Object.defineProperty(Vec2, 'zero', {
         get: function () {
             return new Vec2(0.0, 0.0);
+        }
+    });
+
+    Object.defineProperty(Vec2, 'up', {
+        get: function () {
+            return new Vec2(0.0, 1.0);
+        }
+    });
+
+    Object.defineProperty(Vec2, 'right', {
+        get: function () {
+            return new Vec2(1.0, 0.0);
         }
     });
 
@@ -3699,6 +3763,7 @@ var Asset = (function () {
                                 // so the _uuid can not display in console.
         });
 
+        this.dirty = false;
     });
 
     /* TODO: These callbacks available for ?
@@ -3771,11 +3836,11 @@ Fire.Texture = (function () {
         return t;
     })({});
 
-    Texture.prop('image', null, Fire.RawType('image'));
-    Texture.prop('width', 0, Fire.Integer);
-    Texture.prop('height', 0, Fire.Integer);
-    Texture.prop('wrapMode', Texture.WrapMode.Clamp, Fire.Enum(Texture.WrapMode));
-    Texture.prop('filterMode', Texture.FilterMode.Bilinear, Fire.Enum(Texture.FilterMode));
+    Texture.prop('image', null, Fire.RawType('image'), Fire.HideInInspector);
+    Texture.prop('width', 0, Fire.Integer, Fire.ReadOnly);
+    Texture.prop('height', 0, Fire.Integer, Fire.ReadOnly);
+    Texture.prop('wrapMode', Texture.WrapMode.Clamp, Fire.Enum(Texture.WrapMode), Fire.ReadOnly);
+    Texture.prop('filterMode', Texture.FilterMode.Bilinear, Fire.Enum(Texture.FilterMode), Fire.ReadOnly);
 
     //Texture.prototype.onAfterDeserialize = function () {
     //    this.width = this.image.width;
@@ -3862,8 +3927,8 @@ Fire.Atlas = (function () {
     })({});
 
     // basic settings
-    Atlas.prop('width', 512, Fire.Integer );
-    Atlas.prop('height', 512, Fire.Integer );
+    Atlas.prop('width', 512, Fire.Integer, Fire.ReadOnly );
+    Atlas.prop('height', 512, Fire.Integer, Fire.ReadOnly );
 
     Atlas.prop('sprites', [], Fire.ObjectType(Fire.Sprite), Fire.HideInInspector);
 
@@ -4420,12 +4485,12 @@ var BitmapFont = (function () {
 
     var BitmapFont = Fire.extend("Fire.BitmapFont", Fire.Asset);
 
-    BitmapFont.prop('texture', null, Fire.ObjectType(Fire.Texture));
-    BitmapFont.prop('charInfos', []);
-    BitmapFont.prop('kernings', []);
-    BitmapFont.prop('baseLine', 0, Fire.Integer);
-    BitmapFont.prop('lineHeight', 0, Fire.Integer);
-    BitmapFont.prop('size', 0, Fire.Integer);
+    BitmapFont.prop('texture', null, Fire.ObjectType(Fire.Texture), Fire.HideInInspector);
+    BitmapFont.prop('charInfos', [], Fire.HideInInspector);
+    BitmapFont.prop('kernings', [], Fire.HideInInspector);
+    BitmapFont.prop('baseLine', 0, Fire.Integer, Fire.ReadOnly);
+    BitmapFont.prop('lineHeight', 0, Fire.Integer, Fire.ReadOnly);
+    BitmapFont.prop('size', 0, Fire.Integer, Fire.ReadOnly);
     BitmapFont.prop('face', null, Fire.HideInInspector);
 
     return BitmapFont;
@@ -4478,6 +4543,7 @@ Fire.BitmapFont = BitmapFont;
  */
 
 var Destroying = Fire._ObjectFlags.Destroying;
+var DontDestroy = Fire._ObjectFlags.DontDestroy;
 var Hide = Fire._ObjectFlags.Hide;
 var HideInGame = Fire._ObjectFlags.HideInGame;
 var HideInEditor = Fire._ObjectFlags.HideInEditor;
@@ -4761,17 +4827,15 @@ var EventTarget = (function () {
             Fire.error('Callback of event must be non-nil');
             return;
         }
+        var listeners = null;
         if (useCapture) {
-            this._capturingListeners = this._capturingListeners || new EventListeners();
-            if ( ! this._capturingListeners.has(type, callback) ) {
-                this._capturingListeners.add(type, callback);
-            }
+            listeners = this._capturingListeners = this._capturingListeners || new EventListeners();
         }
         else {
-            this._bubblingListeners = this._bubblingListeners || new EventListeners();
-            if ( ! this._bubblingListeners.has(type, callback) ) {
-                this._bubblingListeners.add(type, callback);
-            }
+            listeners = this._bubblingListeners = this._bubblingListeners || new EventListeners();
+        }
+        if ( ! listeners.has(type, callback) ) {
+            listeners.add(type, callback);
         }
     };
 
@@ -6063,6 +6127,9 @@ var Component = (function () {
 
 Fire.Component = Component;
 
+////////////////////////////////////////////////////////////////////////////////
+// Component helpers
+
 // Register Component Menu
 
 /**
@@ -6090,24 +6157,40 @@ Fire.addComponentMenu = function (constructor, menuPath, priority) {
 Fire.executeInEditMode = function (constructor) {
 };
 
-var _requiringFrame = [];  // the requiring frame infos
+var _requiringFrames = [];  // the requiring frame infos
 
-Fire._RFpush = function (uuid, script) {
-    if (arguments.length === 1) {
+Fire._RFpush = function (module, uuid, script) {
+    if (arguments.length === 2) {
         script = uuid;
         uuid = '';
     }
-    _requiringFrame.push({
+    _requiringFrames.push({
         uuid: uuid,
-        script: script
+        script: script,
+        module: module,
+        exports: module.exports,    // original exports
+        comp: null
     });
 };
+
 Fire._RFpop = function () {
-    _requiringFrame.pop();
+    var frameInfo = _requiringFrames.pop();
+    // check exports
+    var module = frameInfo.module;
+    var exports = frameInfo.exports;
+    if (exports === module.exports) {
+        for (var key in exports) {
+            return;
+        }
+        // auto export component
+        module.exports = frameInfo.comp;
+    }
 };
+
 Fire._RFget = function () {
-    return _requiringFrame[_requiringFrame.length - 1];
+    return _requiringFrames[_requiringFrames.length - 1];
 };
+
 
 function checkCompCtor (constructor, scopeName) {
     if (constructor) {
@@ -6125,27 +6208,6 @@ function checkCompCtor (constructor, scopeName) {
     }
     return true;
 }
-/**
- * @method defineComponent
- * @static
- * @param {function} [constructor]
- */
-Fire.defineComponent = function (constructor) {
-    Fire.warn('[Fire.defineComponent] is deprecated, use Fire.extend(Fire.Component, constructor) instead');
-    return Fire.extend(Fire.Component, constructor);
-};
-
-/**
- * @method extendComponent
- * @static
- * @param {function} baseClass
- * @param {function} [constructor]
- */
-Fire.extendComponent = function (baseClass, constructor) {
-    Fire.warn('[Fire.extendComponent] is deprecated, use Fire.extend(baseClass, constructor) instead');
-    return Fire.extend(baseClass, constructor);
-};
-
 var doDefine = Fire._doDefine;
 Fire._doDefine = function (className, baseClass, constructor) {
     if ( Fire.isChildClassOf(baseClass, Fire.Component) ) {
@@ -6153,6 +6215,10 @@ Fire._doDefine = function (className, baseClass, constructor) {
         if (frame) {
             if ( !checkCompCtor(constructor, '[Fire.extend]') ) {
                 return null;
+            }
+            if (frame.comp) {
+                Fire.error('Sorry, each script can have at most one Component.');
+                return;
             }
             if (frame.uuid) {
                 // project component
@@ -6168,6 +6234,7 @@ Fire._doDefine = function (className, baseClass, constructor) {
             if (frame.uuid) {
                 JS._setClassId(frame.uuid, cls);
             }
+            frame.comp = cls;
             return cls;
         }
     }
@@ -6206,6 +6273,8 @@ var Transform = (function () {
 
     // properties
 
+    var ERR_NaN = 'The %s must not be NaN';
+
     /**
      * The local position in its parent's coordinate system
      * @member {Fire.Vec2} position
@@ -6216,8 +6285,15 @@ var Transform = (function () {
             return new Vec2(this._position.x, this._position.y);
         },
         function (value) {
-            this._position.x = value.x;
-            this._position.y = value.y;
+            var x = value.x;
+            var y = value.y;
+            if ( !isNaN(x) && !isNaN(y) ) {
+                this._position.x = x;
+                this._position.y = y;
+            }
+            else {
+                Fire.error(ERR_NaN, 'xy of new position');
+            }
         },
         Fire.Tooltip("The local position in its parent's coordinate system")
     );
@@ -6232,7 +6308,12 @@ var Transform = (function () {
             return this._position.x;
         },
         set: function (value) {
-            this._position.x = value;
+            if ( !isNaN(value) ) {
+                this._position.x = value;
+            }
+            else {
+                Fire.error(ERR_NaN, 'new x');
+            }
         }
     });
 
@@ -6246,7 +6327,12 @@ var Transform = (function () {
             return this._position.y;
         },
         set: function (value) {
-            this._position.y = value;
+            if ( !isNaN(value) ) {
+                this._position.y = value;
+            }
+            else {
+                Fire.error(ERR_NaN, 'new y');
+            }
         }
     });
 
@@ -6260,12 +6346,19 @@ var Transform = (function () {
             return new Vec2(l2w.tx, l2w.ty);
         },
         set: function (value) {
-            if ( this._parent ) {
-                var w2l = this._parent.getWorldToLocalMatrix();
-                this.position = w2l.transformPoint(value);
+            var x = value.x;
+            var y = value.y;
+            if ( !isNaN(x) && !isNaN(y) ) {
+                if ( this._parent ) {
+                    var w2l = this._parent.getWorldToLocalMatrix();
+                    this.position = w2l.transformPoint(value);
+                }
+                else {
+                    this.position = value;
+                }
             }
             else {
-                this.position = value;
+                Fire.error(ERR_NaN, 'xy of new worldPosition');
             }
         }
     });
@@ -6280,24 +6373,29 @@ var Transform = (function () {
             return this.worldPosition.x;
         },
         set: function (value) {
-            if ( this._parent ) {
-                var pl2w = this._parent.getLocalToWorldMatrix();
-                var l2w = this.getLocalMatrix().prepend(pl2w);
-                if (l2w.tx !== value) {
-                    this._position.x = value;
-                    this._position.y = l2w.ty;
-                    pl2w.invert().transformPoint(this._position, this._position);
+            if ( !isNaN(value) ) {
+                if ( this._parent ) {
+                    var pl2w = this._parent.getLocalToWorldMatrix();
+                    var l2w = this.getLocalMatrix().prepend(pl2w);
+                    if (l2w.tx !== value) {
+                        this._position.x = value;
+                        this._position.y = l2w.ty;
+                        pl2w.invert().transformPoint(this._position, this._position);
+                    }
                 }
+                else {
+                    this._position.x = value;
+                }
+                //将来优化做好了以后，上面的代码可以简化成下面这些
+                //var pos = this.worldPosition;
+                //if (pos.x !== value) {
+                //    pos.x = value;
+                //    this.worldPosition = pos;
+                //}
             }
             else {
-                this._position.x = value;
+                Fire.error(ERR_NaN, 'new worldX');
             }
-            //将来优化做好了以后，上面的代码可以简化成下面这些
-            //var pos = this.worldPosition;
-            //if (pos.x !== value) {
-            //    pos.x = value;
-            //    this.worldPosition = pos;
-            //}
         }
     });
 
@@ -6311,17 +6409,22 @@ var Transform = (function () {
             return this.worldPosition.y;
         },
         set: function (value) {
-            if ( this._parent ) {
-                var pl2w = this._parent.getLocalToWorldMatrix();
-                var l2w = this.getLocalMatrix().prepend(pl2w);
-                if (l2w.ty !== value) {
-                    this._position.x = l2w.tx;
+            if ( !isNaN(value) ) {
+                if ( this._parent ) {
+                    var pl2w = this._parent.getLocalToWorldMatrix();
+                    var l2w = this.getLocalMatrix().prepend(pl2w);
+                    if (l2w.ty !== value) {
+                        this._position.x = l2w.tx;
+                        this._position.y = value;
+                        pl2w.invert().transformPoint(this._position, this._position);
+                    }
+                }
+                else {
                     this._position.y = value;
-                    pl2w.invert().transformPoint(this._position, this._position);
                 }
             }
             else {
-                this._position.y = value;
+                Fire.error(ERR_NaN, 'new worldY');
             }
         }
     });
@@ -6335,7 +6438,12 @@ var Transform = (function () {
             return this._rotation;
         },
         function (value) {
-            this._rotation = value;
+            if ( !isNaN(value) ) {
+                this._rotation = value;
+            }
+            else {
+                Fire.error(ERR_NaN, 'new rotation');
+            }
         },
         Fire.Tooltip('The counterclockwise degrees of rotation relative to the parent')
     );
@@ -6354,11 +6462,16 @@ var Transform = (function () {
             }
         },
         set: function (value) {
-            if ( this._parent ) {
-                this.rotation = value - this._parent.worldRotation;
+            if ( !isNaN(value) ) {
+                if ( this._parent ) {
+                    this.rotation = value - this._parent.worldRotation;
+                }
+                else {
+                    this.rotation = value;
+                }
             }
             else {
-                this.rotation = value;
+                Fire.error(ERR_NaN, 'new worldRotation');
             }
         }
     });
@@ -6373,8 +6486,15 @@ var Transform = (function () {
             return new Vec2(this._scale.x, this._scale.y);
         },
         function (value) {
-            this._scale.x = value.x;
-            this._scale.y = value.y;
+            var x = value.x;
+            var y = value.y;
+            if ( !isNaN(x) && !isNaN(y) ) {
+                this._scale.x = x;
+                this._scale.y = y;
+            }
+            else {
+                Fire.error(ERR_NaN, 'xy of new scale');
+            }
         },
         Fire.Tooltip('The local scale factor relative to the parent')
     );
@@ -6389,7 +6509,12 @@ var Transform = (function () {
             return this._scale.x;
         },
         set: function (value) {
-            this._scale.x = value;
+            if ( !isNaN(value) ) {
+                this._scale.x = value;
+            }
+            else {
+                Fire.error(ERR_NaN, 'new scaleX');
+            }
         }
     });
 
@@ -6403,7 +6528,12 @@ var Transform = (function () {
             return this._scale.y;
         },
         set: function (value) {
-            this._scale.y = value;
+            if ( !isNaN(value) ) {
+                this._scale.y = value;
+            }
+            else {
+                Fire.error(ERR_NaN, 'new scaleY');
+            }
         }
     });
 
@@ -6574,7 +6704,17 @@ var Transform = (function () {
     };
 
     /**
-     * @property {Fire.Vec2} up - up direction, point to the y(green) axis
+     * Moves the transform in the direction and distance of translation. The movement is applied relative to the transform's local space.
+     * @method Transform#translate
+     * @param {Fire.Vec2} translation
+     */
+    Transform.prototype.translate = function (translation) {
+        var rotated = translation.rotate(Math.deg2rad(this._rotation));
+        this.position = this._position.add(rotated, rotated);
+    };
+
+    /**
+     * @property {Fire.Vec2} up - up direction in world space, point to the y(green) axis
      */
     Object.defineProperty(Transform.prototype, 'up', {
         get: function () {
@@ -6591,7 +6731,7 @@ var Transform = (function () {
     });
 
     /**
-     * @property {Fire.Vec2} right - right direction, point to the x(red) axis
+     * @property {Fire.Vec2} right - right direction in world space, point to the x(red) axis
      */
     Object.defineProperty(Transform.prototype, 'right', {
         get: function () {
@@ -6980,10 +7120,8 @@ var BitmapText = (function () {
             return this._bitmapFont;
         },
         function (value) {
-            if (this._bitmapFont !== value) {
-                this._bitmapFont = value;
-                Engine._renderContext.setBitmapFont(this);
-            }
+            this._bitmapFont = value;
+            Engine._renderContext.setBitmapFont(this);
         },
         Fire.ObjectType(Fire.BitmapFont)
     );
@@ -7624,6 +7762,20 @@ var Entity = (function () {
         }
     };
 
+    Object.defineProperty(Entity.prototype, 'dontDestroyOnLoad', {
+        get: function () {
+            return this.dontDestroyOnLoad;
+        },
+        set: function(value) {
+            if(value) {
+                this._objFlags |= DontDestroy;
+            }
+            else {
+                this._objFlags &= ~DontDestroy;
+            }
+        }
+    });
+
     /**
      * Get all the targets listening to the supplied type of event in the target's capturing phase.
      * The capturing phase comprises the journey from the root to the last node BEFORE the event target's node.
@@ -7683,7 +7835,7 @@ var Entity = (function () {
             constructor = JS.getClassByName(typeOrTypename);
             if ( !constructor ) {
                 Fire.error('[addComponent] Failed to get class "%s"');
-                if (_requiringFrame.length > 0) {
+                if (_requiringFrames.length > 0) {
                     Fire.error('You should not add component when the scripts are still loading.', typeOrTypename);
                 }
                 return null;
@@ -8202,7 +8354,12 @@ var Scene = (function () {
         for (var i = 0, len = entities.length; i < len; ++i) {
             var entity = entities[i];
             if (entity.isValid) {
-                entity.destroy();
+                if (entity._objFlags & DontDestroy) {
+                    Engine._launchingScene.entities.push(entity);
+                }
+                else {
+                    entity.destroy();
+                }
             }
         }
         _super.prototype.destroy.call(this);
@@ -8394,45 +8551,87 @@ var AssetLibrary = (function () {
 
     // configs
 
-    /**
-     * 当uuid不在_uuidToUrl里面，则将uuid本身作为url加载，路径位于_libraryBase。
-     */
     var _libraryBase = '';
 
     // variables
 
-    /**
-     * the loading uuid's callbacks
-     */
+    // the loading uuid's callbacks
     var _uuidToCallbacks = new Fire.CallbacksInvoker();
+
+    // temp deserialize info
+    var _tdInfo = new Fire._DeserializeInfo();
+
+    // create a loading context which reserves all relevant parameters
+    function LoadingHandle (readMainCache, writeMainCache) {
+        this.readMainCache = readMainCache;
+        this.writeMainCache = writeMainCache;
+        var needIndieCache = !(this.readMainCache && this.writeMainCache);
+        this.taskIndieCache = needIndieCache ? {} : null;
+    }
+    LoadingHandle.prototype.readCache = function (uuid) {
+        if (this.readMainCache && this.writeMainCache) {
+            return AssetLibrary._uuidToAsset[uuid];
+        }
+        else {
+            if (this.readMainCache) {
+                // writeMainCache == false
+                return AssetLibrary._uuidToAsset[uuid] || this.taskIndieCache[uuid];
+            }
+            else {
+                return this.taskIndieCache[uuid];
+            }
+        }
+    };
+    LoadingHandle.prototype.writeCache = function (uuid, asset) {
+        if (this.writeMainCache) {
+            AssetLibrary._uuidToAsset[uuid] = asset;
+        }
+        if (this.taskIndieCache) {
+            this.taskIndieCache[uuid] = asset;
+        }
+    };
 
     // publics
 
     var AssetLibrary = {
 
         /**
+         * @param {string} uuid
+         * @param {function} callback
+         * @param {boolean} [readMainCache=true] - If false, the asset and all its depends assets will reload and create new instances from library.
+         * @param {boolean} [writeMainCache=true] - If true, the result will cache to AssetLibrary, and MUST be unload by user manually.
+         * @param {Fire.Asset} [existingAsset] - load to existing asset, this argument is only available in editor
+         */
+        loadAsset: function (uuid, callback, readMainCache, writeMainCache, existingAsset) {
+            readMainCache = typeof readMainCache !== 'undefined' ? readMainCache : true;
+            writeMainCache = typeof writeMainCache !== 'undefined' ? writeMainCache : true;
+
+            var handle = new LoadingHandle(readMainCache, writeMainCache);
+            this._loadAssetByUuid(uuid, callback, handle, existingAsset);
+        },
+
+        _LoadingHandle: LoadingHandle,
+
+        /**
          * uuid加载流程：
          * 1. 查找_uuidToAsset，如果已经加载过，直接返回
          * 2. 查找_uuidToCallbacks，如果已经在加载，则注册回调，直接返回
-         * 4. 如果没有url，则将uuid直接作为路径
-         * 5. 递归加载Asset及其引用到的其它Asset
+         * 3. 如果没有url，则将uuid直接作为路径
+         * 4. 递归加载Asset及其引用到的其它Asset
          *
          * @param {string} uuid
-         * @param {AssetLibrary~loadCallback} [callback] - the callback to receive the asset
-         * @param {boolean} [dontCache=false] - If false, the result will cache to AssetLibrary, and MUST be unload by user manually.
-         * @param {Fire._DeserializeInfo} [info] - reused temp obj
-         * @param {Fire.Asset} [existingAsset] - load to existing asset in editor
-         * NOTE: loadAssetByUuid will always try to get the cached asset, unless existingAsset is supplied.
+         * @param {AssetLibrary~loadCallback} callback - the callback to receive the asset
+         * @param {LoadingHandle} handle - the loading context which reserves all relevant parameters
+         * @param {Fire.Asset} [existingAsset] - load to existing asset, this argument is only available in editor
          */
-        _loadAssetByUuid: function (uuid, callback, dontCache, info, existingAsset) {
-            dontCache = (typeof dontCache !== 'undefined') ? dontCache : false;
+        _loadAssetByUuid: function (uuid, callback, handle, existingAsset) {
             if (typeof uuid !== 'string') {
                 callback('[AssetLibrary] uuid must be string', null);
                 return;
             }
             // step 1
             if ( !existingAsset ) {
-                var asset = AssetLibrary._uuidToAsset[uuid];
+                var asset = handle.readCache(uuid);
                 if (asset) {
                     if (callback) {
                         callback(null, asset);
@@ -8444,7 +8643,7 @@ var AssetLibrary = (function () {
             // step 2
             // 如果必须重新加载，则不能合并到到 _uuidToCallbacks，否则现有的加载成功后会同时触发回调，
             // 导致提前返回的之前的资源。
-            var canShareLoadingTask = !dontCache && !existingAsset;
+            var canShareLoadingTask = handle.readMainCache && !existingAsset;
             if ( canShareLoadingTask && !_uuidToCallbacks.add(uuid, callback) ) {
                 // already loading
                 return;
@@ -8459,9 +8658,7 @@ var AssetLibrary = (function () {
                     function onDeserializedWithDepends (err, asset) {
                         if (asset) {
                             asset._uuid = uuid;
-                            if ( !dontCache ) {
-                                AssetLibrary._uuidToAsset[uuid] = asset;
-                            }
+                            handle.writeCache(uuid, asset);
                         }
                         if ( canShareLoadingTask ) {
                             _uuidToCallbacks.invokeAndRemove(uuid, err, asset);
@@ -8471,7 +8668,7 @@ var AssetLibrary = (function () {
                         }
                     }
                     if (json) {
-                        AssetLibrary.loadJson(json, url, onDeserializedWithDepends, dontCache, info, existingAsset);
+                        AssetLibrary._deserializeWithDepends(json, url, onDeserializedWithDepends, handle, existingAsset);
                     }
                     else {
                         onDeserializedWithDepends(error, null);
@@ -8482,23 +8679,22 @@ var AssetLibrary = (function () {
 
         /**
          * @param {string|object} json
-         * @param {string} url
          * @param {function} callback
          * @param {boolean} [dontCache=false] - If false, the result will cache to AssetLibrary, and MUST be unload by user manually.
-         * NOTE: loadAssetByUuid will always try to get the cached asset, no matter whether dontCache is indicated.
-         * @param {Fire._DeserializeInfo} [info] - reused temp obj
+         */
+        loadJson: function (json, callback, dontCache) {
+            var handle = new LoadingHandle(!dontCache, !dontCache);
+            this._deserializeWithDepends(json, '', callback, handle);
+        },
+
+        /**
+         * @param {string|object} json
+         * @param {string} url
+         * @param {function} callback
+         * @param {object} handle - the loading context which reserves all relevant parameters
          * @param {Fire.Asset} [existingAsset] - existing asset to reload
          */
-        loadJson: function (json, url, callback, dontCache, info, existingAsset) {
-            // prepare
-            if (info) {
-                // info我们只是用来重用临时对象，所以每次使用前要重设。
-                info.reset();
-            }
-            else {
-                info = new Fire._DeserializeInfo();
-            }
-
+        _deserializeWithDepends: function (json, url, callback, handle, existingAsset) {
             // deserialize asset
             var isScene = json && json[0] && json[0].__type__ === JS._getClassId(Scene);
             var classFinder = isScene ? Fire._MissingScript.safeFindClass : function (id) {
@@ -8510,20 +8706,20 @@ var AssetLibrary = (function () {
                 return Object;
             };
             Engine._canModifyCurrentScene = false;
-            var asset = Fire.deserialize(json, info, {
+            var asset = Fire.deserialize(json, _tdInfo, {
                 classFinder: classFinder,
                 target: existingAsset
             });
             Engine._canModifyCurrentScene = true;
 
             // load depends
-            var pendingCount = info.uuidList.length;
+            var pendingCount = _tdInfo.uuidList.length;
 
             // load raw
-            var rawProp = info.rawProp;     // info只能在当帧使用，不能用在回调里！
+            var rawProp = _tdInfo.rawProp;     // _tdInfo不能用在回调里！
             if (rawProp) {
                 // load depends raw objects
-                var attrs = Fire.attr(asset.constructor, info.rawProp);
+                var attrs = Fire.attr(asset.constructor, _tdInfo.rawProp);
                 var rawType = attrs.rawType;
                 ++pendingCount;
                 LoadManager.load(url, rawType, asset._rawext, function onRawObjLoaded (error, raw) {
@@ -8551,16 +8747,16 @@ var AssetLibrary = (function () {
              */
 
             // load depends assets
-            for (var i = 0, len = info.uuidList.length; i < len; i++) {
-                var dependsUuid = info.uuidList[i];
+            for (var i = 0, len = _tdInfo.uuidList.length; i < len; i++) {
+                var dependsUuid = _tdInfo.uuidList[i];
                 var onDependsAssetLoaded = (function (dependsUuid, obj, prop) {
                     // create closure manually because its extremely faster than bind
                     return function (error, dependsAsset) {
                         if (error) {
                         }
-                        else {
-                            dependsAsset._uuid = dependsUuid;
-                        }
+                        //else {
+                        //    dependsAsset._uuid = dependsUuid;
+                        //}
                         // update reference
                         obj[prop] = dependsAsset;
                         // check all finished
@@ -8569,17 +8765,13 @@ var AssetLibrary = (function () {
                             callback(null, asset);
                         }
                     };
-                })( dependsUuid, info.uuidObjList[i], info.uuidPropList[i] );
-                AssetLibrary._loadAssetByUuid(dependsUuid, onDependsAssetLoaded, dontCache, info);
+                })( dependsUuid, _tdInfo.uuidObjList[i], _tdInfo.uuidPropList[i] );
+                AssetLibrary._loadAssetByUuid(dependsUuid, onDependsAssetLoaded, handle);
+                invokeCbByDepends = true;
             }
 
-        },
-
-        /**
-         * Just the same as _loadAssetByUuid, but will not cache the asset.
-         */
-        loadAsset: function (uuid, callback) {
-            this._loadAssetByUuid(uuid, callback, true, null);
+            // _tdInfo 是用来重用临时对象，每次使用后都要重设，这样才对 GC 友好。
+            _tdInfo.reset();
         },
 
         /**
@@ -8591,8 +8783,6 @@ var AssetLibrary = (function () {
         getAssetByUuid: function (uuid) {
             return AssetLibrary._uuidToAsset[uuid] || null;
         },
-
-        //loadAssetByUrl: function (url, callback, info) {},
 
         /**
          * @callback AssetLibrary~loadCallback
@@ -8701,6 +8891,9 @@ var Engine = (function () {
      * @property {Scene} Engine._scene - the active scene
      */
     Engine._scene = null;
+
+    //
+    Engine._launchingScene = null;
 
     // main render context
     Engine._renderContext = null;
@@ -8923,8 +9116,8 @@ var Engine = (function () {
             Fire.error('Argument must be non-nil');
             return;
         }
+        Engine._launchingScene = scene;
 
-        // TODO: allow dont destroy behaviours
         // unload scene
         var oldScene = Engine._scene;
         if (Fire.isValid(oldScene)) {
@@ -8946,6 +9139,7 @@ var Engine = (function () {
         Engine._renderContext.onSceneLoaded(scene);
         // launch scene
         Engine._scene = scene;
+        Engine._launchingScene = null;
         Engine._renderContext.onSceneLaunched(scene);
         scene.activate();
     };
@@ -8978,7 +9172,7 @@ var Engine = (function () {
         // TODO: lookup uuid by name
         isLoadingScene = true;
         AssetLibrary.unloadAsset(uuid);     // force reload
-        AssetLibrary._loadAssetByUuid(uuid, function onSceneLoaded (error, scene) {
+        AssetLibrary.loadAsset(uuid, function onSceneLoaded (error, scene) {
             if (error) {
                 Fire.error('Failed to load scene: ' + error);
                 isLoadingScene = false;
@@ -9392,8 +9586,14 @@ Fire.EventRegister = EventRegister;
 var Input = (function () {
 
     var Input = {
-        _eventListeners: new EventListeners(),
+        _eventListeners: new EventListeners()
     };
+
+    Object.defineProperty(Input, 'hasTouch', {
+        get: function () {
+            return !!Engine._inputContext && Engine._inputContext.hasTouch;
+        }
+    });
 
     Input.on = function (type, callback) {
         if (callback) {

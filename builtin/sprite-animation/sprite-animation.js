@@ -4,7 +4,7 @@ var SpriteAnimationState = require('sprite-animation-state');
 // 定义一个名叫Sprite Animation 组件
 var SpriteAnimation = Fire.extend('Fire.SpriteAnimation', Fire.Component, function () {
     this.animations = [];
-    this._nameToState = {};
+    this._nameToState = null;
     this._curAnimation = null;
     this._spriteRenderer = null;
     this._defaultSprite = null;
@@ -29,34 +29,40 @@ SpriteAnimation.getset('playAutomatically',
     }
 );
 
-SpriteAnimation.prototype.getAnimState = function (animClip) {
-
-    this._spriteRenderer = this.entity.getComponent(Fire.SpriteRenderer);
-
-    var newAnimState = new SpriteAnimationState(animClip.name, animClip);
-
-    return newAnimState;
-};
-
 SpriteAnimation.prototype.init = function () {
-    var initialized = (this.nameToState !== null);
+    var initialized = (this._nameToState !== null);
     if (initialized === false) {
-        this.sprite_ = this.entity.getComponent(Fire.Sprite);
-        this._defaultSprite = sprite_;
+        this._spriteRenderer = this.entity.getComponent(Fire.SpriteRenderer);
+        this._defaultSprite = this._spriteRenderer.sprite;
 
-        this.nameToState = {};
+        this._nameToState = {};
+        var state = null;
         for (var i = 0; i < this.animations.length; ++i) {
             var clip = this.animations[i];
             if (clip !== null) {
-                var state = new SpriteAnimationState(clip);
-                this.nameToState[state.name] = state;
-                if (this.defaultAnimation === clip) {
-                    this.curAnimation = state;
-                    this.lastFrameIndex = -1;
-                }
+                state = new SpriteAnimationState(clip);
+                this._nameToState[state.name] = state;
             }
         }
+
+        if (!this.getAnimState(this.defaultAnimation.name)) {
+            state = new SpriteAnimationState(this.defaultAnimation);
+            this._nameToState[state.name] = state;
+        }
     }
+};
+
+SpriteAnimation.prototype.getAnimState = function ( name ){
+    return this._nameToState && this._nameToState[name];
+};
+
+/**
+ * indicates whether the animation is playing
+ * @param {string} [animName] - The name of the animation
+ */
+SpriteAnimation.prototype.isPlaying = function ( name ) {
+    var playingAnim = this.enabled && this._curAnimation;
+    return !!playingAnim && ( !name || playingAnim.name === name );
 };
 
 SpriteAnimation.prototype.play = function (animState, time) {
@@ -70,9 +76,10 @@ SpriteAnimation.prototype.play = function (animState, time) {
 };
 
 SpriteAnimation.prototype.onLoad = function () {
+    this.init();
     if (this.enabled) {
         if (this._playAutomatically && this.defaultAnimation) {
-            var animState = this.getAnimState(this.defaultAnimation);
+            var animState = this.getAnimState(this.defaultAnimation.name);
             this.play(animState, 0);
         }
     }
@@ -166,5 +173,7 @@ SpriteAnimation.prototype.stop = function (animState) {
         this._curAnimation = null;
     }
 };
+
+Fire.SpriteAnimation = SpriteAnimation;
 
 module.exports = SpriteAnimation;

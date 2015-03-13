@@ -2,7 +2,7 @@
 module.exports = {
     load: function (context) {
         context.on('asset-db:debugger:open', function () {
-            context.openWindow('asset-db:debugger');
+            context.openWindow('asset-db-debugger');
         });
 
         context.on ( 'asset-db:debugger:query-url-uuid', function () {

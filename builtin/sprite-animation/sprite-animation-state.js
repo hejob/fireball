@@ -1,6 +1,6 @@
 var SpriteAnimationClip = require('sprite-animation-clip');
 
-var SpriteAnimationState = function (name, animClip) {
+var SpriteAnimationState = function (animClip) {
     if (!animClip) {
 // @if DEV
         Fire.error('Unspecified sprite animation clip');
@@ -8,7 +8,7 @@ var SpriteAnimationState = function (name, animClip) {
         return;
     }
     // the name of the sprite animation state
-    this.name = name;
+    this.name = animClip.name;
     // the referenced sprite sprite animation clip
     this.clip = animClip;
     // the wrap mode
@@ -126,5 +126,7 @@ function _wrap (_value, _maxValue, _wrapMode) {
     }
     return _value;
 }
+
+Fire.SpriteAnimationState = SpriteAnimationState;
 
 module.exports = SpriteAnimationState;

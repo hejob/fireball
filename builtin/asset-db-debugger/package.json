@@ -12,7 +12,7 @@
             }
         ],
         "windows": {
-            "asset-db:debugger": {
+            "asset-db-debugger": {
                 "url": "editor/index.html",
                 "options": {
                     "title": "AssetDB Debugger",

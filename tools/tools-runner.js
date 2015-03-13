@@ -56,12 +56,19 @@ var ToolsRunner = {
         });
         return childProcess;
     },
-
     gulp: function (gulpfile, args, callback) {
         args.unshift('--gulpfile', gulpfile);
         args.unshift('--cwd', cwd);   // to prevent cwd changed by --gulpfile
         return this.spawn('gulp', args, callback);
     }
+
+    //gulp: function (gulpfile, args, callback) {
+    //    args.unshift('--gulpfile', gulpfile);
+    //    args.unshift('--cwd', cwd);   // to prevent cwd changed by --gulpfile
+    //    //return this.spawn('gulp', args, callback);
+    //    args.unshift(Path.join('node_modules', 'gulp', 'bin', 'gulp.js'));
+    //    return this.spawn(Path.join('node_modules', 'node', 'node'), args, callback);
+    //}
 };
 
 module.exports = ToolsRunner;

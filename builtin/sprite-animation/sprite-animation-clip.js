@@ -80,4 +80,6 @@ SpriteAnimationClip.prototype.getFrameInfoFrames = function () {
     return this._frameInfoFrames;
 };
 
+Fire.SpriteAnimationClip = SpriteAnimationClip;
+
 module.exports = SpriteAnimationClip;
