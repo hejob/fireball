@@ -1,0 +1,55 @@
+{
+  "type": "dock",
+  "no-collpase": true,
+  "row": true,
+  "docks": [
+    {
+      "type": "dock",
+      "width": 200,
+      "min-width": 200,
+      "docks": [
+        {
+          "type": "panel",
+          "height": 300,
+          "panels": [
+            "fire-hierarchy"
+          ]
+        },
+        {
+          "type": "panel",
+          "panels": [
+            "fire-assets"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "panel",
+      "width": 300,
+      "min-width": 240,
+      "panels": [
+        "fire-inspector"
+      ]
+    },
+    {
+      "type": "dock",
+      "docks": [
+        {
+          "type": "panel",
+          "auto-layout": true,
+          "panels": [
+            "fire-scene",
+            "fire-game"
+          ]
+        },
+        {
+          "type": "panel",
+          "height": 200,
+          "panels": [
+            "fire-console"
+          ]
+        }
+      ]
+    }
+  ]
+}

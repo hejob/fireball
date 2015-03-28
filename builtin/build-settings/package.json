@@ -11,17 +11,18 @@
                 "message": "build-settings:open"
             }
         ],
-        "windows": {
-            "build-settings": {
-                "url": "editor/index.html",
-                "options": {
-                    "title": "Build Settings",
-                    "width": 500,
-                    "height": 520,
-                    "min-width": 500,
-                    "min-height": 500,
-                    "resizable": false,
-                    "always-on-top": true
+        "panels": {
+            "default": {
+                "type": "fixed-size",
+                "view": "editor/build-settings.html",
+                "ctor": "BuildSettings",
+                "title": "Build Settings",
+                "width": 500,
+                "height": 530,
+                "min-width": 500,
+                "min-height": 500,
+                "messages": {
+                    "build-settings:query-scenes-results": "query-scene-results"
                 }
             }
         }

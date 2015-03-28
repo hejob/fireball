@@ -15,7 +15,7 @@ var SpriteAnimation = Fire.extend('Fire.SpriteAnimation', Fire.Component, functi
 
 Fire.addComponentMenu(SpriteAnimation, 'Sprite Animation');
 
-SpriteAnimation.prop('defaultAnimation', null , Fire.ObjectType(SpriteAnimationClip));
+SpriteAnimation.prop('defaultAnimation', null, Fire.ObjectType(SpriteAnimationClip));
 
 SpriteAnimation.prop('animations', [], Fire.ObjectType(SpriteAnimationClip));
 
@@ -52,7 +52,7 @@ SpriteAnimation.prototype.init = function () {
     }
 };
 
-SpriteAnimation.prototype.getAnimState = function ( name ){
+SpriteAnimation.prototype.getAnimState = function (name) {
     return this._nameToState && this._nameToState[name];
 };
 
@@ -60,16 +60,27 @@ SpriteAnimation.prototype.getAnimState = function ( name ){
  * indicates whether the animation is playing
  * @param {string} [animName] - The name of the animation
  */
-SpriteAnimation.prototype.isPlaying = function ( name ) {
+SpriteAnimation.prototype.isPlaying = function (name) {
     var playingAnim = this.enabled && this._curAnimation;
     return !!playingAnim && ( !name || playingAnim.name === name );
 };
 
+/**
+ * play Animation
+ * @param {SpriteAnimationState} [animState|animName] - The animState of the SpriteAnimationState
+ * @param {SpriteAnimationState} [animState] - The time of the animation time
+ */
 SpriteAnimation.prototype.play = function (animState, time) {
-    this._curAnimation = animState;
+    if (typeof animState === 'string') {
+        this._curAnimation = this.getAnimState(animState);
+    }
+    else {
+        this._curAnimation = animState || new SpriteAnimationState(this.defaultAnimation);
+    }
+
     if (this._curAnimation !== null) {
         this._curIndex = -1;
-        this._curAnimation.time = time;
+        this._curAnimation.time = time || 0;
         this._playStartFrame = Fire.Time.frameCount;
         this.sample();
     }
@@ -148,7 +159,7 @@ SpriteAnimation.prototype.sample = function () {
 };
 
 SpriteAnimation.prototype.stop = function (animState) {
-    if ( animState !== null ) {
+    if (animState !== null) {
         if (animState === this._curAnimation) {
             this._curAnimation = null;
         }
@@ -166,6 +177,7 @@ SpriteAnimation.prototype.stop = function (animState) {
                 break;
             case SpriteAnimationClip.StopAction.Destroy:
 
+                this.entity.destroy();
                 break;
             default:
                 break;

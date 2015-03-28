@@ -11,16 +11,21 @@
                 "message": "asset-db:debugger:open"
             }
         ],
-        "windows": {
-            "asset-db-debugger": {
-                "url": "editor/index.html",
-                "options": {
-                    "title": "AssetDB Debugger",
-                    "width": 500,
-                    "height": 800,
-                    "min-width": 400,
-                    "min-height": 200,
-                    "resizable": true
+        "panels": {
+            "default": {
+                "type": "dockable",
+                "view": "editor/asset-db-debugger.html",
+                "ctor": "AssetDBDebugger",
+                "title": "AssetDB Debugger",
+                "width": 500,
+                "height": 800,
+                "min-width": 400,
+                "min-height": 200,
+                "messages": {
+                    "asset-db:debugger:url-uuid-results": "url-uuid-results",
+                    "asset-db:debugger:uuid-url-results": "uuid-url-results",
+                    "asset-db:debugger:url-subuuids-results": "url-subuuids-results",
+                    "asset-library:debugger:uuid-asset-results": "uuid-asset-results"
                 }
             }
         }

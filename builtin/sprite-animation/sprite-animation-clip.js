@@ -5,24 +5,22 @@ var SpriteAnimationClip = Fire.extend('Fire.SpriteAnimationClip', Fire.CustomAss
     this._frameInfoFrames = null; // the array of the end frame of each frame info
 });
 
-Fire.addCustomAssetMenu(SpriteAnimationClip, "Create/New Sprite Animation");
+Fire.addCustomAssetMenu(SpriteAnimationClip, "New Sprite Animation");
 
-SpriteAnimationClip.WrapMode = (function (t) {
-    t[t.Default = 0] = 'Default';
-    t[t.Once = 1] = 'Once';
-    t[t.Loop = 2] = 'Loop';
-    t[t.PingPong = 3] = 'PingPong';
-    t[t.ClampForever = 4] = 'ClampForever';
-    return t;
-})({});
+SpriteAnimationClip.WrapMode = Fire.defineEnum({
+    Default: -1,
+    Once: -1,
+    Loop: -1,
+    PingPong: -1,
+    ClampForever: -1
+});
 
-SpriteAnimationClip.StopAction = (function (t) {
-    t[t.DoNothing = 0] = 'DoNothing';         // do nothing
-    t[t.DefaultSprite = 1] = 'DefaultSprite'; // set to default sprite when the sprite animation stopped
-    t[t.Hide = 2] = 'Hide';                   // hide the sprite when the sprite animation stopped
-    t[t.Destroy = 3] = 'Destroy';             // destroy the entity the sprite belongs to when the sprite animation stopped
-    return t;
-})({});
+SpriteAnimationClip.StopAction = Fire.defineEnum({
+    DoNothing: -1,    // do nothing
+    DefaultSprite: 1, // set to default sprite when the sprite animation stopped
+    Hide: -1,         // hide the sprite when the sprite animation stopped
+    Destroy: -1       // destroy the entity the sprite belongs to when the sprite animation stopped
+});
 
 // ------------------------------------------------------------------
 /// The structure to descrip a frame in the sprite animation clip

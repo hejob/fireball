@@ -1,11 +1,11 @@
 
 module.exports = {
-    load: function (context) {
-        context.on('asset-db:debugger:open', function () {
-            context.openWindow('asset-db-debugger');
+    load: function (plugin) {
+        plugin.on('asset-db:debugger:open', function () {
+            plugin.openPanel('default');
         });
 
-        context.on ( 'asset-db:debugger:query-url-uuid', function () {
+        plugin.on ( 'asset-db:debugger:query-url-uuid', function () {
             var results = [];
             for ( var p in Fire.AssetDB._pathToUuid ) {
                 var url = Fire.AssetDB._url(p);
@@ -14,9 +14,12 @@ module.exports = {
             results.sort( function ( a, b ) {
                 return a.url.localeCompare(b.url);
             });
-            Fire.sendToPages( 'asset-db:debugger:url-uuid-results', results );
+            plugin.sendToPanel( 'default', 'asset-db:debugger:url-uuid-results', {
+                results: results
+            });
         } );
-        context.on ( 'asset-db:debugger:query-uuid-url', function () {
+
+        plugin.on ( 'asset-db:debugger:query-uuid-url', function () {
             var results = [];
             for ( var p in Fire.AssetDB._uuidToPath ) {
                 var url = Fire.AssetDB._url(Fire.AssetDB._uuidToPath[p]);
@@ -25,9 +28,12 @@ module.exports = {
             results.sort( function ( a, b ) {
                 return a.url.localeCompare(b.url);
             });
-            Fire.sendToPlugin( 'asset-db:debugger:uuid-url-results', results );
+            plugin.sendToPanel( 'default', 'asset-db:debugger:uuid-url-results', {
+                results: results
+            });
         } );
-        context.on ( 'asset-db:debugger:query-url-subuuids', function () {
+
+        plugin.on ( 'asset-db:debugger:query-url-subuuids', function () {
             var results = [];
             for ( var p in Fire.AssetDB._pathToSubUuids ) {
                 var url = Fire.AssetDB._url(p);
@@ -36,9 +42,12 @@ module.exports = {
             results.sort( function ( a, b ) {
                 return a.url.localeCompare(b.url);
             });
-            Fire.sendToPlugin( 'asset-db:debugger:url-subuuids-results', results );
+            plugin.sendToPanel( 'default', 'asset-db:debugger:url-subuuids-results', {
+                results: results
+            });
         } );
     },
-    //unload: function (context) {
-    //},
+
+    // unload: function (plugin) {
+    // },
 };

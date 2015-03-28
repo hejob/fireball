@@ -1,12 +1,12 @@
 var Url = require('fire-url');
 
 module.exports = {
-    load: function (context) {
-        context.on('build-settings:open', function () {
-            context.openWindow('build-settings');
+    load: function (plugin) {
+        plugin.on('build-settings:open', function () {
+            plugin.openPanel('default');
         });
 
-        context.on('build-settings:query-scenes', function () {
+        plugin.on('build-settings:query-scenes', function () {
             var results = [];
             for ( var p in Fire.AssetDB._pathToUuid ) {
                 var url = Fire.AssetDB._url(p);
@@ -14,9 +14,11 @@ module.exports = {
                     results.push({ url: url, uuid: Fire.AssetDB._pathToUuid[p] });
                 }
             }
-            Fire.sendToPlugin( 'build-settings:query-scenes-results', results );
+            plugin.sendToPanel( 'default', 'build-settings:query-scenes-results', {
+                results: results
+            });
         });
     },
-    unload: function (context) {
+    unload: function (plugin) {
     },
 };

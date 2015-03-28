@@ -52,7 +52,7 @@
 
     var AudioContext = {};
 
-    AudioContext.MaxDecodeTime = 3000;
+    AudioContext.MaxDecodeTime = 4000;
 
     AudioContext.getCurrentTime = function (target) {
         if ( target._paused ) {
@@ -121,7 +121,7 @@
 
         target._startTime += this.getPlayedTime(target);
         target._buffSource.onended = null;
-        target._buffSource.stop();
+        target._buffSource.stop(0);
     };
 
     //
@@ -131,7 +131,7 @@
         if ( !ended ) {
             target._buffSource.onended = null;
         }
-        target._buffSource.stop();
+        target._buffSource.stop(0);
     };
 
     //

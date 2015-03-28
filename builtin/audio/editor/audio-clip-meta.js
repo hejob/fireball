@@ -12,26 +12,24 @@ AudioClipMeta.prototype.createAsset = function ( path, cb ) {
 };
 
 AudioClipMeta.prototype.import = function (file) {
-    var process = 2;
+    var scope = this;
+    var Async = require('async');
 
-    Fire.AssetDB.saveAssetToLibrary(file.meta.uuid, file.asset, function (err) {
-        if (err) {
-            Fire.error(err.message);
+    Async.parallel([
+        function ( next ) {
+            Fire.AssetDB.saveAssetToLibrary( file.meta.uuid, file.asset, next );
+        },
+
+        function ( next ) {
+            Fire.AssetDB.copyToLibrary( file.meta.uuid, Path.extname(file.path), file.path, next );
+        },
+    ], function ( err ) {
+        if ( err ) {
+            scope.error(err);
             return;
         }
-
-        --process;
-        if (process === 0) this.done();
-    }.bind(this));
-
-    Fire.AssetDB.copyToLibrary(file.meta.uuid, Path.extname(file.path), file.path, function (err) {
-        if (err) {
-            Fire.error(err.message);
-        }
-
-        --process;
-        if (process === 0) this.done();
-    }.bind(this));
+        scope.done();
+    });
 };
 
 Fire.AudioClipMeta = AudioClipMeta;

@@ -297,22 +297,12 @@ function addMetaData () {
 
             var contents = file.contents.toString();
             var header;
-            if (isEditor) {
-                var script = Path.basename(file.path, Path.extname(file.path));
-                if (uuid) {
-                    header = Format("Fire._RFpush(module, '%s', '%s');\n// %s\n", uuid, script, file.relative);
-                }
-                else {
-                    header = Format("Fire._RFpush(module, '%s');\n// %s\n", script, file.relative);
-                }
+            var script = Path.basename(file.path, Path.extname(file.path));
+            if (uuid) {
+                header = Format("Fire._RFpush(module, '%s', '%s');\n// %s\n", uuid, script, file.relative);
             }
             else {
-                if (uuid) {
-                    header = Format("Fire._RFpush(module, '%s');\n// %s\n", uuid, file.relative);
-                }
-                else {
-                    header = Format("Fire._RFpush(module);\n// %s\n", file.relative);
-                }
+                header = Format("Fire._RFpush(module, '%s');\n// %s\n", script, file.relative);
             }
             var startsWithNewLine = (contents[0] === '\n' || contents[0] === '\r');
             if ( !startsWithNewLine ) {

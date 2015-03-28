@@ -104,7 +104,7 @@ var AudioSource = (function () {
        },
        function (value) {
            if (this._volume !== value) {
-               this._volume = Math.clamp(value);
+               this._volume = Math.clamp01(value);
                Fire.AudioContext.updateVolume(this);
            }
        },

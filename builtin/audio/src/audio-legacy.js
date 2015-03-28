@@ -12,11 +12,10 @@
         }, false);
         audio.addEventListener('error', function (e) {
             callback('LoadAudioClip: "' + url +
-                    '" seems to be unreachable or the file is empty. InnerMessage: ' + e, null);
+                    '" seems to be unreachable or the file is empty. InnerMessage: ' + e + '\n This may caused by fireball-x/dev#267', null);
         }, false);
 
         audio.src = url;
-        audio.load();
     }
 
     Fire.LoadManager.registerRawTypes('audio', loader);
@@ -96,30 +95,30 @@
 
     // 获得音频剪辑的 buffer
     AudioContext.getClipBuffer = function (clip) {
-        Fire.error("Audio does not contain the attribute!");
+        Fire.error("Audio does not contain the <Buffer> attribute!");
         return null;
     };
 
     // 以秒为单位 获取音频剪辑的 长度
     AudioContext.getClipLength = function (clip) {
-        return target.clip.rawData.duration;
+        return clip.rawData.duration;
     };
 
     // 音频剪辑的长度
     AudioContext.getClipSamples = function (target) {
-        Fire.error("Audio does not contain the attribute!");
+        Fire.error("Audio does not contain the <Samples> attribute!");
         return null;
     };
 
     // 音频剪辑的声道数
     AudioContext.getClipChannels = function (target) {
-        Fire.error("Audio does not contain the attribute!");
+        Fire.error("Audio does not contain the <Channels> attribute!");
         return null;
     };
 
     // 音频剪辑的采样频率
     AudioContext.getClipFrequency = function (target) {
-        Fire.error("Audio does not contain the attribute!");
+        Fire.error("Audio does not contain the <Frequency> attribute!");
         return null;
     };
 

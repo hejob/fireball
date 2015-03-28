@@ -1,7 +1,7 @@
 Fire.AudioClip = (function () {
     var AudioClip = Fire.extend("Fire.AudioClip", Fire.Asset);
 
-    AudioClip.prop('rawData', null, Fire.RawType('audio'));
+    AudioClip.prop('rawData', null, Fire.RawType('audio'), Fire.HideInInspector);
 
     AudioClip.get('buffer', function () {
         return Fire.AudioContext.getClipBuffer(this);

@@ -5,15 +5,18 @@
     "author": "KamiSama <1457434343@qq.com>",
     "fireball": {
         "main": "editor/main.js",
-        "windows": {
+        "panels": {
             "code-editor": {
-                "url": "editor/index.html",
-                "options": {
-                    "title": "Code Editor",
-                    "width": 1200,
-                    "height": 600,
-                    "min-width": 400,
-                    "resizable": true
+                "type": "dockable",
+                "view": "editor/code-editor.html",
+                "ctor": "CodeEditor",
+                "title": "Code Editor",
+                "width": 1200,
+                "height": 600,
+                "min-width": 400,
+                "min-height": 400,
+                "messages": {
+                    "asset:changed": "asset-changed"
                 }
             }
         }

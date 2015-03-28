@@ -5,16 +5,20 @@
     "author": "Johnny Wu <KarasAya@gmail.com>",
     "fireball": {
         "main": "editor/main.js",
-        "windows": {
-            "atlas-editor": {
-                "url": "editor/index.html",
-                "options": {
-                    "title": "Atlas Editor",
-                    "width": 800,
-                    "height": 600,
-                    "min-width": 400,
-                    "min-height": 400,
-                    "resizable": true
+        "panels": {
+            "default": {
+                "type": "dockable",
+                "view": "editor/atlas-editor.html",
+                "ctor": "AtlasEditor",
+                "title": "Atlas Editor",
+                "width": 800,
+                "height": 600,
+                "min-width": 400,
+                "min-height": 400,
+                "messages": {
+                    "asset:changed": "ipcAssetChanged",
+                    "inspector:asset:dirty": "ipcInspectorAssetDirty",
+                    "inspector:meta:dirty": "ipcInspectorMetaDirty"
                 }
             }
         }

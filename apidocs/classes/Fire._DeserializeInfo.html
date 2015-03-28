@@ -14,7 +14,7 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.4</span>
+                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
                     <p class="description">Fireball Game API: your toolbox</p>
             </div>
             <ul class="jump-links">
@@ -53,12 +53,14 @@
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,7 +74,7 @@
                 
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3331"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3331</code></a>
+                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3775"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3775</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -120,11 +122,55 @@
                 
                         <ul class="index-list properties">
                                 <li class="index-item property">
-                                    <a href="#property_"></a>
+                                    <a href="#property_Fire._isCloning">Fire._isCloning</a>
+                
+                                </li>
+                                <li class="index-item property private">
+                                    <a href="#property_Fire.Engine._editorCallback">Fire.Engine._editorCallback</a>
                 
                                 </li>
                                 <li class="index-item property">
-                                    <a href="#property_Fire._isCloning">Fire._isCloning</a>
+                                    <a href="#property_Fire.Engine._editorCallback.onComponentAdded">Fire.Engine._editorCallback.onComponentAdded</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onComponentDisabled">Fire.Engine._editorCallback.onComponentDisabled</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onComponentEnabled">Fire.Engine._editorCallback.onComponentEnabled</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onComponentRemoved">Fire.Engine._editorCallback.onComponentRemoved</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onEntityCreated">Fire.Engine._editorCallback.onEntityCreated</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onEntityIndexChanged">Fire.Engine._editorCallback.onEntityIndexChanged</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onEntityParentChanged">Fire.Engine._editorCallback.onEntityParentChanged</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onEntityRemoved">Fire.Engine._editorCallback.onEntityRemoved</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onEntityRenamed">Fire.Engine._editorCallback.onEntityRenamed</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onSceneLaunched">Fire.Engine._editorCallback.onSceneLaunched</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_Fire.Engine._editorCallback.onStartUnloadScene">Fire.Engine._editorCallback.onStartUnloadScene</a>
                 
                                 </li>
                                 <li class="index-item property">
@@ -136,30 +182,6 @@
                 
                                 </li>
                                 <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
                                     <a href="#property_uuidObjList - the obj list whose field needs to load asset by uuid">uuidObjList - the obj list whose field needs to load asset by uuid</a>
                 
                                 </li>
@@ -167,27 +189,11 @@
                                     <a href="#property_uuidPropList - the corresponding field name which referenced to the asset">uuidPropList - the corresponding field name which referenced to the asset</a>
                 
                                 </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
                         </ul>
                     </div>
                 
                 
                 
-                    <div class="index-section methods">
-                        <h3>Methods</h3>
-                
-                        <ul class="index-list methods">
-                
-                
-                                <li class="index-item method private">
-                                    <a href="#method_Fire.Time._update">Fire.Time._update</a>
-                
-                                </li>
-                        </ul>
-                    </div>
                 
                 </div>
                 
@@ -197,36 +203,6 @@
                     <div class="properties-detail">
                         <h2>Properties</h2>
                 
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4426"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4426</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>A reference to the target to which the event was originally dispatched</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
                             <a name="property_Fire._isCloning" class="anchor-link"></a>
                             <div class="property item">
                                 <h3 class="name"><code>Fire._isCloning</code>
@@ -241,7 +217,357 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3582"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3582</code></a>
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4029"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4029</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>Fire.Engine._editorCallback</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4798"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4798</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>overridable callbacks for editor</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onComponentAdded" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onComponentAdded</code>
+                                <span class="type">Fire.Engine._editorCallback~onComponentAdded</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4909"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4909</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onComponentDisabled" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onComponentDisabled</code>
+                                <span class="type">Fire.Engine._editorCallback~onComponentDisabled</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4899"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4899</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onComponentEnabled" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onComponentEnabled</code>
+                                <span class="type">Fire.Engine._editorCallback~onComponentEnabled</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4890"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4890</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onComponentRemoved" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onComponentRemoved</code>
+                                <span class="type">Fire.Engine._editorCallback~onComponentRemoved</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4919"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4919</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onEntityCreated" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onEntityCreated</code>
+                                <span class="type">Fire.Engine._editorCallback~onEntityCreated</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4814"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4814</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onEntityIndexChanged" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onEntityIndexChanged</code>
+                                <span class="type">Fire.Engine._editorCallback~onEntityIndexChanged</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4845"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4845</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onEntityParentChanged" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onEntityParentChanged</code>
+                                <span class="type">Fire.Engine._editorCallback~onEntityParentChanged</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4834"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4834</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onEntityRemoved" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onEntityRemoved</code>
+                                <span class="type">Fire.Engine._editorCallback~onEntityRemoved</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4825"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4825</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onEntityRenamed" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onEntityRenamed</code>
+                                <span class="type">Fire.Engine._editorCallback~onEntityRenamed</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4854"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4854</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onSceneLaunched" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onSceneLaunched</code>
+                                <span class="type">Fire.Engine._editorCallback~onSceneLaunched</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4872"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4872</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_Fire.Engine._editorCallback.onStartUnloadScene" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>Fire.Engine._editorCallback.onStartUnloadScene</code>
+                                <span class="type">Fire.Engine._editorCallback~onStartUnloadScene</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4863"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4863</code></a>
                                     </p>
                             
                             
@@ -270,7 +596,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3358"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3358</code></a>
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3802"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3802</code></a>
                                     </p>
                             
                             
@@ -299,7 +625,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3342"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3342</code></a>
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3786"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3786</code></a>
                                     </p>
                             
                             
@@ -308,195 +634,6 @@
                                 <div class="extended-detail">
                                     <div class="description">
                                         
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4464"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4464</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>Indicates whether or not event.stop() has been called on the event</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4420"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4420</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>The name of the event (case-sensitive), e.g. &quot;click&quot;, &quot;fire&quot;, or &quot;submit&quot;</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4458"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4458</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>Indicates whether or not event.preventDefault() has been called on the event</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4432"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4432</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>A reference to the currently registered target for the event</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4438"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4438</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>Indicates which phase of the event flow is currently being evaluated.
-                            Returns an integer value represented by 4 constants:</p>
-                            <ul>
-                            <li>Event.NONE = 0</li>
-                            <li>Event.CAPTURING_PHASE = 1</li>
-                            <li>Event.AT_TARGET = 2</li>
-                            <li>Event.BUBBLING_PHASE = 3
-                            The phases are explained in the [section 3.1, Event dispatch and DOM event flow]
-                            (<a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-flow">http://www.w3.org/TR/DOM-Level-3-Events/#event-flow</a>), of the DOM Level 3 Events specification.</li>
-                            </ul>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4452"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4452</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>A boolean indicating whether the event bubbles up through the hierarchy or not</p>
-                            
                                     </div>
                             
                             
@@ -517,7 +654,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3346"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3346</code></a>
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3790"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3790</code></a>
                                     </p>
                             
                             
@@ -546,7 +683,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3350"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3350</code></a>
+                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3794"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3794</code></a>
                                     </p>
                             
                             
@@ -555,36 +692,6 @@
                                 <div class="extended-detail">
                                     <div class="description">
                                         
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4470"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4470</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>Indicates whether or not event.stop(true) has been called on the event</p>
-                            
                                     </div>
                             
                             
@@ -600,75 +707,6 @@
                 
                 
                 
-                    <div class="methods-detail">
-                        <h2>Methods</h2>
-                
-                            <a name="method_Fire.Time._update" class="anchor-link"></a>
-                            <div class="method item private">
-                                <h3 class="name"><code>Fire.Time._update</code>
-                            
-                                    <div class="args">
-                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                            <li class="arg">
-                                                    <code class="optional">[paused=false]</code>
-                                            </li>
-                                        </ul><span class="paren">)</span>
-                                    </div>
-                            
-                            
-                            
-                                    <span class="flag private">private</span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4377"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4377</code></a>
-                                    </p>
-                            
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                            
-                                    <div class="description">
-                                        
-                                    </div>
-                            
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name optional">[paused=false]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                        <p>if true, only realTime will be updated</p>
-                            
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
-                            
-                            
-                                </div>
-                            </div>
-                
-                        <div class="no-visible-items-message">
-                            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-                        </div>
-                
-                    </div>
                 
                 
                 </div>

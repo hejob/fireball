@@ -28,17 +28,6 @@ else {
 }
 Fire.isEditorCore = Fire.isApp && !Fire.isWeb;
 
-/**
- * check if running in retina display
- * @property isRetina
- * @type boolean
- */
-Object.defineProperty(Fire, 'isRetina', {
-    get: function () {
-        return Fire.isWeb && window.devicePixelRatio && window.devicePixelRatio > 1;
-    }
-});
-
 if (Fire.isNode) {
     Fire.isDarwin = process.platform === 'darwin';
     Fire.isWin32 = process.platform === 'win32';
@@ -49,6 +38,36 @@ else {
     Fire.isDarwin = platform.substring(0, 3) === 'Mac';
     Fire.isWin32 = platform.substring(0, 3) === 'Win';
 }
+
+if (Fire.isPureWeb) {
+    var win = window, nav = win.navigator, doc = document, docEle = doc.documentElement;
+    var ua = nav.userAgent.toLowerCase();
+    Fire.isMobile = ua.indexOf('mobile') !== -1 || ua.indexOf('android') !== -1;
+    Fire.isIOS = !!ua.match(/(iPad|iPhone|iPod)/i);
+    Fire.isAndroid = !!(ua.match(/android/i) || nav.platform.match(/android/i));
+}
+else {
+    Fire.isAndroid = Fire.isIOS = Fire.isMobile = false;
+}
+
+/**
+ * Check if running in retina device, 这个属性会随着浏览器窗口所在的显示器变化而变化
+ * @property isRetina
+ * @type boolean
+ */
+Object.defineProperty(Fire, 'isRetina', {
+    get: function () {
+        return Fire.isWeb && window.devicePixelRatio && window.devicePixelRatio > 1;
+    }
+});
+
+/**
+ * Retina support is enabled by default for Apple device but disabled for other devices,
+ * Fire.isRetina 只表示浏览器的当前状态，而游戏的 Canvas 只有在 Fire.isRetinaEnabled 为 true 时才会使用高清分辨率。
+ * 由于安卓太卡，所以默认不启用 retina。
+ */
+Fire.isRetinaEnabled = (Fire.isIOS || Fire.isDarwin) && !Fire.isEditor && Fire.isRetina;
+
 
 // definitions for FObject._objFlags
 
@@ -343,7 +362,8 @@ JS.getClassName = function (obj) {
      * @return {function} constructor
      */
     JS._getClassById = function (classId) {
-        return _idToClass[classId];
+        var cls = _idToClass[classId];
+        return cls;
     };
 
     /**
@@ -396,6 +416,50 @@ else {
         console.error.apply(console, arguments);
     };
 }
+
+// enum
+
+Fire.defineEnum = function (obj) {
+    var enumType = {};
+    Object.defineProperty(enumType, '__enums__', {
+        value: undefined,
+        writable: true
+    });
+
+    var lastIndex = -1;
+    for (var key in obj) {
+        var val = obj[key];
+        if (val === -1) {
+            val = ++lastIndex;
+        }
+        else {
+            lastIndex = val;
+        }
+        enumType[key] = val;
+
+        var reverseKey = '' + val;
+        if (key !== reverseKey) {
+            Object.defineProperty(enumType, reverseKey, {
+                value: key,
+                enumerable: false
+            });
+        }
+    }
+    return enumType;
+};
+
+// check key order in object literal
+var _TestEnum = Fire.defineEnum({
+    ZERO: -1,
+    ONE: -1,
+    TWO: -1,
+    THREE: -1
+});
+if (_TestEnum.ZERO !== 0 || _TestEnum.ONE !== 1 || _TestEnum.TWO !== 2 || _TestEnum.THREE !== 3) {
+    Fire.error('Sorry, "Fire.defineEnum" not available on this platform, ' +
+               'please report this error here: https://github.com/fireball-x/fireball/issues/new !');
+}
+
 
 (function () {
     var _d2r = Math.PI/180.0;
@@ -494,9 +558,23 @@ else {
         },
 
         clamp: function ( val, min, max ) {
-            min = typeof min === 'undefined' ? 0 : min;
-            max = typeof max === 'undefined' ? 1 : max;
+            if (typeof min !== 'number') {
+                Fire.error('[clamp] min value must be type number');
+                return;
+            }
+            if (typeof max !== 'number') {
+                Fire.error('[clamp] max value must be type number');
+                return;
+            }
+            if (min > max) {
+                Fire.error('[clamp] max value must not less than min value');
+                return;
+            }
             return Math.min( Math.max( val, min ), max );
+        },
+
+        clamp01: function ( val ) {
+            return Math.min( Math.max( val, 0 ), 1 );
         },
 
         /**
@@ -949,16 +1027,17 @@ Fire.getEnumList = function (enumDef) {
     var enums = [];
     for ( var entry in enumDef ) {
         if ( enumDef.hasOwnProperty(entry) ) {
-            var test = parseInt(entry);
-            if ( isNaN(test) ) {
-                enums.push( { name: enumDef[enumDef[entry]], value: enumDef[entry] } );
+            var value = enumDef[entry];
+            var isInteger = typeof value === 'number' && (value | 0) === value; // polyfill Number.isInteger
+            if ( isInteger ) {
+                enums.push( { name: entry, value: value } );
             }
         }
     }
     enums.sort( function ( a, b ) { return a.value - b.value; } );
 
     enumDef.__enums__ = enums;
-    return enumDef.__enums__;
+    return enums;
 };
 
 //
@@ -1194,7 +1273,7 @@ Callbacks: {
  */
 Fire.NonSerialized = {
     serializable: false,
-    _canUsedInGetter: false,
+    _canUsedInGetter: false
 };
 
 /**
@@ -1294,11 +1373,12 @@ Fire.String = {
  *
  * @method ObjectType
  * @param {function} constructor - the special type you want
+ * @param {boolean} [useUuid=false] - the value will be represented as a uuid string
  * @return {object} the attribute
  */
-Fire.ObjectType = function (constructor) {
+Fire.ObjectType = function (constructor, useUuid) {
     return {
-        type: 'object',
+        type: useUuid ? 'uuid' : 'object',
         ctor: constructor,
     };
 };
@@ -1307,22 +1387,11 @@ Fire.ObjectType = function (constructor) {
  * Makes a property show up as a enum in Inspector.
  *
  * @method Enum
- * @param {(string)} enumType
+ * @param {object} enumType
  * @return {object} the enum attribute
  */
 Fire.Enum = function (enumType) {
     return { type: 'enum', enumList: Fire.getEnumList(enumType) };
-};
-
-/**
- * Makes a property show up as a enum in Inspector.
- *
- * @method EnumList
- * @param {(array)} enumList
- * @return {object} the enum attribute
- */
-Fire.EnumList = function (enumList) {
-    return { type: 'enum', enumList: enumList };
 };
 
 /**
@@ -1336,10 +1405,10 @@ Fire.EnumList = function (enumList) {
 Fire.RawType = function (typename) {
     var NEED_EXT_TYPES = ['image', 'json', 'text', 'audio'];  // the types need to specify exact extname
     return {
-        type: 'raw',
+        // type: 'raw',
         rawType: typename,
         serializable: false,
-        hideInInspector: true,
+        // hideInInspector: true,
         _canUsedInGetter: false,
 
         _onAfterProp: function (constructor, mainPropName) {
@@ -1353,9 +1422,9 @@ Fire.RawType = function (typename) {
                 for (var p = 0; p < constructor.__props__.length; p++) {
                     var propName = constructor.__props__[p];
                     var attrs = Fire.attr(constructor, propName);
-                    var type = attrs.type;
-                    if (type === 'raw') {
-                        var containsUppercase = (attrs.rawType.toLowerCase() !== attrs.rawType);
+                    var rawType = attrs.rawType;
+                    if (rawType) {
+                        var containsUppercase = (rawType.toLowerCase() !== rawType);
                         if (containsUppercase) {
                             Fire.error('RawType name cannot contain uppercase');
                             return false;
@@ -1404,7 +1473,7 @@ Fire.RawType = function (typename) {
  *
  * @method Custom
  * @param {string} name
- * @return {object} the enum attribute
+ * @return {object}
  */
 Fire.Custom = function (type) {
     return { custom: type };
@@ -1482,7 +1551,7 @@ Fire.Nullable = function (boolPropName, hasValueByDefault) {
 Fire.Watch = function (names, callback) {
     return {
         watch: [].concat(names),  // array of property name to watch
-        watchCallback: callback,
+        watchCallback: callback
     };
 };
 
@@ -1503,11 +1572,11 @@ Fire.Range = function (min, max) {
  * @private
  */
 var _appendProp = function (name/*, isGetter*/) {
-    var JsVarReg = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
-    if (!JsVarReg.test(name)) {
-        Fire.error('The property name "' + name + '" is not compliant with JavaScript naming standards');
-        return;
-    }
+    //var JsVarReg = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
+    //if (!JsVarReg.test(name)) {
+    //    Fire.error('The property name "' + name + '" is not compliant with JavaScript naming standards');
+    //    return;
+    //}
     if (!this.__props__) {
         this.__props__ = [name];
     }
@@ -1637,7 +1706,6 @@ var _metaClass = {
             Fire.error(JS.getClassName(this) + ': the getter of "' + name + '" is already defined!');
             return this;
         }
-        var displayInInspector = true;
         if (attribute) {
             var AttrArgStart = 2;
             for (var i = AttrArgStart; i < arguments.length; i++) {
@@ -1649,9 +1717,6 @@ var _metaClass = {
                 Fire.attr(this, name, attr);
 
                 // check attributes
-                if (attr.hideInInspector) {
-                    displayInInspector = false;
-                }
                 if (attr.serializable === false || attr.editorOnly === true) {
                     Fire.warn('No need to use Fire.NonSerialized or Fire.EditorOnly for the getter of ' +
                         JS.getClassName(this) + '.' + name + ', every getter is actually non-serialized.');
@@ -1664,16 +1729,8 @@ var _metaClass = {
         }
         Fire.attr(this, name, Fire.NonSerialized);
 
-        if (displayInInspector) {
-            _appendProp.call(this, name/*, true*/);
-        }
-        else {
-            var index = this.__props__.indexOf(name);
-            if (index >= 0) {
-                Fire.error(JS.getClassName(this) + '.' + name + ' is already defined!');
-                return this;
-            }
-        }
+        // 不论是否 hide in inspector 都要添加到 props，否则 asset watcher 不能正常工作
+        _appendProp.call(this, name/*, true*/);
         Object.defineProperty(this.prototype, name, {
             get: getter,
             configurable: true
@@ -1719,10 +1776,18 @@ var _metaClass = {
      * @return {function} the class itself
      */
     getset: function (name, getter, setter, attribute) {
-        this.get(name, getter, attribute);
+        'use strict';
+        if (attribute) {
+            var getterArgs = [].slice.call(arguments);
+            getterArgs.splice(2, 1);    // remove setter
+            this.get.apply(this, getterArgs);
+        }
+        else {
+            this.get(name, getter);
+        }
         this.set(name, setter);
         return this;
-    },
+    }
 };
 
 var _createInstanceProps = function (instance, itsClass) {
@@ -1872,6 +1937,10 @@ Fire.extend = function (className, baseClass, constructor) {
     if (typeof className === 'string') {
         return Fire._doDefine(className, baseClass, constructor);
     }
+    else if (typeof className === 'undefined') {
+        // 未传入任何参数
+        return Fire._doDefine('', baseClass, constructor);
+    }
     else if (className) {
         Fire.error('[Fire.extend] unknown typeof first argument');
     }
@@ -1944,6 +2013,179 @@ Fire._fastDefine = function (className, constructor, serializableFields) {
         Fire.attr(constructor, serializableFields[i], Fire.HideInInspector);
     }
 };
+
+
+Fire.Class = function (options) {
+    if (arguments.length === 0) {
+        return Fire.define();
+    }
+    if ( !options ) {
+        Fire.error('[Fire.Class] Option must be non-nil');
+        return Fire.define();
+    }
+
+    var name = options.name;
+    var base = options.extends;
+    var ctor = options.hasOwnProperty('constructor') && options.constructor;
+
+    // create constructor
+    var cls;
+    if (base) {
+        if (name) {
+            cls = Fire.extend(name, base, ctor);
+        }
+        else {
+            cls = Fire.extend(base, ctor);
+            name = Fire.JS.getClassName(cls);
+        }
+    }
+    else {
+        if (name) {
+            cls = Fire.define(name, ctor);
+        }
+        else {
+            cls = Fire.define(ctor);
+            name = Fire.JS.getClassName(cls);
+        }
+    }
+
+    // define properties
+    var properties = options.properties;
+    if (properties) {
+        for (var propName in properties) {
+            var val = properties[propName];
+            if (val && typeof val === 'object' && !Array.isArray(val)) {
+                var attrs = parseAttributes(val, name, propName);
+                if (val.hasOwnProperty('default')) {
+                    cls.prop.apply(cls, [propName, val.default].concat(attrs));
+                }
+                else {
+                    var getter = val.get;
+                    var setter = val.set;
+                    if (getter) {
+                        cls.get.apply(cls, [propName, getter].concat(attrs));
+                    }
+                    if (setter) {
+                        cls.set(propName, setter);
+                    }
+                }
+                //Fire.error('属性 %s.%s 不能定义为 null', name, propName);
+            }
+            else {
+                cls.prop(propName, val);
+            }
+        }
+    }
+
+    // define functions
+    for (var funcName in options) {
+        if (funcName === 'name' || funcName === 'extends' || funcName === 'constructor' || funcName === 'properties') {
+            continue;
+        }
+        var func = options[funcName];
+        var type = typeof func;
+        if (type === 'function') {
+            cls.prototype[funcName] = func;
+        }
+    }
+
+    return cls;
+};
+
+var tmpAttrs = [];
+function parseAttributes (attrs, className, propName) {
+    tmpAttrs.length = 0;
+    var result = tmpAttrs;
+
+    var type = attrs.type;
+    if (type) {
+        if (type === 'Integer') {
+            result.push(Fire.Integer);
+        }
+        else if (type === 'Float' || type === Number) {
+            result.push(Fire.Float);
+        }
+        else if (type === 'Boolean' || type === Boolean) {
+            result.push(Fire.Boolean);
+        }
+        else if (type === 'String' || type === String) {
+            result.push(Fire.String);
+        }
+        else if (type === 'Object' || type === Object) {
+        }
+        else if (typeof type === 'object') {
+            if (type.hasOwnProperty('__enums__')) {
+                result.push(Fire.Enum(type));
+            }
+        }
+        else if (typeof type === 'function') {
+            result.push(Fire.ObjectType(type));
+        }
+    }
+
+    function applyAttr (attrName, expectType, attrCreater) {
+        var val = attrs[attrName];
+        if (val) {
+            if (typeof val === expectType) {
+                result.push(typeof attrCreater === 'function' ? attrCreater(val) : attrCreater);
+            }
+        }
+    }
+
+    applyAttr('rawType', 'string', Fire.RawType);
+    applyAttr('editorOnly', 'boolean', Fire.EditorOnly);
+    applyAttr('displayName', 'string', Fire.DisplayName);
+    applyAttr('multiline', 'boolean', Fire.MultiText);
+    applyAttr('readonly', 'boolean', Fire.ReadOnly);
+    applyAttr('tooltip', 'string', Fire.Tooltip);
+
+    if (attrs.serializable === false) {
+        result.push(Fire.NonSerialized);
+    }
+    if (attrs.visible === false) {
+        result.push(Fire.HideInInspector);
+    }
+
+    //if (attrs.custom) {
+    //    result.push(Fire.Custom(attrs.custom));
+    //}
+
+    var range = attrs.range;
+    if (range) {
+        if (Array.isArray(range)) {
+            if (range.length >= 2) {
+                result.push(Fire.Range(range[0], range[1]));
+            }
+        }
+    }
+
+    var nullable = attrs.nullable;
+    if (nullable) {
+        if (typeof nullable === 'object') {
+            var boolPropName = nullable.propName;
+            if (typeof boolPropName === 'string') {
+                var def = nullable.default;
+                if (typeof def === 'boolean') {
+                    result.push(Fire.Nullable(boolPropName, def));
+                }
+            }
+        }
+    }
+
+    var watch = attrs.watch;
+    if (watch) {
+        if (typeof watch === 'object') {
+            for (var watchKey in watch) {
+                var watchCallback = watch[watchKey];
+                if (typeof watchCallback === 'function') {
+                    result.push(Fire.Watch(watchKey.split(' '), watchCallback));
+                }
+            }
+        }
+    }
+
+    return result;
+}
 
 // The utils for path operation
 
@@ -2845,18 +3087,28 @@ var Rect = (function () {
     JS.setClassName('Fire.Rect', Rect);
 
     /**
-     * @method fromVec2
+     * @method fromMinMax
      * @param {Vec2} v1
      * @param {Vec2} v2
      * @return {Rect}
      */
-    Rect.fromVec2 = function ( v1, v2 ) {
+    Rect.fromMinMax = function ( v1, v2 ) {
         var min_x = Math.min( v1.x, v2.x );
         var min_y = Math.min( v1.y, v2.y );
         var max_x = Math.max( v1.x, v2.x );
         var max_y = Math.max( v1.y, v2.y );
 
         return new Rect ( min_x, min_y, max_x - min_x, max_y - min_y );
+    };
+
+    /**
+     * @method fromVec2
+     * @param {Vec2} leftTop
+     * @param {Vec2} size
+     * @return {Rect}
+     */
+    Rect.fromVec2 = function ( leftTop, size ) {
+        return new Rect ( leftTop.x, leftTop.y, size.x, size.y );
     };
 
     /**
@@ -2902,18 +3154,40 @@ var Rect = (function () {
                ', ' + this.height.toFixed(2) + ')';
     };
 
+    Object.defineProperty(Rect.prototype, 'xMin', {
+        get: function () { return this.x; },
+        set: function (value) {
+            this.width += this.x - value;
+            this.x = value;
+        }
+    });
+
+    Object.defineProperty(Rect.prototype, 'yMin', {
+        get: function () { return this.y; },
+        set: function (value) {
+            this.height += this.y - value;
+            this.y = value;
+        }
+    });
+
     Object.defineProperty(Rect.prototype, 'xMax', {
-        get: function () { return this.x + this.width; }
+        get: function () { return this.x + this.width; },
+        set: function (value) { this.width = value - this.x; }
     });
 
     Object.defineProperty(Rect.prototype, 'yMax', {
-        get: function () { return this.y + this.height; }
+        get: function () { return this.y + this.height; },
+        set: function (value) { this.height = value - this.y; }
     });
 
     Object.defineProperty(Rect.prototype, 'center', {
         get: function () {
             return new Fire.Vec2( this.x + this.width * 0.5,
                                   this.y + this.height * 0.5 );
+        },
+        set: function (value) {
+            this.x = value.x - this.width * 0.5;
+            this.y = value.y - this.height * 0.5;
         }
     });
 
@@ -3131,10 +3405,10 @@ var Color = (function () {
     };
 
     Color.prototype.clamp = function () {
-        this.r = Math.clamp(this.r);
-        this.g = Math.clamp(this.g);
-        this.b = Math.clamp(this.b);
-        this.a = Math.clamp(this.a);
+        this.r = Math.clamp01(this.r);
+        this.g = Math.clamp01(this.g);
+        this.b = Math.clamp01(this.b);
+        this.a = Math.clamp01(this.a);
     };
 
     Color.prototype.fromHEX = function (hexString) {
@@ -3170,7 +3444,9 @@ var Color = (function () {
     };
 
     Color.prototype.toRGBValue = function () {
-        return (this.r * 255 << 16) + (this.g * 255 << 8) + this.b * 255;
+        return (Math.clamp01(this.r) * 255 << 16) +
+               (Math.clamp01(this.g) * 255 << 8) +
+               (Math.clamp01(this.b) * 255);
     };
 
     Color.prototype.fromHSV = function ( h, s, v ) {
@@ -3556,6 +3832,7 @@ Fire._DeserializeInfo.prototype.getUuidOf = function (obj, propName) {
 };
 
 Fire._DeserializeInfo.prototype.assignAssetsBy = function (callback) {
+    var success = true;
     for (var i = 0, len = this.uuidList.length; i < len; i++) {
         var uuid = this.uuidList[i];
         var asset = callback(uuid);
@@ -3566,8 +3843,10 @@ Fire._DeserializeInfo.prototype.assignAssetsBy = function (callback) {
         }
         else {
             Fire.error('Failed to assign asset: ' + uuid);
+            success = false;
         }
     }
+    return success;
 };
 
 /**
@@ -3755,7 +4034,7 @@ Fire._isCloning = false;
 var Asset = (function () {
 
     var Asset = Fire.extend('Fire.Asset', Fire.HashObject, function () {
-        // define uuid, uuid can not destory
+        // define uuid, uuid can not destroy
         Object.defineProperty(this, '_uuid', {
             value: '',
             writable: true,
@@ -3765,11 +4044,6 @@ var Asset = (function () {
 
         this.dirty = false;
     });
-
-    /* TODO: These callbacks available for ?
-    Asset.prototype.onBeforeSerialize = function () {};
-    Asset.prototype.onAfterDeserialize = function () {};
-     */
 
     Asset.prototype._setRawExtname = function (extname) {
         if (this.hasOwnProperty('_rawext')) {
@@ -3807,6 +4081,18 @@ Fire.addCustomAssetMenu = Fire.addCustomAssetMenu || function (constructor, menu
     // implement only available in editor
 };
 
+Fire.ScriptAsset = (function () {
+    var ScriptAsset = Fire.extend("Fire.ScriptAsset", Fire.Asset);
+
+    ScriptAsset.prop( 'text', '',
+                      Fire.MultiText,
+                      Fire.RawType('text'),
+                      Fire.HideInInspector
+                    );
+
+    return ScriptAsset;
+})();
+
 Fire.Texture = (function () {
 
     /**
@@ -3822,19 +4108,17 @@ Fire.Texture = (function () {
     });
 
     // enum WrapMode
-    Texture.WrapMode = (function (t) {
-        t[t.Repeat = 0] = 'Repeat';
-        t[t.Clamp  = 1] = 'Clamp';
-        return t;
-    })({});
+    Texture.WrapMode = Fire.defineEnum({
+        Repeat: -1,
+        Clamp: -1
+    });
 
     // enum FilterMode
-    Texture.FilterMode = (function (t) {
-        t[t.Point       = 0] = 'Point';
-        t[t.Bilinear    = 1] = 'Bilinear';
-        t[t.Trilinear   = 2] = 'Trilinear';
-        return t;
-    })({});
+    Texture.FilterMode = Fire.defineEnum({
+        Point: -1,
+        Bilinear: -1,
+        Trilinear: -1
+    });
 
     Texture.prop('image', null, Fire.RawType('image'), Fire.HideInInspector);
     Texture.prop('width', 0, Fire.Integer, Fire.ReadOnly);
@@ -3901,30 +4185,27 @@ Fire.Atlas = (function () {
     var Atlas = Fire.extend("Fire.Atlas", Fire.Asset);
 
     // enum Algorithm
-    Atlas.Algorithm = (function (t) {
-        t[t.Basic   = 0] = 'Basic';
-        t[t.Tree    = 1] = 'Tree';
-        t[t.MaxRect = 2] = 'MaxRect';
-        return t;
-    })({});
+    Atlas.Algorithm = Fire.defineEnum({
+        Basic: -1,
+        Tree: -1,
+        MaxRect: -1
+    });
 
     // enum SortBy
-    Atlas.SortBy = (function (t) {
-        t[t.UseBest = 0] = 'UseBest';
-        t[t.Width   = 1] = 'Width';
-        t[t.Height  = 2] = 'Height';
-        t[t.Area    = 3] = 'Area';
-        t[t.Name    = 4] = 'Name';
-        return t;
-    })({});
+    Atlas.SortBy = Fire.defineEnum({
+        UseBest: -1,
+        Width: -1,
+        Height: -1,
+        Area: -1,
+        Name: -1
+    });
 
     // enum SortOrder
-    Atlas.SortOrder = (function (t) {
-        t[t.UseBest    = 0] = 'UseBest';
-        t[t.Ascending  = 1] = 'Ascending';
-        t[t.Descending = 2] = 'Descending';
-        return t;
-    })({});
+    Atlas.SortOrder = Fire.defineEnum({
+        UseBest: -1,
+        Ascending: -1,
+        Descending: -1
+    });
 
     // basic settings
     Atlas.prop('width', 512, Fire.Integer, Fire.ReadOnly );
@@ -4455,7 +4736,7 @@ Fire.JsonAsset = JsonAsset;
 Fire.TextAsset = (function () {
     var TextAsset = Fire.extend("Fire.TextAsset", Fire.Asset);
 
-    TextAsset.prop('text', '', Fire.RawType('text'));
+    TextAsset.prop('text', '', Fire.MultiText, Fire.RawType('text'));
 
     return TextAsset;
 })();
@@ -4504,6 +4785,156 @@ Fire.BitmapFont = BitmapFont;
     // The codes below is generated by script automatically:
     // 
 
+// Listen to assets change event, if changed, invoke Component's setters.
+var AssetsWatcher = {
+    initComponent: function () { },
+    start: function () { },
+    stop: function () { }
+};
+
+Fire._AssetsWatcher = AssetsWatcher;
+
+
+/**
+ * overridable callbacks for editor
+ * @property {object} Fire.Engine._editorCallback
+ * @private
+ */
+var editorCallback = {
+
+    onEnginePlayed: null,
+    onEngineStopped: null,
+    onEnginePaused: null,
+
+    /**
+     * This will be called before component callbacks
+     * @callback Fire.Engine._editorCallback~onEntityCreated
+     * @param {Fire.Entity} entity
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onEntityCreated} Fire.Engine._editorCallback.onEntityCreated
+     */
+    onEntityCreated: null,
+
+    /**
+     * removes an entity and all its children from scene, this method will NOT be called if it is removed by hierarchy.
+     * @callback Fire.Engine._editorCallback~onEntityRemoved
+     * @param {Fire.Entity} entity - the entity to remove
+     * // @param {boolean} isTopMost - indicates whether it is the most top one among the entities who will be deleted in one operation
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onEntityRemoved} Fire.Engine._editorCallback.onEntityRemoved
+     */
+    onEntityRemoved: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onEntityParentChanged
+     * @param {Fire.Entity} entity
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onEntityParentChanged} Fire.Engine._editorCallback.onEntityParentChanged
+     */
+    onEntityParentChanged: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onEntityIndexChanged
+     * @param {Fire.Entity} entity
+     * @param {number} oldIndex
+     * @param {number} newIndex
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onEntityIndexChanged} Fire.Engine._editorCallback.onEntityIndexChanged
+     */
+    onEntityIndexChanged: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onEntityRenamed
+     * @param {Fire.Entity} entity
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onEntityRenamed} Fire.Engine._editorCallback.onEntityRenamed
+     */
+    onEntityRenamed: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onStartUnloadScene
+     * @param {Scene} scene
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onStartUnloadScene} Fire.Engine._editorCallback.onStartUnloadScene
+     */
+    onStartUnloadScene: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onSceneLaunched
+     * @param {Scene} scene
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onSceneLaunched} Fire.Engine._editorCallback.onSceneLaunched
+     */
+    onSceneLaunched: null,
+
+    ///**
+    // * @callback Fire.Engine._editorCallback~onSceneLoaded
+    // * @param {Scene} scene
+    // */
+    ///**
+    // * @property {Fire.Engine._editorCallback~onSceneLoaded} Fire.Engine._editorCallback.onSceneLoaded
+    // */
+    //onSceneLoaded: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onComponentEnabled
+     * @param {Fire.Component} component
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onComponentEnabled} Fire.Engine._editorCallback.onComponentEnabled
+     */
+    onComponentEnabled: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onComponentDisabled
+     * @param {Fire.Component} component
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onComponentDisabled} Fire.Engine._editorCallback.onComponentDisabled
+     */
+    onComponentDisabled: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onComponentAdded
+     * @param {Fire.Entity} entity
+     * @param {Fire.Component} component
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onComponentAdded} Fire.Engine._editorCallback.onComponentAdded
+     */
+    onComponentAdded: null,
+
+    /**
+     * @callback Fire.Engine._editorCallback~onComponentRemoved
+     * @param {Fire.Entity} entity
+     * @param {Fire.Component} component
+     */
+    /**
+     * @property {Fire.Engine._editorCallback~onComponentRemoved} Fire.Engine._editorCallback.onComponentRemoved
+     */
+    onComponentRemoved: null
+};
+
+// Mockers for editor-core
+
+var ImageLoader, JsonLoader, TextLoader, _LoadFromXHR;
+var ModifierKeyStates, KeyboardEvent, MouseEvent;
+
+function RenderContext () {
+}
+
+RenderContext.initRenderer = function () {
+};
+
+Fire._RenderContext = RenderContext;
+
 /**
  * !#en
  *
@@ -4547,6 +4978,21 @@ var DontDestroy = Fire._ObjectFlags.DontDestroy;
 var Hide = Fire._ObjectFlags.Hide;
 var HideInGame = Fire._ObjectFlags.HideInGame;
 var HideInEditor = Fire._ObjectFlags.HideInEditor;
+
+
+var ContentStrategyType = Fire.defineEnum({
+
+    NoScale: -1,
+
+    /**
+     * The application takes the height of the design resolution size and modifies the width of the internal canvas,
+     * so that it fits the aspect ratio of the device and no distortion will occur,
+     * however you must make sure your application works on different aspect ratios
+     */
+    FixedHeight: -1
+});
+Fire.ContentStrategyType = ContentStrategyType;
+
 /**
  * @module Fire
  * @class Time
@@ -5124,6 +5570,8 @@ var RenderContext = (function () {
 
         var antialias = false;
         this.stage = new PIXI.Stage(0x000000);
+        this.stage.interactive = false;
+
         this.root = this.stage;
         this.renderer = PIXI.autoDetectRenderer(width, height, {
             view: canvas,
@@ -5155,6 +5603,24 @@ var RenderContext = (function () {
     Object.defineProperty(RenderContext.prototype, 'canvas', {
         get: function () {
             return this.renderer.view;
+        }
+    });
+
+    Object.defineProperty(RenderContext.prototype, 'width', {
+        get: function () {
+            return this.renderer.width;
+        },
+        set: function (value) {
+            this.renderer.resize(value, this.renderer.height);
+        }
+    });
+
+    Object.defineProperty(RenderContext.prototype, 'height', {
+        get: function () {
+            return this.renderer.height;
+        },
+        set: function (value) {
+            this.renderer.resize(this.renderer.width, value);
         }
     });
 
@@ -5450,11 +5916,13 @@ var RenderContext = (function () {
         // revert Y axis for pixi
         mat.ty = this.renderer.height - matrix.ty;
 
+        var worldAlpha = Math.clamp01(target._color.a);
+
         // apply matrix
         if ( !this.isSceneView ) {
             if (target._renderObj) {
                 target._renderObj.worldTransform = mat;
-                target._renderObj.worldAlpha = target._color.a;
+                target._renderObj.worldAlpha = worldAlpha;
             }
         }
     };
@@ -5585,8 +6053,8 @@ RenderContext.prototype.checkMatchCurrentScene = function () {
 };
 Fire._RenderContext = RenderContext;
 
-
-PIXI.BitmapText.prototype.updateTransform = function () { };
+PIXI.BitmapText.prototype.updateTransform = function () {
+};
 
 Fire.BitmapFont.prototype._onPreDestroy = function () {
     if (this._uuid) {
@@ -5598,22 +6066,22 @@ var PixiBitmapFontUtil = {};
 
 var defaultFace = "None";
 
-function _getStyle(target) {
+function _getStyle (target) {
     if (target.bitmapFont && target.bitmapFont._uuid) {
         return {
-            font: target.bitmapFont.size + " " + target.bitmapFont._uuid,
+            font : target.bitmapFont.size + " " + target.bitmapFont._uuid,
             align: BitmapText.TextAlign[target.align].toLowerCase(),
         };
     }
     else {
         return {
-            font: 1 + " " + defaultFace,
+            font : 1 + " " + defaultFace,
             align: "left",
         };
     }
 }
 
-function _setStyle(target) {
+function _setStyle (target) {
     var style = _getStyle(target);
     if (target._renderObj) {
         target._renderObj.setStyle(style);
@@ -5623,7 +6091,7 @@ function _setStyle(target) {
     }
 }
 
-function _getNewMatrix23(child, tempMatrix) {
+function _getNewMatrix23 (child, tempMatrix) {
     var mat = new Fire.Matrix23();
     mat.a = child.scale.x;
     mat.b = 0;
@@ -5639,56 +6107,82 @@ function _getNewMatrix23(child, tempMatrix) {
     mat.ty = Fire.Engine._curRenderContext.renderer.height - mat.ty;
     return mat;
 }
+var tempData = {
+    face      : defaultFace,
+    size      : 1,
+    chars     : {},
+    lineHeight: 1
+};
 
-function _registerFont(bitmapFont) {
+function _registerFont (bitmapFont) {
+
+    //var registered = _hasPixiBitmapFont(bitmapFont);
+    //if (registered) {
+    //    return;
+    //}
+
     var data = {};
-    if (!bitmapFont || !bitmapFont._uuid) {
-        data.face = defaultFace;
-        data.size = 1;
-        data.lineHeight = 1;
-        data.chars = {};
-    }
-    else {
+    if (bitmapFont && bitmapFont._uuid) {
         data.face = bitmapFont._uuid;
         data.size = bitmapFont.size;
         data.lineHeight = bitmapFont.lineHeight;
         data.chars = {};
-        var i = 0, charInfos = bitmapFont.charInfos, len = charInfos.length;
-        for (; i < len; i++) {
-            var charInfo = charInfos[i];
-            var id = charInfo.id;
-            var textureRect = new PIXI.Rectangle(
-                charInfo.x,
-                charInfo.y,
-                charInfo.width,
-                charInfo.height
-            );
 
-            var texture = null;
-            if (bitmapFont && bitmapFont.texture) {
-                var img = new PIXI.BaseTexture(bitmapFont.texture.image);
-                texture = new PIXI.Texture(img, textureRect);
+        if (bitmapFont.texture) {
+            var img = new PIXI.BaseTexture(bitmapFont.texture.image);
+
+            var charInfos = bitmapFont.charInfos, len = charInfos.length;
+            for (var i = 0; i < len; i++) {
+                var charInfo = charInfos[i];
+                var id = charInfo.id;
+                var textureRect = new PIXI.Rectangle(
+                    charInfo.x,
+                    charInfo.y,
+                    charInfo.width,
+                    charInfo.height
+                );
+
+                if ((textureRect.x + textureRect.width) > img.width || (textureRect.y + textureRect.height) > img.height) {
+                    Fire.error('Character in %s does not fit inside the dimensions of texture %s', bitmapFont.name, bitmapFont.texture.name);
+                    break;
+                }
+
+                var texture = new PIXI.Texture(img, textureRect);
+
+                data.chars[id] = {
+                    xOffset : charInfo.xOffset,
+                    yOffset : charInfo.yOffset,
+                    xAdvance: charInfo.xAdvance,
+                    kerning : {},
+                    texture : texture
+                };
             }
-
-            data.chars[id] = {
-                xOffset: charInfo.xOffset,
-                yOffset: charInfo.yOffset,
-                xAdvance: charInfo.xAdvance,
-                kerning: {},
-                texture: PIXI.TextureCache[id] = texture
-            };
         }
+        else {
+            Fire.error('Invalid texture of bitmapFont: %s', bitmapFont.name);
+        }
+
         var kernings = bitmapFont.kernings;
-        for (i = 0; i < kernings.length; i++) {
-            var kerning = kernings[i];
+        for (var j = 0; j < kernings.length; j++) {
+            var kerning = kernings[j];
             var first = kerning.first;
             var second = kerning.second;
             var amount = kerning.amount;
             data.chars[second].kerning[first] = amount;
         }
     }
+    else {
+        data = tempData;
+    }
     PIXI.BitmapText.fonts[data.face] = data;
 }
+
+var _hasPixiBitmapFont = function (bitmapFont) {
+    if (bitmapFont) {
+        return PIXI.BitmapText.fonts[bitmapFont._uuid];
+    }
+    return null;
+};
 
 RenderContext.prototype.getTextSize = function (target) {
     var inGame = !(target.entity._objFlags & HideInGame);
@@ -5727,7 +6221,7 @@ RenderContext.prototype.setAlign = function (target) {
     _setStyle(target);
 };
 
-RenderContext.prototype.setBitmapFont = function (target) {
+RenderContext.prototype.updateBitmapFont = function (target) {
     _registerFont(target.bitmapFont);
     _setStyle(target);
 };
@@ -5751,7 +6245,7 @@ RenderContext.prototype.addBitmapText = function (target) {
 PixiBitmapFontUtil.updateTransform = function (target, tempMatrix) {
     var i = 0, childrens = null, len = 0, child = null;
     var isGameView = Engine._curRenderContext === Engine._renderContext;
-    if (isGameView && target._renderObj ) {
+    if (isGameView && target._renderObj) {
         if (target._renderObj.dirty) {
             target._renderObj.updateText();
             target._renderObj.dirty = false;
@@ -5916,7 +6410,7 @@ var Component = (function () {
     /**
      * used in _callOnEnable to ensure onEnable and onDisable will be called alternately
      * 从逻辑上来说OnEnable和OnDisable的交替调用不需要由额外的变量进行保护，但那样会使设计变得复杂
-     * 例如Entity.destory调用后但还未真正销毁时，会调用所有Component的OnDisable。
+     * 例如Entity.destroy调用后但还未真正销毁时，会调用所有Component的OnDisable。
      * 这时如果又有addComponent，Entity需要对这些新来的Component特殊处理。将来调度器做了之后可以尝试去掉这个标记。
      */
     var IsOnEnableCalled = Fire._ObjectFlags.IsOnEnableCalled;
@@ -6556,7 +7050,6 @@ var Transform = (function () {
 
     Transform.prototype.destroy = function () {
         Fire.error("Not allowed to destroy the transform. Please destroy the entity instead.");
-        return;
     };
 
     // other functions
@@ -6952,7 +7445,7 @@ var SpriteRenderer = (function () {
 
     SpriteRenderer.prop('width_', 100, Fire.DisplayName('Width'),
                         Fire.Watch( 'customSize_', function ( obj, propEL ) {
-                            propEL.disabled = !obj.customSize;
+                            propEL.disabled = !obj.customSize_;
                         } ));
     SpriteRenderer.getset('width',
         function () {
@@ -7081,12 +7574,11 @@ Fire.SpriteRenderer = SpriteRenderer;
 
 var BitmapText = (function () {
 
-    var TextAlign = (function (t) {
-        t[t.left = 0] = 'Left';
-        t[t.center = 1] = 'Center';
-        t[t.right = 2] = 'Right';
-        return t;
-    })({});
+    var TextAlign = Fire.defineEnum({
+        left: -1,
+        center: -1,
+        right: -1
+    });
 
     var TextAnchor = (function (t) {
         t[t.topLeft = 0] = 'Top Left';
@@ -7121,7 +7613,7 @@ var BitmapText = (function () {
         },
         function (value) {
             this._bitmapFont = value;
-            Engine._renderContext.setBitmapFont(this);
+            Engine._renderContext.updateBitmapFont(this);
         },
         Fire.ObjectType(Fire.BitmapFont)
     );
@@ -7255,63 +7747,105 @@ var BitmapText = (function () {
 
 Fire.BitmapText = BitmapText;
 
-var Camera = (function () {
-
-    var Camera = Fire.extend('Fire.Camera', Component, function () {
+var Camera = Fire.Class({
+    name: 'Fire.Camera',
+    extends: Component,
+    constructor: function () {
         this._renderContext = null;
-    });
-    Fire.addComponentMenu(Camera, 'Camera');
-    Fire.executeInEditMode(Camera);
+        this._contentStrategyInst = null;
+    },
 
-    Camera.prop('_background', new Fire.Color(0, 0, 0), Fire.HideInInspector);
-    Camera.getset('background',
-        function () {
-            return this._background;
+    properties: {
+
+        _background: {
+            default: Fire.Color.black,
+            visible: false
         },
-        function (value) {
-            this._background = value;
-            if (this._renderContext) {
-                this._renderContext.background = value;
+        background: {
+            get: function () {
+                return this._background;
+            },
+            set: function (value) {
+                this._background = value;
+                if (this._renderContext) {
+                    this._renderContext.background = value;
+                }
             }
-        }
-    );
-
-    Camera.prop('_size', 0, Fire.HideInInspector);
-    Camera.getset('size',
-        function () {
-            return this._size;
         },
-        function (value) {
-            this._size = value;
-        }
-    );
 
-    // save the render context this camera belongs to, if null, main render context will be used.
-    Object.defineProperty(Camera.prototype, 'renderContext', {
-        set: function (value) {
-            this._renderContext = value;
-//            this._applyRenderSettings();
+        _size: {
+            default: 800,
+            visible: false
+        },
+        size: {
+            get: function () {
+                return this._size;
+            },
+            set: function (value) {
+                this._size = value;
+            },
+            tooltip: "The height of design resolution. Width varies depending on viewport's aspect ratio",
+            watch: {
+                '_contentStrategy': function (obj, propEL) {
+                    propEL.disabled = (obj._contentStrategy === Fire.ContentStrategyType.NoScale);
+                }
+            }
+        },
+
+        _contentStrategy: {
+            default: Fire.ContentStrategyType.FixedHeight,
+            visible: false
+        },
+        contentStrategy: {
+            type: Fire.ContentStrategyType,
+            get: function () {
+                return this._contentStrategy;
+            },
+            set: function (value) {
+                this._contentStrategy = value;
+                this._contentStrategyInst = Fire.Screen.ContentStrategy.fromType(value);
+            },
+            displayName: 'Scale Strategy',
+            tooltip: "The type of scale strategy for this camera"
+        },
+
+        viewportInfo: {
+            get: function (value) {
+                var viewportSize = (this._renderContext || Engine._renderContext).size;
+                return this._contentStrategyInst.apply(new Vec2(0, this._size), viewportSize);
+            },
+            visible: false
+        },
+
+        // save the render context this camera belongs to, if null, main render context will be used.
+        renderContext: {
+            set: function (value) {
+                this._renderContext = value;
+                //                this._applyRenderSettings();
+            },
+            visible: false
         }
-    });
+    },
 
     // built-in functions
-    Camera.prototype.onLoad = function () {
+    onLoad: function () {
         if (!(this.entity._objFlags & HideInGame)) {
             this.renderContext = Engine._renderContext;
         }
-    };
-    Camera.prototype.onEnable = function () {
+        this._contentStrategyInst = Fire.Screen.ContentStrategy.fromType(this._contentStrategy);
+    },
+    onEnable: function () {
         if (!(this.entity._objFlags & HideInGame)) {
             Engine._scene.camera = this;
             this._applyRenderSettings();
         }
-    };
-    Camera.prototype.onDisable = function () {
+    },
+    onDisable: function () {
         if (Engine._scene.camera === this) {
             Engine._scene.camera = null;
         }
         this._renderContext.camera = null;
-    };
+    },
 
     // other functions
 
@@ -7322,10 +7856,10 @@ var Camera = (function () {
      * @param {Fire.Vec2} [out] - optional, the receiving vector
      * @return {Fire.Vec2}
      */
-    Camera.prototype.viewportToScreen = function (position, out) {
+    viewportToScreen: function (position, out) {
         out = this._renderContext.size.scale(position, out);
         return out;
-    };
+    },
 
     /**
      * Transforms position from screen space into viewport space.
@@ -7334,13 +7868,13 @@ var Camera = (function () {
      * @param {Fire.Vec2} [out] - optional, the receiving vector
      * @return {Fire.Vec2}
      */
-    Camera.prototype.screenToViewport = function (position, out) {
+    screenToViewport: function (position, out) {
         out = out || new Vec2();
         var size = this._renderContext.size;
         out.x = position.x / size.x;
         out.y = position.y / size.y;
         return out;
-    };
+    },
 
     /**
      * Transforms position from viewport space into world space.
@@ -7349,10 +7883,10 @@ var Camera = (function () {
      * @param {Fire.Vec2} [out] - optional, the receiving vector
      * @return {Fire.Vec2}
      */
-    Camera.prototype.viewportToWorld = function (position, out) {
+    viewportToWorld: function (position, out) {
         out = this.viewportToScreen(position, out);
         return this.screenToWorld(out, out);
-    };
+    },
 
     /**
      * Transforms position from screen space into world space.
@@ -7361,7 +7895,7 @@ var Camera = (function () {
      * @param {Fire.Vec2} [out] - optional, the receiving vector
      * @return {Fire.Vec2}
      */
-    Camera.prototype.screenToWorld = function (position, out) {
+    screenToWorld: function (position, out) {
         var halfScreenSize = (this._renderContext || Engine._renderContext).size.mulSelf(0.5);
         var pivotToScreen = position.sub(halfScreenSize, halfScreenSize);
         pivotToScreen.y = -pivotToScreen.y; // 屏幕坐标的Y和世界坐标的Y朝向是相反的
@@ -7372,7 +7906,7 @@ var Camera = (function () {
         mat.tx = camPos.x;
         mat.ty = camPos.y;
         return mat.transformPoint(pivotToScreen, out);
-    };
+    },
 
     /**
      * Transforms position from world space into screen space.
@@ -7381,7 +7915,7 @@ var Camera = (function () {
      * @param {Fire.Vec2} [out] - optional, the receiving vector
      * @return {Fire.Vec2}
      */
-    Camera.prototype.worldToScreen = function (position, out) {
+    worldToScreen: function (position, out) {
         var mat = new Matrix23();
         var camPos = new Vec2();
         this._calculateTransform(mat, camPos);
@@ -7390,7 +7924,7 @@ var Camera = (function () {
         var height = (this._renderContext || Engine._renderContext).size.y;
         out.y = height - out.y;
         return out;
-    };
+    },
 
     /**
      * Transforms position from world space into viewport space.
@@ -7399,14 +7933,16 @@ var Camera = (function () {
      * @param {Fire.Vec2} [out] - optional, the receiving vector
      * @return {Fire.Vec2}
      */
-    Camera.prototype.worldToViewport = function (position, out) {
+    worldToViewport: function (position, out) {
         out = this.worldToScreen(position, out);
         return this.screenToViewport(out, out);
-    };
+    },
 
-    Camera.prototype._calculateTransform = function (out_matrix, out_worldPos) {
-        var screenSize = (this._renderContext || Engine._renderContext).size;
-        var scale = this._size ? (screenSize.y / this._size) : 1;
+    _calculateTransform: function (out_matrix, out_worldPos) {
+        var viewportInfo = this.viewportInfo;
+        var scale = viewportInfo.scale;
+        var viewport = viewportInfo.viewport;
+
         var tf = this.entity.transform;
         var mat = tf.getLocalToWorldMatrix();
 
@@ -7414,19 +7950,29 @@ var Camera = (function () {
         out_worldPos.y = mat.ty;
 
         out_matrix.identity();
-        out_matrix.tx = screenSize.x * 0.5;
-        out_matrix.ty = screenSize.y * 0.5;
-        out_matrix.a = scale;
-        out_matrix.d = scale;
+        out_matrix.tx = viewport.width * 0.5;
+        out_matrix.ty = viewport.height * 0.5;
+        out_matrix.a = scale.x;
+        out_matrix.d = scale.y;
         out_matrix.rotate(mat.getRotation());
-    };
+    },
 
-    Camera.prototype._applyRenderSettings = function () {
+    _applyRenderSettings: function () {
         this._renderContext.background = this._background;
-    };
+    },
+});
 
-    return Camera;
-})();
+Fire.addComponentMenu(Camera, 'Camera');
+Fire.executeInEditMode(Camera);
+
+//Object.defineProperty(Camera.prototype, 'scaleStrategyInst', {
+//    get: function (value) {
+//        if ( !this._cachedResolutionPolicy ) {
+//            this._cachedResolutionPolicy = Fire.Screen.ResolutionPolicy.fromType(this._resolutionPolicy);
+//        }
+//        return this._cachedResolutionPolicy;
+//    }
+//});
 
 Fire.Camera = Camera;
 
@@ -7545,9 +8091,11 @@ var InteractionContext = (function () {
 
 Fire._InteractionContext = InteractionContext;
 
-var Entity = (function () {
+var Entity = Fire.Class({
 
-    var Entity = Fire.extend('Fire.Entity', EventTarget, function () {
+    name: 'Fire.Entity', extends: EventTarget,
+
+    constructor: function () {
         var name = arguments[0];
 
         this._name = typeof name !== 'undefined' ? name : 'New Entity';
@@ -7578,161 +8126,161 @@ var Entity = (function () {
             transform._onEntityActivated(true);     // 因为是刚刚创建，所以 activeInHierarchy 肯定为 true
 
         }
-    });
-    Entity.prop('_active', true, Fire.HideInInspector);
-    Entity.prop('_parent', null, Fire.HideInInspector);
-    Entity.prop('_children', [], Fire.HideInInspector);
-    Entity.prop('_components', null, Fire.HideInInspector);
-    Entity.prop('transform', null, Fire.HideInInspector);
+    },
 
-    Entity.getset('name',
-        function () {
-            return this._name;
+    properties: {
+
+        name: {
+            get: function () {
+                return this._name;
+            },
+            set: function (value) {
+                this._name = value;
+            }
         },
-        function (value) {
-            this._name = value;
-        }
-    );
-    Entity.getset('active',
-        function () {
-            return this._active;
-        },
-        function (value) {
-            // jshint eqeqeq: false
-            if (this._active != value) {
-                // jshint eqeqeq: true
-                this._active = value;
-                var canActiveInHierarchy = (!this._parent || this._parent._activeInHierarchy);
-                if (canActiveInHierarchy) {
-                    this._onActivatedInHierarchy(value);
+
+        active: {
+            get: function () {
+                return this._active;
+            },
+            set: function (value) {
+                // jshint eqeqeq: false
+                if (this._active != value) {
+                    // jshint eqeqeq: true
+                    this._active = value;
+                    var canActiveInHierarchy = (!this._parent || this._parent._activeInHierarchy);
+                    if (canActiveInHierarchy) {
+                        this._onActivatedInHierarchy(value);
+                    }
                 }
             }
-        }
-    );
-
-    /**
-     * The parent of the entity.
-     * Changing the parent will keep the transform's local space position, rotation and scale the same but modify the world space position, scale and rotation.
-     * @property {Fire.Entity} Fire.Entity#parent
-     */
-    Object.defineProperty(Entity.prototype, 'parent', {
-        get: function () {
-            return this._parent;
         },
-        set: function (value) {
-            if (this._parent !== value) {
-                if (value === this) {
-                    Fire.warn("A entity can't be set as the parent of itself.");
-                    return;
-                }
-                if (value && !(value instanceof Entity)) {
-                    if (value instanceof Transform) {
-                        Fire.error('Entity.parent can not be a Transform, use transform.entity instead.');
+
+        activeInHierarchy: {
+            get: function () {
+                return this._activeInHierarchy;
+            }
+        },
+
+        transform: {
+            default: null,
+            visible: false
+        },
+
+        /**
+         * The parent of the entity.
+         * Changing the parent will keep the transform's local space position, rotation and scale the same but modify the world space position, scale and rotation.
+         * @property {Fire.Entity} Fire.Entity#parent
+         */
+        parent: {
+            get: function () {
+                return this._parent;
+            },
+            set: function (value) {
+                if (this._parent !== value) {
+                    if (value === this) {
+                        Fire.warn("A entity can't be set as the parent of itself.");
+                        return;
+                    }
+                    if (value && !(value instanceof Entity)) {
+                        if (value instanceof Transform) {
+                            Fire.error('Entity.parent can not be a Transform, use transform.entity instead.');
+                        }
+                        else {
+                            Fire.error('Entity.parent must be instance of Entity (or must be null)');
+                        }
+                        return;
+                    }
+                    var oldParent = this._parent;
+                    if (value) {
+                        if ((value._objFlags & HideInGame) && !(this._objFlags & HideInGame)) {
+                            Fire.error('Failed to set parent, the child\'s HideInGame must equals to parent\'s.');
+                            return;
+                        }
+                        if ((value._objFlags & HideInEditor) && !(this._objFlags & HideInEditor)) {
+                            Fire.error('Failed to set parent, the child\'s HideInEditor must equals to parent\'s.');
+                            return;
+                        }
+                        if (!oldParent) {
+                            Engine._scene.removeRoot(this);
+                        }
+                        value._children.push(this);
                     }
                     else {
-                        Fire.error('Entity.parent must be instance of Entity (or must be null)');
+                        Engine._scene.appendRoot(this);
                     }
-                    return;
+                    this._parent = value || null;
+                    this.transform._parent = this._parent && this._parent.transform;
+
+                    if (oldParent && !(oldParent._objFlags & Destroying)) {
+                        oldParent._children.splice(oldParent._children.indexOf(this), 1);
+                        this._onHierarchyChanged(oldParent);
+                    }
+                    Engine._renderContext.onEntityParentChanged(this, oldParent);
+                    //this._onHierarchyChanged(this, oldParent);
                 }
-                var oldParent = this._parent;
+            }
+        },
+
+        /**
+         * Get the amount of children
+         * @property {number} Fire.Entity#childCount
+         */
+        childCount: {
+            get: function () {
+                return this._children.length;
+            },
+            visible: false
+        },
+
+        dontDestroyOnLoad: {
+            get: function () {
+                return this.dontDestroyOnLoad;
+            },
+            set: function (value) {
                 if (value) {
-                    if ((value._objFlags & HideInGame) && !(this._objFlags & HideInGame)) {
-                        Fire.error('Failed to set parent, the child\'s HideInGame must equals to parent\'s.');
-                        return;
-                    }
-                    if ((value._objFlags & HideInEditor) && !(this._objFlags & HideInEditor)) {
-                        Fire.error('Failed to set parent, the child\'s HideInEditor must equals to parent\'s.');
-                        return;
-                    }
-                    if (!oldParent) {
-                        Engine._scene.removeRoot(this);
-                    }
-                    value._children.push(this);
+                    this._objFlags |= DontDestroy;
                 }
                 else {
-                    Engine._scene.appendRoot(this);
+                    this._objFlags &= ~DontDestroy;
                 }
-                this._parent = value || null;
-                this.transform._parent = this._parent && this._parent.transform;
-
-                if (oldParent && !(oldParent._objFlags & Destroying)) {
-                    oldParent._children.splice(oldParent._children.indexOf(this), 1);
-                    this._onHierarchyChanged(oldParent);
-                }
-                Engine._renderContext.onEntityParentChanged(this, oldParent);
-                //this._onHierarchyChanged(this, oldParent);
             }
+        },
+
+        // internal properties
+
+        _active: {
+            default: true,
+            visible: false
+        },
+        _parent: {
+            default: null,
+            visible: false
+        },
+        _children: {
+            default: [],
+            visible: false
+        },
+        _components: {
+            default: null,
+            visible: false
         }
-    });
-
-    /**
-     * Get the amount of children
-     * @property {number} Fire.Entity#childCount
-     */
-    Object.defineProperty(Entity.prototype, 'childCount', {
-        get: function () {
-            return this._children.length;
-        }
-    });
-
-    ////////////////////////////////////////////////////////////////////
-    // static
-    ////////////////////////////////////////////////////////////////////
-
-    /**
-     * the temp property that indicates the current creating entity should
-     * binded with supplied object flags.
-     * only used in editor
-     *
-     * @property {number} Entity._defaultFlags
-     * @private
-     */
-    Entity._defaultFlags = 0;
-
-    /**
-     * Finds an entity by hierarchy path, the path is case-sensitive, and must start with a '/' character.
-     * It will traverse the hierarchy by splitting the path using '/' character.
-     * It is recommended to not use this function every frame instead cache the result at startup.
-     * @method Fire.Entity.find
-     * @param {string} path
-     * @return {Fire.Entity} the entity or null if not found
-     */
-    Entity.find = function (path) {
-        if (!path && path !== '') {
-            Fire.error('Argument must be non-nil');
-            return;
-        }
-        if (path[0] !== '/') {
-            Fire.error("Path must start with a '/' character");
-            return;
-        }
-        return Engine._scene.findEntity(path);
-    };
-
-    ////////////////////////////////////////////////////////////////////
-    // properties
-    ////////////////////////////////////////////////////////////////////
-
-    Object.defineProperty(Entity.prototype, 'activeInHierarchy', {
-        get: function () {
-            return this._activeInHierarchy;
-        }
-    });
+    },
 
     ////////////////////////////////////////////////////////////////////
     // overrides
     ////////////////////////////////////////////////////////////////////
 
-    Entity.prototype.destroy = function () {
+    destroy: function () {
         if (FObject.prototype.destroy.call(this)) {
             // disable hierarchy
             if (this._activeInHierarchy) {
                 this._deactivateChildComponents();
             }
         }
-    };
+    },
 
-    Entity.prototype._onPreDestroy = function () {
+    _onPreDestroy: function () {
         var parent = this._parent;
         this._objFlags |= Destroying;
         var isTopMost = !(parent && (parent._objFlags & Destroying));
@@ -7760,21 +8308,7 @@ var Entity = (function () {
             // destroy immediate so its _onPreDestroy can be called before
             children[i]._destroyImmediate();
         }
-    };
-
-    Object.defineProperty(Entity.prototype, 'dontDestroyOnLoad', {
-        get: function () {
-            return this.dontDestroyOnLoad;
-        },
-        set: function(value) {
-            if(value) {
-                this._objFlags |= DontDestroy;
-            }
-            else {
-                this._objFlags &= ~DontDestroy;
-            }
-        }
-    });
+    },
 
     /**
      * Get all the targets listening to the supplied type of event in the target's capturing phase.
@@ -7785,41 +8319,41 @@ var Entity = (function () {
      * @param {string} type - the event type
      * @param {array} array - the array to receive targets
      */
-    Entity.prototype._getCapturingTargets = function (type, array) {
+    _getCapturingTargets: function (type, array) {
         for (var target = this._parent; target; target = target._parent) {
             if (target._activeInHierarchy && target._capturingListeners && target._capturingListeners.has(type)) {
                 array.push(target);
             }
         }
-    };
+    },
 
     /**
      * Get all the targets listening to the supplied type of event in the target's bubbling phase.
-	 * The bubbling phase comprises any SUBSEQUENT nodes encountered on the return trip to the root of the hierarchy.
+     * The bubbling phase comprises any SUBSEQUENT nodes encountered on the return trip to the root of the hierarchy.
      * The result should save in the array parameter, and MUST SORT from child nodes to parent nodes.
      * Subclasses can override this method to make event propagable.
      *
      * @param {string} type - the event type
      * @param {array} array - the array to receive targets
      */
-    Entity.prototype._getBubblingTargets = function (type, array) {
+    _getBubblingTargets: function (type, array) {
         for (var target = this._parent; target; target = target._parent) {
             if (target._activeInHierarchy && target._bubblingListeners && target._bubblingListeners.has(type)) {
                 array.push(target);
             }
         }
-    };
+    },
 
     /**
      * Send an event to this object directly, this method will not propagate the event to any other objects.
      *
      * @param {Fire.Event} event - The Event object that is sent to this event target.
      */
-    Entity.prototype._doSendEvent = function (event) {
+    _doSendEvent: function (event) {
         if (this._activeInHierarchy) {
             Entity.$super.prototype._doSendEvent.call(this, event);
         }
-    };
+    },
 
     ////////////////////////////////////////////////////////////////////
     // component methods
@@ -7829,7 +8363,7 @@ var Entity = (function () {
      * @param {function|string} typeOrTypename
      * @return {Component}
      */
-    Entity.prototype.addComponent = function (typeOrTypename) {
+    addComponent: function (typeOrTypename) {
         var constructor;
         if (typeof typeOrTypename === 'string') {
             constructor = JS.getClassByName(typeOrTypename);
@@ -7866,13 +8400,13 @@ var Entity = (function () {
         }
 
         return component;
-    };
+    },
 
     /**
      * @param {function|string} typeOrTypename
      * @return {Component}
      */
-    Entity.prototype.getComponent = function (typeOrTypename) {
+    getComponent: function (typeOrTypename) {
         if ( !typeOrTypename ) {
             Fire.error('Argument must be non-nil');
             return;
@@ -7891,9 +8425,9 @@ var Entity = (function () {
             }
         }
         return null;
-    };
+    },
 
-    Entity.prototype._removeComponent = function (component) {
+    _removeComponent: function (component) {
         /*if (!component) {
             Fire.error('Argument must be non-nil');
             return;
@@ -7911,13 +8445,13 @@ var Entity = (function () {
                 Fire.error("Component not owned by this entity");
             }
         }
-    };
+    },
 
     ////////////////////////////////////////////////////////////////////
     // hierarchy methods
     ////////////////////////////////////////////////////////////////////
 
-    Entity.prototype.find = function (path) {
+    find: function (path) {
         if (!path && path !== '') {
             Fire.error('Argument must be non-nil');
             return;
@@ -7958,20 +8492,20 @@ var Entity = (function () {
             }
         }
         return match;
-    };
+    },
 
-    Entity.prototype.getChild = function (index) {
+    getChild: function (index) {
         return this._children[index];
-    };
+    },
 
-    Entity.prototype.getChildren = function () {
+    getChildren: function () {
         return this._children.slice();
-    };
+    },
 
     /**
      * is or is child of
      */
-    Entity.prototype.isChildOf = function (parent) {
+    isChildOf: function (parent) {
         var child = this;
         do {
             if (child === parent) {
@@ -7981,7 +8515,7 @@ var Entity = (function () {
         }
         while (child);
         return false;
-    };
+    },
 
     /**
      * Get the sibling index.
@@ -7991,14 +8525,14 @@ var Entity = (function () {
      * @method Fire.Entity#getSiblingIndex
      * @return {number}
      */
-    Entity.prototype.getSiblingIndex = function () {
+    getSiblingIndex: function () {
         if (this._parent) {
             return this._parent._children.indexOf(this);
         }
         else {
             return Engine._scene.entities.indexOf(this);
         }
-    };
+    },
 
     /**
      * Get the indexed sibling.
@@ -8006,21 +8540,21 @@ var Entity = (function () {
      * @param {number} index
      * @return {Fire.Entity}
      */
-    Entity.prototype.getSibling = function (index) {
+    getSibling: function (index) {
         if (this._parent) {
             return this._parent._children[index];
         }
         else {
             return Engine._scene.entities[index];
         }
-    };
+    },
 
     /**
      * Set the sibling index.
      * @method Fire.Entity#setSiblingIndex
      * @param {number} index
      */
-    Entity.prototype.setSiblingIndex = function (index) {
+    setSiblingIndex: function (index) {
         var array = this._parent ? this._parent._children : Engine._scene.entities;
         var item = this;
         index = index !== -1 ? index : array.length - 1;
@@ -8037,29 +8571,29 @@ var Entity = (function () {
             Engine._renderContext.onEntityIndexChanged(this, oldIndex, index);
             //this._onHierarchyChanged(this, this.parent);
         }
-    };
+    },
 
     /**
      * Move the entity to the top.
      * @method Fire.Entity#setAsFirstSibling
      */
-    Entity.prototype.setAsFirstSibling = function () {
+    setAsFirstSibling: function () {
         this.setSiblingIndex(0);
-    };
+    },
 
     /**
      * Move the entity to the bottom.
      * @method Fire.Entity#setAsFirstSibling
      */
-    Entity.prototype.setAsLastSibling = function () {
+    setAsLastSibling: function () {
         this.setSiblingIndex(-1);
-    };
+    },
 
     ////////////////////////////////////////////////////////////////////
     // other methods
     ////////////////////////////////////////////////////////////////////
 
-    Entity.prototype._onActivatedInHierarchy = function (value) {
+    _onActivatedInHierarchy: function (value) {
         this._activeInHierarchy = value;
 
         // 当引入DestroyImmediate后，_components的元素有可能会在遍历过程中变少，需要复制一个新的数组，或者做一些标记
@@ -8078,9 +8612,9 @@ var Entity = (function () {
                 entity._onActivatedInHierarchy(value);
             }
         }
-    };
+    },
 
-    Entity.prototype._deactivateChildComponents = function () {
+    _deactivateChildComponents: function () {
         // 和 _onActivatedInHierarchy 类似但不修改 this._activeInHierarchy
         var countBefore = this._components.length;
         for (var c = 0; c < countBefore; ++c) {
@@ -8094,17 +8628,17 @@ var Entity = (function () {
                 entity._deactivateChildComponents();
             }
         }
-    };
+    },
 
-    Entity.prototype._onHierarchyChanged = function (oldParent) {
+    _onHierarchyChanged: function (oldParent) {
         var activeInHierarchyBefore = this._active && (!oldParent || oldParent._activeInHierarchy);
         var shouldActiveNow = this._active && (!this._parent || this._parent._activeInHierarchy);
         if (activeInHierarchyBefore !== shouldActiveNow) {
             this._onActivatedInHierarchy(shouldActiveNow);
         }
-    };
+    },
 
-    Entity.prototype._instantiate = function (position, rotation) {
+    _instantiate: function (position, rotation) {
         // 临时实现版本，之后应该不拷贝scene object
         var oldParent = this._parent;
         this._parent = null;
@@ -8132,42 +8666,69 @@ var Entity = (function () {
         }
 
         return clone;
-    };
+    }
+});
 
-    return Entity;
-})();
+////////////////////////////////////////////////////////////////////
+// static
+////////////////////////////////////////////////////////////////////
+
+/**
+ * the temp property that indicates the current creating entity should
+ * binded with supplied object flags.
+ * only used in editor
+ *
+ * @property {number} Entity._defaultFlags
+ * @private
+ */
+Entity._defaultFlags = 0;
+
+/**
+ * Finds an entity by hierarchy path, the path is case-sensitive, and must start with a '/' character.
+ * It will traverse the hierarchy by splitting the path using '/' character.
+ * It is recommended to not use this function every frame instead cache the result at startup.
+ * @method Fire.Entity.find
+ * @param {string} path
+ * @return {Fire.Entity} the entity or null if not found
+ */
+Entity.find = function (path) {
+    if (!path && path !== '') {
+        Fire.error('Argument must be non-nil');
+        return;
+    }
+    if (path[0] !== '/') {
+        Fire.error("Path must start with a '/' character");
+        return;
+    }
+    return Engine._scene.findEntity(path);
+};
 
 Fire.Entity = Entity;
 
 var Scene = (function () {
-    var _super = Asset;
     /**
      * @class Fire.Scene
      * @extends Fire.Asset
      * @private
      */
-    function Scene () {
-        _super.call(this);
+    var Scene = Fire.Class({
+        name: "Fire.Scene",
+        extends: Asset,
 
-        /**
-         * root entities
-         * @member {Fire.Entity[]} Fire.Scene#entities
-         */
-        this.entities = [];
+        properties: {
+            /**
+             * root entities
+             * @member {Fire.Entity[]} Fire.Scene#entities
+             */
+            entities: [],
 
-        /**
-         * the active camera
-         * @member {Fire.Camera} Fire.Scene#camera
-         */
-        this.camera = null;
-    }
-    JS.extend(Scene, _super);
-    JS.setClassName("Fire.Scene", Scene);
-
-    ////////////////////////////////////////////////////////////////////
-    // static
-    ////////////////////////////////////////////////////////////////////
-
+            /**
+             * the active camera
+             * @member {Fire.Camera} Fire.Scene#camera
+             */
+            camera: null
+        }
+    });
 
     ////////////////////////////////////////////////////////////////////
     // traversal operations
@@ -8355,21 +8916,14 @@ var Scene = (function () {
             var entity = entities[i];
             if (entity.isValid) {
                 if (entity._objFlags & DontDestroy) {
-                    Engine._launchingScene.entities.push(entity);
+                    Engine._dontDestroyEntities.push(entity);
                 }
                 else {
                     entity.destroy();
                 }
             }
         }
-        _super.prototype.destroy.call(this);
-    };
-
-    Scene.prototype._instantiate = function () {
-        var uuid = this._uuid;
-        var result = Fire._doInstantiate(this);
-        result._uuid = uuid;
-        return result;
+        Asset.prototype.destroy.call(this);
     };
 
     return Scene;
@@ -8892,8 +9446,8 @@ var Engine = (function () {
      */
     Engine._scene = null;
 
-    //
-    Engine._launchingScene = null;
+    // temp array contains persistent entities
+    Engine._dontDestroyEntities = [];
 
     // main render context
     Engine._renderContext = null;
@@ -8957,22 +9511,6 @@ var Engine = (function () {
         }
     });
 
-    /**
-     * @param {Fire.Vec2} value
-     * @return {Fire.Vec2}
-     */
-    Object.defineProperty(Engine, 'screenSize', {
-        get: function () {
-            return Engine._renderContext.size;
-        },
-        set: function (value) {
-            Engine._renderContext.size = value;
-            //if ( !isPlaying ) {
-            //    render();
-            //}
-        }
-    });
-
     var inited = false;
     Object.defineProperty(Engine, 'inited', {
         get: function () {
@@ -8992,10 +9530,10 @@ var Engine = (function () {
      * @param {number} [w]
      * @param {number} [h]
      * @param {Canvas} [canvas]
-     * @param {object} [sceneInfos]
+     * @param {object} [options]
      * @return {RenderContext}
      */
-    Engine.init = function ( w, h, canvas, sceneInfos ) {
+    Engine.init = function ( w, h, canvas, options ) {
         if (inited) {
             Fire.error('Engine already inited');
             return;
@@ -9005,8 +9543,9 @@ var Engine = (function () {
         Engine._renderContext = new RenderContext( w, h, canvas );
         Engine._interactionContext = new InteractionContext();
 
-        JS.mixin(Engine._sceneInfos, sceneInfos);
-
+        if (options) {
+            JS.mixin(Engine._sceneInfos, options.scenes);
+        }
         return Engine._renderContext;
     };
 
@@ -9116,7 +9655,7 @@ var Engine = (function () {
             Fire.error('Argument must be non-nil');
             return;
         }
-        Engine._launchingScene = scene;
+        Engine._dontDestroyEntities.length = 0;
 
         // unload scene
         var oldScene = Engine._scene;
@@ -9135,11 +9674,11 @@ var Engine = (function () {
         }
 
         // init scene
-        //scene.onReady();
         Engine._renderContext.onSceneLoaded(scene);
         // launch scene
+        scene.entities = scene.entities.concat(Engine._dontDestroyEntities);
+        Engine._dontDestroyEntities.length = 0;
         Engine._scene = scene;
-        Engine._launchingScene = null;
         Engine._renderContext.onSceneLaunched(scene);
         scene.activate();
     };
@@ -9259,7 +9798,7 @@ var ModifierKeyStates = (function () {
 
 Fire.ModifierKeyStates = ModifierKeyStates;
 
-Fire.KeyboardEvent = KeyboardEvent;
+Fire.KeyboardEvent = window.KeyboardEvent;  // should use window for Safari
 
 var MouseEvent = (function () {
 
@@ -9394,6 +9933,11 @@ var InputContext = (function () {
         }
     };
 
+    function convertToRetina (event) {
+        event.screenX *= Fire.Screen.devicePixelRatio;
+        event.screenY *= Fire.Screen.devicePixelRatio;
+    }
+
     InputContext.prototype.simulateMouseEvent = function () {
         var scope = this;
         // get canvas page offset
@@ -9425,6 +9969,7 @@ var InputContext = (function () {
                 return function (touchEvent) {
                     // gen mouse event
                     var event = createMouseEvent(type, touchEvent);
+                    convertToRetina(event);
 
                     // inner dispatch
                     Input._dispatchEvent(event, scope);
@@ -9484,6 +10029,7 @@ var InputContext = (function () {
         }
         event.bubbles = eventInfo.bubbles;
         // event.cancelable = eventInfo.cancelable; (NYI)
+        convertToRetina(event);
 
         // inner dispatch
         Input._dispatchEvent(event, this);
@@ -9505,76 +10051,494 @@ var InputContext = (function () {
     return InputContext;
 })();
 
+
+var Browser = (function () {
+    var win = window, nav = win.navigator, doc = document, docEle = doc.documentElement;
+    var ua = nav.userAgent.toLowerCase();
+
+    var Browser = {};
+    Browser.BROWSER_TYPE_WECHAT = "wechat";
+    Browser.BROWSER_TYPE_ANDROID = "androidbrowser";
+    Browser.BROWSER_TYPE_IE = "ie";
+    Browser.BROWSER_TYPE_QQ = "qqbrowser";
+    Browser.BROWSER_TYPE_MOBILE_QQ = "mqqbrowser";
+    Browser.BROWSER_TYPE_UC = "ucbrowser";
+    Browser.BROWSER_TYPE_360 = "360browser";
+    Browser.BROWSER_TYPE_BAIDU_APP = "baiduboxapp";
+    Browser.BROWSER_TYPE_BAIDU = "baidubrowser";
+    Browser.BROWSER_TYPE_MAXTHON = "maxthon";
+    Browser.BROWSER_TYPE_OPERA = "opera";
+    Browser.BROWSER_TYPE_OUPENG = "oupeng";
+    Browser.BROWSER_TYPE_MIUI = "miuibrowser";
+    Browser.BROWSER_TYPE_FIREFOX = "firefox";
+    Browser.BROWSER_TYPE_SAFARI = "safari";
+    Browser.BROWSER_TYPE_CHROME = "chrome";
+    Browser.BROWSER_TYPE_LIEBAO = "liebao";
+    Browser.BROWSER_TYPE_QZONE = "qzone";
+    Browser.BROWSER_TYPE_SOUGOU = "sogou";
+    Browser.BROWSER_TYPE_UNKNOWN = "unknown";
+
+    var browserType = Browser.BROWSER_TYPE_UNKNOWN;
+    var browserTypes = ua.match(/sogou|qzone|liebao|micromessenger|qqbrowser|ucbrowser|360 aphone|360browser|baiduboxapp|baidubrowser|maxthon|trident|oupeng|opera|miuibrowser|firefox/i) ||
+                                ua.match(/chrome|safari/i);
+    if (browserTypes && browserTypes.length > 0) {
+        browserType = browserTypes[0];
+        if (browserType === 'micromessenger') {
+            browserType = Browser.BROWSER_TYPE_WECHAT;
+        }
+        else if (browserType === "safari" && (ua.match(/android.*applewebkit/))) {
+            browserType = Browser.BROWSER_TYPE_ANDROID;
+        }
+        else if (browserType === "trident") {
+            browserType = Browser.BROWSER_TYPE_IE;
+        }
+        else if (browserType === "360 aphone") {
+            browserType = Browser.BROWSER_TYPE_360;
+        }
+    }
+    else if (ua.indexOf("iphone") && ua.indexOf("mobile")) {
+        browserType = "safari";
+    }
+
+    /**
+     * Indicate the running browser type
+     * @type {string}
+     */
+    Browser.type = browserType;
+
+    return Browser;
+})();
+
+var BrowserGetter = (function () {
+
+    var BrowserGetter = {
+        init: function () {
+            this.html = document.getElementsByTagName("html")[0];
+        },
+        availWidth: function (frame) {
+            if (!frame || frame === this.html) {
+                return window.innerWidth;
+            }
+            else {
+                return frame.clientWidth;
+            }
+        },
+        availHeight: function (frame) {
+            if (!frame || frame === this.html) {
+                return window.innerHeight;
+            }
+            else {
+                return frame.clientHeight;
+            }
+        },
+        adaptationType: Browser.type
+    };
+
+    if (window.navigator.userAgent.indexOf("OS 8_1_") > -1) {   //this mistake like MIUI, so use of MIUI treatment method
+        BrowserGetter.adaptationType = Browser.BROWSER_TYPE_MIUI;
+    }
+    switch (BrowserGetter.adaptationType) {
+        case Browser.BROWSER_TYPE_SAFARI:
+            //BrowserGetter.meta["minimal-ui"] = "true";
+            BrowserGetter.availWidth = function (frame) {
+                return frame.clientWidth;
+            };
+            BrowserGetter.availHeight = function (frame) {
+                return frame.clientHeight;
+            };
+            break;
+        //case Browser.BROWSER_TYPE_CHROME:
+        //    BrowserGetter.__defineGetter__("target-densitydpi", function () {
+        //        return cc.view._targetDensityDPI;
+        //    });
+        case Browser.BROWSER_TYPE_SOUGOU:
+        case Browser.BROWSER_TYPE_UC:
+            BrowserGetter.availWidth = function (frame) {
+                return frame.clientWidth;
+            };
+            BrowserGetter.availHeight = function (frame) {
+                return frame.clientHeight;
+            };
+            break;
+        //case Browser.BROWSER_TYPE_MIUI:
+        //    BrowserGetter.init = function () {
+        //        if (view.__resizeWithBrowserSize) return;
+        //        var resize = function(){
+        //            view.setDesignResolutionSize(
+        //                view._designResolutionSize.width,
+        //                view._designResolutionSize.height,
+        //                view._resolutionPolicy
+        //            );
+        //            window.removeEventListener("resize", resize, false);
+        //        };
+        //        window.addEventListener("resize", resize, false);
+        //    };
+        //    break;
+    }
+
+    BrowserGetter.init();
+    return BrowserGetter;
+})();
+
+
+var Screen = {
+    // The device's pixel ratio (for retina displays)
+    devicePixelRatio: (Fire.isRetinaEnabled && window.devicePixelRatio) || 1
+};
+
+Object.defineProperty(Screen, 'size', {
+    get: function () {
+        return Engine._renderContext.size;//.div(this.devicePixelRatio);
+    },
+    set: function (value) {
+        Engine._renderContext.size = value;//.mul(this.devicePixelRatio);
+    }
+});
+
+//Object.defineProperty(Screen, 'deviceSize', {
+//    get: function () {
+//        return Engine._renderContext.size;
+//    },
+//    set: function (value) {
+//        Engine._renderContext.size = value;
+//        //if ( !isPlaying ) {
+//        //    render();
+//        //}
+//    }
+//});
+
+Object.defineProperty(Screen, 'width', {
+    get: function () {
+        return Engine._renderContext.width;
+    },
+    set: function (value) {
+        Engine._renderContext.width = value;
+    }
+});
+
+Object.defineProperty(Screen, 'height', {
+    get: function () {
+        return Engine._renderContext.height;
+    },
+    set: function (value) {
+        Engine._renderContext.height = value;
+    }
+});
+
+
+
+Object.defineProperty(Screen, '_container', {
+    get: function () {
+        var canvas = Fire.Engine._renderContext.canvas;
+        return canvas.parentNode;
+    }
+});
+
+Object.defineProperty(Screen, '_frame', {
+    get: function () {
+        var container = this._container;
+        return (container.parentNode === document.body) ? document.documentElement : container.parentNode;
+    }
+});
+
+// Size of parent node that contains container and _canvas
+Object.defineProperty(Screen, '_frameSize', {
+    get: function () {
+        var frame = this._frame;
+        return Fire.v2(BrowserGetter.availWidth(frame), BrowserGetter.availHeight(frame));
+    }
+});
+
+//Object.defineProperty(Screen, 'resolutionPolicy', {
+//    get: function () {
+//        return this._resolutionPolicy;
+//    },
+//    set: function (value) {
+//        this._resolutionPolicy = value;
+//    }
+//});
+
+Fire.Screen = Screen;
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//
+///**
+// * ResolutionPolicy class is the root strategy class of scale strategy.
+// */
+//function ResolutionPolicy (containerStrategy, contentStrategy) {
+//    this._containerStrategy = containerStrategy;
+//    this._contentStrategy = contentStrategy;
+//}
+//
+//ResolutionPolicy.prototype.init = function () {
+//    this._containerStrategy.init();
+//    this._contentStrategy.init();
+//};
+//
+///**
+// * Function to apply this resolution policy.
+// * The return value is {scale: {Fire.Vec2}, viewport: {Fire.Rect}}.
+// * @param {Fire.Vec2} designedResolution - The user defined design resolution
+// * @returns {object} An object contains the scale X/Y values and the viewport rect
+// */
+//ResolutionPolicy.prototype.apply = function (designedResolution) {
+//    this._containerStrategy.apply(designedResolution);
+//    return this._contentStrategy.apply(designedResolution);
+//};
+//
+//ResolutionPolicy._registered = {};
+//
+///**
+// * @param {Fire.ResolutionPolicyType} type
+// * @returns {Fire.ResolutionPolicy} the instance of ResolutionPolicy
+// */
+//ResolutionPolicy.fromType = function (type) {
+//    return this._registered[type];
+//};
+//
+///**
+// * @param {Fire.ResolutionPolicyType} type
+// * @param instance
+// */
+//ResolutionPolicy.register = function (type, instance) {
+//    this._registered[type] = instance;
+//};
+//
+//Fire.Screen.ResolutionPolicy = ResolutionPolicy;
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * ContainerStrategy class is the root strategy class of container's scale strategy,
+ * it controls the behavior of how to scale the container and canvas.
+ */
+function ContainerStrategy () {}
+
+ContainerStrategy.prototype.setupContainer = function (size) {
+    var canvas = Fire.Engine._renderContext.canvas;
+    var container = Fire.Screen._container;
+
+    // Setup container
+    container.style.width = canvas.style.width = size.x + 'px';
+    container.style.height = canvas.style.height = size.y + 'py';
+
+    // Setup canvas
+    var devicePixelRatio = Fire.Screen.devicePixelRatio;
+    Fire.Screen.size = size.mul(devicePixelRatio);  // enable retina display
+
+    if (Fire.isMobile) {
+        var body = document.body;
+        var style;
+        if (body && (style = body.style)) {
+            ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft',
+             'borderTop',  'borderRight',  'borderBottom',  'borderLeft',
+             'marginTop',  'marginRight',  'marginBottom',  'marginLeft']
+            .forEach(function (key) {
+                style[key] = style[key] || '0px';
+            });
+        }
+    }
+};
+
+Fire.Screen.ContainerStrategy = ContainerStrategy;
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * ContentStrategy class is the root strategy class of content's scale strategy,
+ * it controls the behavior of how to scale the scene and setup the viewport for the game
+ */
+function ContentStrategy () {}
+
+/**
+ * Function to apply this strategy
+ * The return value is {scale: {Fire.Vec2}, viewport: {Fire.Rect}},
+ * @param {Fire.Vec2} designedResolution
+ * @return {object} scaleAndViewportRect
+ */
+ContentStrategy.prototype.apply = function (designedResolution) {
+};
+
+ContentStrategy.prototype.buildResult = function (container, content, scale) {
+    // Makes content fit better the canvas
+    if (Math.abs(container.x - content.x) < 2) {
+        content.x = container.x;
+    }
+    if (Math.abs(container.y - content.y) < 2) {
+        content.y = container.y;
+    }
+    var viewport = new Fire.Rect(Math.round((container.x - content.x) / 2),
+                                 Math.round((container.y - content.y) / 2),
+                                 content.x,
+                                 content.y);
+    return {
+        scale: scale,
+        viewport: viewport
+    };
+};
+
+//ContentStrategy.prototype.setup = function (w, h, styleW, styleH, left, top) {
+//    //_stageWidth = Math.round(w);
+//    //_stageHeight = Math.round(h);
+//    var container = Fire.Scene._container;
+//    container.style.width = styleW + "px";
+//    container.style.height = styleH + "px";
+//    container.style.top = top + "px";
+//};
+
+ContentStrategy.prototype.getContainerSize = function () {
+    var container = Fire.Scene._container;
+    return Fire.v2(container.clientWidth, container.clientHeight);
+};
+
+Fire.Screen.ContentStrategy = ContentStrategy;
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+(function () {
+
+// Container scale strategies
+
+    function EqualToFrame () {
+        ContainerStrategy.call(this);
+    }
+    Fire.JS.extend(EqualToFrame, ContainerStrategy);
+
+    EqualToFrame.prototype.apply = function () {
+        var frameSize = Fire.Screen._frameSize;
+        this.setupContainer(frameSize);
+    };
+
+    /**
+     * Strategy that makes the container's size equals to the frame's size
+     * @type {EqualToFrame}
+     */
+    ContainerStrategy.EqualToFrame = new EqualToFrame();
+
+// Content scale strategies
+
+    function NoScale () {
+        ContentStrategy.call(this);
+    }
+    Fire.JS.extend(NoScale, ContentStrategy);
+
+    NoScale.prototype.apply = function (designedResolution, viewportSize) {
+        return this.buildResult(viewportSize, viewportSize, Vec2.one);
+    };
+
+    /**
+     * Strategy to scale the content's height to container's height and proportionally scale its width
+     */
+    function FixedHeight () {
+        ContentStrategy.call(this);
+    }
+    Fire.JS.extend(FixedHeight, ContentStrategy);
+
+    FixedHeight.prototype.apply = function (designedResolution, viewportSize) {
+        var scale = viewportSize.y / designedResolution.y;
+        var content = viewportSize;
+        return this.buildResult(viewportSize, viewportSize, Fire.v2(scale, scale));
+    };
+
+// instance of Content scale strategies
+
+    // index of the array is the value of Fire.ContentStrategyType
+    var contentStrategies = [new NoScale(), new FixedHeight()];
+
+    /**
+     * @param {Fire.ContentStrategyType} type
+     * @returns {Fire.ContentStrategy}
+     */
+    ContentStrategy.fromType = function (type) {
+        var res = contentStrategies[type];
+        if (!res) {
+            Fire.error('Failed to get ContentStrategy from value', type);
+            return contentStrategies[1];
+        }
+        return res;
+    };
+})();
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+var FireMouseEvent = Fire.MouseEvent;
+var FireKeyboardEvent = Fire.KeyboardEvent;
+
 var EventRegister = {
     inputEvents: {
         // ref: http://www.w3.org/TR/DOM-Level-3-Events/#event-types-list
         keydown: {
-            constructor: KeyboardEvent,
+            constructor: FireKeyboardEvent,
             bubbles: true,
             cancelable: true
         },
         keyup: {
-            constructor: KeyboardEvent,
+            constructor: FireKeyboardEvent,
             bubbles: true,
             cancelable: true
         },
         click: {
-            constructor: MouseEvent,
+            constructor: FireMouseEvent,
             bubbles: true,
             cancelable: true
         },
         dblclick: {
-            constructor: MouseEvent,
+            constructor: FireMouseEvent,
             bubbles: true,
             cancelable: false
         },
         mousedown: {
-            constructor: MouseEvent,
+            constructor: FireMouseEvent,
             bubbles: true,
             cancelable: true
         },
         mouseup: {
-            constructor: MouseEvent,
+            constructor: FireMouseEvent,
             bubbles: true,
             cancelable: true
         },
         mousemove: {
-            constructor: MouseEvent,
+            constructor: FireMouseEvent,
             bubbles: true,
             cancelable: true
         },
         //touchstart: {
-        //    constructor: MouseEvent,
+        //    constructor: FireMouseEvent,
         //    bubbles: true,
         //    cancelable: true
         //},
         //touchend: {
-        //    constructor: MouseEvent,
+        //    constructor: FireMouseEvent,
         //    bubbles: true,
         //    cancelable: true
         //},
         //touchmove: {
-        //    constructor: MouseEvent,
+        //    constructor: FireMouseEvent,
         //    bubbles: true,
         //    cancelable: true
         //}
         //mouseenter: {
-        //    constructor: MouseEvent,
+        //    constructor: FireMouseEvent,
         //    bubbles: false,
         //    cancelable: false,
         //},
         //mouseleave: {
-        //    constructor: MouseEvent,
+        //    constructor: FireMouseEvent,
         //    bubbles: false,
         //    cancelable: false,
         //},
         //mouseout: {
-        //    constructor: MouseEvent,
+        //    constructor: FireMouseEvent,
         //    bubbles: true,
         //    cancelable: true,
         //},
         //mouseover: {
-        //    constructor: MouseEvent,
+        //    constructor: FireMouseEvent,
         //    bubbles: true,
         //    cancelable: true,
         //},
