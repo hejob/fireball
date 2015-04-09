@@ -1,13 +1,13 @@
 {
-    "name": "Web Audio",
-    "version": "0.1.0",
-    "description": "The audio plugin for Fireball",
-    "author": "Fireball",
-    "fireball": {
-        "asset": {
-            "pattern": ".mp3 .ogg .wav",
-            "asset": "src/audio-clip.js",
-            "meta": "editor/audio-clip-meta.js"
-        }
+  "name": "Web Audio",
+  "version": "0.1.0",
+  "description": "The audio plugin for Fireball",
+  "author": "Fireball",
+  "fireball": {
+    "asset": {
+      "pattern": ".mp3 .ogg .wav",
+      "asset": "src/audio-clip.js",
+      "meta": "editor/audio-clip-meta.js"
     }
+  }
 }

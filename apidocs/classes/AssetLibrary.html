@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AssetLibrary - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>AssetLibrary Class</h1>
+                <div class="box meta">
+                
+                
+                        <div class="foundat">
+                            Defined in: <a href="../files/utils_api_engine_asset-library.js.html#l5"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:5</code></a>
+                        </div>
+                
+                            Module: <a href="../modules/Fire.html">Fire</a>
+                
+                </div>
+                
+                
+                <div class="box intro">
+                    <p>The asset library which managing loading/unloading assets in project.</p>
+                
+                </div>
+                
+                <!-- Class member index -->
+                
+                <a name="index" class="anchor-link"></a>
+                <div class="index">
+                <h2>Index</h2>
+                
+                    <div id="api-options">
+                        Show:
+                        <label for="api-show-inherited">
+                            <input type="checkbox" id="api-show-inherited">
+                            Inherited
+                        </label>
+                
+                        <label for="api-show-protected">
+                            <input type="checkbox" id="api-show-protected">
+                            Protected
+                        </label>
+                
+                        <label for="api-show-private">
+                            <input type="checkbox" id="api-show-private">
+                            Private
+                        </label>
+                        <label for="api-show-deprecated">
+                            <input type="checkbox" id="api-show-deprecated">
+                            Deprecated
+                        </label>
+                
+                    </div>
+                
+                
+                    <div class="index-section properties">
+                        <h3>Properties</h3>
+                
+                        <ul class="index-list properties">
+                                <li class="index-item property private">
+                                    <a href="#property__uuidToAsset">_uuidToAsset</a>
+                
+                                </li>
+                        </ul>
+                    </div>
+                
+                
+                
+                    <div class="index-section methods">
+                        <h3>Methods</h3>
+                
+                        <ul class="index-list methods">
+                
+                
+                                <li class="index-item method private">
+                                    <a href="#method__deserializeWithDepends">_deserializeWithDepends</a>
+                
+                                </li>
+                                <li class="index-item method private">
+                                    <a href="#method__loadAssetByUuid">_loadAssetByUuid</a>
+                
+                                </li>
+                                <li class="index-item method private">
+                                    <a href="#method_getAssetByUuid">getAssetByUuid</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_init">init</a>
+                
+                                </li>
+                                <li class="index-item method private">
+                                    <a href="#method_loadAsset">loadAsset</a>
+                
+                                </li>
+                                <li class="index-item method private">
+                                    <a href="#method_loadJson">loadJson</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_unloadAsset">unloadAsset</a>
+                
+                                </li>
+                        </ul>
+                    </div>
+                
+                </div>
+                
+                
+                <div class="class-detail">
+                
+                    <div class="properties-detail">
+                        <h2>Properties</h2>
+                
+                            <a name="property__uuidToAsset" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_uuidToAsset</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_asset-library.js.html#l372"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:372</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>!#en Caches uuid to all loaded assets in scenes.</p>
+                            <p>!#zh 这里保存所有已经加载的场景资源，防止同一个资源在内存中加载出多份拷贝。</p>
+                            <p>这里用不了WeakMap，在浏览器中所有加载过的资源都只能手工调用 unloadAsset 释放。</p>
+                            <p>参考：
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap</a>
+                            <a href="https://github.com/TooTallNate/node-weak">https://github.com/TooTallNate/node-weak</a></p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                
+                        <div class="no-visible-items-message">
+                            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+                        </div>
+                
+                    </div>
+                
+                
+                
+                    <div class="methods-detail">
+                        <h2>Methods</h2>
+                
+                            <a name="method__deserializeWithDepends" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>_deserializeWithDepends</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>json</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>url</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>callback</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>handle</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[existingAsset]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_asset-library.js.html#l163"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:163</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">json</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">url</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">callback</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                                                                <div class="param-description">
+                                                                    <p>error - null or the error info</p>
+                            
+                                                                </div>
+                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                                                                <div class="param-description">
+                                                                    <p>data - the loaded object or null</p>
+                            
+                                                                </div>
+                            
+                                                            </li>
+                                                        </ul>
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">handle</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the loading context which reserves all relevant parameters</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[existingAsset]</code>
+                                                        <span class="type"><a href="../classes/Asset.html" class="crosslink">Asset</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>existing asset to reload</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method__loadAssetByUuid" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>_loadAssetByUuid</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>uuid</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>callback</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>handle</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[existingAsset]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_asset-library.js.html#l80"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:80</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>!#zh uuid加载流程：</p>
+                            <ol>
+                            <li>查找_uuidToAsset，如果已经加载过，直接返回</li>
+                            <li>查找_uuidToCallbacks，如果已经在加载，则注册回调，直接返回</li>
+                            <li>如果没有url，则将uuid直接作为路径</li>
+                            <li>递归加载Asset及其引用到的其它Asset</li>
+                            </ol>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">uuid</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">callback</code>
+                                                        <span class="type">AssetLibrary~loadCallback</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the callback to receive the asset, can be null</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">handle</code>
+                                                        <span class="type">LoadingHandle</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the loading context which reserves all relevant parameters</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[existingAsset]</code>
+                                                        <span class="type"><a href="../classes/Asset.html" class="crosslink">Asset</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>load to existing asset, this argument is only available in editor</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_getAssetByUuid" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>getAssetByUuid</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>uuid</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Asset.html" class="crosslink">Asset</a></span>
+                                    </span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_asset-library.js.html#l298"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:298</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Get the exists asset by uuid.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">uuid</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Asset.html" class="crosslink">Asset</a></span>:
+                                                    <ul>
+                            <li>the existing asset, if not loaded, just returns null.</li>
+                            </ul>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_init" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>init</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>libraryPath</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_asset-library.js.html#l347"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:347</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>init the asset library</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">libraryPath</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_loadAsset" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>loadAsset</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>uuid</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>callback</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[readMainCache=true]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[writeMainCache=true]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[existingAsset]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_asset-library.js.html#l59"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:59</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">uuid</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">callback</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                                                                <div class="param-description">
+                                                                    <p>error - null or the error info</p>
+                            
+                                                                </div>
+                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type"><a href="../classes/Asset.html" class="crosslink">Asset</a></span>
+                            
+                                                                <div class="param-description">
+                                                                    <p>data - the loaded asset or null</p>
+                            
+                                                                </div>
+                            
+                                                            </li>
+                                                        </ul>
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[readMainCache=true]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>If false, the asset and all its depends assets will reload and create new instances from library.</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[writeMainCache=true]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>If true, the result will cache to AssetLibrary, and MUST be unload by user manually.</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[existingAsset]</code>
+                                                        <span class="type"><a href="../classes/Asset.html" class="crosslink">Asset</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>load to existing asset, this argument is only available in editor</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_loadJson" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>loadJson</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>json</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>callback</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[dontCache=false]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_asset-library.js.html#l149"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:149</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">json</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">callback</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                                                                <div class="param-description">
+                                                                    <p>error - null or the error info</p>
+                            
+                                                                </div>
+                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            
+                                                                <div class="param-description">
+                                                                    <p>data - the loaded object or null</p>
+                            
+                                                                </div>
+                            
+                                                            </li>
+                                                        </ul>
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[dontCache=false]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>If false, the result will cache to AssetLibrary, and MUST be unload by user manually.</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_unloadAsset" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>unloadAsset</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>assetOrUuid</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[destroyImmediate=false]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_asset-library.js.html#l316"><code>utils&#x2F;api&#x2F;engine&#x2F;asset-library.js:316</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>!#en Kill references to the asset so it can be garbage collected.
+                            Fireball will reload the asset from disk or remote if loadAssetByUuid being called again.
+                            You rarely use this function in scripts, since it will be called automatically when the Asset is destroyed.
+                            !#zh 手动卸载指定的资源，这个方法会在 Asset 被 destroy 时自动调用，一般不需要用到这个方法。卸载以后，Fireball 可以重新从硬盘或网络加载这个资源。</p>
+                            <p>如果还有地方引用到asset，除非 destroyImmediated 为true，否则不应该执行这个方法，因为那样可能会导致 asset 被多次创建。</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">assetOrUuid</code>
+                                                        <span class="type"><a href="../classes/Asset.html" class="crosslink">Asset</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[destroyImmediate=false]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <p>When destroyImmediate is true, if there are objects
+                                                                      referencing the asset, the references will become invalid.</p>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                
+                        <div class="no-visible-items-message">
+                            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+                        </div>
+                
+                    </div>
+                
+                
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

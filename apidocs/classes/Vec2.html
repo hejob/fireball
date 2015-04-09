@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Vec2 - Fireball Game API</title>
+    <title>Vec2 - Fireball Engine API</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -14,8 +14,9 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
-                    <p class="description">Fireball Game API: your toolbox</p>
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
             </div>
             <ul class="jump-links">
                 <li><a href="#index" class="index-jump-link">index</a></li>
@@ -39,28 +40,66 @@
             
                     <div id="api-tabview-panel">
                         <ul id="api-classes" class="apis classes">
-                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
                             <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
                             <li><a class="type" href="../classes/Color.html">Color</a></li>
                             <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
                             <li><a class="type" href="../classes/Fire.html">Fire</a></li>
-                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
-                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
                             <li><a class="type" href="../classes/FObject.html">FObject</a></li>
                             <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
                             <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
                             <li><a class="type" href="../classes/Math.html">Math</a></li>
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
                             <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
-                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +113,7 @@
                 
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2502"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2502</code></a>
+                            Defined in: <a href="../files/utils_api_core_vec2.js.html#l7"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:7</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -83,7 +122,9 @@
                 
                 
                 <div class="box intro">
-                    
+                    <p>Representation of 2D vectors and points.</p>
+                <p>see {% crosslink Fire.v2 Fire.v2 %}</p>
+                
                 </div>
                 
                 <!-- Class member index -->
@@ -121,12 +162,24 @@
                 
                         <ul class="index-list properties">
                                 <li class="index-item property">
-                                    <a href="#property_Fire.Vec2">Fire.Vec2</a>
-                
-                                </li>
-                                <li class="index-item property">
                                     <a href="#property_one">one</a>
                 
+                                        <span class="flag static">static</span>
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_right">right</a>
+                
+                                        <span class="flag static">static</span>
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_up">up</a>
+                
+                                        <span class="flag static">static</span>
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_zero">zero</a>
+                
+                                        <span class="flag static">static</span>
                                 </li>
                         </ul>
                     </div>
@@ -158,6 +211,10 @@
                 
                                 </li>
                                 <li class="index-item method">
+                                    <a href="#method_clone">clone</a>
+                
+                                </li>
+                                <li class="index-item method">
                                     <a href="#method_cross">cross</a>
                 
                                 </li>
@@ -174,7 +231,7 @@
                 
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_Fire.v2">Fire.v2</a>
+                                    <a href="#method_equals">equals</a>
                 
                                 </li>
                                 <li class="index-item method">
@@ -226,6 +283,10 @@
                 
                                 </li>
                                 <li class="index-item method">
+                                    <a href="#method_set">set</a>
+                
+                                </li>
+                                <li class="index-item method">
                                     <a href="#method_signAngle">signAngle</a>
                 
                                 </li>
@@ -235,6 +296,10 @@
                                 </li>
                                 <li class="index-item method">
                                     <a href="#method_subSelf">subSelf</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_toString">toString</a>
                 
                                 </li>
                         </ul>
@@ -248,36 +313,6 @@
                     <div class="properties-detail">
                         <h2>Properties</h2>
                 
-                            <a name="property_Fire.Vec2" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code>Fire.Vec2</code>
-                                <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2865"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2865</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>This is a property accessible from {% crosslink Fire Fire %} global object</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
                             <a name="property_one" class="anchor-link"></a>
                             <div class="property item">
                                 <h3 class="name"><code>one</code>
@@ -286,13 +321,14 @@
                             
                             
                             
+                                    <span class="flag static">static</span>
                             
                                 </h3>
                             
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2516"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2516</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l24"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:24</code></a>
                                     </p>
                             
                             
@@ -301,6 +337,99 @@
                                 <div class="extended-detail">
                                     <div class="description">
                                         <p>return a Vec2 object with x = 1 and y = 1</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_right" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>right</code>
+                                <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                            
+                            
+                                    <span class="flag static">static</span>
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_vec2.js.html#l60"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:60</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>return a Vec2 object with x = 1 and y = 0</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_up" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>up</code>
+                                <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                            
+                            
+                                    <span class="flag static">static</span>
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_vec2.js.html#l48"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:48</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>return a Vec2 object with x = 0 and y = 1</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_zero" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>zero</code>
+                                <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                            
+                            
+                                    <span class="flag static">static</span>
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_vec2.js.html#l36"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:36</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>return a Vec2 object with x = 0 and y = 0</p>
                             
                                     </div>
                             
@@ -325,10 +454,10 @@
                                 <div class="args">
                                     <span class="paren">(</span><ul class="args-list inline commas">
                                         <li class="arg">
-                                                <code>x</code>
+                                                <code class="optional">[x=0]</code>
                                         </li>
                                         <li class="arg">
-                                                <code>y</code>
+                                                <code class="optional">[y=0]</code>
                                         </li>
                                     </ul><span class="paren">)</span>
                                 </div>
@@ -345,7 +474,7 @@
                             <div class="meta">
                                         <p>
                                         Defined in
-                                <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2502"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2502</code></a>
+                                <a href="../files/utils_api_core_vec2.js.html#l7"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:7</code></a>
                                 </p>
                         
                         
@@ -363,8 +492,9 @@
                         
                                         <ul class="params-list">
                                             <li class="param">
-                                                    <code class="param-name">x</code>
+                                                    <code class="param-name optional">[x=0]</code>
                                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
                         
                         
                                                 <div class="param-description">
@@ -373,8 +503,9 @@
                         
                                             </li>
                                             <li class="param">
-                                                    <code class="param-name">y</code>
+                                                    <code class="param-name optional">[y=0]</code>
                                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
                         
                         
                                                 <div class="param-description">
@@ -423,7 +554,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2581"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2581</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l129"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:129</code></a>
                                     </p>
                             
                             
@@ -500,6 +631,7 @@
                             
                             
                             
+                                    <span class="flag chainable">chainable</span>
                             
                             
                                 </h3>
@@ -507,7 +639,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2569"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2569</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l116"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:116</code></a>
                                     </p>
                             
                             
@@ -577,7 +709,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2797"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2797</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l353"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:353</code></a>
                                     </p>
                             
                             
@@ -587,7 +719,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Get angle between this and vector</p>
+                                        <p>Get angle in radian between this and vector</p>
                             
                                     </div>
                             
@@ -620,6 +752,51 @@
                             
                                 </div>
                             </div>
+                            <a name="method_clone" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>clone</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_vec2.js.html#l74"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:74</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
                             <a name="method_cross" class="anchor-link"></a>
                             <div class="method item">
                                 <h3 class="name"><code>cross</code>
@@ -647,7 +824,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2733"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2733</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l286"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:286</code></a>
                                     </p>
                             
                             
@@ -721,7 +898,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2685"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2685</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l237"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:237</code></a>
                                     </p>
                             
                             
@@ -798,6 +975,7 @@
                             
                             
                             
+                                    <span class="flag chainable">chainable</span>
                             
                             
                                 </h3>
@@ -805,7 +983,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2673"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2673</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l224"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:224</code></a>
                                     </p>
                             
                             
@@ -875,7 +1053,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2723"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2723</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l276"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:276</code></a>
                                     </p>
                             
                             
@@ -919,23 +1097,20 @@
                             
                                 </div>
                             </div>
-                            <a name="method_Fire.v2" class="anchor-link"></a>
+                            <a name="method_equals" class="anchor-link"></a>
                             <div class="method item">
-                                <h3 class="name"><code>Fire.v2</code>
+                                <h3 class="name"><code>equals</code>
                             
                                     <div class="args">
                                         <span class="paren">(</span><ul class="args-list inline commas">
                                             <li class="arg">
-                                                    <code class="optional">[x=0]</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code class="optional">[y=0]</code>
+                                                    <code>other</code>
                                             </li>
                                         </ul><span class="paren">)</span>
                                     </div>
                             
                                     <span class="returns-inline">
-                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                                     </span>
                             
                             
@@ -949,7 +1124,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2872"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2872</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l94"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:94</code></a>
                                     </p>
                             
                             
@@ -959,8 +1134,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>The convenience method to create a new {% crosslink Vec2 Vec2 %}</p>
-                            
+                                        
                                     </div>
                             
                                         <div class="params">
@@ -968,20 +1142,8 @@
                             
                                             <ul class="params-list">
                                                 <li class="param">
-                                                        <code class="param-name optional">[x=0]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[y=0]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                                                        <code class="param-name">other</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
                             
                             
                                                     <div class="param-description">
@@ -996,7 +1158,7 @@
                                             <h4>Returns:</h4>
                             
                                             <div class="returns-description">
-                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                                             </div>
                                         </div>
                             
@@ -1023,7 +1185,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2743"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2743</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l296"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:296</code></a>
                                     </p>
                             
                             
@@ -1033,7 +1195,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Magnitude</p>
+                                        <p>Returns the length of this vector.</p>
                             
                                     </div>
                             
@@ -1071,7 +1233,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2752"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2752</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l305"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:305</code></a>
                                     </p>
                             
                             
@@ -1081,7 +1243,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Magnitude Sqaure</p>
+                                        <p>Returns the squared length of this vector.</p>
                             
                                     </div>
                             
@@ -1128,7 +1290,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2633"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2633</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l183"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:183</code></a>
                                     </p>
                             
                             
@@ -1205,6 +1367,7 @@
                             
                             
                             
+                                    <span class="flag chainable">chainable</span>
                             
                             
                                 </h3>
@@ -1212,7 +1375,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2621"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2621</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l170"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:170</code></a>
                                     </p>
                             
                             
@@ -1282,7 +1445,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2710"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2710</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l263"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:263</code></a>
                                     </p>
                             
                             
@@ -1343,6 +1506,7 @@
                             
                             
                             
+                                    <span class="flag chainable">chainable</span>
                             
                             
                                 </h3>
@@ -1350,7 +1514,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2699"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2699</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l251"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:251</code></a>
                                     </p>
                             
                             
@@ -1404,7 +1568,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2783"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2783</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l337"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:337</code></a>
                                     </p>
                             
                             
@@ -1414,7 +1578,8 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Get normalized vector</p>
+                                        <p>Returns this vector with a magnitude of 1.</p>
+                            <p>Note that the current vector is unchanged and a new normalized vector is returned. If you want to normalize the current vector, use normalizeSelf function.</p>
                             
                                     </div>
                             
@@ -1465,6 +1630,7 @@
                             
                             
                             
+                                    <span class="flag chainable">chainable</span>
                             
                             
                                 </h3>
@@ -1472,7 +1638,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2761"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2761</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l314"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:314</code></a>
                                     </p>
                             
                             
@@ -1482,7 +1648,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Normalize self</p>
+                                        <p>Make the length of this vector to 1.</p>
                             
                                     </div>
                             
@@ -1492,7 +1658,7 @@
                             
                                             <div class="returns-description">
                                                         <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
-                                                    <p>this</p>
+                                                    <p>returns this</p>
                             
                                             </div>
                                         </div>
@@ -1529,7 +1695,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2833"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2833</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l389"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:389</code></a>
                                     </p>
                             
                             
@@ -1606,6 +1772,7 @@
                             
                             
                             
+                                    <span class="flag chainable">chainable</span>
                             
                             
                                 </h3>
@@ -1613,7 +1780,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2847"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2847</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l403"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:403</code></a>
                                     </p>
                             
                             
@@ -1649,7 +1816,7 @@
                             
                                             <div class="returns-description">
                                                         <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
-                                                    <p>this</p>
+                                                    <p>returns this</p>
                             
                                             </div>
                                         </div>
@@ -1686,7 +1853,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2659"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2659</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l210"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:210</code></a>
                                     </p>
                             
                             
@@ -1763,6 +1930,7 @@
                             
                             
                             
+                                    <span class="flag chainable">chainable</span>
                             
                             
                                 </h3>
@@ -1770,7 +1938,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2647"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2647</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l197"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:197</code></a>
                                     </p>
                             
                             
@@ -1790,6 +1958,76 @@
                                             <ul class="params-list">
                                                 <li class="param">
                                                         <code class="param-name">vector</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
+                                                    <p>returns this</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_set" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>set</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>newValue</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                                    <span class="flag chainable">chainable</span>
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_vec2.js.html#l82"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:82</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">newValue</code>
                                                         <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
                             
                             
@@ -1840,7 +2078,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2818"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2818</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l374"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:374</code></a>
                                     </p>
                             
                             
@@ -1850,7 +2088,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Get angle between this and vector with direction</p>
+                                        <p>Get angle in radian between this and vector with direction</p>
                             
                                     </div>
                             
@@ -1913,7 +2151,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2607"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2607</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l156"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:156</code></a>
                                     </p>
                             
                             
@@ -1990,6 +2228,7 @@
                             
                             
                             
+                                    <span class="flag chainable">chainable</span>
                             
                             
                                 </h3>
@@ -1997,7 +2236,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2595"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2595</code></a>
+                                    <a href="../files/utils_api_core_vec2.js.html#l143"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:143</code></a>
                                     </p>
                             
                             
@@ -2035,6 +2274,51 @@
                                                         <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
                                                     <p>returns this</p>
                             
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_toString" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>toString</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_vec2.js.html#l105"><code>utils&#x2F;api&#x2F;core&#x2F;vec2.js:105</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                                             </div>
                                         </div>
                             

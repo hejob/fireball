@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/definition.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/definition.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                // global definitions
+                
+                /**
+                 * indicates whether executes in node.js application
+                 * @property isNode
+                 * @type {boolean}
+                 */
+                Fire.isNode = !!(typeof process !== &#x27;undefined&#x27; &amp;&amp; process.versions &amp;&amp; process.versions.node);
+                Fire.isNodeWebkit = !!(Fire.isNode &amp;&amp; &#x27;node-webkit&#x27; in process.versions);   // node-webkit
+                Fire.isAtomShell = !!(Fire.isNode &amp;&amp; &#x27;atom-shell&#x27; in process.versions);     // atom-shell
+                Fire.isApp = Fire.isNodeWebkit || Fire.isAtomShell;
+                
+                /**
+                 * indicates whether executes in common web browser
+                 * @property isPureWeb
+                 * @type {boolean}
+                 */
+                Fire.isPureWeb = !Fire.isNode &amp;&amp; !Fire.isApp;                               // common web browser
+                
+                /**
+                 * indicates whether executes in Fireball editor
+                 * @property isEditor
+                 * @type {boolean}
+                 */
+                Fire.isEditor = Fire.isApp;     // by far there is no standalone client version, so app == editor
+                
+                /**
+                 * indicates whether executes in common web browser, or editor&#x27;s window process(atom-shell&#x27;s renderer context)
+                 * @property isWeb
+                 * @type {boolean}
+                 */
+                if (Fire.isAtomShell) {
+                    Fire.isWeb = typeof process !== &#x27;undefined&#x27; &amp;&amp; process.type === &#x27;renderer&#x27;;
+                }
+                else {
+                    Fire.isWeb = (typeof __dirname === &#x27;undefined&#x27; || __dirname === null);
+                }
+                
+                /**
+                 * indicates whether executes in editor&#x27;s core process(atom-shell&#x27;s browser context)
+                 * @property isEditorCore
+                 * @type {boolean}
+                 */
+                Fire.isEditorCore = Fire.isApp &amp;&amp; !Fire.isWeb;
+                
+                if (Fire.isNode) {
+                    /**
+                     * indicates whether executes in OSX
+                     * @property isDarwin
+                     * @type {boolean}
+                     */
+                    Fire.isDarwin = process.platform === &#x27;darwin&#x27;;
+                
+                    /**
+                     * indicates whether executes in Windows
+                     * @property isWin32
+                     * @type {boolean}
+                     */
+                    Fire.isWin32 = process.platform === &#x27;win32&#x27;;
+                }
+                else {
+                    // http://stackoverflow.com/questions/19877924/what-is-the-list-of-possible-values-for-navigator-platform-as-of-today
+                    var platform = window.navigator.platform;
+                    Fire.isDarwin = platform.substring(0, 3) === &#x27;Mac&#x27;;
+                    Fire.isWin32 = platform.substring(0, 3) === &#x27;Win&#x27;;
+                }
+                
+                if (Fire.isPureWeb) {
+                    var win = window, nav = win.navigator, doc = document, docEle = doc.documentElement;
+                    var ua = nav.userAgent.toLowerCase();
+                
+                    /**
+                     * indicates whether executes in mobile device
+                     * @property isMobile
+                     * @type {boolean}
+                     */
+                    Fire.isMobile = ua.indexOf(&#x27;mobile&#x27;) !== -1 || ua.indexOf(&#x27;android&#x27;) !== -1;
+                    /**
+                     * indicates whether executes in iOS
+                     * @property isIOS
+                     * @type {boolean}
+                     */
+                    Fire.isIOS = !!ua.match(/(iPad|iPhone|iPod)/i);
+                    /**
+                     * indicates whether executes in Android
+                     * @property isAndroid
+                     * @type {boolean}
+                     */
+                    Fire.isAndroid = !!(ua.match(/android/i) || nav.platform.match(/android/i));
+                }
+                else {
+                    Fire.isAndroid = Fire.isIOS = Fire.isMobile = false;
+                }
+                
+                /**
+                 * !#en Check if running in retina display
+                 * !#zh 判断窗口是否显示在 Retina 显示器下。这个属性会随着窗口所在的显示器变化而变化
+                 * @property isRetina
+                 * @type boolean
+                 */
+                Object.defineProperty(Fire, &#x27;isRetina&#x27;, {
+                    get: function () {
+                        return Fire.isWeb &amp;&amp; window.devicePixelRatio &amp;&amp; window.devicePixelRatio &gt; 1;
+                    }
+                });
+                
+                /**
+                 * !#en Indicates whether retina mode is enabled currently. Retina mode is enabled by default for Apple device but disabled for other devices.
+                 * !#zh 判断当前是否启用 retina 渲染模式。Fire.isRetina 只是表示系统的支持状态，而最终是否启用 retina 则取决于 Fire.isRetinaEnabled。由于安卓太卡，这里默认禁用 retina。
+                 * @type {boolean}
+                 */
+                Fire.isRetinaEnabled = (Fire.isIOS || Fire.isDarwin) &amp;&amp; !Fire.isEditor &amp;&amp; Fire.isRetina;
+                
+                
+                // definitions for FObject._objFlags
+                
+                var Destroyed = 1 &lt;&lt; 0;
+                var ToDestroy = 1 &lt;&lt; 1;
+                var DontSave = 1 &lt;&lt; 2;
+                var EditorOnly  = 1 &lt;&lt; 3;
+                var Dirty = 1 &lt;&lt; 4;
+                var DontDestroy = 1 &lt;&lt; 5;
+                
+                /**
+                 * Bit mask that controls object states.
+                 * @class _ObjectFlags
+                 * @static
+                 * @private
+                 */
+                var ObjectFlags = {
+                
+                    // public flags
+                
+                    /**
+                     * The object will not be saved.
+                     * @property DontSave
+                     * @type number
+                     */
+                    DontSave: DontSave,
+                
+                    /**
+                     * The object will not be saved when building a player.
+                     * @property EditorOnly
+                     * @type number
+                     */
+                    EditorOnly: EditorOnly,
+                
+                    Dirty: Dirty,
+                
+                    /**
+                     * Dont destroy automatically when loading a new scene.
+                     * @property DontDestroy
+                     * @private
+                     */
+                    DontDestroy: DontDestroy,
+                
+                    // public flags for engine
+                
+                    Destroying: 1 &lt;&lt; 9,
+                
+                    /**
+                     * Hide in game and hierarchy.
+                     * This flag is readonly, it can only be used as an argument of scene.addEntity() or Entity.createWithFlags()
+                     * @property HideInGame
+                     * @type number
+                     */
+                    HideInGame: 1 &lt;&lt; 10,
+                
+                    // public flags for editor
+                
+                    /**
+                     * This flag is readonly, it can only be used as an argument of scene.addEntity() or Entity.createWithFlags()
+                     * @property HideInEditor
+                     * @type number
+                     */
+                    HideInEditor: 1 &lt;&lt; 11,
+                
+                    // flags for Component
+                    IsOnEnableCalled: 1 &lt;&lt; 12,
+                    IsOnLoadCalled: 1 &lt;&lt; 13,
+                    IsOnStartCalled: 1 &lt;&lt; 14,
+                    IsEditorOnEnabledCalled: 1 &lt;&lt; 15
+                
+                };
+                
+                /**
+                 * Hide in game view, hierarchy, and scene view... etc.
+                 * This flag is readonly, it can only be used as an argument of scene.addEntity() or Entity.createWithFlags()
+                 * @property Hide
+                 * @type number
+                 */
+                ObjectFlags.Hide = ObjectFlags.HideInGame | ObjectFlags.HideInEditor;
+                
+                Fire._ObjectFlags = ObjectFlags;
+                
+                var PersistentMask = ~(ToDestroy | Dirty | ObjectFlags.Destroying | DontDestroy |     // can not clone these flags
+                                       ObjectFlags.IsOnEnableCalled |
+                                       ObjectFlags.IsEditorOnEnabledCalled |
+                                       ObjectFlags.IsOnLoadCalled |
+                                       ObjectFlags.IsOnStartCalled);
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

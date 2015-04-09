@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>FObject - Fireball Game API</title>
+    <title>FObject - Fireball Engine API</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -14,8 +14,9 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
-                    <p class="description">Fireball Game API: your toolbox</p>
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
             </div>
             <ul class="jump-links">
                 <li><a href="#index" class="index-jump-link">index</a></li>
@@ -39,28 +40,66 @@
             
                     <div id="api-tabview-panel">
                         <ul id="api-classes" class="apis classes">
-                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
                             <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
                             <li><a class="type" href="../classes/Color.html">Color</a></li>
                             <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
                             <li><a class="type" href="../classes/Fire.html">Fire</a></li>
-                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
-                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
                             <li><a class="type" href="../classes/FObject.html">FObject</a></li>
                             <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
                             <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
                             <li><a class="type" href="../classes/Math.html">Math</a></li>
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
                             <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
-                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +113,7 @@
                 
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2304"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2304</code></a>
+                            Defined in: <a href="../files/utils_api_core_object.js.html#l5"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:5</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -83,7 +122,8 @@
                 
                 
                 <div class="box intro">
-                    
+                    <p>The base class of most of all the objects in Fireball.</p>
+                
                 </div>
                 
                 <!-- Class member index -->
@@ -120,6 +160,18 @@
                         <h3>Properties</h3>
                 
                         <ul class="index-list properties">
+                                <li class="index-item property private">
+                                    <a href="#property__name">_name</a>
+                
+                                </li>
+                                <li class="index-item property private">
+                                    <a href="#property__objFlags">_objFlags</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_isValid">isValid</a>
+                
+                                </li>
                                 <li class="index-item property">
                                     <a href="#property_name">name</a>
                 
@@ -141,12 +193,16 @@
                 
                                 </li>
                 
-                                <li class="index-item method">
-                                    <a href="#method_destroy">destroy</a>
+                                <li class="index-item method private">
+                                    <a href="#method__destruct">_destruct</a>
+                
+                                </li>
+                                <li class="index-item method private">
+                                    <a href="#method__onPreDestroy">_onPreDestroy</a>
                 
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_Fire.isValid">Fire.isValid</a>
+                                    <a href="#method_destroy">destroy</a>
                 
                                 </li>
                         </ul>
@@ -160,9 +216,69 @@
                     <div class="properties-detail">
                         <h2>Properties</h2>
                 
-                            <a name="property_name" class="anchor-link"></a>
+                            <a name="property__name" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_name</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_object.js.html#l16"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:16</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__objFlags" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_objFlags</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_object.js.html#l23"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:23</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_isValid" class="anchor-link"></a>
                             <div class="property item">
-                                <h3 class="name"><code>name</code>
+                                <h3 class="name"><code>isValid</code>
                                 <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             
                             
@@ -174,7 +290,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2358"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2358</code></a>
+                                    <a href="../files/utils_api_core_object.js.html#l75"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:75</code></a>
                                     </p>
                             
                             
@@ -182,7 +298,39 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        
+                                        <p>Indicates whether the object is not yet destroyed</p>
+                            
+                                    </div>
+                            
+                                        <p class="default"><strong>Default:</strong> <span class="default-value">true</span></p>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_name" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>name</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_object.js.html#l60"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:60</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>The name of the object.</p>
+                            
                                     </div>
                             
                             
@@ -217,7 +365,7 @@
                             <div class="meta">
                                         <p>
                                         Defined in
-                                <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2304"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2304</code></a>
+                                <a href="../files/utils_api_core_object.js.html#l5"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:5</code></a>
                                 </p>
                         
                         
@@ -239,6 +387,81 @@
                     <div class="methods-detail">
                         <h2>Methods</h2>
                 
+                            <a name="method__destruct" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>_destruct</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_object.js.html#l108"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:108</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Clear all references in the instance.</p>
+                            <p>NOTE: this method will not clear the getter or setter functions which defined in the INSTANCE of FObject.
+                                  You can override the _destruct method if you need.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method__onPreDestroy" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>_onPreDestroy</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_object.js.html#l139"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:139</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
                             <a name="method_destroy" class="anchor-link"></a>
                             <div class="method item">
                                 <h3 class="name"><code>destroy</code>
@@ -260,7 +483,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2378"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2378</code></a>
+                                    <a href="../files/utils_api_core_object.js.html#l87"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:87</code></a>
                                     </p>
                             
                             
@@ -270,8 +493,8 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Destroy this FObject, and release all its own references to other resources.
-                            After destory, this FObject is not usable any more.
+                                        <p>Destroy this FObject, and release all its own references to other resources.</p>
+                            <p>After destory, this FObject is not usable any more.
                             You can use Fire.isValid(obj) (or obj.isValid if obj is non-nil) to check whether the object is destroyed before accessing it.</p>
                             
                                     </div>
@@ -283,54 +506,6 @@
                                             <div class="returns-description">
                                                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                                                     <p>whether it is the first time the destroy being called</p>
-                            
-                                            </div>
-                                        </div>
-                            
-                                </div>
-                            </div>
-                            <a name="method_Fire.isValid" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>Fire.isValid</code>
-                            
-                                    <span class="paren">()</span>
-                            
-                                    <span class="returns-inline">
-                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    </span>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l2322"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:2322</code></a>
-                                    </p>
-                            
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                            
-                                    <div class="description">
-                                        <p>Checks whether the object is not destroyed</p>
-                            
-                                    </div>
-                            
-                            
-                                        <div class="returns">
-                                            <h4>Returns:</h4>
-                            
-                                            <div class="returns-description">
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                                                    <p>whether it is not destroyed</p>
                             
                                             </div>
                                         </div>

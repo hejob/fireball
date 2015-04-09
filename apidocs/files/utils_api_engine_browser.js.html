@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/browser.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/browser.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                
+                var Browser = (function () {
+                    var win = window, nav = win.navigator, doc = document, docEle = doc.documentElement;
+                    var ua = nav.userAgent.toLowerCase();
+                
+                    var Browser = {};
+                    Browser.BROWSER_TYPE_WECHAT = &quot;wechat&quot;;
+                    Browser.BROWSER_TYPE_ANDROID = &quot;androidbrowser&quot;;
+                    Browser.BROWSER_TYPE_IE = &quot;ie&quot;;
+                    Browser.BROWSER_TYPE_QQ = &quot;qqbrowser&quot;;
+                    Browser.BROWSER_TYPE_MOBILE_QQ = &quot;mqqbrowser&quot;;
+                    Browser.BROWSER_TYPE_UC = &quot;ucbrowser&quot;;
+                    Browser.BROWSER_TYPE_360 = &quot;360browser&quot;;
+                    Browser.BROWSER_TYPE_BAIDU_APP = &quot;baiduboxapp&quot;;
+                    Browser.BROWSER_TYPE_BAIDU = &quot;baidubrowser&quot;;
+                    Browser.BROWSER_TYPE_MAXTHON = &quot;maxthon&quot;;
+                    Browser.BROWSER_TYPE_OPERA = &quot;opera&quot;;
+                    Browser.BROWSER_TYPE_OUPENG = &quot;oupeng&quot;;
+                    Browser.BROWSER_TYPE_MIUI = &quot;miuibrowser&quot;;
+                    Browser.BROWSER_TYPE_FIREFOX = &quot;firefox&quot;;
+                    Browser.BROWSER_TYPE_SAFARI = &quot;safari&quot;;
+                    Browser.BROWSER_TYPE_CHROME = &quot;chrome&quot;;
+                    Browser.BROWSER_TYPE_LIEBAO = &quot;liebao&quot;;
+                    Browser.BROWSER_TYPE_QZONE = &quot;qzone&quot;;
+                    Browser.BROWSER_TYPE_SOUGOU = &quot;sogou&quot;;
+                    Browser.BROWSER_TYPE_UNKNOWN = &quot;unknown&quot;;
+                
+                    var browserType = Browser.BROWSER_TYPE_UNKNOWN;
+                    var browserTypes = ua.match(/sogou|qzone|liebao|micromessenger|qqbrowser|ucbrowser|360 aphone|360browser|baiduboxapp|baidubrowser|maxthon|trident|oupeng|opera|miuibrowser|firefox/i) ||
+                                                ua.match(/chrome|safari/i);
+                    if (browserTypes &amp;&amp; browserTypes.length &gt; 0) {
+                        browserType = browserTypes[0];
+                        if (browserType === &#x27;micromessenger&#x27;) {
+                            browserType = Browser.BROWSER_TYPE_WECHAT;
+                        }
+                        else if (browserType === &quot;safari&quot; &amp;&amp; (ua.match(/android.*applewebkit/))) {
+                            browserType = Browser.BROWSER_TYPE_ANDROID;
+                        }
+                        else if (browserType === &quot;trident&quot;) {
+                            browserType = Browser.BROWSER_TYPE_IE;
+                        }
+                        else if (browserType === &quot;360 aphone&quot;) {
+                            browserType = Browser.BROWSER_TYPE_360;
+                        }
+                    }
+                    else if (ua.indexOf(&quot;iphone&quot;) &amp;&amp; ua.indexOf(&quot;mobile&quot;)) {
+                        browserType = &quot;safari&quot;;
+                    }
+                
+                    /**
+                     * Indicate the running browser type
+                     * @type {string}
+                     */
+                    Browser.type = browserType;
+                
+                    return Browser;
+                })();
+                
+                var BrowserGetter = (function () {
+                
+                    var BrowserGetter = {
+                        init: function () {
+                            this.html = document.getElementsByTagName(&quot;html&quot;)[0];
+                        },
+                        availWidth: function (frame) {
+                            if (!frame || frame === this.html) {
+                                return window.innerWidth;
+                            }
+                            else {
+                                return frame.clientWidth;
+                            }
+                        },
+                        availHeight: function (frame) {
+                            if (!frame || frame === this.html) {
+                                return window.innerHeight;
+                            }
+                            else {
+                                return frame.clientHeight;
+                            }
+                        },
+                        adaptationType: Browser.type
+                    };
+                
+                    if (window.navigator.userAgent.indexOf(&quot;OS 8_1_&quot;) &gt; -1) {   //this mistake like MIUI, so use of MIUI treatment method
+                        BrowserGetter.adaptationType = Browser.BROWSER_TYPE_MIUI;
+                    }
+                    switch (BrowserGetter.adaptationType) {
+                        case Browser.BROWSER_TYPE_SAFARI:
+                            //BrowserGetter.meta[&quot;minimal-ui&quot;] = &quot;true&quot;;
+                            BrowserGetter.availWidth = function (frame) {
+                                return frame.clientWidth;
+                            };
+                            BrowserGetter.availHeight = function (frame) {
+                                return frame.clientHeight;
+                            };
+                            break;
+                        //case Browser.BROWSER_TYPE_CHROME:
+                        //    BrowserGetter.__defineGetter__(&quot;target-densitydpi&quot;, function () {
+                        //        return cc.view._targetDensityDPI;
+                        //    });
+                        case Browser.BROWSER_TYPE_SOUGOU:
+                        case Browser.BROWSER_TYPE_UC:
+                            BrowserGetter.availWidth = function (frame) {
+                                return frame.clientWidth;
+                            };
+                            BrowserGetter.availHeight = function (frame) {
+                                return frame.clientHeight;
+                            };
+                            break;
+                        //case Browser.BROWSER_TYPE_MIUI:
+                        //    BrowserGetter.init = function () {
+                        //        if (view.__resizeWithBrowserSize) return;
+                        //        var resize = function(){
+                        //            view.setDesignResolutionSize(
+                        //                view._designResolutionSize.width,
+                        //                view._designResolutionSize.height,
+                        //                view._resolutionPolicy
+                        //            );
+                        //            window.removeEventListener(&quot;resize&quot;, resize, false);
+                        //        };
+                        //        window.addEventListener(&quot;resize&quot;, resize, false);
+                        //    };
+                        //    break;
+                    }
+                
+                    BrowserGetter.init();
+                    return BrowserGetter;
+                })();
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

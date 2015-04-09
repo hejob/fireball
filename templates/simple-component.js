@@ -1,13 +1,23 @@
-var Comp = Fire.extend(Fire.Component);
+var Comp = Fire.Class({
+    extends: Fire.Component,
+    
+    properties: {
+        // foo: {
+        //     default: null,
+        //     type: Fire.Entity,
+        //     serializable: false,
+        //     visible: false
+        // },
+        // ...
+    },
+    
+    // use this for initialization
+    onStart: function () {
+        
+    },
 
-// use this for initialization
-Comp.prototype.onStart = function () {
-
-};
-
-// called every frame
-Comp.prototype.update = function () {
-
-};
-
-module.exports = Comp;
+    // called every frame
+    update: function () {
+        
+    }
+});

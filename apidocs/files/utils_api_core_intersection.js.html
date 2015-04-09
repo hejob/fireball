@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/intersection.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/intersection.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * @class Intersection
+                 * @static
+                 */
+                Fire.Intersection = (function () {
+                    var Intersection = {};
+                
+                    /**
+                     * @method lineLine
+                     * @param {Vec2} a1
+                     * @param {Vec2} a2
+                     * @param {Vec2} b1
+                     * @param {Vec2} b2
+                     * @return {boolean}
+                     */
+                    function _lineLine ( a1, a2, b1, b2 ) {
+                        var result;
+                
+                        var ua_t = (b2.x - b1.x) * (a1.y - b1.y) - (b2.y - b1.y) * (a1.x - b1.x);
+                        var ub_t = (a2.x - a1.x) * (a1.y - b1.y) - (a2.y - a1.y) * (a1.x - b1.x);
+                        var u_b  = (b2.y - b1.y) * (a2.x - a1.x) - (b2.x - b1.x) * (a2.y - a1.y);
+                
+                        if ( u_b !== 0 ) {
+                            var ua = ua_t / u_b;
+                            var ub = ub_t / u_b;
+                
+                            if ( 0 &lt;= ua &amp;&amp; ua &lt;= 1 &amp;&amp; 0 &lt;= ub &amp;&amp; ub &lt;= 1 ) {
+                                return true;
+                            }
+                        }
+                
+                        return false;
+                    }
+                
+                    Intersection.lineLine = _lineLine;
+                
+                    /**
+                     * @method lineRect
+                     * @param {Vec2} a1
+                     * @param {Vec2} a2
+                     * @param {Vec2} b
+                     * @return {boolean}
+                     */
+                    function _lineRect ( a1, a2, b ) {
+                        var r0 = new Fire.Vec2( b.x, b.y );
+                        var r1 = new Fire.Vec2( b.x, b.yMax );
+                        var r2 = new Fire.Vec2( b.xMax, b.yMax );
+                        var r3 = new Fire.Vec2( b.xMax, b.y );
+                
+                        if ( _lineLine( a1, a2, r0, r1 ) )
+                            return true;
+                
+                        if ( _lineLine( a1, a2, r1, r2 ) )
+                            return true;
+                
+                        if ( _lineLine( a1, a2, r2, r3 ) )
+                            return true;
+                
+                        if ( _lineLine( a1, a2, r3, r0 ) )
+                            return true;
+                
+                        return false;
+                    }
+                
+                    Intersection.lineRect = _lineRect;
+                
+                    /**
+                     * @method linePolygon
+                     * @param {Vec2} a1
+                     * @param {Vec2} a2
+                     * @param {Polygon} b
+                     * @return {boolean}
+                     */
+                    function _linePolygon ( a1, a2, b ) {
+                        var length = b.points.length;
+                
+                        for ( var i = 0; i &lt; length; ++i ) {
+                            var b1 = b.points[i];
+                            var b2 = b.points[(i+1)%length];
+                
+                            if ( _lineLine( a1, a2, b1, b2 ) )
+                                return true;
+                        }
+                
+                        return false;
+                    }
+                    Intersection.linePolygon = _linePolygon;
+                
+                    /**
+                     * @method rectRect
+                     * @param {Rect} a
+                     * @param {Rect} b
+                     * @return {boolean}
+                     */
+                    function _rectRect ( a, b ) {
+                        var a_min_x = a.x;
+                        var a_min_y = a.y;
+                        var a_max_x = a.x + a.width;
+                        var a_max_y = a.y + a.height;
+                
+                        var b_min_x = b.x;
+                        var b_min_y = b.y;
+                        var b_max_x = b.x + b.width;
+                        var b_max_y = b.y + b.height;
+                
+                        return a_min_x &lt;= b_max_x &amp;&amp;
+                               a_max_x &gt;= b_min_x &amp;&amp;
+                               a_min_y &lt;= b_max_y &amp;&amp;
+                               a_max_y &gt;= b_min_y
+                               ;
+                    }
+                    Intersection.rectRect = _rectRect;
+                
+                    /**
+                     * @method rectPolygon
+                     * @param {Rect} a
+                     * @param {Polygon} b
+                     * @return {boolean}
+                     */
+                    function _rectPolygon ( a, b ) {
+                        var i;
+                        var r0 = new Fire.Vec2( a.x, a.y );
+                        var r1 = new Fire.Vec2( a.x, a.yMax );
+                        var r2 = new Fire.Vec2( a.xMax, a.yMax );
+                        var r3 = new Fire.Vec2( a.xMax, a.y );
+                
+                        // intersection check
+                        if ( _linePolygon( r0, r1, b ) )
+                            return true;
+                
+                        if ( _linePolygon( r1, r2, b ) )
+                            return true;
+                
+                        if ( _linePolygon( r2, r3, b ) )
+                            return true;
+                
+                        if ( _linePolygon( r3, r0, b ) )
+                            return true;
+                
+                        // check if a contains b
+                        for ( i = 0; i &lt; b.points.length; ++i ) {
+                            if ( a.contains( b.points[i] ) )
+                                return true;
+                        }
+                
+                        // check if b contains a
+                        if ( b.contains(r0) )
+                            return true;
+                
+                        if ( b.contains(r1) )
+                            return true;
+                
+                        if ( b.contains(r2) )
+                            return true;
+                
+                        if ( b.contains(r3) )
+                            return true;
+                
+                        return false;
+                    }
+                    Intersection.rectPolygon = _rectPolygon;
+                
+                    /**
+                     * @method polygonPolygon
+                     * @param {Polygon} a
+                     * @param {Polygon} b
+                     * @return {boolean}
+                     */
+                    function _polygonPolygon ( a, b ) {
+                        var i;
+                
+                        // check if a intersects b
+                        for ( i = 0; i &lt; length; ++i ) {
+                            var a1 = a.points[i];
+                            var a2 = a.points[(i+1)%length];
+                
+                            if ( _linePolygon( a1, a2, b ) )
+                                return true;
+                        }
+                
+                        // check if a contains b
+                        for ( i = 0; i &lt; b.points.length; ++i ) {
+                            if ( a.contains( b.points[i] ) )
+                                return true;
+                        }
+                
+                        // check if b contains a
+                        for ( i = 0; i &lt; a.points.length; ++i ) {
+                            if ( b.contains( a.points[i] ) )
+                                return true;
+                        }
+                
+                        return false;
+                    }
+                    Intersection.polygonPolygon = _polygonPolygon;
+                
+                    return Intersection;
+                })();
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

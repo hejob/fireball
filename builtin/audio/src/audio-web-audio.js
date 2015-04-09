@@ -153,7 +153,7 @@
         bufferSource.buffer = target.clip.rawData;
         bufferSource.loop = target.loop;
         bufferSource.playbackRate.value = target.playbackRate;
-        bufferSource.onended = target.onPlayEnd.bind(target);
+        bufferSource.onended = target._onPlayEnd.bind(target);
         gain.gain.value = target.mute ? -1 : (target.volume - 1);
 
         //

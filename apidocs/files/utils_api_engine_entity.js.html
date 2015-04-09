@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/entity.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/entity.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * Class of all entities in scenes.
+                 * @class Entity
+                 * @constructor
+                 * @param {string} name - the name of the entity
+                 */
+                var Entity = Fire.Class({
+                
+                    name: &#x27;Fire.Entity&#x27;, extends: EventTarget,
+                
+                    constructor: function () {
+                        var name = arguments[0];
+                
+                        this._name = typeof name !== &#x27;undefined&#x27; ? name : &#x27;New Entity&#x27;;
+                        this._objFlags |= Entity._defaultFlags;
+                
+                        if (Fire._isCloning) {
+                            // create by deserializer or instantiating
+                
+                            this._activeInHierarchy = false;
+                        }
+                        else {
+                            // create dynamically
+                
+                            this._activeInHierarchy = true;
+                            // init transform
+                            var transform = new Transform();
+                            transform.entity = this;
+                            this._components = [transform];
+                            this.transform = transform;
+                
+                            // add to scene
+                            if (Engine._scene) {
+                                Engine._scene.appendRoot(this);
+                            }
+                
+                            if ( Engine._canModifyCurrentScene ) {
+                                // invoke callbacks
+                                Engine._renderContext.onRootEntityCreated(this);
+                
+                                // activate componet
+                                transform._onEntityActivated(true);     // 因为是刚刚创建，所以 activeInHierarchy 肯定为 true
+                
+                // @ifdef EDITOR
+                                if (editorCallback.onEntityCreated) {
+                                    editorCallback.onEntityCreated(this);
+                                }
+                                if (editorCallback.onComponentAdded) {
+                                    editorCallback.onComponentAdded(this, transform);
+                                }
+                // @endif
+                            }
+                        }
+                    },
+                
+                    properties: {
+                
+                        name: {
+                            get: function () {
+                                return this._name;
+                            },
+                            set: function (value) {
+                                this._name = value;
+                                // @ifdef EDITOR
+                                if (editorCallback.onEntityRenamed) {
+                                    editorCallback.onEntityRenamed(this);
+                                }
+                                // @endif
+                            }
+                        },
+                
+                        /**
+                         * The local active state of this Entity.
+                         * @property active
+                         * @type {boolean}
+                         * @default true
+                         */
+                        active: {
+                            get: function () {
+                                return this._active;
+                            },
+                            set: function (value) {
+                                // jshint eqeqeq: false
+                                if (this._active != value) {
+                                    // jshint eqeqeq: true
+                                    this._active = value;
+                                    var canActiveInHierarchy = (!this._parent || this._parent._activeInHierarchy);
+                                    if (canActiveInHierarchy) {
+                                        this._onActivatedInHierarchy(value);
+                                    }
+                                }
+                            }
+                        },
+                
+                        /**
+                         * Indicates whether this entity is active in the scene.
+                         * @property activeInHierarchy
+                         * @type {boolean}
+                         */
+                        activeInHierarchy: {
+                            get: function () {
+                                return this._activeInHierarchy;
+                            }
+                        },
+                
+                        /**
+                         * Returns the {% crosslink Fire.Transform Transform %} attached to the entity.
+                         * @property transform
+                         * @type {Transform}
+                         * @readOnly
+                         */
+                        transform: {
+                            default: null,
+                            visible: false
+                        },
+                
+                        /**
+                         * The parent of the entity.
+                         * Changing the parent will keep the transform&#x27;s local space position, rotation and scale the same but modify the world space position, scale and rotation.
+                         * @property parent
+                         * @type {Entity}
+                         * @default null
+                         */
+                        parent: {
+                            get: function () {
+                                return this._parent;
+                            },
+                            set: function (value) {
+                                if (this._parent !== value) {
+                                    if (value === this) {
+                                        Fire.warn(&quot;A entity can&#x27;t be set as the parent of itself.&quot;);
+                                        return;
+                                    }
+                                    if (value &amp;&amp; !(value instanceof Entity)) {
+                                        if (value instanceof Transform) {
+                                            Fire.error(&#x27;Entity.parent can not be a Transform, use transform.entity instead.&#x27;);
+                                        }
+                                        else {
+                                            Fire.error(&#x27;Entity.parent must be instance of Entity (or must be null)&#x27;);
+                                        }
+                                        return;
+                                    }
+                                    var oldParent = this._parent;
+                                    if (value) {
+                                        if ((value._objFlags &amp; HideInGame) &amp;&amp; !(this._objFlags &amp; HideInGame)) {
+                                            Fire.error(&#x27;Failed to set parent, the child\&#x27;s HideInGame must equals to parent\&#x27;s.&#x27;);
+                                            return;
+                                        }
+                                        if ((value._objFlags &amp; HideInEditor) &amp;&amp; !(this._objFlags &amp; HideInEditor)) {
+                                            Fire.error(&#x27;Failed to set parent, the child\&#x27;s HideInEditor must equals to parent\&#x27;s.&#x27;);
+                                            return;
+                                        }
+                                        if (!oldParent) {
+                                            Engine._scene.removeRoot(this);
+                                        }
+                                        value._children.push(this);
+                                    }
+                                    else {
+                                        Engine._scene.appendRoot(this);
+                                    }
+                                    this._parent = value || null;
+                                    this.transform._parent = this._parent &amp;&amp; this._parent.transform;
+                
+                                    if (oldParent &amp;&amp; !(oldParent._objFlags &amp; Destroying)) {
+                                        oldParent._children.splice(oldParent._children.indexOf(this), 1);
+                                        this._onHierarchyChanged(oldParent);
+                                    }
+                                    Engine._renderContext.onEntityParentChanged(this, oldParent);
+                // @ifdef EDITOR
+                                    if (editorCallback.onEntityParentChanged) {
+                                        editorCallback.onEntityParentChanged(this);
+                                    }
+                // @endif
+                                    //this._onHierarchyChanged(this, oldParent);
+                                }
+                            }
+                        },
+                
+                        /**
+                         * Get the amount of children
+                         * @property childCount
+                         * @type {number}
+                         */
+                        childCount: {
+                            get: function () {
+                                return this._children.length;
+                            },
+                            visible: false
+                        },
+                
+                        /**
+                         * If true, the entity will not be destroyed automatically when loading a new scene.
+                         * @property dontDestroyOnLoad
+                         * @type {boolean}
+                         * @default false
+                         */
+                        dontDestroyOnLoad: {
+                            get: function () {
+                                return !!(this._objFlags | DontDestroy);
+                            },
+                            set: function (value) {
+                                if (value) {
+                                    this._objFlags |= DontDestroy;
+                                }
+                                else {
+                                    this._objFlags &amp;= ~DontDestroy;
+                                }
+                            }
+                        },
+                
+                        // internal properties
+                
+                        _active: true,
+                        _parent: null,
+                
+                        /**
+                         * @property _children
+                         * @type {Entity[]}
+                         * @default []
+                         * @readOnly
+                         * @private
+                         */
+                        _children: [],
+                
+                        /**
+                         * @property _components
+                         * @type {Component[]}
+                         * @default []
+                         * @readOnly
+                         * @private
+                         */
+                        _components: null
+                    },
+                
+                    ////////////////////////////////////////////////////////////////////
+                    // overrides
+                    ////////////////////////////////////////////////////////////////////
+                
+                    destroy: function () {
+                        if (FObject.prototype.destroy.call(this)) {
+                            // disable hierarchy
+                            if (this._activeInHierarchy) {
+                                this._deactivateChildComponents();
+                            }
+                        }
+                    },
+                
+                    _onPreDestroy: function () {
+                        var parent = this._parent;
+                        this._objFlags |= Destroying;
+                        var isTopMost = !(parent &amp;&amp; (parent._objFlags &amp; Destroying));
+                        if (isTopMost) {
+                            Engine._renderContext.onEntityRemoved(this);
+                // @ifdef EDITOR
+                            if (editorCallback.onEntityRemoved) {
+                                editorCallback.onEntityRemoved(this/*, isTopMost*/);
+                            }
+                // @endif
+                        }
+                        // destroy components
+                        for (var c = 0; c &lt; this._components.length; ++c) {
+                            var component = this._components[c];
+                            // destroy immediate so its _onPreDestroy can be called before
+                            component._destroyImmediate();
+                        }
+                        // remove self
+                        if (parent) {
+                            if (isTopMost) {
+                                parent._children.splice(parent._children.indexOf(this), 1);
+                            }
+                        }
+                        else {
+                            Engine._scene.removeRoot(this);
+                        }
+                        // destroy children
+                        var children = this._children;
+                        for (var i = 0, len = children.length; i &lt; len; ++i) {
+                            // destroy immediate so its _onPreDestroy can be called before
+                            children[i]._destroyImmediate();
+                        }
+                    },
+                
+                    _getCapturingTargets: function (type, array) {
+                        for (var target = this._parent; target; target = target._parent) {
+                            if (target._activeInHierarchy &amp;&amp; target._capturingListeners &amp;&amp; target._capturingListeners.has(type)) {
+                                array.push(target);
+                            }
+                        }
+                    },
+                
+                    _getBubblingTargets: function (type, array) {
+                        for (var target = this._parent; target; target = target._parent) {
+                            if (target._activeInHierarchy &amp;&amp; target._bubblingListeners &amp;&amp; target._bubblingListeners.has(type)) {
+                                array.push(target);
+                            }
+                        }
+                    },
+                
+                    _doSendEvent: function (event) {
+                        if (this._activeInHierarchy) {
+                            Entity.$super.prototype._doSendEvent.call(this, event);
+                        }
+                    },
+                
+                    ////////////////////////////////////////////////////////////////////
+                    // component methods
+                    ////////////////////////////////////////////////////////////////////
+                
+                    /**
+                     * Adds a component class to the entity. You can also add component to entity by passing in the name of the script.
+                     *
+                     * @method addComponent
+                     * @param {function|string} typeOrName - the constructor or the class name of the component to add
+                     * @return {Component} - the newly added component
+                     */
+                    addComponent: function (typeOrTypename) {
+                        var constructor;
+                        if (typeof typeOrTypename === &#x27;string&#x27;) {
+                            constructor = JS.getClassByName(typeOrTypename);
+                            if ( !constructor ) {
+                                Fire.error(&#x27;[addComponent] Failed to get class &quot;%s&quot;&#x27;);
+                                if (_requiringFrames.length &gt; 0) {
+                                    Fire.error(&#x27;You should not add component when the scripts are still loading.&#x27;, typeOrTypename);
+                                }
+                                return null;
+                            }
+                        }
+                        else {
+                            if ( !typeOrTypename ) {
+                                Fire.error(&#x27;[addComponent] Type must be non-nil&#x27;);
+                                return null;
+                            }
+                            constructor = typeOrTypename;
+                        }
+                        if (this._objFlags &amp; Destroying) {
+                            Fire.error(&#x27;isDestroying&#x27;);
+                            return null;
+                        }
+                        if (typeof constructor !== &#x27;function&#x27;) {
+                            Fire.error(&quot;The component to add must be a constructor&quot;);
+                            return null;
+                        }
+                        var component = new constructor();
+                        component.entity = this;
+                        this._components.push(component);
+                
+                        if (this._activeInHierarchy) {
+                            // call onLoad/onEnable
+                            component._onEntityActivated(true);
+                        }
+                
+                // @ifdef EDITOR
+                        if (editorCallback.onComponentAdded) {
+                            editorCallback.onComponentAdded(this, component);
+                        }
+                // @endif
+                        return component;
+                    },
+                
+                    /**
+                     * Returns the component of supplied type if the entity has one attached, null if it doesn&#x27;t. You can also get component in the entity by passing in the name of the script.
+                     *
+                     * @method getComponent
+                     * @param {function|string} typeOrName
+                     * @return {Component}
+                     */
+                    getComponent: function (typeOrTypename) {
+                        if ( !typeOrTypename ) {
+                            Fire.error(&#x27;Argument must be non-nil&#x27;);
+                            return;
+                        }
+                        var constructor;
+                        if (typeof typeOrTypename === &#x27;string&#x27;) {
+                            constructor = JS.getClassByName(typeOrTypename);
+                        }
+                        else {
+                            constructor = typeOrTypename;
+                        }
+                        for (var c = 0; c &lt; this._components.length; ++c) {
+                            var component = this._components[c];
+                            if (component instanceof constructor) {
+                                return component;
+                            }
+                        }
+                        return null;
+                    },
+                
+                    _removeComponent: function (component) {
+                        /*if (!component) {
+                            Fire.error(&#x27;Argument must be non-nil&#x27;);
+                            return;
+                        }*/
+                        if (!(this._objFlags &amp; Destroying)) {
+                            //if (component.onHierarchyChanged) {
+                            //    this.transform._removeListener(component);
+                            //}
+                            var i = this._components.indexOf(component);
+                            if (i !== -1) {
+                                this._components.splice(i, 1);
+                                component.entity = null;
+                // @ifdef EDITOR
+                                if (editorCallback.onComponentRemoved) {
+                                    editorCallback.onComponentRemoved(this, component);
+                                }
+                // @endif
+                            }
+                            else if (component.entity !== this) {
+                                Fire.error(&quot;Component not owned by this entity&quot;);
+                            }
+                        }
+                    },
+                
+                    ////////////////////////////////////////////////////////////////////
+                    // hierarchy methods
+                    ////////////////////////////////////////////////////////////////////
+                
+                    /**
+                     * Finds an entity by name in all children of this entity. This function will still returns the entity even if it is inactive.
+                     * It is recommended to not use this function every frame instead cache the result at startup.
+                     *
+                     * @method find
+                     * @param {string} path
+                     * @return {Entity} - If not found, null will be returned.
+                     * @beta
+                     */
+                    find: function (path) {
+                        if (!path &amp;&amp; path !== &#x27;&#x27;) {
+                            Fire.error(&#x27;Argument must be non-nil&#x27;);
+                            return;
+                        }
+                        if (path[0] === &#x27;/&#x27;) {
+                            Fire.error(&quot;Path should not start with a &#x27;/&#x27; character, please use \&quot;Fire.Entity.find\&quot; instead&quot;);
+                            return;
+                        }
+                        var nameList = path.split(&#x27;/&#x27;);
+                
+                        var match = this;
+                        var t = 0, len = 0, children = null, subEntity = null;
+                        for (var i = 0; i &lt; nameList.length; i++) {
+                            var name = nameList[i];
+                            if (name === &#x27;..&#x27;) {
+                                if (!match) {
+                                    return null;
+                                }
+                                match = match._parent;
+                            }
+                            else {
+                                if (!match) {
+                                    children = Engine._scene.entities;
+                                }
+                                else {
+                                    children = match._children;
+                                }
+                                match = null;
+                                for (t = 0, len = children.length; t &lt; len; ++t) {
+                                    subEntity = children[t];
+                                    if (subEntity.name === name) {
+                                        match = subEntity;
+                                    }
+                                }
+                                if (!match) {
+                                    return null;
+                                }
+                            }
+                        }
+                        return match;
+                    },
+                
+                    /**
+                     * Returns an entity child by index.
+                     *
+                     * @method getChild
+                     * @param {number} index
+                     * @return {Entity} - If not found, undefined will be returned.
+                     */
+                    getChild: function (index) {
+                        return this._children[index];
+                    },
+                
+                    /**
+                     * Returns a new arrays of all children.
+                     *
+                     * @method getChildren
+                     * @return {Entity[]}
+                     */
+                    getChildren: function () {
+                        return this._children.slice();
+                    },
+                
+                    /**
+                     * Is this entity a child of the parent?
+                     *
+                     * @method isChildOf
+                     * @param {Entity} parent
+                     * @return {boolean} - Returns true if this entity is a child, deep child or identical to the given entity.
+                     */
+                    isChildOf: function (parent) {
+                        var child = this;
+                        do {
+                            if (child === parent) {
+                                return true;
+                            }
+                            child = child._parent;
+                        }
+                        while (child);
+                        return false;
+                    },
+                
+                    /**
+                     * Get the sibling index.
+                     *
+                     * NOTE: If this entity does not have parent and not belongs to the current scene,
+                     *       The return value will be -1
+                     *
+                     * @method getSiblingIndex
+                     * @return {number}
+                     */
+                    getSiblingIndex: function () {
+                        if (this._parent) {
+                            return this._parent._children.indexOf(this);
+                        }
+                        else {
+                            return Engine._scene.entities.indexOf(this);
+                        }
+                    },
+                
+                    /**
+                     * Get the indexed sibling.
+                     *
+                     * @method getSibling
+                     * @param {number} index
+                     * @return {Entity} - If not found, undefined will be returned.
+                     */
+                    getSibling: function (index) {
+                        if (this._parent) {
+                            return this._parent._children[index];
+                        }
+                        else {
+                            return Engine._scene.entities[index];
+                        }
+                    },
+                
+                    /**
+                     * Set the sibling index of this entity.
+                     *
+                     * @method setSiblingIndex
+                     * @param {number} index
+                     */
+                    setSiblingIndex: function (index) {
+                        var array = this._parent ? this._parent._children : Engine._scene.entities;
+                        var item = this;
+                        index = index !== -1 ? index : array.length - 1;
+                        var oldIndex = array.indexOf(item);
+                        if (index !== oldIndex) {
+                            array.splice(oldIndex, 1);
+                            if (index &lt; array.length) {
+                                array.splice(index, 0, item);
+                            }
+                            else {
+                                array.push(item);
+                            }
+                            // callback
+                            Engine._renderContext.onEntityIndexChanged(this, oldIndex, index);
+                // @ifdef EDITOR
+                            if (editorCallback.onEntityIndexChanged) {
+                                editorCallback.onEntityIndexChanged(this, oldIndex, index);
+                            }
+                // @endif
+                            //this._onHierarchyChanged(this, this.parent);
+                        }
+                    },
+                
+                    /**
+                     * Move the entity to the top.
+                     *
+                     * @method setAsFirstSibling
+                     */
+                    setAsFirstSibling: function () {
+                        this.setSiblingIndex(0);
+                    },
+                
+                    /**
+                     * Move the entity to the bottom.
+                     *
+                     * @method setAsLastSibling
+                     */
+                    setAsLastSibling: function () {
+                        this.setSiblingIndex(-1);
+                    },
+                
+                    ////////////////////////////////////////////////////////////////////
+                    // other methods
+                    ////////////////////////////////////////////////////////////////////
+                
+                    _onActivatedInHierarchy: function (value) {
+                        this._activeInHierarchy = value;
+                
+                        // 当引入DestroyImmediate后，_components的元素有可能会在遍历过程中变少，需要复制一个新的数组，或者做一些标记
+                        // var components = this._components.slice();
+                
+                        // component有可能在onEnable时增加，而新增的component已经onEnable了，所以这里事先记下长度，以免重复调用
+                        var countBefore = this._components.length;
+                        for (var c = 0; c &lt; countBefore; ++c) {
+                            var component = this._components[c];
+                            component._onEntityActivated(value);
+                        }
+                        // activate children recursively
+                        for (var i = 0, len = this.childCount; i &lt; len; ++i) {
+                            var entity = this._children[i];
+                            if (entity._active) {
+                                entity._onActivatedInHierarchy(value);
+                            }
+                        }
+                    },
+                
+                    _deactivateChildComponents: function () {
+                        // 和 _onActivatedInHierarchy 类似但不修改 this._activeInHierarchy
+                        var countBefore = this._components.length;
+                        for (var c = 0; c &lt; countBefore; ++c) {
+                            var component = this._components[c];
+                            component._onEntityActivated(false);
+                        }
+                        // deactivate children recursively
+                        for (var i = 0, len = this.childCount; i &lt; len; ++i) {
+                            var entity = this._children[i];
+                            if (entity._active) {
+                                entity._deactivateChildComponents();
+                            }
+                        }
+                    },
+                
+                    _onHierarchyChanged: function (oldParent) {
+                        var activeInHierarchyBefore = this._active &amp;&amp; (!oldParent || oldParent._activeInHierarchy);
+                        var shouldActiveNow = this._active &amp;&amp; (!this._parent || this._parent._activeInHierarchy);
+                        if (activeInHierarchyBefore !== shouldActiveNow) {
+                            this._onActivatedInHierarchy(shouldActiveNow);
+                        }
+                    },
+                
+                    _instantiate: function (position, rotation) {
+                        // 临时实现版本，之后应该不拷贝scene object
+                        var oldParent = this._parent;
+                        this._parent = null;
+                        var clone = Fire._doInstantiate(this);
+                        this._parent = oldParent;
+                        // init
+                        if (Engine.isPlaying) {
+                            clone._name = this._name + &#x27;(Clone)&#x27;;
+                        }
+                        if (position) {
+                            clone.transform._position = position;
+                        }
+                        if (rotation) {
+                            clone.transform._rotation = rotation;
+                        }
+                        if (Engine._scene) {
+                            Engine._scene.appendRoot(clone);
+                        }
+                
+                        // invoke callbacks
+                        Engine._renderContext.onEntityCreated(clone, true);
+                // @ifdef EDITOR
+                        if (editorCallback.onEntityCreated) {
+                            editorCallback.onEntityCreated(clone);
+                        }
+                // @endif
+                        // activate components
+                        if (clone._active) {
+                            clone._onActivatedInHierarchy(true);
+                        }
+                
+                        return clone;
+                    }
+                });
+                
+                ////////////////////////////////////////////////////////////////////
+                // static
+                ////////////////////////////////////////////////////////////////////
+                
+                /**
+                 * The temp property that indicates the current creating entity should
+                 * binded with supplied object flags. This property only used in editor.
+                 *
+                 * @property _defaultFlags
+                 * @type {number}
+                 * @default 0
+                 * @static
+                 * @private
+                 */
+                Entity._defaultFlags = 0;
+                
+                /**
+                 * Finds an entity by hierarchy path, the path is case-sensitive, and must start with a &#x27;/&#x27; character.
+                 * It will traverse the hierarchy by splitting the path using &#x27;/&#x27; character.
+                 * It is recommended to not use this function every frame instead cache the result at startup.
+                 *
+                 * @method find
+                 * @param {string} path
+                 * @return {Entity} the entity or null if not found
+                 * @static
+                 */
+                Entity.find = function (path) {
+                    if (!path &amp;&amp; path !== &#x27;&#x27;) {
+                        Fire.error(&#x27;Argument must be non-nil&#x27;);
+                        return null;
+                    }
+                    if (path[0] !== &#x27;/&#x27;) {
+                        Fire.error(&quot;Path must start with a &#x27;/&#x27; character&quot;);
+                        return null;
+                    }
+                    return Engine._scene.findEntity(path);
+                };
+                
+                Fire.Entity = Entity;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

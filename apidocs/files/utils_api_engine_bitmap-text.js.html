@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/bitmap-text.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/bitmap-text.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                
+                var BitmapText = (function () {
+                
+                    /**
+                     * @class BitmapText
+                     */
+                    /**
+                     * @namespace BitmapText
+                     */
+                    /**
+                     * @class TextAlign
+                     * @static
+                     */
+                    var TextAlign = Fire.defineEnum({
+                        /**
+                         * @property left
+                         * @type {number}
+                         */
+                        left: -1,
+                        /**
+                         * @property center
+                         * @type {number}
+                         */
+                        center: -1,
+                        /**
+                         * @property right
+                         * @type {number}
+                         */
+                        right: -1
+                    });
+                
+                    /**
+                     * @class TextAnchor
+                     * @static
+                     */
+                    var TextAnchor = (function (t) {
+                        /**
+                         * @property topLeft
+                         * @type {number}
+                         */
+                        t[t.topLeft = 0] = &#x27;Top Left&#x27;;
+                        /**
+                         * @property topCenter
+                         * @type {number}
+                         */
+                        t[t.topCenter = 1] = &#x27;Top Center&#x27;;
+                        /**
+                         * @property topRight
+                         * @type {number}
+                         */
+                        t[t.topRight = 2] = &#x27;Top Right&#x27;;
+                        /**
+                         * @property midLeft
+                         * @type {number}
+                         */
+                        t[t.midLeft = 3] = &#x27;Middle Left&#x27;;
+                        /**
+                         * @property midCenter
+                         * @type {number}
+                         */
+                        t[t.midCenter = 4] = &#x27;Middle Center&#x27;;
+                        /**
+                         * @property midRight
+                         * @type {number}
+                         */
+                        t[t.midRight = 5] = &#x27;Middle Right&#x27;;
+                        /**
+                         * @property botLeft
+                         * @type {number}
+                         */
+                        t[t.botLeft = 6] = &#x27;Bottom Left&#x27;;
+                        /**
+                         * @property botCenter
+                         * @type {number}
+                         */
+                        t[t.botCenter = 7] = &#x27;Bottom Center&#x27;;
+                        /**
+                         * @property botRight
+                         * @type {number}
+                         */
+                        t[t.botRight = 8] = &#x27;Bottom Right&#x27;;
+                        return t;
+                    })({});
+                
+                
+                    /**
+                     * The bitmap font renderer component.
+                     * @class BitmapText
+                     * @extends Renderer
+                     * @constructor
+                     */
+                    var BitmapText = Fire.extend(&quot;Fire.BitmapText&quot;, Renderer, function () {
+                        RenderContext.initRenderer(this);
+                    });
+                
+                    BitmapText.TextAlign = TextAlign;
+                    BitmapText.TextAnchor = TextAnchor;
+                
+                    //-- 增加 Bitmap Text 到 组件菜单上
+                    Fire.addComponentMenu(BitmapText, &#x27;BitmapText&#x27;);
+                    Fire.executeInEditMode(BitmapText);
+                
+                    BitmapText.prop(&#x27;_bitmapFont&#x27;, null, Fire.HideInInspector);
+                    /**
+                     * The font to render.
+                     * @property bitmapFont
+                     * @type {BitmapFont}
+                     * @default null
+                     */
+                    BitmapText.getset(&#x27;bitmapFont&#x27;,
+                        function () {
+                            return this._bitmapFont;
+                        },
+                        function (value) {
+                            this._bitmapFont = value;
+                            Engine._renderContext.updateBitmapFont(this);
+                        },
+                        Fire.ObjectType(Fire.BitmapFont)
+                    );
+                
+                    BitmapText.prop(&#x27;_text&#x27;, &#x27;Text&#x27;, Fire.HideInInspector);
+                
+                    /**
+                     * The text to render.
+                     * @property text
+                     * @type {string}
+                     * @default &quot;&quot;
+                     */
+                    BitmapText.getset(&#x27;text&#x27;,
+                        function () {
+                            return this._text;
+                        },
+                        function (value) {
+                            if (this._text !== value) {
+                                if (typeof value === &#x27;string&#x27;) {
+                                    this._text = value;
+                                }
+                                else {
+                                    this._text = &#x27;&#x27; + value;
+                                }
+                                Engine._renderContext.setText(this, this._text);
+                            }
+                        },
+                        Fire.MultiText
+                    );
+                
+                    BitmapText.prop(&#x27;_anchor&#x27;, BitmapText.TextAnchor.midCenter, Fire.HideInInspector);
+                
+                    /**
+                     * The anchor point of the text.
+                     * @property anchor
+                     * @type {BitmapText.TextAnchor}
+                     * @default BitmapText.TextAnchor.midCenter
+                     */
+                    BitmapText.getset(&#x27;anchor&#x27;,
+                        function () {
+                            return this._anchor;
+                        },
+                        function (value) {
+                            if (this._anchor !== value) {
+                                this._anchor = value;
+                            }
+                        },
+                        Fire.Enum(BitmapText.TextAnchor)
+                    );
+                
+                    BitmapText.prop(&#x27;_align&#x27;, BitmapText.TextAlign.left, Fire.HideInInspector);
+                
+                    /**
+                     * How lines of text are aligned (left, right, center).
+                     * @property align
+                     * @type {BitmapText.TextAlign}
+                     * @default BitmapText.TextAlign.left
+                     */
+                    BitmapText.getset(&#x27;align&#x27;,
+                        function () {
+                            return this._align;
+                        },
+                        function (value) {
+                            if (this._align !== value) {
+                                this._align = value;
+                                Engine._renderContext.setAlign(this, value);
+                            }
+                        },
+                        Fire.Enum(BitmapText.TextAlign)
+                    );
+                
+                    BitmapText.prototype.onLoad = function () {
+                        Engine._renderContext.addBitmapText(this);
+                    };
+                
+                    BitmapText.prototype.onEnable = function () {
+                        Engine._renderContext.show(this, true);
+                    };
+                
+                    BitmapText.prototype.onDisable = function () {
+                        Engine._renderContext.show(this, false);
+                    };
+                
+                    BitmapText.prototype.onDestroy = function () {
+                        Engine._renderContext.remove(this);
+                    };
+                
+                    BitmapText.prototype.getWorldSize = function () {
+                        return Engine._renderContext.getTextSize(this);
+                    };
+                
+                    var tempMatrix = new Fire.Matrix23();
+                
+                    BitmapText.prototype.onPreRender = function () {
+                        this.getSelfMatrix(tempMatrix);
+                        tempMatrix.prepend(this.transform._worldTransform);
+                        PixiBitmapFontUtil.updateTransform(this, tempMatrix);
+                    };
+                
+                    BitmapText.prototype.getSelfMatrix = function (out) {
+                        var textSize = Engine._renderContext.getTextSize(this);
+                        var w = textSize.x;
+                        var h = textSize.y;
+                
+                        var anchorOffsetX = 0;
+                        var anchorOffsetY = 0;
+                
+                        switch (this._anchor) {
+                            case BitmapText.TextAnchor.topLeft:
+                                break;
+                            case BitmapText.TextAnchor.topCenter:
+                                anchorOffsetX = w * -0.5;
+                                break;
+                            case BitmapText.TextAnchor.topRight:
+                                anchorOffsetX = -w;
+                                break;
+                            case BitmapText.TextAnchor.midLeft:
+                                anchorOffsetY = h * 0.5;
+                                break;
+                            case BitmapText.TextAnchor.midCenter:
+                                anchorOffsetX = w * -0.5;
+                                anchorOffsetY = h * 0.5;
+                                break;
+                            case BitmapText.TextAnchor.midRight:
+                                anchorOffsetX = -w;
+                                anchorOffsetY = h * 0.5;
+                                break;
+                            case BitmapText.TextAnchor.botLeft:
+                                anchorOffsetY = h;
+                                break;
+                            case BitmapText.TextAnchor.botCenter:
+                                anchorOffsetX = w * -0.5;
+                                anchorOffsetY = h;
+                                break;
+                            case BitmapText.TextAnchor.botRight:
+                                anchorOffsetX = -w;
+                                anchorOffsetY = h;
+                                break;
+                            default:
+                                break;
+                        }
+                        out.a = 1;
+                        out.b = 0;
+                        out.c = 0;
+                        out.d = 1;
+                        out.tx = anchorOffsetX;
+                        out.ty = anchorOffsetY;
+                    };
+                
+                    return BitmapText;
+                })();
+                
+                Fire.BitmapText = BitmapText;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/color.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/color.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Color = (function () {
+                
+                    /**
+                     * Representation of RGBA colors.
+                     *
+                     * Each color component is a floating point value with a range from 0 to 1.
+                     *
+                     * You can also use the convenience method &lt;% crosslink Fire.color Fire.color %&gt; to create a new Color.
+                     *
+                     * @class Color
+                     * @constructor
+                     * @param {number} [r=0] - red component of the color
+                     * @param {number} [g=0] - green component of the color
+                     * @param {number} [b=0] - blue component of the color
+                     * @param {number} [a=1] - alpha component of the color
+                     */
+                    function Color( r, g, b, a ) {
+                        this.r = typeof r === &#x27;number&#x27; ? r : 0.0;
+                        this.g = typeof g === &#x27;number&#x27; ? g : 0.0;
+                        this.b = typeof b === &#x27;number&#x27; ? b : 0.0;
+                        this.a = typeof a === &#x27;number&#x27; ? a : 1.0;
+                    }
+                    JS.setClassName(&#x27;Fire.Color&#x27;, Color);
+                
+                    var DefaultColors = {
+                        // color: [r, g, b, a]
+                        /**
+                         * @property white
+                         * @type Color
+                         * @static
+                         */
+                        white:      [1, 1, 1, 1],
+                        /**
+                         * @property black
+                         * @type Color
+                         * @static
+                         */
+                        black:      [0, 0, 0, 1],
+                        /**
+                         * @property transparent
+                         * @type Color
+                         * @static
+                         */
+                        transparent:[0, 0, 0, 0],
+                        /**
+                         * @property gray
+                         * @type Color
+                         * @static
+                         */
+                        gray:       [0.5, 0.5, 0.5],
+                        /**
+                         * @property red
+                         * @type Color
+                         * @static
+                         */
+                        red:        [1, 0, 0],
+                        /**
+                         * @property green
+                         * @type Color
+                         * @static
+                         */
+                        green:      [0, 1, 0],
+                        /**
+                         * @property blue
+                         * @type Color
+                         * @static
+                         */
+                        blue:       [0, 0, 1],
+                        /**
+                         * @property yellow
+                         * @type Color
+                         * @static
+                         */
+                        yellow:     [1, 235/255, 4/255],
+                        /**
+                         * @property cyan
+                         * @type Color
+                         * @static
+                         */
+                        cyan:       [0, 1, 1],
+                        /**
+                         * @property magenta
+                         * @type Color
+                         * @static
+                         */
+                        magenta:    [1, 0, 1]
+                    };
+                    for (var colorName in DefaultColors) {
+                        var colorGetter = (function (r, g, b, a) {
+                            return function () {
+                                return new Color(r, g, b, a);
+                            };
+                        }).apply(null, DefaultColors[colorName]);
+                        Object.defineProperty(Color, colorName, { get: colorGetter });
+                    }
+                
+                    /**
+                     * Clone a new color from the current color.
+                     * @method clone
+                     * @return {Color} Newly created color.
+                     */
+                    Color.prototype.clone = function () {
+                        return new Color(this.r, this.g, this.b, this.a);
+                    };
+                
+                    /**
+                     * @method equals
+                     * @param {Color} other
+                     * @return {boolean}
+                     */
+                    Color.prototype.equals = function (other) {
+                        return this.r === other.r &amp;&amp;
+                               this.g === other.g &amp;&amp;
+                               this.b === other.b &amp;&amp;
+                               this.a === other.a;
+                    };
+                
+                    /**
+                     * @method toString
+                     * @return {string}
+                     */
+                    Color.prototype.toString = function () {
+                        return &quot;rgba(&quot; +
+                            this.r.toFixed(2) + &quot;, &quot; +
+                            this.g.toFixed(2) + &quot;, &quot; +
+                            this.b.toFixed(2) + &quot;, &quot; +
+                            this.a.toFixed(2) + &quot;)&quot;
+                        ;
+                    };
+                
+                    /**
+                     * @method toCSS
+                     * @param {string} opt - &quot;rgba&quot;, &quot;rgb&quot;, &quot;#rgb&quot; or &quot;#rrggbb&quot;
+                     * @return {string}
+                     */
+                    Color.prototype.toCSS = function ( opt ) {
+                        if ( opt === &#x27;rgba&#x27; ) {
+                            return &quot;rgba(&quot; +
+                                (this.r * 255 | 0 ) + &quot;,&quot; +
+                                (this.g * 255 | 0 ) + &quot;,&quot; +
+                                (this.b * 255 | 0 ) + &quot;,&quot; +
+                                this.a.toFixed(2) + &quot;)&quot;
+                            ;
+                        }
+                        else if ( opt === &#x27;rgb&#x27; ) {
+                            return &quot;rgb(&quot; +
+                                (this.r * 255 | 0 ) + &quot;,&quot; +
+                                (this.g * 255 | 0 ) + &quot;,&quot; +
+                                (this.b * 255 | 0 ) + &quot;)&quot;
+                            ;
+                        }
+                        else {
+                            return &#x27;#&#x27; + this.toHEX(opt);
+                        }
+                    };
+                
+                    /**
+                     * Clamp this color to make all components between 0 to 1.
+                     * @method clamp
+                     */
+                    Color.prototype.clamp = function () {
+                        this.r = Math.clamp01(this.r);
+                        this.g = Math.clamp01(this.g);
+                        this.b = Math.clamp01(this.b);
+                        this.a = Math.clamp01(this.a);
+                    };
+                
+                    /**
+                     * @method fromHEX
+                     * @param {string} hexString
+                     * @return {Color}
+                     * @chainable
+                     */
+                    Color.prototype.fromHEX = function (hexString) {
+                        var hex = parseInt(((hexString.indexOf(&#x27;#&#x27;) &gt; -1) ? hexString.substring(1) : hexString), 16);
+                        this.r = hex &gt;&gt; 16;
+                        this.g = (hex &amp; 0x00FF00) &gt;&gt; 8;
+                        this.b = (hex &amp; 0x0000FF);
+                        return this;
+                    };
+                
+                    /**
+                     * @method toHEX
+                     * @param {string} fmt - &quot;#rgb&quot; or &quot;#rrggbb&quot;
+                     * @return {string}
+                     */
+                    Color.prototype.toHEX = function ( fmt ) {
+                        var hex = [
+                            (this.r * 255 | 0 ).toString(16),
+                            (this.g * 255 | 0 ).toString(16),
+                            (this.b * 255 | 0 ).toString(16),
+                        ];
+                        var i = -1;
+                        if ( fmt === &#x27;#rgb&#x27; ) {
+                            for ( i = 0; i &lt; hex.length; ++i ) {
+                                if ( hex[i].length &gt; 1 ) {
+                                    hex[i] = hex[i][0];
+                                }
+                            }
+                        }
+                        else if ( fmt === &#x27;#rrggbb&#x27; ) {
+                            for ( i = 0; i &lt; hex.length; ++i ) {
+                                if ( hex[i].length === 1 ) {
+                                    hex[i] = &#x27;0&#x27; + hex[i];
+                                }
+                            }
+                        }
+                        return hex.join(&#x27;&#x27;);
+                    };
+                
+                    /**
+                     * Convert to 24bit rgb value
+                     * @method toRGBValue
+                     * @return {number}
+                     */
+                    Color.prototype.toRGBValue = function () {
+                        return (Math.clamp01(this.r) * 255 &lt;&lt; 16) +
+                               (Math.clamp01(this.g) * 255 &lt;&lt; 8) +
+                               (Math.clamp01(this.b) * 255);
+                    };
+                
+                    /**
+                     * @method fromHSV
+                     * @param {number} h
+                     * @param {number} s
+                     * @param {number} v
+                     * @return {Color}
+                     * @chainable
+                     */
+                    Color.prototype.fromHSV = function ( h, s, v ) {
+                        var rgb = Fire.hsv2rgb( h, s, v );
+                        this.r = rgb.r;
+                        this.g = rgb.g;
+                        this.b = rgb.b;
+                        return this;
+                    };
+                
+                    /**
+                     * @method toHSV
+                     * @return {object} - {h: number, s: number, v: number}
+                     */
+                    Color.prototype.toHSV = function () {
+                        return Fire.rgb2hsv( this.r, this.g, this.b );
+                    };
+                
+                    return Color;
+                })();
+                
+                Fire.Color = Color;
+                
+                /**
+                 * The convenience method to create a new &lt;% crosslink Fire.Color Color %&gt;
+                 * @method color
+                 * @param {number} [r=0]
+                 * @param {number} [g=0]
+                 * @param {number} [b=0]
+                 * @param {number} [a=1]
+                 * @return {Color}
+                 */
+                Fire.color = function color (r, g, b, a) {
+                    if (Array.isArray(r)) {
+                        return new Color(r[0], r[1], r[2], r[3]);
+                    }
+                    else {
+                        return new Color(r, g, b, a);
+                    }
+                };
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

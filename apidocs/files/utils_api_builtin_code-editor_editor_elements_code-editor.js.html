@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/builtin/code-editor/editor/elements/code-editor.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/builtin/code-editor/editor/elements/code-editor.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Fs = require(&quot;fire-fs&quot;);
+                var Path = require(&#x27;fire-path&#x27;);
+                var Remote = require(&quot;remote&quot;);
+                
+                var keymaps = [
+                    &quot;sublime&quot;,
+                    &quot;vim&quot;,
+                    &quot;emacs&quot;,
+                ];
+                
+                var themes = [
+                    &quot;3024-day&quot;                ,
+                    &quot;3024-night&quot;              ,
+                    &quot;ambiance&quot;                ,
+                    &quot;ambiance-mobile&quot;         ,
+                    &quot;base16-dark&quot;             ,
+                    &quot;base16-light&quot;            ,
+                    &quot;blackboard&quot;              ,
+                    &quot;cobalt&quot;                  ,
+                    &quot;eclipse&quot;                 ,
+                    &quot;elegant&quot;                 ,
+                    &quot;erlang-dark&quot;             ,
+                    &quot;lesser-dark&quot;             ,
+                    &quot;mbo&quot;                     ,
+                    &quot;mdn-like&quot;                ,
+                    &quot;midnight&quot;                ,
+                    &quot;monokai&quot;                 ,
+                    &quot;neat&quot;                    ,
+                    &quot;neo&quot;                     ,
+                    &quot;night&quot;                   ,
+                    &quot;paraiso-dark&quot;            ,
+                    &quot;pastel-on-dark&quot;          ,
+                    &quot;rubyblue&quot;                ,
+                    &quot;solarized dark&quot;          ,
+                    &quot;solarized light&quot;         ,
+                    &quot;the-matrix&quot;              ,
+                    &quot;tomorrow-night-bright&quot;   ,
+                    &quot;tomorrow-night-righties&quot; ,
+                    &quot;twilight&quot;                ,
+                    &quot;vibrant-ink&quot;             ,
+                    &quot;xq-dark&quot;                 ,
+                    &quot;xq-light&quot;                ,
+                    &quot;zenburn&quot;                 ,
+                ];
+                
+                var modes = [
+                    &quot;javascript&quot;,
+                    &quot;htmlmixed&quot;,
+                    &quot;css&quot;,
+                    &quot;xml&quot;,
+                ];
+                
+                Polymer({
+                
+                    created: function () {
+                        this.settings = {
+                            theme: &#x27;zenburn&#x27;,
+                            tabSize: 2,
+                            keyMap: &#x27;sublime&#x27;,
+                            fontSize: 14,
+                            fontFamily: &#x27;DejaVu Sans Mono&#x27;,
+                            autoComplete: true,
+                        };
+                
+                        this.settingsPage = null;
+                    },
+                
+                    ready: function () {
+                        this.$.keymapSelect.options = keymaps.map(function ( item ) {
+                            return { name: item, value: item };
+                        });
+                
+                        this.$.themeSelect.options = themes.map(function ( item ) {
+                            return { name: item, value: item };
+                        });
+                
+                        this.$.modeSelect.options = modes.map(function ( item ) {
+                            return { name: item, value: item };
+                        });
+                
+                        window.addEventListener(&#x27;resize&#x27;, function() {
+                            this.updateSize();
+                        }.bind(this));
+                
+                        window.onbeforeunload = function ( event ) {
+                            this.saveConfig();
+                
+                            if ( this.$.mirror.dirty ) {
+                                var res = this.confirmSave();
+                                switch ( res ) {
+                                // save
+                                case 0:
+                                    this.$.mirror.save();
+                                    return true;
+                
+                                // cancel
+                                case 1:
+                                    return false;
+                
+                                // don&#x27;t save
+                                case 2:
+                                    return true;
+                                }
+                            }
+                        }.bind(this);
+                
+                        var projectPath = Remote.getGlobal(&#x27;FIRE_PROJECT_PATH&#x27;);
+                        this.updateSize();
+                    },
+                
+                    domReady: function () {
+                        // load config and then load the file
+                        this.showLoading(true);
+                
+                        //
+                        for ( var p in this.settings ) {
+                            if ( p !== &#x27;save&#x27; ) {
+                                this.$.mirror[p] = this.settings[p];
+                            }
+                        }
+                        this.$.mirror.createEditor();
+                
+                        // start loading file
+                        var uuid = this.argv.uuid;
+                        this.load(uuid);
+                    },
+                
+                    ipcOpen: function ( event ) {
+                        var uuid = event.detail.uuid;
+                
+                        if (this.$.mirror.dirty) {
+                            var res = this.confirmSave();
+                            switch ( res ) {
+                            // save
+                            case 0:
+                                this.$.mirror.save();
+                                break;
+                
+                            // cancel
+                            case 1:
+                                return;
+                
+                            // don&#x27;t save
+                            case 2:
+                                break;
+                            }
+                        }
+                
+                        this.load(uuid);
+                    },
+                
+                    ipcAssetChanged: function ( event ) {
+                        var uuid = event.detail.uuid;
+                        var outside = event.detail.outside;
+                
+                        if ( this.uuid !== uuid ) {
+                            return;
+                        }
+                
+                        // changed by myself
+                        if ( !outside ) {
+                            return;
+                        }
+                
+                        //
+                        var dialog = Remote.require(&#x27;dialog&#x27;);
+                        var result = dialog.showMessageBox( Remote.getCurrentWindow(), {
+                            type: &quot;warning&quot;,
+                            buttons: [&quot;OK&quot;,&quot;Cancel&quot;],
+                            title: &quot;Save Confirm&quot;,
+                            message: Fire.AssetDB.uuidToUrl(this.uuid) + &quot; was modified, do you want to reload?&quot;,
+                            detail: &quot;Your changes will be lost if you confirm reload.&quot;
+                        } );
+                
+                        if ( result === 0 ) {
+                            this.load(this.uuid);
+                        }
+                    },
+                
+                    _loaderTimout: null,
+                    showLoader: false,
+                    showLoading: function ( show ) {
+                        if ( show ) {
+                            this.showLoader = show;
+                        }
+                        else {
+                            if ( this.showLoader !== show ) {
+                                if ( this._loaderTimout ) {
+                                    clearTimeout(this._loaderTimout);
+                                    this._loaderTimout = null;
+                                }
+                                this._loaderTimout = setTimeout( function () {
+                                    this.showLoader = false;
+                                }.bind(this), 500);
+                            }
+                        }
+                    },
+                
+                    load: function ( uuid ) {
+                        this.uuid = uuid;
+                        this.url = Fire.AssetDB.uuidToUrl(uuid);
+                
+                        this.updateTitle();
+                
+                        var fspath = Fire.AssetDB._fspath(this.url);
+                        this.$.mirror.fspath = fspath;
+                        this.$.mirror.uuid = uuid;
+                        this.$.mirror.detectTextMode();
+                
+                        this.showLoading(true);
+                        Fs.readFile(fspath, &#x27;utf8&#x27;, function ( err, data ) {
+                            this.$.mirror.dirty = false;
+                            this.$.mirror.initialLoad = true;
+                            this.$.mirror.value = data;
+                
+                            this.showLoading(false);
+                        }.bind(this));
+                
+                    },
+                
+                    saveConfig: function () {
+                        this.settings.theme = this.$.mirror.theme;
+                        this.settings.tabSize = this.$.mirror.tabSize;
+                        this.settings.keyMap = this.$.mirror.keyMap;
+                        this.settings.fontSize = this.$.mirror.fontSize;
+                        this.settings.fontFamily = this.$.mirror.fontFamily;
+                        this.settings.autoComplete = this.$.mirror.autoComplete;
+                
+                        this.settings.save();
+                    },
+                
+                    confirmSave: function () {
+                        var dialog = Remote.require(&#x27;dialog&#x27;);
+                        return dialog.showMessageBox( Remote.getCurrentWindow(), {
+                            type: &quot;warning&quot;,
+                            buttons: [&quot;Save&quot;,&quot;Cancel&quot;,&quot;Don&#x27;t Save&quot;],
+                            title: &quot;Save Confirm&quot;,
+                            message: Fire.AssetDB.uuidToUrl(this.uuid) + &quot; has changed, do you want to save it?&quot;,
+                            detail: &quot;Your changes will be lost if you close this item without saving.&quot;
+                        } );
+                    },
+                
+                    updateTitle: function () {
+                        var title = document.title;
+                        if (title !== this.url + (this.$.mirror.dirty ? &quot;*&quot; : &quot;&quot;)) {
+                            document.title = this.url + (this.$.mirror.dirty ? &quot;*&quot; : &quot;&quot;);
+                        }
+                    },
+                
+                    updateSize: function () {
+                        window.requestAnimationFrame ( function () {
+                            this.$.codeArea.style.height = this.getBoundingClientRect().height-51 + &quot;px&quot;;
+                            this.$.mirror.refresh();
+                        }.bind(this) );
+                    },
+                
+                    saveAction: function () {
+                        this.$.mirror.save();
+                    },
+                
+                    reloadAction: function () {
+                        this.$.mirror.reloadAction();
+                    },
+                
+                    settingsAction: function () {
+                        if (this.settingsPage === null){
+                            this.settingsPage = new SettingsPage();
+                            this.settingsPage.config = this.$.mirror;
+                            document.body.appendChild(this.settingsPage);
+                        }
+                
+                        if (this.settingsPage.hide){
+                            this.settingsPage.hide = false;
+                        }
+                        else {
+                            this.settingsPage.hide = true;
+                        }
+                    },
+                
+                    autoFormatAction: function () {
+                        this.$.mirror.autoFormat();
+                    },
+                
+                });
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/math.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/math.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                (function () {
+                    var _d2r = Math.PI/180.0;
+                    var _r2d = 180.0/Math.PI;
+                
+                    /**
+                     * Extends the JavaScript built-in object that has properties and methods for mathematical constants and functions.
+                     * See [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+                     * @module Math
+                     * @class Math
+                     * @static
+                     */
+                    JS.mixin ( Math, {
+                
+                        /**
+                         * @property TWO_PI
+                         * @type number
+                         */
+                        TWO_PI: 2.0 * Math.PI,
+                
+                        /**
+                         * @property HALF_PI
+                         * @type number
+                         */
+                        HALF_PI: 0.5 * Math.PI,
+                
+                        /**
+                         * degree to radius
+                         * @method deg2rad
+                         * @param {number} degree
+                         * @return {number} radius
+                         */
+                        deg2rad: function ( degree ) {
+                            return degree * _d2r;
+                        },
+                
+                        /**
+                         * radius to degree
+                         * @method rad2deg
+                         * @param {number} radius
+                         * @return {number} degree
+                         */
+                        rad2deg: function ( radius ) {
+                            return radius * _r2d;
+                        },
+                
+                        /**
+                         * let radius in -pi to pi
+                         * @method rad180
+                         * @param {number} radius
+                         * @return {number} clamped radius
+                         */
+                        rad180: function ( radius ) {
+                            if ( radius &gt; Math.PI || radius &lt; -Math.PI ) {
+                                radius = (radius + Math.TOW_PI) % Math.TOW_PI;
+                            }
+                            return radius;
+                        },
+                
+                        /**
+                         * let radius in 0 to 2pi
+                         * @method rad360
+                         * @param {number} radius
+                         * @return {number} clamped radius
+                         */
+                        rad360: function ( radius ) {
+                            if ( radius &gt; Math.TWO_PI )
+                                return radius % Math.TOW_PI;
+                            else if ( radius &lt; 0.0 )
+                                return Math.TOW_PI + radius % Math.TOW_PI;
+                            return radius;
+                        },
+                
+                        /**
+                         * let degree in -180 to 180
+                         * @method deg180
+                         * @param {number} degree
+                         * @return {number} clamped degree
+                         */
+                
+                        deg180: function ( degree ) {
+                            if ( degree &gt; 180.0 || degree &lt; -180.0 ) {
+                                degree = (degree + 360.0) % 360.0;
+                            }
+                            return degree;
+                        },
+                
+                        /**
+                         * let degree in 0 to 360
+                         * @method deg360
+                         * @param {number} degree
+                         * @return {number} clamped degree
+                         */
+                        deg360: function ( degree ) {
+                            if ( degree &gt; 360.0 )
+                                return degree % 360.0;
+                            else if ( degree &lt; 0.0 )
+                                return 360.0 + degree % 360.0;
+                            return degree;
+                        },
+                
+                        /**
+                         * Returns a floating-point random number between min (inclusive) and max (exclusive).
+                         * @method randomRange
+                         * @param {number} min
+                         * @param {number} max
+                         * @return {number} the random number
+                         */
+                        randomRange: function (min, max) {
+                            return Math.random() * (max - min) + min;
+                        },
+                
+                        /**
+                         * Returns a random integer between min (inclusive) and max (exclusive).
+                         * @method randomRangeInt
+                         * @param {number} min
+                         * @param {number} max
+                         * @return {number} the random integer
+                         */
+                        randomRangeInt: function (min, max) {
+                            return Math.floor(this.randomRange(min, max));
+                        },
+                
+                        /**
+                         * Clamps a value between a minimum float and maximum float value.
+                         * @method clamp
+                         * @param {number} val
+                         * @param {number} min
+                         * @param {number} max
+                         * @return {number}
+                         */
+                        clamp: function ( val, min, max ) {
+                            if (typeof min !== &#x27;number&#x27;) {
+                                Fire.error(&#x27;[clamp] min value must be type number&#x27;);
+                                return;
+                            }
+                            if (typeof max !== &#x27;number&#x27;) {
+                                Fire.error(&#x27;[clamp] max value must be type number&#x27;);
+                                return;
+                            }
+                            if (min &gt; max) {
+                                Fire.error(&#x27;[clamp] max value must not less than min value&#x27;);
+                                return;
+                            }
+                            return Math.min( Math.max( val, min ), max );
+                        },
+                
+                        /**
+                         * Clamps a value between 0 and 1.
+                         * @method clamp01
+                         * @param {number} val
+                         * @param {number} min
+                         * @param {number} max
+                         * @return {number}
+                         */
+                        clamp01: function ( val ) {
+                            return Math.min( Math.max( val, 0 ), 1 );
+                        },
+                
+                        /**
+                         * @method calculateMaxRect
+                         * @param {Rect} out
+                         * @param {Vec2} p0
+                         * @param {Vec2} p1
+                         * @param {Vec2} p2
+                         * @param {Vec2} p3
+                         * @return {Rect} just the out rect itself
+                         */
+                        calculateMaxRect: function (out, p0, p1, p2, p3) {
+                            var minX = Math.min(p0.x, p1.x, p2.x, p3.x);
+                            var maxX = Math.max(p0.x, p1.x, p2.x, p3.x);
+                            var minY = Math.min(p0.y, p1.y, p2.y, p3.y);
+                            var maxY = Math.max(p0.y, p1.y, p2.y, p3.y);
+                            out.x = minX;
+                            out.y = minY;
+                            out.width = maxX - minX;
+                            out.height = maxY - minY;
+                            return out;
+                        }
+                
+                    } );
+                
+                })();
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

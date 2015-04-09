@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/engine.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/engine.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                
+                var Engine = (function () {
+                
+                    /**
+                     * !#zh 这个模块提供引擎的一些全局接口和状态状态
+                     *
+                     * @class Engine
+                     * @static
+                     */
+                    var Engine = {
+                // @ifdef EDITOR
+                        _editorCallback: editorCallback
+                // @endif
+                    };
+                
+                    var isPlaying = false;
+                    var isPaused = false;
+                    var stepOnce = false;
+                    var loadingScene = &#x27;&#x27;;
+                
+                    // We should use this id to cancel ticker, otherwise if the engine stop and replay immediately,
+                    // last ticker will not cancel correctly.
+                    var requestId = -1;
+                
+                    /**
+                     * !#en the active scene
+                     * !#zh 当前激活的场景。
+                     *
+                     * 如果为空，一般是因为正在加载场景或Entity(例如执行Fire.deserialize)。
+                     * 这样是为了防止加载中的东西不小心影响到当前场景。一般代码不用关心这个问题，但大部分构造函数里执行的代码，
+                     * 如果涉及到场景物件的操作，都要注意这点。
+                     * 也就是说构造函数调用到的代码如果要操作 Engine._scene，必须判断非空，如果操作不直接针对 Engine._scene，
+                     * 也可以判断 Engine._canModifyCurrentScene。
+                     * 另外，如果存在辅助场景，当在辅助场景内创建物件时，Engine._scene会被临时修改为辅助场景。
+                     *
+                     * @property _scene
+                     * @type {Scene}
+                     * @private
+                     */
+                    Engine._scene = null;
+                
+                    // temp array contains persistent entities
+                    Engine._dontDestroyEntities = [];
+                
+                    /**
+                     * The RenderContext attached to game or game view.
+                     * @property _renderContext
+                     * @type {RenderContext}
+                     * @private
+                     */
+                    Engine._renderContext = null;
+                
+                    /**
+                     * The InteractionContext attached to game or game view.
+                     * @property _interactionContext
+                     * @type {InteractionContext}
+                     * @private
+                     */
+                    Engine._interactionContext = null;
+                
+                    /**
+                     * the render context currently rendering
+                     * @property _curRenderContext
+                     * @type {RenderContext}
+                     * @private
+                     */
+                    Engine._curRenderContext = null;
+                
+                    /**
+                     * The InputContext attached to game or game view.
+                     * @property _inputContext
+                     * @type {InputContext}
+                     * @private
+                     */
+                    Engine._inputContext = null;
+                
+                    /**
+                     * is in player or playing in editor?
+                     * @property isPlaying
+                     * @type {boolean}
+                     * @readOnly
+                     */
+                    Object.defineProperty(Engine, &#x27;isPlaying&#x27;, {
+                        get: function () {
+                            return isPlaying;
+                        }
+                    });
+                
+                    /**
+                     * is editor currently paused?
+                     * @property isPaused
+                     * @type {boolean}
+                     * @readOnly
+                     */
+                    Object.defineProperty(Engine, &#x27;isPaused&#x27;, {
+                        get: function () {
+                            return isPaused;
+                        }
+                    });
+                
+                    /**
+                     * is loading scene?
+                     * @property isLoadingScene
+                     * @type {boolean}
+                     * @readOnly
+                     */
+                    Object.defineProperty(Engine, &#x27;loadingScene&#x27;, {
+                        get: function () {
+                            return loadingScene;
+                        }
+                    });
+                
+                    var lockingScene = null;
+                
+                    /**
+                     * !#en You should check whether you can modify the scene in constructors which may called by the engine while deserializing.
+                     * !#zh 这个属性用来判断场景物体的构造函数执行时是否可以把物体加到场景里。
+                     * 这个属性和 Fire._isCloning 很类似。但这里关注的是场景是否能修改，而 Fire._isCloning 强调的是持有的对象是否需要重新创建。
+                     * @property _canModifyCurrentScene
+                     * @type {boolean}
+                     * @private
+                     */
+                    Object.defineProperty(Engine, &#x27;_canModifyCurrentScene&#x27;, {
+                        get: function () {
+                            return !lockingScene;
+                        },
+                        set: function (value) {
+                            if (value) {
+                                // unlock
+                                this._scene = lockingScene;
+                                lockingScene = null;
+                            }
+                            else {
+                                // lock
+                                if (this._scene &amp;&amp; lockingScene) {
+                                    Fire.error(&#x27;another scene still locked: &#x27; + lockingScene.name);
+                                }
+                                lockingScene = this._scene;
+                                this._scene = null;
+                            }
+                        }
+                    });
+                
+                    var inited = false;
+                    /**
+                     * @property inited
+                     * @type {boolean}
+                     * @readOnly
+                     */
+                    Object.defineProperty(Engine, &#x27;inited&#x27;, {
+                        get: function () {
+                            return inited;
+                        }
+                    });
+                
+                    // Scene name to uuid
+                    Engine._sceneInfos = {};
+                
+                    // functions
+                
+                    /**
+                     * Initialize the engine. This method will be called by boot.js or editor.
+                     * @method init
+                     * @param {number} [width]
+                     * @param {number} [height]
+                     * @param {Canvas} [canvas]
+                     * @param {object} [options]
+                     * @return {RenderContext}
+                     */
+                    Engine.init = function ( w, h, canvas, options ) {
+                        if (inited) {
+                            Fire.error(&#x27;Engine already inited&#x27;);
+                            return;
+                        }
+                        inited = true;
+                
+                        Engine._renderContext = new RenderContext( w, h, canvas );
+                        Engine._interactionContext = new InteractionContext();
+                
+                // @ifdef EDITOR
+                        if (Fire.isEditor === false) {
+                            // test in other platform
+                            Engine._scene = new Scene();
+                            //if (editorCallback.onSceneLoaded) {
+                            //    editorCallback.onSceneLoaded(Engine._scene);
+                            //}
+                            if (editorCallback.onSceneLaunched) {
+                                editorCallback.onSceneLaunched(Engine._scene);
+                            }
+                        }
+                // @endif
+                
+                        if (options) {
+                            JS.mixin(Engine._sceneInfos, options.scenes);
+                        }
+                        return Engine._renderContext;
+                    };
+                
+                    /**
+                     * Start the engine loop. This method will be called by boot.js or editor.
+                     * @method play
+                     */
+                    Engine.play = function () {
+                        if (isPlaying &amp;&amp; !isPaused) {
+                            Fire.warn(&#x27;Fireball is already playing&#x27;);
+                            return;
+                        }
+                        if (isPlaying &amp;&amp; isPaused) {
+                            isPaused = false;
+                // @ifdef EDITOR
+                            if (editorCallback.onEnginePlayed) {
+                                editorCallback.onEnginePlayed(true);
+                            }
+                // @endif
+                            return;
+                        }
+                        isPlaying = true;
+                
+                        Engine._inputContext = new InputContext(Engine._renderContext);
+                        var now = Ticker.now();
+                        Time._restart(now);
+                        update();
+                
+                // @ifdef EDITOR
+                        if (editorCallback.onEnginePlayed) {
+                            editorCallback.onEnginePlayed(false);
+                        }
+                // @endif
+                    };
+                
+                    /**
+                     * Stop the engine loop.
+                     * @method stop
+                     */
+                    Engine.stop = function () {
+                        if (isPlaying) {
+                            FObject._deferredDestroy();
+                            Engine._inputContext.destruct();
+                            Engine._inputContext = null;
+                            Input._reset();
+                
+                            // reset states
+                            isPlaying = false;
+                            isPaused = false;
+                            loadingScene = &#x27;&#x27;; // TODO: what if loading scene ?
+                            if (requestId !== -1) {
+                                Ticker.cancelAnimationFrame(requestId);
+                                requestId = -1;
+                            }
+                
+                // @ifdef EDITOR
+                            if (editorCallback.onEngineStopped) {
+                                editorCallback.onEngineStopped();
+                            }
+                // @endif
+                        }
+                    };
+                
+                    /**
+                     * Pause the engine loop.
+                     * @method pause
+                     */
+                    Engine.pause = function () {
+                        isPaused = true;
+                // @ifdef EDITOR
+                        if (editorCallback.onEnginePaused) {
+                            editorCallback.onEnginePaused();
+                        }
+                // @endif
+                    };
+                
+                    /**
+                     * Perform a single frame step.
+                     * @method step
+                     */
+                    Engine.step = function () {
+                        this.pause();
+                        stepOnce = true;
+                        if ( !isPlaying ) {
+                            Engine.play();
+                        }
+                    };
+                
+                    function render () {
+                        // render
+                        Engine._scene.render(Engine._renderContext);
+                    }
+                
+                    function doUpdate (updateLogic) {
+                        if (Engine._scene) {
+                            if (updateLogic) {
+                                Engine._scene.update();
+                                FObject._deferredDestroy();
+                            }
+                            render();
+                
+                            // update interaction context
+                            Engine._interactionContext.update(Engine._scene.entities);
+                        }
+                    }
+                
+                    /**
+                     * @method update
+                     * @private
+                     */
+                    function update (unused) {
+                        if (!isPlaying) {
+                            return;
+                        }
+                        requestId = Ticker.requestAnimationFrame(update);
+                
+                        //if (sceneLoadingQueue) {
+                        //    return;
+                        //}
+                
+                        var updateLogic = !isPaused || stepOnce;
+                        stepOnce = false;
+                        var now = Ticker.now();
+                        Time._update(now, !updateLogic);
+                        doUpdate(updateLogic);
+                
+                // @ifdef DEV
+                        if (__TESTONLY__.update) {
+                            __TESTONLY__.update(updateLogic);
+                        }
+                // @endif
+                    }
+                    Engine.update = update;
+                
+                    /**
+                     * Launch loaded scene.
+                     * @method _launchScene
+                     * @param {Scene} scene
+                     * @param {function} [onBeforeLoadScene]
+                     * @private
+                     */
+                    Engine._launchScene = function (scene, onBeforeLoadScene) {
+                        if (!scene) {
+                            Fire.error(&#x27;Argument must be non-nil&#x27;);
+                            return;
+                        }
+                        Engine._dontDestroyEntities.length = 0;
+                
+                        // unload scene
+                        var oldScene = Engine._scene;
+                // @ifdef EDITOR
+                        if (editorCallback.onStartUnloadScene) {
+                            editorCallback.onStartUnloadScene(oldScene);
+                        }
+                // @endif
+                
+                        if (Fire.isValid(oldScene)) {
+                            // destroyed and unload
+                            AssetLibrary.unloadAsset(oldScene, true);
+                        }
+                
+                        // purge destroyed entities belongs to old scene
+                        FObject._deferredDestroy();
+                
+                        Engine._scene = null;
+                
+                        if (onBeforeLoadScene) {
+                            onBeforeLoadScene();
+                        }
+                
+                        // init scene
+                        Engine._renderContext.onSceneLoaded(scene);
+                // @ifdef EDITOR
+                        //if (editorCallback.onSceneLoaded) {
+                        //    editorCallback.onSceneLoaded(scene);
+                        //}
+                // @endif
+                
+                        // launch scene
+                        scene.entities = scene.entities.concat(Engine._dontDestroyEntities);
+                        Engine._dontDestroyEntities.length = 0;
+                        Engine._scene = scene;
+                        Engine._renderContext.onSceneLaunched(scene);
+                // @ifdef EDITOR
+                        if (editorCallback.onSceneLaunched) {
+                            editorCallback.onSceneLaunched(scene);
+                        }
+                // @endif
+                
+                        scene.activate();
+                    };
+                
+                    /**
+                     * Loads the scene by its name.
+                     * @method loadScene
+                     * @param {string} sceneName - the name of the scene to load
+                     * @param {function} [onLaunched] - callback, will be called after scene launched
+                     * @param {function} [onUnloaded] - callback, will be called when the previous scene was unloaded
+                     * @return {boolean} if error, return false
+                     */
+                    Engine.loadScene = function (sceneName, onLaunched, onUnloaded) {
+                        if (loadingScene) {
+                            Fire.error(&#x27;[Engine.loadScene] Failed to load scene &quot;%s&quot; because &quot;%s&quot; is already loading&#x27;, sceneName, loadingScene);
+                            return false;
+                        }
+                        var uuid = Engine._sceneInfos[sceneName];
+                        if (uuid) {
+                            loadingScene = sceneName;
+                            Engine._loadSceneByUuid(uuid, onLaunched, onUnloaded);
+                            return true;
+                        }
+                        else {
+                            Fire.error(&#x27;[Engine.loadScene] The scene &quot;%s&quot; can not be loaded because it has not been added to the build settings.&#x27;, sceneName);
+                            return false;
+                        }
+                    };
+                
+                    /**
+                     * Loads the scene by its uuid.
+                     * @method _loadSceneByUuid
+                     * @param {string} uuid - the uuid of the scene asset to load
+                     * @param {function} [onLaunched]
+                     * @param {function} [onUnloaded]
+                     * @private
+                     */
+                    Engine._loadSceneByUuid = function (uuid, onLaunched, onUnloaded) {
+                        AssetLibrary.unloadAsset(uuid);     // force reload
+                        AssetLibrary.loadAsset(uuid, function onSceneLoaded (error, scene) {
+                            if (error) {
+                                error = &#x27;Failed to load scene: &#x27; + error;
+                                // @ifdef EDITOR
+                                console.throw(&#x27;[test] Failed to load scene&#x27;);
+                                // @endif
+                            }
+                            else if (!(scene instanceof Fire._Scene)) {
+                                error = &#x27;The asset &#x27; + uuid + &#x27; is not a scene&#x27;;
+                                scene = null;
+                            }
+                            if (scene) {
+                                Engine._launchScene(scene, onUnloaded);
+                            }
+                            else {
+                                Fire.error(error);
+                            }
+                            loadingScene = &#x27;&#x27;;
+                            if (onLaunched) {
+                                onLaunched(scene, error);
+                            }
+                        });
+                    };
+                
+                    /**
+                     * Preloads the scene to reduces loading time. You can call this method at any time you want.
+                     *
+                     * After calling this method, you still need to launch the scene by &#x60;Engine.loadScene&#x60; because the loading logic will not changed. It will be totally fine to call &#x60;Engine.loadScene&#x60; at any time even if the preloading is not yet finished, the scene will be launched after loaded automatically.
+                     * @method preloadScene
+                     * @param {string} sceneName - the name of the scene to preload
+                     * @param {function} [onLoaded] - callback, will be called after the scene loaded
+                     * @param {string} onLoaded.param error - null or the error info
+                     * @param {Asset} onLoaded.param data - the loaded scene or null
+                     */
+                    Engine.preloadScene = function (sceneName, onLoaded) {
+                        var uuid = Engine._sceneInfos[sceneName];
+                        if (uuid) {
+                            AssetLibrary.unloadAsset(uuid);     // force reload
+                            AssetLibrary.loadAsset(uuid, onLoaded);
+                        }
+                        else {
+                            Fire.error(&#x27;[Engine.preloadScene] The scene &quot;%s&quot; could not be loaded because it has not been added to the build settings.&#x27;, sceneName);
+                        }
+                    };
+                
+                    return Engine;
+                })();
+                
+                Fire.Engine = Engine;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

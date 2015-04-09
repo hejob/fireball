@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/builtin/audio/src/audio-source.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/builtin/audio/src/audio-source.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                
+                var AudioSource = (function () {
+                
+                    /**
+                     * The audio source component.
+                     * @class AudioSource
+                     * @extends Component
+                     * @constructor
+                     */
+                    var AudioSource = Fire.Class({
+                        //
+                        name: &quot;Fire.AudioSource&quot;,
+                        //
+                        extends: Fire.Component,
+                        //
+                        constructor: function () {
+                            // 声源暂停或者停止时候为false
+                            this._playing = false;
+                            // 来区分声源是暂停还是停止
+                            this._paused = false;
+                
+                            this._startTime = 0;
+                            this._lastPlay = 0;
+                
+                            this._buffSource = null;
+                            this._volumeGain = null;
+                
+                            /**
+                             * The callback function which will be invoked when the audio stops
+                             * @property onEnd
+                             * @type {function}
+                             * @default null
+                             */
+                            this.onEnd = null;
+                        },
+                        properties: {
+                            /**
+                             * Is the audio source playing (Read Only)？
+                             * @property isPlaying
+                             * @type {boolean}
+                             * @readOnly
+                             * @default false
+                             */
+                            isPlaying: {
+                                get: function () {
+                                    return this._playing &amp;&amp; !this._paused;
+                                },
+                                visible: false
+                            },
+                            /**
+                             * Is the audio source paused (Read Only)?
+                             * @property isPaused
+                             * @type {boolean}
+                             * @readOnly
+                             * @default false
+                             */
+                            isPaused:{
+                                get: function () {
+                                    return this._paused;
+                                },
+                                visible: false
+                            },
+                            /**
+                             * Playback position in seconds.
+                             * @property time
+                             * @type {number}
+                             * @default 0
+                             */
+                            time: {
+                                get: function () {
+                                    return Fire.AudioContext.getCurrentTime(this);
+                                },
+                                set: function (value) {
+                                    Fire.AudioContext.updateTime(this, value);
+                                },
+                                visible: false
+                            },
+                            _clip: {
+                                default: null,
+                                type: Fire.AudioClip
+                            },
+                            /**
+                             * The audio clip to play.
+                             * @property clip
+                             * @type {AudioClip}
+                             * @default null
+                             */
+                            clip:{
+                                get: function () {
+                                    return this._clip;
+                                },
+                                set: function (value) {
+                                    if (this._clip !== value) {
+                                        this._clip = value;
+                                        Fire.AudioContext.updateAudioClip(this);
+                                    }
+                                }
+                            },
+                            //
+                            _loop: false,
+                            /**
+                             * Is the audio source looping?
+                             * @property loop
+                             * @type {boolean}
+                             * @default false
+                             */
+                            loop: {
+                                get: function () {
+                                    return this._loop;
+                                },
+                                set: function (value) {
+                                    if (this._loop !== value) {
+                                        this._loop = value;
+                                        Fire.AudioContext.updateLoop(this);
+                                    }
+                                }
+                            },
+                            //
+                            _mute: false,
+                            /**
+                             * Is the audio source mute?
+                             * @property mute
+                             * @type {boolean}
+                             * @default false
+                             */
+                            mute: {
+                                get: function () {
+                                    return this._mute;
+                                },
+                                set: function (value) {
+                                    if (this._mute !== value) {
+                                        this._mute = value;
+                                        Fire.AudioContext.updateMute(this);
+                                    }
+                                }
+                            },
+                            //
+                            _volume: 1,
+                            /**
+                             * The volume of the audio source.
+                             * @property volume
+                             * @type {number}
+                             * @default 1
+                             */
+                            volume: {
+                                get: function () {
+                                    return this._volume;
+                                },
+                                set: function (value) {
+                                    if (this._volume !== value) {
+                                        this._volume = Math.clamp01(value);
+                                        Fire.AudioContext.updateVolume(this);
+                                    }
+                                },
+                                range: [0, 1]
+                            },
+                            //
+                            _playbackRate: 1.0,
+                            /**
+                             * The playback rate of the audio source.
+                             * @property playbackRate
+                             * @type {number}
+                             * @default 1
+                             */
+                            playbackRate: {
+                                get: function () {
+                                    return this._playbackRate;
+                                },
+                                set: function (value) {
+                                    if (this._playbackRate !== value) {
+                                        this._playbackRate = value;
+                                        if(this._playing) {
+                                            Fire.AudioContext.updatePlaybackRate(this);
+                                        }
+                                    }
+                                }
+                            },
+                            /**
+                             * If set to true, the audio source will automatically start playing on onLoad.
+                             * @property playOnLoad
+                             * @type {boolean}
+                             * @default true
+                             */
+                            playOnLoad: true
+                        },
+                        _onPlayEnd: function () {
+                            if ( this.onEnd ) {
+                                this.onEnd();
+                            }
+                
+                            this._playing = false;
+                            this._paused = false;
+                        },
+                        /**
+                         * Pauses the clip.
+                         * @method pause
+                         */
+                        pause: function () {
+                            if ( this._paused )
+                                return;
+                
+                            Fire.AudioContext.pause(this);
+                            this._paused = true;
+                        },
+                        /**
+                         * Plays the clip.
+                         * @method play
+                         */
+                        play: function () {
+                            if ( this._playing &amp;&amp; !this._paused )
+                                return;
+                
+                            if ( this._paused )
+                                Fire.AudioContext.play(this, this._startTime);
+                            else
+                                Fire.AudioContext.play(this, 0);
+                
+                            this._playing = true;
+                            this._paused = false;
+                        },
+                        /**
+                         * Stops the clip
+                         * @method stop
+                         */
+                        stop: function () {
+                            if ( !this._playing ) {
+                                return;
+                            }
+                
+                            Fire.AudioContext.stop(this);
+                            this._playing = false;
+                            this._paused = false;
+                        },
+                        //
+                        onLoad: function () {
+                            if (this._playing ) {
+                                this.stop();
+                            }
+                        },
+                        //
+                        onEnable: function () {
+                            if (this.playOnLoad) {
+                                this.play();
+                            }
+                        },
+                        //
+                        onDisable: function () {
+                            this.stop();
+                        }
+                    });
+                
+                    //
+                    Fire.addComponentMenu(AudioSource, &#x27;AudioSource&#x27;);
+                
+                    return AudioSource;
+                })();
+                
+                Fire.AudioSource = AudioSource;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

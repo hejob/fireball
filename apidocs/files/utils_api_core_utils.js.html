@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/utils.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/utils.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * @method padLeft
+                 * @param {string} text
+                 * @param {number} width
+                 * @param {string} ch - the character used to pad
+                 * @return {string}
+                 */
+                Fire.padLeft = function ( text, width, ch ) {
+                    text = text.toString();
+                    width -= text.length;
+                    if ( width &gt; 0 ) {
+                        return new Array( width + 1 ).join(ch) + text;
+                    }
+                    return text;
+                };
+                
+                /**
+                 * @method fitRatio
+                 * @param {number} ratio - width / height
+                 * @param {number} destWidth
+                 * @param {number} destHeight
+                 * @return {array}
+                 */
+                Fire.fitRatio = function ( ratio, destWidth, destHeight ) {
+                    var srcWidth, srcHeight;
+                    if ( ratio &gt; 1 ) {
+                        srcWidth = destWidth;
+                        srcHeight = srcWidth / ratio;
+                    }
+                    else {
+                        srcHeight = destHeight;
+                        srcWidth = srcHeight * ratio;
+                    }
+                    return Fire.fitSize( srcWidth, srcHeight, destWidth, destHeight );
+                };
+                
+                /**
+                 * @method fitSize
+                 * @param {number} srcWidth
+                 * @param {number} srcHeight
+                 * @param {number} destWidth
+                 * @param {number} destHeight
+                 * @return {number[]} - [width, height]
+                 */
+                Fire.fitSize = function ( srcWidth, srcHeight, destWidth, destHeight ) {
+                    var width, height;
+                    if ( srcWidth &gt; destWidth &amp;&amp;
+                         srcHeight &gt; destHeight )
+                    {
+                        width = destWidth;
+                        height = srcHeight * destWidth/srcWidth;
+                
+                        if ( height &gt; destHeight ) {
+                            height = destHeight;
+                            width = srcWidth * destHeight/srcHeight;
+                        }
+                    }
+                    else if ( srcWidth &gt; destWidth ) {
+                        width = destWidth;
+                        height = srcHeight * destWidth/srcWidth;
+                    }
+                    else if ( srcHeight &gt; destHeight ) {
+                        width = srcWidth * destHeight/srcHeight;
+                        height = destHeight;
+                    }
+                    else {
+                        width = srcWidth;
+                        height = srcHeight;
+                    }
+                
+                    return [width,height];
+                };
+                
+                /**
+                 * @method getEnumList
+                 * @param {object} enumDef - the enum type defined from Fire.defineEnum
+                 * @return {object[]}
+                 * @private
+                 */
+                Fire.getEnumList = function (enumDef) {
+                    if ( enumDef.__enums__ !== undefined )
+                        return enumDef.__enums__;
+                
+                    var enums = [];
+                    for ( var entry in enumDef ) {
+                        if ( enumDef.hasOwnProperty(entry) ) {
+                            var value = enumDef[entry];
+                            var isInteger = typeof value === &#x27;number&#x27; &amp;&amp; (value | 0) === value; // polyfill Number.isInteger
+                            if ( isInteger ) {
+                                enums.push( { name: entry, value: value } );
+                            }
+                        }
+                    }
+                    enums.sort( function ( a, b ) { return a.value - b.value; } );
+                
+                    enumDef.__enums__ = enums;
+                    return enums;
+                };
+                
+                /**
+                 * @method getVarFrom
+                 * @param {object} obj
+                 * @param {string} text
+                 * @return {any}
+                 * @private
+                 */
+                Fire.getVarFrom = function ( obj, text ) {
+                    var res = text.split(&#x27;.&#x27;);
+                    var curObj = obj;
+                    for ( var i = 0; i &lt; res.length; ++i ) {
+                        var name = res[i];
+                        curObj = curObj[name];
+                        if ( curObj === undefined || curObj === null )
+                            return null;
+                    }
+                    return curObj;
+                };
+                
+                /**
+                 * @method rgb2hsv
+                 * @param {number} r - red, must be [0.0, 1.0]
+                 * @param {number} g - red, must be [0.0, 1.0]
+                 * @param {number} b - red, must be [0.0, 1.0]
+                 * @return {object} - {h: number, s: number, v: number}
+                 */
+                Fire.rgb2hsv = function ( r, g, b ) {
+                    var hsv = { h: 0, s: 0, v: 0 };
+                    var max = Math.max(r,g,b);
+                    var min = Math.min(r,g,b);
+                    var delta = 0;
+                    hsv.v = max;
+                    hsv.s = max ? (max - min) / max : 0;
+                    if (!hsv.s) hsv.h = 0;
+                    else {
+                        delta = max - min;
+                        if (r === max) hsv.h = (g - b) / delta;
+                        else if (g === max) hsv.h = 2 + (b - r) / delta;
+                        else hsv.h = 4 + (r - g) / delta;
+                        hsv.h /= 6;
+                        if (hsv.h &lt; 0) hsv.h += 1.0;
+                    }
+                    return hsv;
+                };
+                
+                /**
+                 * hsv2rgb
+                 * @param {number} h
+                 * @param {number} s
+                 * @param {number} v
+                 * @return {object} - {r: number, g: number, b: number}}, rgb will be in [0.0, 1.0]
+                 */
+                Fire.hsv2rgb = function ( h, s, v ) {
+                    var rgb = { r: 0, g: 0, b: 0 };
+                    if (s === 0) {
+                        rgb.r = rgb.g = rgb.b = v;
+                    }
+                    else {
+                        if (v === 0) {
+                            rgb.r = rgb.g = rgb.b = 0;
+                        }
+                        else {
+                            if (h === 1) h = 0;
+                            h *= 6;
+                            s = s;
+                            v = v;
+                            var i = Math.floor(h);
+                            var f = h - i;
+                            var p = v * (1 - s);
+                            var q = v * (1 - (s * f));
+                            var t = v * (1 - (s * (1 - f)));
+                            switch (i) {
+                                case 0:
+                                    rgb.r = v;
+                                    rgb.g = t;
+                                    rgb.b = p;
+                                    break;
+                
+                                case 1:
+                                    rgb.r = q;
+                                    rgb.g = v;
+                                    rgb.b = p;
+                                    break;
+                
+                                case 2:
+                                    rgb.r = p;
+                                    rgb.g = v;
+                                    rgb.b = t;
+                                    break;
+                
+                                case 3:
+                                    rgb.r = p;
+                                    rgb.g = q;
+                                    rgb.b = v;
+                                    break;
+                
+                                case 4:
+                                    rgb.r = t;
+                                    rgb.g = p;
+                                    rgb.b = v;
+                                    break;
+                
+                                case 5:
+                                    rgb.r = v;
+                                    rgb.g = p;
+                                    rgb.b = q;
+                                    break;
+                            }
+                        }
+                    }
+                    return rgb;
+                };
+                
+                function _isDomNode(obj) {
+                    return (
+                        typeof Node === &quot;object&quot; ? obj instanceof Node :
+                        obj &amp;&amp; typeof obj === &quot;object&quot; &amp;&amp; typeof obj.nodeType === &quot;number&quot; &amp;&amp; typeof obj.nodeName === &quot;string&quot;
+                    );
+                }
+                
+                // @ifdef DEV
+                /**
+                 * @param {object} obj
+                 * @return {boolean} is {} ?
+                 */
+                var _isPlainEmptyObj_DEV = function (obj) {
+                    if (!obj || obj.constructor !== ({}).constructor) {
+                        return false;
+                    }
+                    // jshint ignore: start
+                    for (var k in obj) {
+                        return false;
+                    }
+                    // jshint ignore: end
+                    return true;
+                };
+                // @endif
+                
+                // @ifdef DEV
+                var _cloneable_DEV = function (obj) {
+                    return obj &amp;&amp; typeof obj.clone === &#x27;function&#x27; &amp;&amp; (obj.constructor.prototype.hasOwnProperty(&#x27;clone&#x27;) || obj.hasOwnProperty(&#x27;clone&#x27;));
+                };
+                // @endif
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

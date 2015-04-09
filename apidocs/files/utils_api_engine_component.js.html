@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/component.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/component.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Component = (function () {
+                
+                    /**
+                     * used in _callOnEnable to ensure onEnable and onDisable will be called alternately
+                     * 从逻辑上来说OnEnable和OnDisable的交替调用不需要由额外的变量进行保护，但那样会使设计变得复杂
+                     * 例如Entity.destroy调用后但还未真正销毁时，会调用所有Component的OnDisable。
+                     * 这时如果又有addComponent，Entity需要对这些新来的Component特殊处理。将来调度器做了之后可以尝试去掉这个标记。
+                     */
+                    var IsOnEnableCalled = Fire._ObjectFlags.IsOnEnableCalled;
+                
+                    // IsOnEnableCalled 会收到 executeInEditMode 的影响，IsEditorOnEnabledCalled 不会
+                    var IsEditorOnEnabledCalled = Fire._ObjectFlags.IsEditorOnEnabledCalled;
+                    var IsOnLoadCalled = Fire._ObjectFlags.IsOnLoadCalled;
+                    var IsOnStartCalled = Fire._ObjectFlags.IsOnStartCalled;
+                
+                    var compCtor;
+                // @ifdef EDITOR
+                    compCtor = function () {
+                        Fire._AssetsWatcher.initComponent(this);
+                    };
+                // @endif
+                
+                    /**
+                     * Base class for everything attached to Entity.
+                     *
+                     * NOTE: Not allowed to use construction parameters for Component&#x27;s subclasses,
+                     *         because Component is created by the engine.
+                     *
+                     * @class Component
+                     * @extends HashObject
+                     * @constructor
+                     */
+                    var Component = Fire.extend(&#x27;Fire.Component&#x27;, HashObject, compCtor);
+                
+                    /**
+                     * The entity this component is attached to. A component is always attached to an entity.
+                     * @property entity
+                     * @type {Entity}
+                     */
+                    Component.prop(&#x27;entity&#x27;, null, Fire.HideInInspector);
+                
+                    // @ifdef EDITOR
+                
+                    // 如果不带有 uuid，则返回空字符串
+                    Component.getset(&#x27;_scriptUuid&#x27;,
+                        function () {
+                            return this._cacheUuid || &#x27;&#x27;;
+                        },
+                        function (value) {
+                            if (this._cacheUuid !== value) {
+                                if (value &amp;&amp; Fire.isUuid(value)) {
+                                    var classId = Fire.compressUuid(value);
+                                    var newComp = Fire.JS._getClassById(classId);
+                                    if (newComp) {
+                                        Fire.warn(&#x27;Sorry, replacing component script is not yet implemented.&#x27;);
+                                        //Fire.sendToWindows(&#x27;reload:window-scripts&#x27;, Fire._Sandbox.compiled);
+                                    }
+                                    else {
+                                        Fire.error(&#x27;Can not find a component in the script which uuid is &quot;%s&quot;.&#x27;, value);
+                                    }
+                                }
+                                else {
+                                    Fire.error(&#x27;invalid script&#x27;);
+                                }
+                            }
+                        },
+                        Fire.DisplayName(&quot;Script&quot;),
+                        Fire._ScriptUuid
+                    );
+                
+                    // @endif
+                
+                    /**
+                     * @property _enabled
+                     * @type boolean
+                     * @private
+                     */
+                    Component.prop(&#x27;_enabled&#x27;, true, Fire.HideInInspector);
+                
+                    // properties
+                
+                    /**
+                     * indicates whether this component is enabled or not.
+                     * @property enabled
+                     * @type boolean
+                     * @default true
+                     */
+                    Object.defineProperty(Component.prototype, &#x27;enabled&#x27;, {
+                        get: function () {
+                            return this._enabled;
+                        },
+                        set: function (value) {
+                            // jshint eqeqeq: false
+                            if (this._enabled != value) {
+                                // jshint eqeqeq: true
+                                this._enabled = value;
+                                if (this.entity._activeInHierarchy) {
+                                    _callOnEnable(this, value);
+                                }
+                            }
+                        }
+                    });
+                
+                    /**
+                     * indicates whether this component is enabled and its entity is also active in the hierarchy.
+                     * @property enabledInHierarchy
+                     * @type {boolean}
+                     * @readOnly
+                     */
+                    Object.defineProperty(Component.prototype, &#x27;enabledInHierarchy&#x27;, {
+                        get: function () {
+                            return this._enabled &amp;&amp; this.entity._activeInHierarchy;
+                        }
+                    });
+                
+                    /**
+                     * Returns the {% crosslink Fire.Transform Transform %} attached to the entity.
+                     * @property transform
+                     * @type {Transform}
+                     * @readOnly
+                     */
+                    Object.defineProperty(Component.prototype, &#x27;transform&#x27;, {
+                        get: function () {
+                            return this.entity.transform;
+                        }
+                    });
+                
+                    // callback functions
+                
+                    /**
+                     * Update is called every frame, if the Component is enabled.
+                     * @event update
+                     */
+                    Component.prototype.update = null;
+                
+                    /**
+                     * LateUpdate is called every frame, if the Component is enabled.
+                     * @event lateUpdate
+                     */
+                    Component.prototype.lateUpdate = null;
+                    //(NYI) Component.prototype.onCreate = null;  // customized constructor for template
+                
+                    /**
+                     * When attaching to an active entity or its entity first activated
+                     * @event onLoad
+                     */
+                    Component.prototype.onLoad = null;
+                
+                    /**
+                     * Called before all scripts&#x27; update if the Component is enabled
+                     * @event onStart
+                     */
+                    Component.prototype.onStart = null;
+                
+                    /**
+                     * Called when this component becomes enabled and its entity becomes active
+                     * @event onEnable
+                     */
+                    Component.prototype.onEnable = null;
+                
+                    /**
+                     * Called when this component becomes disabled or its entity becomes inactive
+                     * @event onDisable
+                     */
+                    Component.prototype.onDisable = null;
+                
+                    /**
+                     * Called when this component will be destroyed.
+                     * @event onDestroy
+                     */
+                    Component.prototype.onDestroy = null;
+                
+                    /**
+                     * Called when the engine starts rendering the scene.
+                     * @event onPreRender
+                     */
+                    Component.prototype.onPreRender = null;
+                
+                
+                    /**
+                     * Adds a component class to the entity. You can also add component to entity by passing in the name of the script.
+                     *
+                     * @method addComponent
+                     * @param {function|string} typeOrName - the constructor or the class name of the component to add
+                     * @return {Component} - the newly added component
+                     */
+                    Component.prototype.addComponent = function (typeOrTypename) {
+                        return this.entity.addComponent(typeOrTypename);
+                    };
+                
+                    /**
+                     * Returns the component of supplied type if the entity has one attached, null if it doesn&#x27;t. You can also get component in the entity by passing in the name of the script.
+                     *
+                     * @method getComponent
+                     * @param {function|string} typeOrName
+                     * @return {Component}
+                     */
+                    Component.prototype.getComponent = function (typeOrTypename) {
+                        return this.entity.getComponent(typeOrTypename);
+                    };
+                
+                    ///**
+                    // * This method will be invoked when the scene graph changed, which is means the parent of its transform changed,
+                    // * or one of its ancestor&#x27;s parent changed, or one of their sibling index changed.
+                    // * NOTE: This callback only available after onLoad.
+                    // *
+                    // * @param {Transform} transform - the transform which is changed, can be any of this transform&#x27;s ancestor.
+                    // * @param {Transform} oldParent - the transform&#x27;s old parent, if not changed, its sibling index changed.
+                    // * @return {boolean} return whether stop propagation to this component&#x27;s child components.
+                    // */
+                    //Component.prototype.onHierarchyChanged = function (transform, oldParent) {};
+                
+                    // overrides
+                
+                    Component.prototype.destroy = function () {
+                        if (FObject.prototype.destroy.call(this)) {
+                            if (this._enabled &amp;&amp; this.entity._activeInHierarchy) {
+                                _callOnEnable(this, false);
+                            }
+                        }
+                    };
+                
+                // @ifdef EDITOR
+                    function call_FUNC_InTryCatch (c) {
+                        try {
+                            c._FUNC_();
+                        }
+                        catch (e) {
+                            Fire._throw(e);
+                        }
+                    }
+                    var execInTryCatchTmpl = &#x27;(&#x27; + call_FUNC_InTryCatch + &#x27;)&#x27;;
+                    // jshint evil: true
+                    var callOnEnableInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, &#x27;onEnable&#x27;));
+                    var callOnDisableInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, &#x27;onDisable&#x27;));
+                    var callOnLoadInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, &#x27;onLoad&#x27;));
+                    var callOnStartInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, &#x27;onStart&#x27;));
+                    var callOnDestroyInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, &#x27;onDestroy&#x27;));
+                    // jshint evil: false
+                // @endif
+                
+                    // Should not call onEnable/onDisable in other place
+                    function _callOnEnable (self, enable) {
+                // @ifdef EDITOR
+                        if ( enable ) {
+                            if ( !(self._objFlags &amp; IsEditorOnEnabledCalled) ) {
+                                self._objFlags |= IsEditorOnEnabledCalled;
+                                if ( editorCallback.onComponentEnabled ) {
+                                    editorCallback.onComponentEnabled(self);
+                                }
+                            }
+                        }
+                        else {
+                            if ( self._objFlags &amp; IsEditorOnEnabledCalled ) {
+                                self._objFlags &amp;= ~IsEditorOnEnabledCalled;
+                                if ( editorCallback.onComponentDisabled ) {
+                                    editorCallback.onComponentDisabled(self);
+                                }
+                            }
+                        }
+                        if ( !(Fire.Engine.isPlaying || Fire.attr(self, &#x27;executeInEditMode&#x27;)) ) {
+                            return;
+                        }
+                // @endif
+                        if ( enable ) {
+                            if ( !(self._objFlags &amp; IsOnEnableCalled) ) {
+                                self._objFlags |= IsOnEnableCalled;
+                                if ( self.onEnable ) {
+                // @ifdef EDITOR
+                                    callOnEnableInTryCatch(self);
+                // @endif
+                // @ifndef EDITOR
+                                    self.onEnable();
+                // @endif
+                                }
+                            }
+                
+                        }
+                        else {
+                            if ( self._objFlags &amp; IsOnEnableCalled ) {
+                                self._objFlags &amp;= ~IsOnEnableCalled;
+                                if ( self.onDisable ) {
+                // @ifdef EDITOR
+                                    callOnDisableInTryCatch(self);
+                // @endif
+                // @ifndef EDITOR
+                                    self.onDisable();
+                // @endif
+                                }
+                            }
+                        }
+                    }
+                
+                    Component.prototype._onEntityActivated = function (active) {
+                // @ifdef EDITOR
+                        if ( !(this._objFlags &amp; IsOnLoadCalled) &amp;&amp; (Fire.Engine.isPlaying || Fire.attr(this, &#x27;executeInEditMode&#x27;)) ) {
+                            this._objFlags |= IsOnLoadCalled;
+                            if (this.onLoad) {
+                                callOnLoadInTryCatch(this);
+                            }
+                            Fire._AssetsWatcher.start(this);
+                            //if (this.onHierarchyChanged) {
+                            //    this.entity.transform._addListener(this);
+                            //}
+                        }
+                // @endif
+                // @ifndef EDITOR
+                        if ( !(this._objFlags &amp; IsOnLoadCalled) ) {
+                            this._objFlags |= IsOnLoadCalled;
+                            if (this.onLoad) {
+                                this.onLoad();
+                            }
+                            //if (this.onHierarchyChanged) {
+                            //    this.entity.transform._addListener(this);
+                            //}
+                        }
+                // @endif
+                        if (this._enabled) {
+                            _callOnEnable(this, active);
+                        }
+                    };
+                
+                    /**
+                     * invoke starts on entities
+                     * @param {Entity} entity
+                     */
+                    Component._invokeStarts = function (entity) {
+                        var countBefore = entity._components.length;
+                        var c = 0, comp = null;
+                        // @ifdef EDITOR
+                        if (Fire.Engine.isPlaying) {
+                        // @endif
+                            for (; c &lt; countBefore; ++c) {
+                                comp = entity._components[c];
+                                if ( !(comp._objFlags &amp; IsOnStartCalled) ) {
+                                    comp._objFlags |= IsOnStartCalled;
+                                    if (comp.onStart) {
+                                        // @ifdef EDITOR
+                                        callOnStartInTryCatch(comp);
+                                        // @endif
+                                        // @ifndef EDITOR
+                                        comp.onStart();
+                                        // @endif
+                                    }
+                                }
+                            }
+                        // @ifdef EDITOR
+                        }
+                        else {
+                            for (; c &lt; countBefore; ++c) {
+                                comp = entity._components[c];
+                                if ( !(comp._objFlags &amp; IsOnStartCalled) &amp;&amp; Fire.attr(comp, &#x27;executeInEditMode&#x27;)) {
+                                    comp._objFlags |= IsOnStartCalled;
+                                    if (comp.onStart) {
+                                        callOnStartInTryCatch(comp);
+                                    }
+                                }
+                            }
+                        }
+                        // @endif
+                        // activate its children recursively
+                        for (var i = 0, children = entity._children, len = children.length; i &lt; len; ++i) {
+                            var child = [i];
+                            if (child._active) {
+                                Component._invokeStarts(child);
+                            }
+                        }
+                    };
+                
+                    Component.prototype._onPreDestroy = function () {
+                        // ensure onDisable called
+                        _callOnEnable(this, false);
+                        // onDestroy
+                // @ifdef EDITOR
+                        Fire._AssetsWatcher.stop(this);
+                        if (Fire.Engine.isPlaying || Fire.attr(this, &#x27;executeInEditMode&#x27;)) {
+                            if (this.onDestroy) {
+                                callOnDestroyInTryCatch(this);
+                            }
+                        }
+                // @endif
+                // @ifndef EDITOR
+                        if (this.onDestroy) {
+                            this.onDestroy();
+                        }
+                // @endif
+                        // remove component
+                        this.entity._removeComponent(this);
+                    };
+                
+                    return Component;
+                })();
+                
+                Fire.Component = Component;
+                
+                ////////////////////////////////////////////////////////////////////////////////
+                // Component helpers
+                
+                // Register Component Menu
+                
+                // @ifdef EDITOR
+                Fire._componentMenuItems = [];
+                // @endif
+                
+                /**
+                 * @class Fire
+                 */
+                /**
+                 * Register a component to the &quot;Component&quot; menu.
+                 *
+                 * @method addComponentMenu
+                 * @param {function} constructor - the class you want to register, must inherit from Component
+                 * @param {string} menuPath - the menu path name. Eg. &quot;Rendering/Camera&quot;
+                 * @param {number} [priority] - the order which the menu item are displayed
+                 */
+                Fire.addComponentMenu = function (constructor, menuPath, priority) {
+                    // @ifdef EDITOR
+                    if ( !Fire.isChildClassOf(constructor, Component) ) {
+                        Fire.error(&#x27;[Fire.addComponentMenu] constructor must inherit from Component&#x27;);
+                        return;
+                    }
+                    Fire._componentMenuItems.push({
+                        component: constructor,
+                        menuPath: menuPath,
+                        priority: priority
+                    });
+                    // @endif
+                };
+                
+                // @ifdef EDITOR
+                Fire.attr(Component, &#x27;executeInEditMode&#x27;, false);
+                // @endif
+                
+                /**
+                 * Makes a component execute in edit mode.
+                 * By default, all components are only executed in play mode,
+                 * which means they will not have their callback functions executed while the Editor is in edit mode.
+                 * By calling this function, each component will also have its callback executed in edit mode.
+                 *
+                 * @method executeInEditMode
+                 * @param {Component} constructor - the class you want to register, must inherit from Component
+                 */
+                Fire.executeInEditMode = function (constructor) {
+                    // @ifdef EDITOR
+                    if ( !Fire.isChildClassOf(constructor, Component) ) {
+                        Fire.error(&#x27;[Fire.executeInEditMode] constructor must inherit from Component&#x27;);
+                        return;
+                    }
+                    Fire.attr(constructor, &#x27;executeInEditMode&#x27;, true);
+                    // @endif
+                };
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

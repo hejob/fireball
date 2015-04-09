@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CallbacksHandler - Fireball Game API</title>
+    <title>Screen.ContentStrategy - Fireball Engine API</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -14,8 +14,9 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
-                    <p class="description">Fireball Game API: your toolbox</p>
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
             </div>
             <ul class="jump-links">
                 <li><a href="#index" class="index-jump-link">index</a></li>
@@ -39,28 +40,66 @@
             
                     <div id="api-tabview-panel">
                         <ul id="api-classes" class="apis classes">
-                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
                             <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
                             <li><a class="type" href="../classes/Color.html">Color</a></li>
                             <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
                             <li><a class="type" href="../classes/Fire.html">Fire</a></li>
-                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
-                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
                             <li><a class="type" href="../classes/FObject.html">FObject</a></li>
                             <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
                             <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
                             <li><a class="type" href="../classes/Math.html">Math</a></li>
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
                             <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
-                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
                         </ul>
                     </div>
                 </div>
@@ -69,12 +108,12 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>CallbacksHandler Class</h1>
+                <h1>Screen.ContentStrategy Class</h1>
                 <div class="box meta">
                 
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l781"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:781</code></a>
+                            Defined in: <a href="../files/utils_api_engine_screen–agnostic.js.html#l238"><code>utils&#x2F;api&#x2F;engine&#x2F;screen–agnostic.js:238</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -83,8 +122,8 @@
                 
                 
                 <div class="box intro">
-                    <p>The CallbacksHandler is an abstract class that can register and unregister callbacks by key.
-                Subclasses should implement their own methods about how to invoke the callbacks.</p>
+                    <p>ContentStrategy class is the root strategy class of content&#39;s scale strategy,
+                it controls the behavior of how to scale the scene and setup the viewport for the game.</p>
                 
                 </div>
                 
@@ -127,26 +166,22 @@
                         <ul class="index-list methods">
                 
                                 <li class="index-item method constructor">
-                                    <a href="#method_CallbacksHandler">CallbacksHandler</a>
+                                    <a href="#method_Screen.ContentStrategy">Screen.ContentStrategy</a>
                 
                                     <span class="flag constructor">constructor</span>
                 
                                 </li>
                 
                                 <li class="index-item method">
-                                    <a href="#method_add">add</a>
+                                    <a href="#method_apply">apply</a>
                 
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_has">has</a>
+                                    <a href="#method_buildResult">buildResult</a>
                 
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_remove">remove</a>
-                
-                                </li>
-                                <li class="index-item method">
-                                    <a href="#method_removeAll">removeAll</a>
+                                    <a href="#method_getContainerSize">getContainerSize</a>
                 
                                 </li>
                         </ul>
@@ -161,9 +196,9 @@
                 
                     <div class="constructor">
                         <h2>Constructor</h2>
-                        <a name="method_CallbacksHandler" class="anchor-link"></a>
+                        <a name="method_Screen.ContentStrategy" class="anchor-link"></a>
                         <div class="method item">
-                            <h3 class="name"><code>CallbacksHandler</code>
+                            <h3 class="name"><code>Screen.ContentStrategy</code>
                         
                                 <span class="paren">()</span>
                         
@@ -179,7 +214,7 @@
                             <div class="meta">
                                         <p>
                                         Defined in
-                                <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l781"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:781</code></a>
+                                <a href="../files/utils_api_engine_screen–agnostic.js.html#l238"><code>utils&#x2F;api&#x2F;engine&#x2F;screen–agnostic.js:238</code></a>
                                 </p>
                         
                         
@@ -201,23 +236,20 @@
                     <div class="methods-detail">
                         <h2>Methods</h2>
                 
-                            <a name="method_add" class="anchor-link"></a>
+                            <a name="method_apply" class="anchor-link"></a>
                             <div class="method item">
-                                <h3 class="name"><code>add</code>
+                                <h3 class="name"><code>apply</code>
                             
                                     <div class="args">
                                         <span class="paren">(</span><ul class="args-list inline commas">
                                             <li class="arg">
-                                                    <code>key</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code>callback</code>
+                                                    <code>designedResolution</code>
                                             </li>
                                         </ul><span class="paren">)</span>
                                     </div>
                             
                                     <span class="returns-inline">
-                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                                     </span>
                             
                             
@@ -231,7 +263,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l793"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:793</code></a>
+                                    <a href="../files/utils_api_engine_screen–agnostic.js.html#l112"><code>utils&#x2F;api&#x2F;engine&#x2F;screen–agnostic.js:112</code></a>
                                     </p>
                             
                             
@@ -241,7 +273,8 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        
+                                        <p>Function to apply this strategy</p>
+                            
                                     </div>
                             
                                         <div class="params">
@@ -249,18 +282,8 @@
                             
                                             <ul class="params-list">
                                                 <li class="param">
-                                                        <code class="param-name">key</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name">callback</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                                        <code class="param-name">designedResolution</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
                             
                             
                                                     <div class="param-description">
@@ -275,31 +298,34 @@
                                             <h4>Returns:</h4>
                             
                                             <div class="returns-description">
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                                                    <p>whether the key is new</p>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>scaleAndViewportRect {scale: {Vec2}, viewport: {Rect}}</p>
                             
                                             </div>
                                         </div>
                             
                                 </div>
                             </div>
-                            <a name="method_has" class="anchor-link"></a>
+                            <a name="method_buildResult" class="anchor-link"></a>
                             <div class="method item">
-                                <h3 class="name"><code>has</code>
+                                <h3 class="name"><code>buildResult</code>
                             
                                     <div class="args">
                                         <span class="paren">(</span><ul class="args-list inline commas">
                                             <li class="arg">
-                                                    <code>key</code>
+                                                    <code>container</code>
                                             </li>
                                             <li class="arg">
-                                                    <code class="optional">[callback]</code>
+                                                    <code>content</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code>scale</code>
                                             </li>
                                         </ul><span class="paren">)</span>
                                     </div>
                             
                                     <span class="returns-inline">
-                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                                     </span>
                             
                             
@@ -313,7 +339,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l821"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:821</code></a>
+                                    <a href="../files/utils_api_engine_screen–agnostic.js.html#l121"><code>utils&#x2F;api&#x2F;engine&#x2F;screen–agnostic.js:121</code></a>
                                     </p>
                             
                             
@@ -323,8 +349,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Check if the specified key has any registered callback. If a callback is also specified,
-                            it will only return true if the callback is registered.</p>
+                                        <p>Helper function for apply.</p>
                             
                                     </div>
                             
@@ -333,19 +358,34 @@
                             
                                             <ul class="params-list">
                                                 <li class="param">
-                                                        <code class="param-name">key</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                                        <code class="param-name">container</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
                             
                             
                                                     <div class="param-description">
-                                                         
+                                                        <ul>
+                            <li>size of container</li>
+                            </ul>
+                            
                                                     </div>
                             
                                                 </li>
                                                 <li class="param">
-                                                        <code class="param-name optional">[callback]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                                                        <code class="param-name">content</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>size of content</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name">scale</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
                             
                             
                                                     <div class="param-description">
@@ -360,29 +400,22 @@
                                             <h4>Returns:</h4>
                             
                                             <div class="returns-description">
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                                                    <p>scaleAndViewportRect {scale: *, viewport: Fire.Rect}</p>
+                            
                                             </div>
                                         </div>
                             
                                 </div>
                             </div>
-                            <a name="method_remove" class="anchor-link"></a>
+                            <a name="method_getContainerSize" class="anchor-link"></a>
                             <div class="method item">
-                                <h3 class="name"><code>remove</code>
+                                <h3 class="name"><code>getContainerSize</code>
                             
-                                    <div class="args">
-                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                            <li class="arg">
-                                                    <code>key</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code>callback</code>
-                                            </li>
-                                        </ul><span class="paren">)</span>
-                                    </div>
+                                    <span class="paren">()</span>
                             
                                     <span class="returns-inline">
-                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
                                     </span>
                             
                             
@@ -396,7 +429,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l848"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:848</code></a>
+                                    <a href="../files/utils_api_engine_screen–agnostic.js.html#l156"><code>utils&#x2F;api&#x2F;engine&#x2F;screen–agnostic.js:156</code></a>
                                     </p>
                             
                             
@@ -409,99 +442,14 @@
                                         
                                     </div>
                             
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name">key</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name">callback</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
                             
                                         <div class="returns">
                                             <h4>Returns:</h4>
                             
                                             <div class="returns-description">
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                                                    <p>removed</p>
-                            
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>:
                                             </div>
                                         </div>
-                            
-                                </div>
-                            </div>
-                            <a name="method_removeAll" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>removeAll</code>
-                            
-                                    <div class="args">
-                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                            <li class="arg">
-                                                    <code>key</code>
-                                            </li>
-                                        </ul><span class="paren">)</span>
-                                    </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l840"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:840</code></a>
-                                    </p>
-                            
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                            
-                                    <div class="description">
-                                        
-                                    </div>
-                            
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name">key</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
-                            
                             
                                 </div>
                             </div>

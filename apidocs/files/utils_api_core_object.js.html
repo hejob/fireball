@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/object.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/object.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * The base class of most of all the objects in Fireball.
+                 * @class FObject
+                 * @constructor
+                 */
+                FObject = (function () {
+                
+                    // constructor
+                
+                    function FObject () {
+                
+                        /**
+                         * @property _name
+                         * @type string
+                         * @private
+                         */
+                        this._name = &#x27;&#x27;;
+                
+                        /**
+                         * @property _objFlags
+                         * @type number
+                         * @private
+                         */
+                        this._objFlags = 0;
+                    }
+                
+                    Fire._fastDefine(&#x27;Fire.FObject&#x27;, FObject, [&#x27;_name&#x27;, &#x27;_objFlags&#x27;]);
+                
+                    // internal static
+                
+                    var objectsToDestroy = [];
+                
+                    Object.defineProperty(FObject, &#x27;_deferredDestroy&#x27;, {
+                        value: function () {
+                            // if we called b.destory() in a.onDestroy(), objectsToDestroy will be resized,
+                            // but we only destroy the objects which called destory in this frame.
+                            var deleteCount = objectsToDestroy.length;
+                            for (var i = 0; i &lt; deleteCount; ++i) {
+                                var obj = objectsToDestroy[i];
+                                if (!(obj._objFlags &amp; Destroyed)) {
+                                    obj._destroyImmediate();
+                                }
+                            }
+                            if (deleteCount === objectsToDestroy.length) {
+                                objectsToDestroy.length = 0;
+                            }
+                            else {
+                                objectsToDestroy.splice(0, deleteCount);
+                            }
+                        },
+                        enumerable: false
+                    });
+                
+                    // instance
+                
+                    /**
+                     * The name of the object.
+                     * @property name
+                     * @type string
+                     */
+                    Object.defineProperty(FObject.prototype, &#x27;name&#x27;, {
+                        get: function () {
+                            return this._name;
+                        },
+                        set: function (value) {
+                            this._name = value;
+                        },
+                        enumerable: false
+                    });
+                
+                    /**
+                     * Indicates whether the object is not yet destroyed
+                     * @property isValid
+                     * @type boolean
+                     * @default true
+                     */
+                    Object.defineProperty(FObject.prototype, &#x27;isValid&#x27;, {
+                        get: function () {
+                            return !(this._objFlags &amp; Destroyed);
+                        }
+                    });
+                
+                    /**
+                     * Destroy this FObject, and release all its own references to other resources.
+                     *
+                     * After destory, this FObject is not usable any more.
+                     * You can use Fire.isValid(obj) (or obj.isValid if obj is non-nil) to check whether the object is destroyed before accessing it.
+                     * @method destroy
+                     * @return {boolean} whether it is the first time the destroy being called
+                     */
+                    FObject.prototype.destroy = function () {
+                        if (this._objFlags &amp; Destroyed) {
+                            Fire.error(&#x27;object already destroyed&#x27;);
+                            return false;
+                        }
+                        if (this._objFlags &amp; ToDestroy) {
+                            return false;
+                        }
+                        this._objFlags |= ToDestroy;
+                        objectsToDestroy.push(this);
+                        return true;
+                    };
+                
+                    /**
+                     * Clear all references in the instance.
+                     *
+                     * NOTE: this method will not clear the getter or setter functions which defined in the INSTANCE of FObject.
+                     *       You can override the _destruct method if you need.
+                     * @method _destruct
+                     * @private
+                     */
+                    FObject.prototype._destruct = function () {
+                        // 允许重载destroy
+                        // 所有可枚举到的属性，都会被清空
+                        for (var key in this) {
+                            if (this.hasOwnProperty(key)) {
+                                var type = typeof this[key];
+                                switch (type) {
+                                    case &#x27;string&#x27;:
+                                        this[key] = &#x27;&#x27;;
+                                        break;
+                                    case &#x27;object&#x27;:
+                                        this[key] = null;
+                                        break;
+                                    case &#x27;function&#x27;:
+                                        this[key] = null;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                    };
+                
+                    /**
+                     * @method _onPreDestroy
+                     * @private
+                     */
+                    FObject.prototype._onPreDestroy = null;
+                
+                    FObject.prototype._destroyImmediate = function () {
+                        if (this._objFlags &amp; Destroyed) {
+                            Fire.error(&#x27;object already destroyed&#x27;);
+                            return;
+                        }
+                        // engine internal callback
+                        if (this._onPreDestroy) {
+                            this._onPreDestroy();
+                        }
+                        // do destroy
+                        this._destruct();
+                        // mark destroyed
+                        this._objFlags |= Destroyed;
+                    };
+                
+                    return FObject;
+                })();
+                
+                /**
+                 * @class Fire
+                 */
+                /**
+                 * Checks whether the object is non-nil and not yet destroyed
+                 * @method isValid
+                 * @param {FObject}
+                 * @return {boolean} whether is valid
+                 */
+                Fire.isValid = function (object) {
+                    return !!object &amp;&amp; !(object._objFlags &amp; Destroyed);
+                };
+                
+                Fire.FObject = FObject;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

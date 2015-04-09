@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/builtin/gulpfile.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/builtin/gulpfile.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var gulp = require(&#x27;gulp&#x27;);
+                var gutil = require(&#x27;gulp-util&#x27;);
+                var jshint = require(&#x27;gulp-jshint&#x27;);
+                var concat = require(&#x27;gulp-concat&#x27;);
+                var stylus = require(&#x27;gulp-stylus&#x27;);
+                var rename = require(&#x27;gulp-rename&#x27;);
+                var vulcanize = require(&#x27;gulp-vulcanize&#x27;);
+                var del = require(&#x27;del&#x27;);
+                var minifyCSS = require(&#x27;gulp-minify-css&#x27;);
+                
+                var path = require(&#x27;path&#x27;);
+                var es = require(&#x27;event-stream&#x27;);
+                var stylish = require(&#x27;jshint-stylish&#x27;);
+                
+                var header = require(&#x27;gulp-header&#x27;);
+                
+                // clean
+                gulp.task(&#x27;clean&#x27;, function() {
+                    del(&#x27;*/bin/&#x27;);
+                });
+                
+                /////////////////////////////////////////////////////////////////////////////
+                // build
+                /////////////////////////////////////////////////////////////////////////////
+                
+                function wrapScope () {
+                    var header = new Buffer(&quot;(function () {\n&quot;);
+                    var footer = new Buffer(&quot;})();\n&quot;);
+                    return es.through(function (file) {
+                        file.contents = Buffer.concat([header, file.contents, footer]);
+                        this.emit(&#x27;data&#x27;, file);
+                    });
+                }
+                
+                var task_copy_deps = [];
+                var task_min_deps = [];
+                var task_dev_deps = [];
+                var plugin_watchers = [];
+                
+                var task_plugin = function ( name ) {
+                    var basePath = name + &#x27;/&#x27;;
+                    var elementsPath = name + &#x27;/editor/elements/&#x27;;
+                    var extPath = name + &#x27;/editor/ext/&#x27;;
+                    var destBinPath = name + &#x27;/bin/&#x27;;
+                    var destBinTmpPath = name + &#x27;/bin/tmp/&#x27;;
+                
+                    var task_copy = &#x27;plugin-&#x27; + name + &#x27;-copy&#x27;;
+                    var task_copy_ext = &#x27;plugin-&#x27; + name + &#x27;-copy-ext&#x27;;
+                    var task_copy_res = &#x27;plugin-&#x27; + name + &#x27;-copy-res&#x27;;
+                    var task_copy_html = &#x27;plugin-&#x27; + name + &#x27;-copy-html&#x27;;
+                
+                    var task_css = &#x27;plugin-&#x27; + name + &#x27;-css&#x27;;
+                    var task_styl = &#x27;plugin-&#x27; + name + &#x27;-styl&#x27;;
+                    var task_js = &#x27;plugin-&#x27; + name + &#x27;-js&#x27;;
+                    var task_js_dev = &#x27;plugin-&#x27; + name + &#x27;-js-dev&#x27;;
+                    var task_runtime_js = &#x27;plugin-&#x27; + name + &#x27;-runtime-js&#x27;;
+                    var task_html = &#x27;plugin-&#x27; + name + &#x27;-html&#x27;;
+                    var task_html_dev = &#x27;plugin-&#x27; + name + &#x27;-html-dev&#x27;;
+                
+                    task_copy_deps.push(task_copy_html, task_copy_res);
+                    task_min_deps.push(task_html);
+                    task_min_deps.push(task_runtime_js);
+                    task_dev_deps.push(task_html_dev);
+                    task_dev_deps.push(task_runtime_js);
+                
+                    var js_files = elementsPath + &#x27;**/*.js&#x27;;
+                    var runtime_js_files = [basePath + &#x27;**/*.js&#x27;,
+                                            basePath + &#x27;src/**/*.js&#x27;,
+                                            &#x27;!&#x27; + basePath + &#x27;**/{Editor,editor}/**&#x27;,
+                                            &#x27;!&#x27; + destBinPath + &#x27;**&#x27;];
+                
+                    var watcher = {
+                        css: { files: elementsPath + &#x27;**/*.css&#x27;, tasks: [task_css, task_html_dev] },
+                        styl: { files: elementsPath + &#x27;**/*.styl&#x27;, tasks: [task_styl, task_html_dev] },
+                        js: { files: js_files, tasks: [task_html_dev] },
+                        runtime_js: { files: runtime_js_files, tasks: [task_runtime_js] },
+                        html: { files: elementsPath + &#x27;**/*.html&#x27;, tasks: [task_html_dev] },
+                        res: { files: [elementsPath + &#x27;**/*.jpg&#x27;, elementsPath + &#x27;**/*.png&#x27;], tasks: [task_copy_res] }
+                    };
+                    plugin_watchers.push(watcher);
+                
+                    // copy
+                    gulp.task( task_copy, function() {
+                        return gulp.src( [
+                            basePath + &#x27;**/*&#x27;,
+                            &#x27;!&#x27; + elementsPath,
+                            &#x27;!&#x27; + elementsPath + &quot;**/*&quot;,
+                            &#x27;!&#x27; + extPath,
+                            &#x27;!&#x27; + extPath + &quot;**/*&quot;,
+                            &#x27;!&#x27; + basePath + &quot;bin&quot;,
+                            &#x27;!&#x27; + basePath + &quot;bin/**/*&quot;,
+                        ], {base: basePath})
+                        .pipe(gulp.dest(destBinPath))
+                        ;
+                    });
+                
+                    gulp.task( task_copy_ext, function() {
+                        return gulp.src( [
+                            extPath + &#x27;**/*&#x27;,
+                        ])
+                        .pipe(gulp.dest(destBinPath + &quot;ext/&quot;))
+                        ;
+                    });
+                
+                    gulp.task( task_copy_html, function() {
+                        return gulp.src( [
+                            elementsPath + &#x27;**/*.html&#x27;,
+                        ], {base: elementsPath})
+                        .pipe(gulp.dest(destBinTmpPath))
+                        ;
+                    });
+                
+                    gulp.task( task_copy_res, function() {
+                        return gulp.src( [
+                            elementsPath + &#x27;**/*.jpg&#x27;,
+                            elementsPath + &#x27;**/*.png&#x27;,
+                        ], {base: elementsPath})
+                        .pipe(gulp.dest(destBinPath))
+                        ;
+                    });
+                
+                    // styl
+                    gulp.task( task_styl, function() {
+                        return gulp.src(elementsPath + &#x27;**/*.styl&#x27;, {base: elementsPath})
+                        .pipe(stylus({
+                            compress: true,
+                            include: &#x27;src&#x27;
+                        }))
+                        .pipe(gulp.dest(destBinTmpPath));
+                    });
+                
+                    // css
+                    gulp.task( task_css, function() {
+                        return gulp.src(elementsPath + &#x27;**/*.css&#x27;, {base: elementsPath})
+                        .pipe(minifyCSS())
+                        .pipe(gulp.dest(destBinTmpPath));
+                    });
+                
+                    // js
+                    gulp.task(task_js, function() {
+                        var uglify = require(&#x27;gulp-uglifyjs&#x27;);
+                
+                        return gulp.src(js_files, {base: elementsPath})
+                        .pipe(wrapScope())
+                        .pipe(jshint({
+                            multistr: true,
+                            smarttabs: false,
+                            loopfunc: true,
+                            esnext: true,
+                        }))
+                        .pipe(jshint.reporter(stylish))
+                        .pipe(uglify({
+                            compress: {
+                                dead_code: false,
+                                unused: false
+                            }
+                        }))
+                        .pipe(gulp.dest(destBinTmpPath))
+                        ;
+                    });
+                
+                    gulp.task(task_js_dev, function() {
+                        return gulp.src(js_files, {base: elementsPath})
+                        .pipe(wrapScope())
+                        .pipe(jshint({
+                            multistr: true,
+                            smarttabs: false,
+                            loopfunc: true,
+                            esnext: true,
+                        }))
+                        .pipe(jshint.reporter(stylish))
+                        .pipe(gulp.dest(destBinTmpPath))
+                        ;
+                    });
+                
+                    gulp.task(task_runtime_js, function() {
+                        return gulp.src(runtime_js_files, {base: basePath})
+                        .pipe(jshint({
+                            multistr: true,
+                            smarttabs: false,
+                            loopfunc: true,
+                            esnext: true,
+                        }))
+                        .pipe(jshint.reporter(stylish))
+                        .pipe(gulp.dest(destBinPath))
+                        ;
+                    });
+                
+                    // html
+                    var build_html = function (strip) {
+                        return function () {
+                            return gulp.src(destBinTmpPath + &#x27;/&#x27; + name + &#x27;.html&#x27;)
+                            .pipe(vulcanize({
+                                dest: destBinTmpPath,
+                                inline: true,
+                                strip: strip,
+                            }))
+                            .pipe(gulp.dest(destBinPath + &quot;/editor/&quot;))
+                            ;
+                        };
+                    };
+                
+                    gulp.task(task_html, [ task_copy, task_copy_ext, task_copy_html, task_copy_res, task_styl, task_css, task_js ], build_html(true));
+                    gulp.task(task_html_dev, [ task_copy, task_copy_ext, task_copy_html, task_copy_res, task_styl, task_css, task_js_dev ], build_html(false));
+                };
+                
+                /////////////////////////////////////////////////////////////////////////////
+                // commands
+                /////////////////////////////////////////////////////////////////////////////
+                
+                // task plugins
+                var builtins = require(&#x27;../common.json&#x27;).builtins;
+                builtins.forEach(function(name) {
+                    task_plugin(name);
+                });
+                //task_plugin ( &#x27;asset-db-debugger&#x27; );
+                //task_plugin ( &#x27;code-editor&#x27; );
+                //task_plugin ( &#x27;atlas-editor&#x27; );
+                //task_plugin ( &#x27;sprite-animation&#x27; );
+                //task_plugin ( &#x27;audio&#x27; );
+                
+                // tasks
+                gulp.task(&#x27;copy&#x27;, task_copy_deps );
+                gulp.task(&#x27;dev&#x27;, task_dev_deps );
+                gulp.task(&#x27;default&#x27;, task_min_deps );
+                
+                // watch
+                gulp.task(&#x27;watch&#x27;, function() {
+                    for ( var i = 0; i &lt; plugin_watchers.length; ++i ) {
+                        var watcher = plugin_watchers[i];
+                        gulp.watch( watcher.css.files, watcher.css.tasks ).on ( &#x27;error&#x27;, gutil.log );
+                        gulp.watch( watcher.styl.files, watcher.styl.tasks ).on ( &#x27;error&#x27;, gutil.log );
+                        gulp.watch( watcher.js.files, watcher.js.tasks ).on ( &#x27;error&#x27;, gutil.log );
+                        gulp.watch( watcher.runtime_js.files, watcher.runtime_js.tasks ).on ( &#x27;error&#x27;, gutil.log );
+                        gulp.watch( watcher.html.files, watcher.html.tasks ).on ( &#x27;error&#x27;, gutil.log );
+                        gulp.watch( watcher.res.files, watcher.res.tasks ).on ( &#x27;error&#x27;, gutil.log );
+                    }
+                });
+                
+                gulp.task(&#x27;export-api-syntax&#x27;, function (done) {
+                
+                    // 默认所有 builtin 模块都在 Fire 下面
+                    var DefaultModuleHeader = &quot;/**\n&quot; +
+                                              &quot; * @module Fire\n&quot; +
+                                              &quot; * @class Fire\n&quot; +
+                                              &quot; */\n&quot;;
+                
+                    var src = [&#x27;./**/*.js&#x27;, &#x27;!./*/bin/**/*&#x27;, &#x27;!./*/editor/ext/**/*&#x27;];
+                    var dest = &#x27;../utils/api/builtin&#x27;;
+                    del(dest + &#x27;/**/*&#x27;, { force: true }, function (err) {
+                        if (err) {
+                            done(err);
+                            return;
+                        }
+                
+                        gulp.src(src)
+                            .pipe(header(DefaultModuleHeader))
+                            .pipe(gulp.dest(dest))
+                            .on(&#x27;end&#x27;, done);
+                    });
+                });
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

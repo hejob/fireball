@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/attribute.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/attribute.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * Tag the class with any meta attributes, then return all current attributes assigned to it.
+                 * This function holds only the attributes, not their implementations.
+                 *
+                 * @method attr
+                 * @param {function|object} constructor - the class or instance. If instance, the attribute will be dynamic and only available for the specified instance.
+                 * @param {string} propertyName - the name of property or function, used to retrieve the attributes
+                 * @param {object} [attributes] - the attribute table to mark, new attributes will merged with existed attributes. Attribute whose key starts with &#x27;_&#x27; will be ignored.
+                 * @return {object|undefined} return all attributes associated with the property. if none undefined will be returned
+                 *
+                 * @example
+                    var klass = function () { this.value = 0.5 };
+                    Fire.attr(klass, &#x27;value&#x27;);              // return undefined
+                    Fire.attr(klass, &#x27;value&#x27;, {}).min = 0;  // assign new attribute table associated with &#x27;value&#x27;, and set its min = 0
+                    Fire.attr(klass, &#x27;value&#x27;, {             // set values max and default
+                       max: 1,
+                       default: 0.5,
+                    });
+                    Fire.attr(klass, &#x27;value&#x27;);              // return { default: 0.5, min: 0, max: 1 }
+                 */
+                Fire.attr = function (constructor, propertyName, attributes) {
+                    var key = &#x27;_attr$&#x27; + propertyName;
+                    var instance, attrs, name;
+                    if (typeof constructor === &#x27;function&#x27;) {
+                        // attributes in class
+                        instance = constructor.prototype;
+                        attrs = instance[key];
+                        if (typeof attributes !== &#x27;undefined&#x27;) {
+                            // set
+                            if (typeof attributes === &#x27;object&#x27;) {
+                                if (!attrs) {
+                                    instance[key] = attrs = {};
+                                }
+                                for (name in attributes) {
+                                    if (name[0] !== &#x27;_&#x27;) {
+                                        attrs[name] = attributes[name];
+                                    }
+                                }
+                            }
+                            else {
+                                instance[key] = attributes;
+                                return attributes;
+                            }
+                        }
+                        return attrs;
+                    }
+                    else {
+                        // attributes in instance
+                        instance = constructor;
+                        if (typeof attributes !== &#x27;undefined&#x27;) {
+                            // set
+                            if (typeof attributes === &#x27;object&#x27;) {
+                                if (instance.hasOwnProperty(key)) {
+                                    attrs = instance[key];
+                                }
+                                if (!attrs) {
+                                    instance[key] = attrs = {};
+                                }
+                                for (name in attributes) {
+                                    if (name[0] !== &#x27;_&#x27;) {
+                                        attrs[name] = attributes[name];
+                                    }
+                                }
+                                return JS.addon({}, attrs, instance.constructor.prototype[key]);
+                            }
+                            else {
+                                instance[key] = attributes;
+                                return attributes;
+                            }
+                        }
+                        else {
+                            // get
+                            attrs = instance[key];
+                            if (typeof attrs === &#x27;object&#x27;) {
+                                return JS.addon({}, attrs, instance.constructor.prototype[key]);
+                            }
+                            else {
+                                return attrs;
+                            }
+                        }
+                    }
+                };
+                
+                /*
+                
+                BuiltinAttributes: {
+                    default: defaultValue,
+                    _canUsedInGetter: true, (default true)
+                    _canUsedInSetter: false, (default false) (NYI)
+                }
+                Getter or Setter: {
+                    hasGetter: true,
+                    hasSetter: true,
+                }
+                Callbacks: {
+                    _onAfterProp: function (constructor, propName) {},
+                    _onAfterGetter: function (constructor, propName) {}, (NYI)
+                    _onAfterSetter: function (constructor, propName) {}, (NYI)
+                }
+                 */
+                
+                /**
+                 * By default, all properties declared by &quot;Class.prop&quot; is serializable.
+                 * The NonSerialized attribute marks a variable to not be serialized,
+                 * so you can keep a property show in the Editor and Fireball will not attempt to serialize it.
+                 * See {% crosslink EditorOnly Fire.EditorOnly %} for more details.
+                 *
+                 * @property NonSerialized
+                 * @type object
+                 * @private
+                 */
+                Fire.NonSerialized = {
+                    serializable: false,
+                    _canUsedInGetter: false
+                };
+                
+                /**
+                 * The EditorOnly attribute marks a variable to be serialized in editor project, but non-serialized
+                 * in exported products.
+                 *
+                 * @property EditorOnly
+                 * @type object
+                 * @private
+                 */
+                Fire.EditorOnly = {
+                    editorOnly: true,
+                    _canUsedInGetter: false,
+                };
+                
+                /**
+                 * Specify that the input value must be integer in Inspector.
+                 * Also used to indicates that the type of elements in array or the type of value in dictionary is integer.
+                 * @property Integer
+                 * @type object
+                 */
+                Fire.Integer = &#x27;Integer&#x27;;
+                
+                Fire.Integer_Obsoleted = { type: &#x27;int&#x27; };
+                
+                /**
+                 * Indicates that the type of elements in array or the type of value in dictionary is double.
+                 * @property Float
+                 * @type object
+                 */
+                Fire.Float = &#x27;Float&#x27;;
+                
+                Fire.Float_Obsoleted = { type: &#x27;float&#x27; };
+                
+                Fire.SingleText = { textMode: &#x27;single&#x27; };
+                Fire.MultiText = { textMode: &#x27;multi&#x27; };
+                
+                // @ifdef DEV
+                function getTypeChecker (type, attrName, objectTypeCtor) {
+                    return function (constructor, mainPropName) {
+                        var mainPropAttrs = Fire.attr(constructor, mainPropName) || {};
+                        if (mainPropAttrs.type !== type) {
+                            Fire.warn(&#x27;Can only indicate one type attribute for %s.%s.&#x27;, JS.getClassName(constructor), mainPropName);
+                            return;
+                        }
+                        if (!mainPropAttrs.hasOwnProperty(&#x27;default&#x27;)) {
+                            return;
+                        }
+                        var defaultVal = mainPropAttrs.default;
+                        if (typeof defaultVal === &#x27;undefined&#x27;) {
+                            return;
+                        }
+                        var isContainer = Array.isArray(defaultVal) || _isPlainEmptyObj_DEV(defaultVal);
+                        if (isContainer) {
+                            return;
+                        }
+                        var defaultType = typeof defaultVal;
+                        if (defaultType === type) {
+                            if (type === &#x27;object&#x27;) {
+                                if (defaultVal &amp;&amp; !(defaultVal instanceof objectTypeCtor)) {
+                                    Fire.warn(&#x27;The default value of %s.%s is not instance of %s.&#x27;,
+                                               JS.getClassName(constructor), mainPropName, JS.getClassName(objectTypeCtor));
+                                }
+                                else {
+                                    return;
+                                }
+                            }
+                            else {
+                                Fire.warn(&#x27;No needs to indicate the &quot;%s&quot; attribute for %s.%s, which its default value is type of %s.&#x27;,
+                                           attrName, JS.getClassName(constructor), mainPropName, type);
+                            }
+                        }
+                        else {
+                            Fire.warn(&#x27;Can not indicate the &quot;%s&quot; attribute for %s.%s, which its default value is type of %s.&#x27;,
+                                       attrName, JS.getClassName(constructor), mainPropName, defaultType);
+                        }
+                        delete mainPropAttrs.type;
+                    };
+                }
+                // @endif
+                
+                /**
+                 * Indicates that the type of elements in array or the type of value in dictionary is boolean.
+                 * @property Boolean
+                 * @type
+                 */
+                Fire.Boolean = &#x27;Boolean&#x27;;
+                
+                Fire.Boolean_Obsoleted = {
+                    type: &#x27;boolean&#x27;,
+                // @ifdef DEV
+                    _onAfterProp: getTypeChecker(&#x27;boolean&#x27;, &#x27;Fire.Boolean&#x27;)
+                // @endif
+                };
+                
+                /**
+                 * Indicates that the type of elements in array or the type of value in dictionary is string.
+                 * @property String
+                 * @type object
+                 */
+                Fire.String = &#x27;String&#x27;;
+                
+                Fire.String_Obsoleted = {
+                    type: &#x27;string&#x27;,
+                // @ifdef DEV
+                    _onAfterProp: getTypeChecker(&#x27;string&#x27;, &#x27;Fire.String&#x27;)
+                // @endif
+                };
+                
+                // the value will be represented as a uuid string
+                Object.defineProperty(Fire, &#x27;_ScriptUuid&#x27;, {
+                    get: function () {
+                        var attr = Fire.ObjectType(Fire.ScriptAsset);
+                        attr.type = &#x27;script-uuid&#x27;;
+                        return attr;
+                    }
+                });
+                
+                /**
+                 * Makes a property only accept the supplied object type in Inspector.
+                 * If the type is derived from Fire.Asset, it will be serialized to uuid.
+                 *
+                 * @method ObjectType
+                 * @param {function} typeCtor - the special type you want
+                 * @return {object} the attribute
+                 * @private
+                 */
+                Fire.ObjectType = function (typeCtor) {
+                    // @ifdef EDITOR
+                    if ( !typeCtor ) {
+                        Fire.warn(&#x27;Argument for Fire.ObjectType must be non-nil&#x27;);
+                        return;
+                    }
+                    if (typeof typeCtor !== &#x27;function&#x27;) {
+                        Fire.warn(&#x27;Argument for Fire.ObjectType must be function type&#x27;);
+                        return;
+                    }
+                    // @endif
+                    return {
+                        type: &#x27;object&#x27;,
+                        ctor: typeCtor,
+                        // @ifdef EDITOR
+                        _onAfterProp: function (classCtor, mainPropName) {
+                            var check = getTypeChecker(&#x27;object&#x27;, &#x27;Fire.ObjectType&#x27;, typeCtor);
+                            check(classCtor, mainPropName);
+                            // check ValueType
+                            var mainPropAttrs = Fire.attr(classCtor, mainPropName) || {};
+                            if (!Array.isArray(mainPropAttrs.default) &amp;&amp; typeof typeCtor.prototype.clone === &#x27;function&#x27;) {
+                                var typename = JS.getClassName(typeCtor);
+                                var hasDefault = mainPropAttrs.default === null || mainPropAttrs.default === undefined;
+                                if ( hasDefault ) {
+                                    Fire.warn(&#x27;%s is a ValueType, no need to specify the &quot;type&quot; of &quot;%s.%s&quot;, &#x27; +
+                                        &#x27;because the type information can obtain from its default value directly.&#x27;,
+                                        typename, JS.getClassName(classCtor), mainPropName, typename);
+                                }
+                                else {
+                                    Fire.warn(&#x27;%s is a ValueType, no need to specify the &quot;type&quot; of &quot;%s.%s&quot;, &#x27; +
+                                        &#x27;just set the default value to &quot;new %s()&quot; and it will be handled properly.&#x27;,
+                                        typename, JS.getClassName(classCtor), mainPropName, typename);
+                                }
+                            }
+                        }
+                        // @endif
+                    };
+                };
+                
+                /**
+                 * Makes a property show up as a enum in Inspector.
+                 *
+                 * @method Enum
+                 * @param {object} enumType
+                 * @return {object} the enum attribute
+                 * @private
+                 */
+                Fire.Enum = function (enumType) {
+                    return { type: &#x27;enum&#x27;, enumList: Fire.getEnumList(enumType) };
+                };
+                
+                /**
+                 * Makes a property referenced to a javascript host object which needs to load before deserialzation.
+                 * The property will not be serialized but will be referenced to the loaded host object while deserialzation.
+                 *
+                 * @method RawType
+                 * @param {string} [typename]
+                 * @return {object} the attribute
+                 * @private
+                 */
+                Fire.RawType = function (typename) {
+                    var NEED_EXT_TYPES = [&#x27;image&#x27;, &#x27;json&#x27;, &#x27;text&#x27;, &#x27;audio&#x27;];  // the types need to specify exact extname
+                    return {
+                        // type: &#x27;raw&#x27;,
+                        rawType: typename,
+                        serializable: false,
+                        // hideInInspector: true,
+                        _canUsedInGetter: false,
+                
+                        _onAfterProp: function (constructor, mainPropName) {
+                // @ifdef DEV
+                            // check raw object
+                            var checked = (function checkRawType(constructor) {
+                                if (! Fire.isChildClassOf(constructor, Asset)) {
+                                    Fire.error(&#x27;RawType is only available for Assets&#x27;);
+                                    return false;
+                                }
+                                var found = false;
+                                for (var p = 0; p &lt; constructor.__props__.length; p++) {
+                                    var propName = constructor.__props__[p];
+                                    var attrs = Fire.attr(constructor, propName);
+                                    var rawType = attrs.rawType;
+                                    if (rawType) {
+                                        var containsUppercase = (rawType.toLowerCase() !== rawType);
+                                        if (containsUppercase) {
+                                            Fire.error(&#x27;RawType name cannot contain uppercase&#x27;);
+                                            return false;
+                                        }
+                                        if (found) {
+                                            Fire.error(&#x27;Each asset cannot have more than one RawType&#x27;);
+                                            return false;
+                                        }
+                                        found = true;
+                                    }
+                                }
+                                return true;
+                            })(constructor);
+                
+                            if (checked) {
+                // @endif
+                                var mainPropAttr = Fire.attr(constructor, mainPropName) || {};
+                                var needExtname = (NEED_EXT_TYPES.indexOf(mainPropAttr.rawType) !== -1);
+                                if (needExtname) {
+                                    // declare extname field
+                                    constructor.prop(&#x27;_rawext&#x27;, &#x27;&#x27;, Fire.HideInInspector);
+                                }
+                // @ifdef DEV
+                            }
+                // @endif
+                        }
+                    };
+                };
+                
+                /**
+                 * Makes a custom property
+                 *
+                 * @method Custom
+                 * @param {string} name
+                 * @return {object}
+                 * @private
+                 */
+                Fire.Custom = function (type) {
+                    return { custom: type };
+                };
+                
+                /**
+                 * Makes a property not show up in the Inspector but be serialized.
+                 * @property HideInInspector
+                 * @type object
+                 * @private
+                 */
+                Fire.HideInInspector = { hideInInspector: true };
+                
+                /**
+                 * Set a custom property name for display in the editor
+                 *
+                 * @method Fire.DisplayName
+                 * @param {string} name
+                 * @return {object} the attribute
+                 * @private
+                 */
+                Fire.DisplayName = function (name) {
+                    return { displayName: name };
+                };
+                
+                /**
+                 * The ReadOnly attribute indicates that the property field is disabled in Inspector.
+                 * @property ReadOnly
+                 * @type object
+                 * @private
+                 */
+                Fire.ReadOnly = {
+                    readOnly: true
+                };
+                
+                /**
+                 * Specify a tooltip for a property
+                 *
+                 * @method Tooltip
+                 * @param {string} tooltip
+                 * @return {object} the attribute
+                 * @private
+                 */
+                Fire.Tooltip = function (tooltip) {
+                    return { tooltip: tooltip };
+                };
+                
+                /**
+                 * @method Nullable
+                 * @param {string} boolPropName
+                 * @param {boolean} hasValueByDefault
+                 * @return {object} the attribute
+                 * @private
+                 */
+                Fire.Nullable = function (boolPropName, hasValueByDefault) {
+                    return {
+                        nullable: boolPropName,
+                
+                        _onAfterProp: function (constructor, mainPropName) {
+                            // declare boolean
+                            constructor.prop(boolPropName, hasValueByDefault, Fire.HideInInspector);
+                            // copy attributes from main property
+                            var mainPropAttr = Fire.attr(constructor, mainPropName) || {};
+                            if (mainPropAttr.serializable === false) {
+                                Fire.attr(constructor, boolPropName, Fire.NonSerialized);
+                            }
+                            else if (mainPropAttr.editorOnly) {
+                                Fire.attr(constructor, boolPropName, Fire.EditorOnly);
+                            }
+                        }
+                    };
+                };
+                
+                /**
+                 * @method Watch
+                 * @param {string} names - the name of target property to watch, array is also acceptable.
+                 * @param {function} callback - the callback function to invoke when target property(s) is changed.
+                 * @param {object} callback.param object - the instance object which contains watching property(s).
+                 * @param {object} callback.param element - the property element which displays watching property(s).
+                 * @return {object} the attribute
+                 * @private
+                 */
+                Fire.Watch = function (names, callback) {
+                    return {
+                        watch: [].concat(names),  // array of property name to watch
+                        watchCallback: callback
+                    };
+                };
+                
+                /**
+                 * @method Range
+                 * @param {number} min: null mins infinite
+                 * @param {number} max: null mins infinite
+                 * @return {object} the attribute
+                 * @private
+                 */
+                Fire.Range = function (min, max) {
+                   return { min: min, max: max };
+                };
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

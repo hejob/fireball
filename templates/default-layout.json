@@ -36,7 +36,6 @@
       "docks": [
         {
           "type": "panel",
-          "auto-layout": true,
           "panels": [
             "fire-scene",
             "fire-game"

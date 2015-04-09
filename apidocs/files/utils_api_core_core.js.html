@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/core.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/core.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                
+                /**
+                 * @param {object} obj
+                 * @param {string} name
+                 * @return {object}
+                 */
+                function _getPropertyDescriptor(obj, name) {
+                    if (obj) {
+                        var pd = Object.getOwnPropertyDescriptor(obj, name);
+                        return pd || _getPropertyDescriptor(Object.getPrototypeOf(obj), name);
+                    }
+                }
+                
+                function _copyprop(name, source, target) {
+                    var pd = _getPropertyDescriptor(source, name);
+                    Object.defineProperty(target, name, pd);
+                }
+                
+                /**
+                 * provides some JavaScript utilities
+                 * @class JS
+                 * @static
+                 */
+                var JS = Fire.JS = {
+                
+                    /**
+                     * copy all properties not defined in obj from arguments[1...n]
+                     * @method addon
+                     * @param {object} obj object to extend its properties
+                     * @param {object} ...sourceObj source object to copy properties from
+                     * @return {object} the result obj
+                     */
+                    addon: function (obj) {
+                        &#x27;use strict&#x27;;
+                        obj = obj || {};
+                        for (var i = 1, length = arguments.length; i &lt; length; i++) {
+                            var source = arguments[i];
+                            for ( var name in source) {
+                                if ( !(name in obj) ) {
+                                    _copyprop( name, source, obj);
+                                }
+                            }
+                        }
+                        return obj;
+                    },
+                
+                    /**
+                     * copy all properties from arguments[1...n] to obj
+                     * @method mixin
+                     * @param {object} obj
+                     * @param {object} ...sourceObj
+                     * @return {object} the result obj
+                     */
+                    mixin: function (obj) {
+                        &#x27;use strict&#x27;;
+                        obj = obj || {};
+                        for (var i = 1, length = arguments.length; i &lt; length; i++) {
+                            var source = arguments[i];
+                            if (source) {
+                                if (typeof source !== &#x27;object&#x27;) {
+                                    Fire.error(&#x27;Fire.mixin called on non-object:&#x27;, source);
+                                    continue;
+                                }
+                                for ( var name in source) {
+                                    _copyprop( name, source, obj);
+                                }
+                            }
+                        }
+                        return obj;
+                    },
+                
+                    /**
+                     * Derive the class from the supplied base class.
+                     * Both classes are just native javascript constructors, not created by Fire.Class, so
+                     * usually you will want to inherit using {% crosslink Fire.Class Fire.Class %} instead.
+                     *
+                     * @method extend
+                     * @param {function} cls
+                     * @param {function} base - the baseclass to inherit
+                     * @return {function} the result class
+                     */
+                    extend: function (cls, base) {
+                // @ifdef DEV
+                        if ( !base ) {
+                            Fire.error(&#x27;The base class to extend from must be non-nil&#x27;);
+                            return;
+                        }
+                        if ( !cls ) {
+                            Fire.error(&#x27;The class to extend must be non-nil&#x27;);
+                            return;
+                        }
+                // @endif
+                        for (var p in base) if (base.hasOwnProperty(p)) cls[p] = base[p];
+                        function __() { this.constructor = cls; }
+                        __.prototype = base.prototype;
+                        cls.prototype = new __();
+                        return cls;
+                    },
+                
+                    /**
+                     * Removes all enumerable properties from object
+                     * @method clear
+                     * @param {any} obj
+                     */
+                    clear: function (obj) {
+                        var keys = Object.keys(obj);
+                        for (var i = 0; i &lt; keys.length; i++) {
+                            delete obj[keys[i]];
+                        }
+                    }
+                };
+                
+                /**
+                 * Get class name of the object, if object is just a {} (and which class named &#x27;Object&#x27;), it will return null.
+                 * (modified from &lt;a href=&quot;http://stackoverflow.com/questions/1249531/how-to-get-a-javascript-objects-class&quot;&gt;the code from this stackoverflow post&lt;/a&gt;)
+                 * @method getClassName
+                 * @param {object|function} obj - instance or constructor
+                 * @return {string}
+                 */
+                JS.getClassName = function (obj) {
+                    if (typeof obj === &#x27;function&#x27; &amp;&amp; obj.prototype.__classname__) {
+                        return obj.prototype.__classname__;
+                    }
+                    if (obj &amp;&amp; obj.constructor) {
+                        if (obj.constructor.prototype &amp;&amp; obj.constructor.prototype.hasOwnProperty(&#x27;__classname__&#x27;)) {
+                            return obj.__classname__;
+                        }
+                        var retval;
+                        //  for browsers which have name property in the constructor of the object, such as chrome
+                        if (obj.constructor.name) {
+                            retval = obj.constructor.name;
+                        }
+                        if (obj.constructor.toString) {
+                            var arr, str = obj.constructor.toString();
+                            if (str.charAt(0) === &#x27;[&#x27;) {
+                                // str is &quot;[object objectClass]&quot;
+                                arr = str.match(/\[\w+\s*(\w+)\]/);
+                            }
+                            else {
+                                // str is function objectClass () {} for IE Firefox
+                                arr = str.match(/function\s*(\w+)/);
+                            }
+                            if (arr &amp;&amp; arr.length === 2) {
+                                retval = arr[1];
+                            }
+                        }
+                        return retval !== &#x27;Object&#x27; ? retval : null;
+                    }
+                    return null;
+                };
+                
+                // id 注册
+                (function () {
+                    var _idToClass = {};
+                    var _nameToClass = {};
+                
+                    function getRegister (key, table) {
+                        return function (id, constructor) {
+                            // deregister old
+                            if (constructor.prototype.hasOwnProperty(key)) {
+                                delete table[constructor.prototype[key]];
+                            }
+                            constructor.prototype[key] = id;
+                            // register class
+                            if (id) {
+                                var registered = table[id];
+                                if (registered &amp;&amp; registered !== constructor) {
+                                    var error = &#x27;A Class already exists with the same &#x27; + key + &#x27; : &quot;&#x27; + id + &#x27;&quot;.&#x27;;
+                                    // @ifdef EDITOR
+                                    if (!Fire.isEditor) {
+                                        error += &#x27; (This may be caused by error of unit test.) \
+                If you dont need serialization, you can set class id to &quot;&quot;. You can also call \
+                Fire.unregisterClass to remove the id of unused class&#x27;;
+                                    }
+                                    // @endif
+                                    Fire.error(error);
+                                }
+                                else {
+                                    table[id] = constructor;
+                                }
+                                //if (id === &quot;&quot;) {
+                                //    console.trace(&quot;&quot;, table === _nameToClass);
+                                //}
+                            }
+                        };
+                    }
+                
+                    /**
+                     * Register the class by specified id, if its classname is not defined, the class name will also be set.
+                     * @method _setClassId
+                     * @param {string} classId
+                     * @param {function} constructor
+                     * @private
+                     */
+                    JS._setClassId = getRegister(&#x27;__cid__&#x27;, _idToClass);
+                
+                    var doSetClassName = getRegister(&#x27;__classname__&#x27;, _nameToClass);
+                
+                    /**
+                     * Register the class by specified name manually
+                     * @method setClassName
+                     * @param {string} className
+                     * @param {function} constructor
+                     */
+                    JS.setClassName = function (className, constructor) {
+                        doSetClassName(className, constructor);
+                        // auto set class id
+                        if (className &amp;&amp; !constructor.prototype.hasOwnProperty(&#x27;__cid__&#x27;)) {
+                            JS._setClassId(className, constructor);
+                        }
+                    };
+                
+                    /**
+                     * Unregister a class from fireball.
+                     *
+                     * If you dont need a class (which defined by Fire.define or Fire.setClassName) anymore,
+                     * You should unregister the class so that Fireball will not keep its reference anymore.
+                     * Please note that its still your responsibility to free other references to the class.
+                     *
+                     * @method unregisterClass
+                     * @param {function} ...constructor - the class you will want to unregister, any number of classes can be added
+                     */
+                    JS.unregisterClass = function (constructor) {
+                        &#x27;use strict&#x27;;
+                        for (var i = 0; i &lt; arguments.length; i++) {
+                            var p = arguments[i].prototype;
+                            var classId = p.__cid__;
+                            if (classId) {
+                                delete _idToClass[classId];
+                            }
+                            var classname = p.__classname__;
+                            if (classname) {
+                                delete _nameToClass[classname];
+                            }
+                        }
+                    };
+                
+                    /**
+                     * Get the registered class by id
+                     * @method _getClassById
+                     * @param {string} classId
+                     * @return {function} constructor
+                     * @private
+                     */
+                    JS._getClassById = function (classId) {
+                        var cls = _idToClass[classId];
+                // @ifdef EDITOR
+                        if (!cls) {
+                            if (classId.length === 32) {
+                                // 尝试解析旧的 uuid 压缩格式
+                                cls = _idToClass[Fire.compressUuid(classId)];
+                            }
+                        }
+                // @endif
+                        return cls;
+                    };
+                
+                    /**
+                     * Get the registered class by name
+                     * @method getClassByName
+                     * @param {string} classname
+                     * @return {function} constructor
+                     */
+                    JS.getClassByName = function (classname) {
+                        return _nameToClass[classname];
+                    };
+                
+                    /**
+                     * Get class id of the object
+                     * @method _getClassId
+                     * @param {object|function} obj - instance or constructor
+                     * @return {string}
+                     * @private
+                     */
+                    JS._getClassId = function (obj) {
+                        if (typeof obj === &#x27;function&#x27; &amp;&amp; obj.prototype.__cid__) {
+                            return obj.prototype.__cid__;
+                        }
+                        if (obj &amp;&amp; obj.constructor) {
+                            if (obj.constructor.prototype &amp;&amp; obj.constructor.prototype.hasOwnProperty(&#x27;__cid__&#x27;)) {
+                                return obj.__cid__;
+                            }
+                        }
+                        return &#x27;&#x27;;
+                    };
+                
+                    // @ifdef EDITOR
+                    Object.defineProperty(JS, &#x27;_registeredClassIds&#x27;, {
+                        get: function () {
+                            var dump = {};
+                            for (var id in _idToClass) {
+                                dump[id] = _idToClass[id];
+                            }
+                            return dump;
+                        },
+                        set: function (value) {
+                            JS.clear(_idToClass);
+                            for (var id in value) {
+                                _idToClass[id] = value[id];
+                            }
+                        }
+                    });
+                    Object.defineProperty(JS, &#x27;_registeredClassNames&#x27;, {
+                        get: function () {
+                            var dump = {};
+                            for (var id in _nameToClass) {
+                                dump[id] = _nameToClass[id];
+                            }
+                            return dump;
+                        },
+                        set: function (value) {
+                            JS.clear(_nameToClass);
+                            for (var id in value) {
+                                _nameToClass[id] = value[id];
+                            }
+                        }
+                    });
+                    // @endif
+                })();
+                
+                // logs
+                
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                
+                /**
+                 * Outputs a message to the Fireball Console (editor) or Web Console (runtime).
+                 * @method log
+                 * @param {any|string} obj - A JavaScript string containing zero or more substitution strings.
+                 * @param {any} ...subst - JavaScript objects with which to replace substitution strings within msg. This gives you additional control over the format of the output.
+                 */
+                Fire.log = function () {
+                    console.log.apply(console, arguments);
+                };
+                
+                /**
+                 * Outputs an informational message to the Fireball Console (editor) or Web Console (runtime).
+                 * - In Fireball, info is blue.
+                 * - In Firefox and Chrome, a small &quot;i&quot; icon is displayed next to these items in the Web Console&#x27;s log.
+                 * @method info
+                 * @param {any|string} obj - A JavaScript string containing zero or more substitution strings.
+                 * @param {any} ...subst - JavaScript objects with which to replace substitution strings within msg. This gives you additional control over the format of the output.
+                 */
+                Fire.info = function () {
+                    (console.info || console.log).apply(console, arguments);
+                };
+                
+                /**
+                 * Outputs a warning message to the Fireball Console (editor) or Web Console (runtime).
+                 * - In Fireball, warning is yellow.
+                 * - In Chrome, warning have a yellow warning icon with the message text.
+                 * @method warn
+                 * @param {any|string} obj - A JavaScript string containing zero or more substitution strings.
+                 * @param {any} ...subst - JavaScript objects with which to replace substitution strings within msg. This gives you additional control over the format of the output.
+                 */
+                Fire.warn = function () {
+                    console.warn.apply(console, arguments);
+                };
+                
+                /**
+                 * Outputs an error message to the Fireball Console (editor) or Web Console (runtime).
+                 * - In Fireball, error is red.
+                 * - In Chrome, error have a red icon along with red message text.
+                 * @method error
+                 * @param {any|string} obj - A JavaScript string containing zero or more substitution strings.
+                 * @param {any} ...subst - JavaScript objects with which to replace substitution strings within msg. This gives you additional control over the format of the output.
+                 */
+                if (console.error.bind) {
+                    // error会dump call stack，用bind可以避免dump Fire.error自己。
+                    Fire.error = console.error.bind(console);
+                }
+                else {
+                    Fire.error = function () {
+                        console.error.apply(console, arguments);
+                    };
+                }
+                
+                // enum
+                
+                /**
+                 * Define an enum type.
+                 * @method defineEnum
+                 * @param {object} obj - a JavaScript literal object containing enum names and values
+                 * @return {object} the defined enum type
+                 *
+                 * @example
+                Texture.WrapMode = Fire.defineEnum({
+                    Repeat: -1,
+                    Clamp: -1
+                });
+                // Texture.WrapMode.Repeat == 0
+                // Texture.WrapMode.Clamp == 1
+                // Texture.WrapMode[0] == &quot;Repeat&quot;
+                // Texture.WrapMode[1] == &quot;Clamp&quot;
+                
+                var FlagType = Fire.defineEnum({
+                    Flag1: 1,
+                    Flag2: 2,
+                    Flag3: 4,
+                    Flag4: 8,
+                });
+                var AtlasSizeList = Fire.defineEnum({
+                    128: 128,
+                    256: 256,
+                    512: 512,
+                    1024: 1024,
+                });
+                 */
+                Fire.defineEnum = function (obj) {
+                    var enumType = {};
+                    Object.defineProperty(enumType, &#x27;__enums__&#x27;, {
+                        value: undefined,
+                        writable: true
+                    });
+                
+                    var lastIndex = -1;
+                    for (var key in obj) {
+                        var val = obj[key];
+                        if (val === -1) {
+                            val = ++lastIndex;
+                        }
+                        else {
+                            lastIndex = val;
+                        }
+                        enumType[key] = val;
+                
+                        var reverseKey = &#x27;&#x27; + val;
+                        if (key !== reverseKey) {
+                            Object.defineProperty(enumType, reverseKey, {
+                                value: key,
+                                enumerable: false
+                            });
+                        }
+                    }
+                    return enumType;
+                };
+                
+                // @ifdef DEV
+                
+                // check key order in object literal
+                var _TestEnum = Fire.defineEnum({
+                    ZERO: -1,
+                    ONE: -1,
+                    TWO: -1,
+                    THREE: -1
+                });
+                if (_TestEnum.ZERO !== 0 || _TestEnum.ONE !== 1 || _TestEnum.TWO !== 2 || _TestEnum.THREE !== 3) {
+                    Fire.error(&#x27;Sorry, &quot;Fire.defineEnum&quot; not available on this platform, &#x27; +
+                               &#x27;please report this error here: https://github.com/fireball-x/fireball/issues/new !&#x27;);
+                }
+                
+                // @endif
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

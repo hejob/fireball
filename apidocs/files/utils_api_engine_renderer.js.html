@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/renderer.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/renderer.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Renderer = (function () {
+                
+                    /**
+                     * The base for all renderer
+                     * @class Renderer
+                     * @extends HashObject
+                     * @constructor
+                     */
+                    var Renderer = Fire.extend(&#x27;Fire.Renderer&#x27;, Component);
+                
+                    ///**
+                    // * Returns a &quot;local&quot; axis aligned bounding box(AABB) of the renderer.
+                    // * The returned box is relative only to its parent.
+                    // *
+                    // * @function Fire.Renderer#getLocalBounds
+                    // * @param {Rect} [out] - optional, the receiving rect
+                    // * @return {Rect}
+                    // */
+                    //Renderer.prototype.getLocalBounds = function (out) {
+                    //    Fire.warn(&#x27;interface not yet implemented&#x27;);
+                    //    return new Fire.Rect();
+                    //};
+                
+                    var tempMatrix = new Fire.Matrix23();
+                
+                    /**
+                     * Returns a &quot;world&quot; axis aligned bounding box(AABB) of the renderer.
+                     *
+                     * @method getWorldBounds
+                     * @param {Rect} [out] - optional, the receiving rect
+                     * @return {Rect} - the rect represented in world position
+                     */
+                    Renderer.prototype.getWorldBounds = function (out) {
+                        var worldMatrix = this.entity.transform.getLocalToWorldMatrix();
+                        var bl = new Vec2(0, 0);
+                        var tl = new Vec2(0, 0);
+                        var tr = new Vec2(0, 0);
+                        var br = new Vec2(0, 0);
+                        _doGetOrientedBounds.call(this, worldMatrix, bl, tl, tr, br);
+                        out = out || new Rect();
+                        Math.calculateMaxRect(out, bl, tl, tr, br);
+                        return out;
+                    };
+                
+                    /**
+                     * Returns a &quot;world&quot; oriented bounding box(OBB) of the renderer.
+                     *
+                     * @method getWorldOrientedBounds
+                     * @param {Vec2} [out_bl] - optional, the vector to receive the world position of bottom left
+                     * @param {Vec2} [out_tl] - optional, the vector to receive the world position of top left
+                     * @param {Vec2} [out_tr] - optional, the vector to receive the world position of top right
+                     * @param {Vec2} [out_br] - optional, the vector to receive the world position of bottom right
+                     * @return {Vec2} - the array contains vectors represented in world position,
+                     *                    in the sequence of BottomLeft, TopLeft, TopRight, BottomRight
+                     */
+                    Renderer.prototype.getWorldOrientedBounds = function (out_bl, out_tl, out_tr, out_br){
+                        out_bl = out_bl || new Vec2(0, 0);
+                        out_tl = out_tl || new Vec2(0, 0);
+                        out_tr = out_tr || new Vec2(0, 0);
+                        out_br = out_br || new Vec2(0, 0);
+                        var worldMatrix = this.entity.transform.getLocalToWorldMatrix();
+                        _doGetOrientedBounds.call(this, worldMatrix, out_bl, out_tl, out_tr, out_br);
+                        return [out_bl, out_tl, out_tr, out_br];
+                    };
+                
+                    /**
+                     * !#zh 返回表示 renderer 的 width/height/pivot/skew/shear 等变换的 matrix，
+                     * 这些变换不影响子物体，getLocalToWorldMatrix 返回的变换会影响子物体。
+                     *
+                     * @method getSelfMatrix
+                     * @param {Matrix23} out - the receiving matrix
+                     */
+                    Renderer.prototype.getSelfMatrix = function (out) {
+                    };
+                
+                    /**
+                     * @method getWorldSize
+                     * @return {Vec2}
+                     */
+                    Renderer.prototype.getWorldSize = function () {
+                        return new Vec2(0, 0);
+                    };
+                
+                    function _doGetOrientedBounds(mat, bl, tl, tr, br) {
+                        var size = this.getWorldSize();
+                        var width = size.x;
+                        var height = size.y;
+                
+                        this.getSelfMatrix(tempMatrix);
+                        mat = tempMatrix.prepend(mat);
+                
+                        // transform rect(0, 0, width, height) by matrix
+                        var tx = mat.tx;
+                        var ty = mat.ty;
+                        var xa = mat.a * width;
+                        var xb = mat.b * width;
+                        var yc = mat.c * -height;
+                        var yd = mat.d * -height;
+                
+                        tl.x = tx;
+                        tl.y = ty;
+                        tr.x = xa + tx;
+                        tr.y = xb + ty;
+                        bl.x = yc + tx;
+                        bl.y = yd + ty;
+                        br.x = xa + yc + tx;
+                        br.y = xb + yd + ty;
+                    }
+                
+                    return Renderer;
+                })();
+                
+                Fire.Renderer = Renderer;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/camera.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/camera.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * @class Camera
+                 * @extends Component
+                 * @constructor
+                 */
+                var Camera = Fire.Class({
+                    name: &#x27;Fire.Camera&#x27;,
+                    extends: Component,
+                    constructor: function () {
+                        this._renderContext = null;
+                        this._contentStrategyInst = null;
+                    },
+                
+                    properties: {
+                
+                        _background: Fire.Color.black,
+                
+                        /**
+                         * The color of the screen background.
+                         * @property background
+                         * @type {Color}
+                         * @default Fire.Color.black
+                         */
+                        background: {
+                            get: function () {
+                                return this._background;
+                            },
+                            set: function (value) {
+                                this._background = value;
+                                if (this._renderContext) {
+                                    this._renderContext.background = value;
+                                }
+                            }
+                        },
+                
+                        _size: 800,
+                
+                        /**
+                         * The height of Design Resolution in pixels
+                         * @property size
+                         * @type {number}
+                         * @default 800
+                         * @beta
+                         */
+                        size: {
+                            get: function () {
+                                return this._size;
+                            },
+                            set: function (value) {
+                                this._size = value;
+                            },
+                            tooltip: &quot;The height of design resolution. Width varies depending on viewport&#x27;s aspect ratio&quot;,
+                            watch: {
+                                &#x27;_contentStrategy&#x27;: function (obj, propEL) {
+                                    propEL.disabled = (obj._contentStrategy === Fire.ContentStrategyType.NoScale);
+                                }
+                            }
+                        },
+                
+                        _contentStrategy: Fire.ContentStrategyType.FixedHeight,
+                
+                        /**
+                         * The Content Strategy of the camera.
+                         * @property contentStrategy
+                         * @type {ContentStrategyType}
+                         * @default Fire.ContentStrategyType.FixedHeight
+                         */
+                        contentStrategy: {
+                            type: Fire.ContentStrategyType,
+                            get: function () {
+                                return this._contentStrategy;
+                            },
+                            set: function (value) {
+                                this._contentStrategy = value;
+                                this._contentStrategyInst = Fire.Screen.ContentStrategy.fromType(value);
+                            },
+                            displayName: &#x27;Scale Strategy&#x27;,
+                            tooltip: &quot;The type of scale strategy for this camera&quot;
+                        },
+                
+                        /**
+                         * @property viewportInfo
+                         * @type {object}
+                         * @private
+                         */
+                        viewportInfo: {
+                            get: function (value) {
+                                var viewportSize = (this._renderContext || Engine._renderContext).size;
+                                return this._contentStrategyInst.apply(new Vec2(0, this._size), viewportSize);
+                            },
+                            visible: false
+                        },
+                
+                        /**
+                         * save the render context this camera belongs to, if null, main render context will be used.
+                         * @property renderContext
+                         * @type {RenderContext}
+                         * @private
+                         */
+                        renderContext: {
+                            set: function (value) {
+                                this._renderContext = value;
+                                //// @ifdef EDITOR
+                                //if ( !Engine.isPlaying ) {
+                                //    this.size = value.size.y;
+                                //}
+                                //// @endif
+                                this._applyRenderSettings();
+                            },
+                            visible: false
+                        }
+                    },
+                
+                    // built-in functions
+                    onLoad: function () {
+                        if (!(this.entity._objFlags &amp; HideInGame)) {
+                            this.renderContext = Engine._renderContext;
+                        }
+                        this._contentStrategyInst = Fire.Screen.ContentStrategy.fromType(this._contentStrategy);
+                    },
+                    onEnable: function () {
+                        if (!(this.entity._objFlags &amp; HideInGame)) {
+                            Engine._scene.camera = this;
+                            this._applyRenderSettings();
+                        }
+                    },
+                    onDisable: function () {
+                        if (Engine._scene.camera === this) {
+                            Engine._scene.camera = null;
+                        }
+                        if (this._renderContext) {
+                            this._renderContext.camera = null;
+                        }
+                    },
+                
+                    // other functions
+                
+                    /**
+                     * Transforms position from viewport space into screen space.
+                     * @method viewportToScreen
+                     * @param {Vec2} position
+                     * @param {Vec2} [out] - optional, the receiving vector
+                     * @return {Vec2}
+                     */
+                    viewportToScreen: function (position, out) {
+                        if ( !this._renderContext ) {
+                            Fire.error(&quot;Camera not yet inited.&quot;);
+                            return;
+                        }
+                        out = this._renderContext.size.scale(position, out);
+                        return out;
+                    },
+                
+                    /**
+                     * Transforms position from screen space into viewport space.
+                     * @method screenToViewport
+                     * @param {Vec2} position
+                     * @param {Vec2} [out] - optional, the receiving vector
+                     * @return {Vec2}
+                     */
+                    screenToViewport: function (position, out) {
+                        out = out || new Vec2();
+                        if ( !this._renderContext ) {
+                            Fire.error(&quot;Camera not yet inited.&quot;);
+                            return;
+                        }
+                        var size = this._renderContext.size;
+                        out.x = position.x / size.x;
+                        out.y = position.y / size.y;
+                        return out;
+                    },
+                
+                    /**
+                     * Transforms position from viewport space into world space.
+                     * @method viewportToWorld
+                     * @param {Vec2} position
+                     * @param {Vec2} [out] - optional, the receiving vector
+                     * @return {Vec2}
+                     */
+                    viewportToWorld: function (position, out) {
+                        out = this.viewportToScreen(position, out);
+                        return this.screenToWorld(out, out);
+                    },
+                
+                    /**
+                     * Transforms position from screen space into world space.
+                     * @method screenToWorld
+                     * @param {Vec2} position
+                     * @param {Vec2} [out] - optional, the receiving vector
+                     * @return {Vec2}
+                     */
+                    screenToWorld: function (position, out) {
+                        var halfScreenSize = (this._renderContext || Engine._renderContext).size.mulSelf(0.5);
+                        var pivotToScreen = position.sub(halfScreenSize, halfScreenSize);
+                        pivotToScreen.y = -pivotToScreen.y; // 屏幕坐标的Y和世界坐标的Y朝向是相反的
+                        var mat = new Matrix23();
+                        var camPos = new Vec2();
+                        this._calculateTransform(mat, camPos);
+                        mat.invert();
+                        mat.tx = camPos.x;
+                        mat.ty = camPos.y;
+                        return mat.transformPoint(pivotToScreen, out);
+                    },
+                
+                    /**
+                     * Transforms position from world space into screen space.
+                     * @method worldToScreen
+                     * @param {Vec2} position
+                     * @param {Vec2} [out] - optional, the receiving vector
+                     * @return {Vec2}
+                     */
+                    worldToScreen: function (position, out) {
+                        var mat = new Matrix23();
+                        var camPos = new Vec2();
+                        this._calculateTransform(mat, camPos);
+                        var toCamera = position.sub(camPos, camPos);
+                        out = mat.transformPoint(toCamera, out);
+                        var height = (this._renderContext || Engine._renderContext).size.y;
+                        out.y = height - out.y;
+                        return out;
+                    },
+                
+                    /**
+                     * Transforms position from world space into viewport space.
+                     * @method worldToViewport
+                     * @param {Vec2} position
+                     * @param {Vec2} [out] - optional, the receiving vector
+                     * @return {Vec2}
+                     */
+                    worldToViewport: function (position, out) {
+                        out = this.worldToScreen(position, out);
+                        return this.screenToViewport(out, out);
+                    },
+                
+                    _calculateTransform: function (out_matrix, out_worldPos) {
+                        var viewportInfo = this.viewportInfo;
+                        var scale = viewportInfo.scale;
+                        var viewport = viewportInfo.viewport;
+                
+                        var tf = this.entity.transform;
+                        var mat = tf.getLocalToWorldMatrix();
+                
+                        out_worldPos.x = mat.tx;
+                        out_worldPos.y = mat.ty;
+                
+                        out_matrix.identity();
+                        out_matrix.tx = viewport.width * 0.5;
+                        out_matrix.ty = viewport.height * 0.5;
+                        out_matrix.a = scale.x;
+                        out_matrix.d = scale.y;
+                        out_matrix.rotate(mat.getRotation());
+                    },
+                
+                    _applyRenderSettings: function () {
+                        // @ifdef EDITOR
+                        if (!this._renderContext) {
+                            Fire.error(&#x27;No corresponding render context for camera &#x27; + this.entity.name);
+                            return;
+                        }
+                        // @endif
+                        this._renderContext.background = this._background;
+                    }
+                });
+                
+                Fire.addComponentMenu(Camera, &#x27;Camera&#x27;);
+                Fire.executeInEditMode(Camera);
+                
+                //Object.defineProperty(Camera.prototype, &#x27;scaleStrategyInst&#x27;, {
+                //    get: function (value) {
+                //        if ( !this._cachedResolutionPolicy ) {
+                //            this._cachedResolutionPolicy = Fire.Screen.ResolutionPolicy.fromType(this._resolutionPolicy);
+                //        }
+                //        return this._cachedResolutionPolicy;
+                //    }
+                //});
+                
+                Fire.Camera = Camera;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

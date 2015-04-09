@@ -1,0 +1,29 @@
+{
+  "name": "fire-about",
+  "version": "0.1.0",
+  "description": "The about page for Fireball Engine",
+  "author": "kamisama <1457434343@qq.com>",
+  "fireball": {
+    "main": "editor/main.js",
+    "menus": [
+      {
+        "path": "Fireball/About Fireball",
+        "message": "fire-about:open"
+      }
+    ],
+    "panels": {
+      "default": {
+        "type": "fixed-size",
+        "view": "editor/fire-about.html",
+        "ctor": "FireAbout",
+        "title": "About Fireball",
+        "width": 400,
+        "height": 160,
+        "min-width": 400,
+        "min-height": 100,
+        "messages": {
+        }
+      }
+    }
+  }
+}

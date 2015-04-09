@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Rect - Fireball Game API</title>
+    <title>Rect - Fireball Engine API</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -14,8 +14,9 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
-                    <p class="description">Fireball Game API: your toolbox</p>
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
             </div>
             <ul class="jump-links">
                 <li><a href="#index" class="index-jump-link">index</a></li>
@@ -39,28 +40,66 @@
             
                     <div id="api-tabview-panel">
                         <ul id="api-classes" class="apis classes">
-                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
                             <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
                             <li><a class="type" href="../classes/Color.html">Color</a></li>
                             <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
                             <li><a class="type" href="../classes/Fire.html">Fire</a></li>
-                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
-                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
                             <li><a class="type" href="../classes/FObject.html">FObject</a></li>
                             <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
                             <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
                             <li><a class="type" href="../classes/Math.html">Math</a></li>
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
                             <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
-                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +113,7 @@
                 
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3073"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3073</code></a>
+                            Defined in: <a href="../files/utils_api_core_rect.js.html#l6"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:6</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -83,7 +122,9 @@
                 
                 
                 <div class="box intro">
-                    
+                    <p>A 2D rectangle defined by x, y position and width, height.</p>
+                <p>see {% crosslink Fire.rect Fire.rect %}</p>
+                
                 </div>
                 
                 <!-- Class member index -->
@@ -116,6 +157,32 @@
                     </div>
                 
                 
+                    <div class="index-section properties">
+                        <h3>Properties</h3>
+                
+                        <ul class="index-list properties">
+                                <li class="index-item property">
+                                    <a href="#property_center">center</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_xMax">xMax</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_xMin">xMin</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_yMax">yMax</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_yMin">yMin</a>
+                
+                                </li>
+                        </ul>
+                    </div>
                 
                 
                 
@@ -132,19 +199,42 @@
                                 </li>
                 
                                 <li class="index-item method">
-                                    <a href="#method_contain">contain</a>
+                                    <a href="#method_clone">clone</a>
                 
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_Fire.rect">Fire.rect</a>
+                                    <a href="#method_contain">contain</a>
+                
+                                        <span class="flag static">static</span>
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_contains">contains</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_containsRect">containsRect</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_equals">equals</a>
                 
                                 </li>
                                 <li class="index-item method">
                                     <a href="#method_fromMinMax">fromMinMax</a>
                 
+                                        <span class="flag static">static</span>
                                 </li>
                                 <li class="index-item method">
                                     <a href="#method_fromVec2">fromVec2</a>
+                
+                                        <span class="flag static">static</span>
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_intersects">intersects</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_toString">toString</a>
                 
                                 </li>
                         </ul>
@@ -155,6 +245,160 @@
                 
                 <div class="class-detail">
                 
+                    <div class="properties-detail">
+                        <h2>Properties</h2>
+                
+                            <a name="property_center" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>center</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l154"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:154</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_xMax" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>xMax</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l136"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:136</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_xMin" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>xMin</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l112"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:112</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_yMax" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>yMax</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l145"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:145</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_yMin" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>yMin</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l124"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:124</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                
+                        <div class="no-visible-items-message">
+                            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+                        </div>
+                
+                    </div>
                 
                 
                     <div class="constructor">
@@ -166,16 +410,16 @@
                                 <div class="args">
                                     <span class="paren">(</span><ul class="args-list inline commas">
                                         <li class="arg">
-                                                <code>x</code>
+                                                <code class="optional">[x=0]</code>
                                         </li>
                                         <li class="arg">
-                                                <code>y</code>
+                                                <code class="optional">[y=0]</code>
                                         </li>
                                         <li class="arg">
-                                                <code>w</code>
+                                                <code class="optional">[w=0]</code>
                                         </li>
                                         <li class="arg">
-                                                <code>h</code>
+                                                <code class="optional">[h=0]</code>
                                         </li>
                                     </ul><span class="paren">)</span>
                                 </div>
@@ -192,7 +436,7 @@
                             <div class="meta">
                                         <p>
                                         Defined in
-                                <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3073"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3073</code></a>
+                                <a href="../files/utils_api_core_rect.js.html#l6"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:6</code></a>
                                 </p>
                         
                         
@@ -210,8 +454,9 @@
                         
                                         <ul class="params-list">
                                             <li class="param">
-                                                    <code class="param-name">x</code>
+                                                    <code class="param-name optional">[x=0]</code>
                                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
                         
                         
                                                 <div class="param-description">
@@ -220,8 +465,9 @@
                         
                                             </li>
                                             <li class="param">
-                                                    <code class="param-name">y</code>
+                                                    <code class="param-name optional">[y=0]</code>
                                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
                         
                         
                                                 <div class="param-description">
@@ -230,8 +476,9 @@
                         
                                             </li>
                                             <li class="param">
-                                                    <code class="param-name">w</code>
+                                                    <code class="param-name optional">[w=0]</code>
                                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
                         
                         
                                                 <div class="param-description">
@@ -240,8 +487,9 @@
                         
                                             </li>
                                             <li class="param">
-                                                    <code class="param-name">h</code>
+                                                    <code class="param-name optional">[h=0]</code>
                                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
                         
                         
                                                 <div class="param-description">
@@ -260,6 +508,51 @@
                     <div class="methods-detail">
                         <h2>Methods</h2>
                 
+                            <a name="method_clone" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>clone</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Rect.html" class="crosslink">Rect</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l83"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:83</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Rect.html" class="crosslink">Rect</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
                             <a name="method_contain" class="anchor-link"></a>
                             <div class="method item">
                                 <h3 class="name"><code>contain</code>
@@ -282,6 +575,7 @@
                             
                             
                             
+                                    <span class="flag static">static</span>
                             
                             
                             
@@ -290,7 +584,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3114"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3114</code></a>
+                                    <a href="../files/utils_api_core_rect.js.html#l55"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:55</code></a>
                                     </p>
                             
                             
@@ -300,7 +594,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Check if rect contains</p>
+                                        <p>Checks if rect contains</p>
                             
                                     </div>
                             
@@ -345,29 +639,136 @@
                             
                                 </div>
                             </div>
-                            <a name="method_Fire.rect" class="anchor-link"></a>
+                            <a name="method_contains" class="anchor-link"></a>
                             <div class="method item">
-                                <h3 class="name"><code>Fire.rect</code>
+                                <h3 class="name"><code>contains</code>
                             
                                     <div class="args">
                                         <span class="paren">(</span><ul class="args-list inline commas">
                                             <li class="arg">
-                                                    <code class="optional">[x=0]</code>
+                                                    <code>point</code>
                                             </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l178"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:178</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Returns true if the point inside this rectangle.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">point</code>
+                                                        <span class="type"><a href="../classes/Vec2.html" class="crosslink">Vec2</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_containsRect" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>containsRect</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
                                             <li class="arg">
-                                                    <code class="optional">[y=0]</code>
+                                                    <code>rect</code>
                                             </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l195"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:195</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Returns true if the other rect totally inside this rectangle.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">rect</code>
+                                                        <span class="type"><a href="../classes/Rect.html" class="crosslink">Rect</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_equals" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>equals</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
                                             <li class="arg">
-                                                    <code class="optional">[w=0]</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code class="optional">[h=0]</code>
+                                                    <code>other</code>
                                             </li>
                                         </ul><span class="paren">)</span>
                                     </div>
                             
                                     <span class="returns-inline">
-                                        <span class="type"><a href="../classes/Rect.html" class="crosslink">Rect</a></span>
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                                     </span>
                             
                             
@@ -381,7 +782,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3225"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3225</code></a>
+                                    <a href="../files/utils_api_core_rect.js.html#l91"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:91</code></a>
                                     </p>
                             
                             
@@ -391,8 +792,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>The convenience method to create a new Rect</p>
-                            
+                                        
                                     </div>
                             
                                         <div class="params">
@@ -400,42 +800,8 @@
                             
                                             <ul class="params-list">
                                                 <li class="param">
-                                                        <code class="param-name optional">[x=0]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[y=0]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[w=0]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[h=0]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                                                        <code class="param-name">other</code>
+                                                        <span class="type"><a href="../classes/Rect.html" class="crosslink">Rect</a></span>
                             
                             
                                                     <div class="param-description">
@@ -450,7 +816,7 @@
                                             <h4>Returns:</h4>
                             
                                             <div class="returns-description">
-                                                        <span class="type"><a href="../classes/Rect.html" class="crosslink">Rect</a></span>:
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                                             </div>
                                         </div>
                             
@@ -478,6 +844,7 @@
                             
                             
                             
+                                    <span class="flag static">static</span>
                             
                             
                             
@@ -486,7 +853,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3089"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3089</code></a>
+                                    <a href="../files/utils_api_core_rect.js.html#l26"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:26</code></a>
                                     </p>
                             
                             
@@ -496,7 +863,8 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        
+                                        <p>Creates a rectangle from two coordinate values.</p>
+                            
                                     </div>
                             
                                         <div class="params">
@@ -558,6 +926,7 @@
                             
                             
                             
+                                    <span class="flag static">static</span>
                             
                             
                             
@@ -566,7 +935,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l3104"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:3104</code></a>
+                                    <a href="../files/utils_api_core_rect.js.html#l43"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:43</code></a>
                                     </p>
                             
                             
@@ -576,7 +945,8 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        
+                                        <p>Creates a rectangle from left-top coordinate value and size.</p>
+                            
                                     </div>
                             
                                         <div class="params">
@@ -611,6 +981,108 @@
                             
                                             <div class="returns-description">
                                                         <span class="type"><a href="../classes/Rect.html" class="crosslink">Rect</a></span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_intersects" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>intersects</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>rect</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l169"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:169</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">rect</code>
+                                                        <span class="type"><a href="../classes/Rect.html" class="crosslink">Rect</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_toString" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>toString</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_core_rect.js.html#l103"><code>utils&#x2F;api&#x2F;core&#x2F;rect.js:103</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                                             </div>
                                         </div>
                             

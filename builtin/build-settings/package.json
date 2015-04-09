@@ -1,30 +1,30 @@
 {
-    "name": "build-settings",
-    "version": "0.1.0",
-    "description": "The build settings for Fireball Engine",
-    "author": "KamiSama <kamisama.lwh@qq.com>",
-    "fireball": {
-        "main": "editor/main.js",
-        "menus": [
-            {
-                "path": "File/Build Settings",
-                "message": "build-settings:open"
-            }
-        ],
-        "panels": {
-            "default": {
-                "type": "fixed-size",
-                "view": "editor/build-settings.html",
-                "ctor": "BuildSettings",
-                "title": "Build Settings",
-                "width": 500,
-                "height": 530,
-                "min-width": 500,
-                "min-height": 500,
-                "messages": {
-                    "build-settings:query-scenes-results": "query-scene-results"
-                }
-            }
+  "name": "build-settings",
+  "version": "0.1.0",
+  "description": "The build settings for Fireball Engine",
+  "author": "KamiSama <kamisama.lwh@qq.com>",
+  "fireball": {
+    "main": "editor/main.js",
+    "menus": [
+      {
+        "path": "File/Build Settings",
+        "message": "build-settings:open"
+      }
+    ],
+    "panels": {
+      "default": {
+        "type": "fixed-size",
+        "view": "editor/build-settings.html",
+        "ctor": "BuildSettings",
+        "title": "Build Settings",
+        "width": 500,
+        "height": 530,
+        "min-width": 500,
+        "min-height": 500,
+        "messages": {
+          "build-settings:query-scenes-results": "query-scene-results"
         }
+      }
     }
+  }
 }

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/builtin/code-editor/editor/elements/settings-page/settings-page.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/builtin/code-editor/editor/elements/settings-page/settings-page.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var FontManager = require(&#x27;font-manager&#x27;);
+                
+                var keymaps = [
+                    &quot;sublime&quot;,
+                    &quot;vim&quot;,
+                    &quot;emacs&quot;,
+                ];
+                
+                var themes = [
+                    &quot;3024-day&quot;                ,
+                    &quot;3024-night&quot;              ,
+                    &quot;ambiance&quot;                ,
+                    &quot;ambiance-mobile&quot;         ,
+                    &quot;base16-dark&quot;             ,
+                    &quot;base16-light&quot;            ,
+                    &quot;blackboard&quot;              ,
+                    &quot;cobalt&quot;                  ,
+                    &quot;eclipse&quot;                 ,
+                    &quot;elegant&quot;                 ,
+                    &quot;erlang-dark&quot;             ,
+                    &quot;lesser-dark&quot;             ,
+                    &quot;mbo&quot;                     ,
+                    &quot;mdn-like&quot;                ,
+                    &quot;midnight&quot;                ,
+                    &quot;monokai&quot;                 ,
+                    &quot;neat&quot;                    ,
+                    &quot;neo&quot;                     ,
+                    &quot;night&quot;                   ,
+                    &quot;paraiso-dark&quot;            ,
+                    &quot;pastel-on-dark&quot;          ,
+                    &quot;rubyblue&quot;                ,
+                    &quot;solarized dark&quot;          ,
+                    &quot;solarized light&quot;         ,
+                    &quot;the-matrix&quot;              ,
+                    &quot;tomorrow-night-bright&quot;   ,
+                    &quot;tomorrow-night-righties&quot; ,
+                    &quot;twilight&quot;                ,
+                    &quot;vibrant-ink&quot;             ,
+                    &quot;xq-dark&quot;                 ,
+                    &quot;xq-light&quot;                ,
+                    &quot;zenburn&quot;                 ,
+                ];
+                
+                var cssFont = {
+                    name: &quot;DejaVu Sans Mono&quot;,value:&quot;DejaVu Sans Mono&quot;
+                };
+                
+                Polymer({
+                    publish: {
+                        hide: true,
+                        config: null,
+                        fonts: null,
+                        settings: null,
+                    },
+                
+                    domReady: function () {
+                        this.settings = {
+                            theme: this.config.theme,
+                            tabSize: this.config.tabSize,
+                            keyMap: this.config.keyMap,
+                            fontSize: this.config.fontSize,
+                            fontFamily: this.config.fontFamily,
+                            autoComplete: this.config.autoComplete,
+                        };
+                        document.addEventListener(&#x27;keydown&#x27;,function (event) {
+                            if (event.keyCode === 27) {
+                                this.hide = true;
+                            }
+                        }.bind(this));
+                    },
+                
+                    ready: function () {
+                        this.span = document.createElement(&#x27;div&#x27;);
+                        this.span.style.width = &#x27;100%&#x27;;
+                        this.span.style.height = &#x27;100%&#x27;;
+                        this.span.style.position = &#x27;absolute&#x27;;
+                        this.span.style.opacity = 0.5;
+                        this.span.style.zIndex = 998;
+                        this.span.style.background = &#x27;black&#x27;;
+                
+                        this.span.onclick = function () {
+                            this.config.theme = this.settings.theme;
+                            this.config.tabSize = this.settings.tabSize;
+                            this.config.keyMap = this.settings.keyMap;
+                            this.config.fontSize = this.settings.fontSize;
+                            this.config.fontFamily = this.settings.fontFamily;
+                            this.config.autoComplete = this.settings.autoComplete;
+                            this.hide = true;
+                        }.bind(this);
+                
+                        document.body.appendChild(this.span);
+                
+                        this.$.keymapSelect.options = keymaps.map(function ( item ) {
+                            return { name: item, value: item };
+                        });
+                
+                        this.$.themeSelect.options = themes.map(function ( item ) {
+                            return { name: item, value: item };
+                        });
+                
+                
+                        this.fonts = this.getFonts();
+                        this.$.fontSelect.options = this.fonts.map(function ( item ) {
+                            return {
+                                name: item.family + &quot;, &quot; + item.style,
+                                value: item.postscriptName };
+                        });
+                
+                        this.$.fontSelect.options.push(cssFont);
+                    },
+                
+                    hideChanged: function () {
+                        if (this.hide) {
+                            this.animate([
+                                { marginTop: (this.config.getBoundingClientRect().height/2-100)+&quot;px&quot;,width: &quot;600px&quot;,opacity: 1/*,left: &quot;-300px&quot;,height: &quot;auto&quot;*/},
+                                { marginTop: (this.config.getBoundingClientRect().height/2-100)+&quot;px&quot;,width: &quot;600px&quot;,opacity: 0/*,left: &quot;0px&quot;,height: &quot;0px&quot;*/},
+                                ], {
+                                    duration: 200
+                                });
+                            this.style.marginTop = &quot;-400px&quot;;
+                            this.span.style.display = &quot;none&quot;;
+                        }
+                        else {
+                            this.span.style.display = &quot;block&quot;;
+                            this.animate([
+                                { marginTop: (this.config.getBoundingClientRect().height/2-100)+&quot;px&quot;, width: &quot;600px&quot;,opacity: 0/*,left: &quot;0px&quot;,height: &quot;0px&quot; */},
+                                { marginTop: (this.config.getBoundingClientRect().height/2-100)+&quot;px&quot;,width: &quot;600px&quot;,opacity: 1/*,left: &quot;-300px&quot;,height: &quot;auto&quot;*/},
+                                ], {
+                                    duration: 200
+                                });
+                            this.style.marginTop = (this.config.getBoundingClientRect().height/2-100)+&quot;px&quot;;
+                        }
+                    },
+                
+                    focusedAction: function (e) {
+                        for (var i=0; i&lt;e.target.parentNode.children.length; i++) {
+                            e.target.parentNode.children[i].setAttribute(&quot;focused&quot;,&quot;&quot;);
+                        }
+                    },
+                
+                    blurAction: function (e) {
+                        for (var i=0; i&lt;e.target.parentNode.children.length; i++) {
+                            e.target.parentNode.children[i].removeAttribute(&quot;focused&quot;);
+                        }
+                    },
+                
+                    doneAction: function () {
+                        this.hide = true;
+                    },
+                
+                    cancelAction: function () {
+                        this.config.theme = this.settings.theme;
+                        this.config.tabSize = this.settings.tabSize;
+                        this.config.keyMap = this.settings.keyMap;
+                        this.config.fontSize = this.settings.fontSize;
+                        this.config.fontFamily = this.settings.fontFamily;
+                        this.config.autoComplete = this.settings.autoComplete;
+                        this.hide = true;
+                
+                    },
+                
+                    getFonts: function () {
+                        return FontManager.getAvailableFontsSync();
+                    },
+                
+                });
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

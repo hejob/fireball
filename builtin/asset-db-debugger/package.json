@@ -1,33 +1,33 @@
 {
-    "name": "asset-db-debugger",
-    "version": "0.1.0",
-    "description": "The AssetDB debugger for Fireball Engine",
-    "author": "Johnny Wu <KarasAya@gmail.com>",
-    "fireball": {
-        "main": "editor/main.js",
-        "menus": [
-            {
-                "path": "Developer/AssetDB Debugger",
-                "message": "asset-db:debugger:open"
-            }
-        ],
-        "panels": {
-            "default": {
-                "type": "dockable",
-                "view": "editor/asset-db-debugger.html",
-                "ctor": "AssetDBDebugger",
-                "title": "AssetDB Debugger",
-                "width": 500,
-                "height": 800,
-                "min-width": 400,
-                "min-height": 200,
-                "messages": {
-                    "asset-db:debugger:url-uuid-results": "url-uuid-results",
-                    "asset-db:debugger:uuid-url-results": "uuid-url-results",
-                    "asset-db:debugger:url-subuuids-results": "url-subuuids-results",
-                    "asset-library:debugger:uuid-asset-results": "uuid-asset-results"
-                }
-            }
+  "name": "asset-db-debugger",
+  "version": "0.1.0",
+  "description": "The AssetDB debugger for Fireball Engine",
+  "author": "Johnny Wu <KarasAya@gmail.com>",
+  "fireball": {
+    "main": "editor/main.js",
+    "menus": [
+      {
+        "path": "Developer/AssetDB Debugger",
+        "message": "asset-db:debugger:open"
+      }
+    ],
+    "panels": {
+      "default": {
+        "type": "dockable",
+        "view": "editor/asset-db-debugger.html",
+        "ctor": "AssetDBDebugger",
+        "title": "AssetDB Debugger",
+        "width": 500,
+        "height": 800,
+        "min-width": 400,
+        "min-height": 200,
+        "messages": {
+          "asset-db:debugger:url-uuid-results": "url-uuid-results",
+          "asset-db:debugger:uuid-url-results": "uuid-url-results",
+          "asset-db:debugger:url-subuuids-results": "url-subuuids-results",
+          "asset-library:debugger:uuid-asset-results": "uuid-asset-results"
         }
+      }
     }
+  }
 }

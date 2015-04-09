@@ -29,129 +29,67 @@ var AssetsWatcher = {
 Fire._AssetsWatcher = AssetsWatcher;
 
 
-/**
- * overridable callbacks for editor
- * @property {object} Fire.Engine._editorCallback
- * @private
- */
+///**
+// * Overridable callbacks for editor, use `Fire.Engine._editorCallback` to access this module
+// * @class _editorCallback
+// * @static
+// * @private
+// */
 var editorCallback = {
+
 
     onEnginePlayed: null,
     onEngineStopped: null,
     onEnginePaused: null,
 
-    /**
-     * This will be called before component callbacks
-     * @callback Fire.Engine._editorCallback~onEntityCreated
-     * @param {Fire.Entity} entity
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onEntityCreated} Fire.Engine._editorCallback.onEntityCreated
-     */
+    // This will be called before component callbacks
     onEntityCreated: null,
 
     /**
      * removes an entity and all its children from scene, this method will NOT be called if it is removed by hierarchy.
-     * @callback Fire.Engine._editorCallback~onEntityRemoved
-     * @param {Fire.Entity} entity - the entity to remove
-     * // @param {boolean} isTopMost - indicates whether it is the most top one among the entities who will be deleted in one operation
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onEntityRemoved} Fire.Engine._editorCallback.onEntityRemoved
+     * @param {Entity} entity - the entity to remove
+     * @param {boolean} isTopMost - indicates whether it is the most top one among the entities who will be deleted in one operation
      */
     onEntityRemoved: null,
 
-    /**
-     * @callback Fire.Engine._editorCallback~onEntityParentChanged
-     * @param {Fire.Entity} entity
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onEntityParentChanged} Fire.Engine._editorCallback.onEntityParentChanged
-     */
     onEntityParentChanged: null,
 
     /**
-     * @callback Fire.Engine._editorCallback~onEntityIndexChanged
-     * @param {Fire.Entity} entity
+     * @param {Entity} entity
      * @param {number} oldIndex
      * @param {number} newIndex
      */
-    /**
-     * @property {Fire.Engine._editorCallback~onEntityIndexChanged} Fire.Engine._editorCallback.onEntityIndexChanged
-     */
     onEntityIndexChanged: null,
 
-    /**
-     * @callback Fire.Engine._editorCallback~onEntityRenamed
-     * @param {Fire.Entity} entity
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onEntityRenamed} Fire.Engine._editorCallback.onEntityRenamed
-     */
     onEntityRenamed: null,
 
     /**
-     * @callback Fire.Engine._editorCallback~onStartUnloadScene
      * @param {Scene} scene
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onStartUnloadScene} Fire.Engine._editorCallback.onStartUnloadScene
      */
     onStartUnloadScene: null,
 
     /**
-     * @callback Fire.Engine._editorCallback~onSceneLaunched
      * @param {Scene} scene
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onSceneLaunched} Fire.Engine._editorCallback.onSceneLaunched
      */
     onSceneLaunched: null,
 
     ///**
-    // * @callback Fire.Engine._editorCallback~onSceneLoaded
     // * @param {Scene} scene
-    // */
-    ///**
-    // * @property {Fire.Engine._editorCallback~onSceneLoaded} Fire.Engine._editorCallback.onSceneLoaded
     // */
     //onSceneLoaded: null,
 
-    /**
-     * @callback Fire.Engine._editorCallback~onComponentEnabled
-     * @param {Fire.Component} component
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onComponentEnabled} Fire.Engine._editorCallback.onComponentEnabled
-     */
     onComponentEnabled: null,
-
-    /**
-     * @callback Fire.Engine._editorCallback~onComponentDisabled
-     * @param {Fire.Component} component
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onComponentDisabled} Fire.Engine._editorCallback.onComponentDisabled
-     */
     onComponentDisabled: null,
 
     /**
-     * @callback Fire.Engine._editorCallback~onComponentAdded
-     * @param {Fire.Entity} entity
-     * @param {Fire.Component} component
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onComponentAdded} Fire.Engine._editorCallback.onComponentAdded
+     * @param {Entity} entity
+     * @param {Component} component
      */
     onComponentAdded: null,
 
     /**
-     * @callback Fire.Engine._editorCallback~onComponentRemoved
-     * @param {Fire.Entity} entity
-     * @param {Fire.Component} component
-     */
-    /**
-     * @property {Fire.Engine._editorCallback~onComponentRemoved} Fire.Engine._editorCallback.onComponentRemoved
+     * @param {Entity} entity
+     * @param {Component} component
      */
     onComponentRemoved: null
 };
@@ -169,43 +107,21 @@ RenderContext.initRenderer = function () {
 
 Fire._RenderContext = RenderContext;
 
-/**
- * !#en
- *
- * !#zh 除了类已经定义的变量外，以下是其它 Fireball-x 中已经使用的变量名，请避免冲突。这些变量有一些是保留用途，只有特殊情况才会声明。
- * ### 全局变量
- * - `Fire`
- * - `PIXI`
- * - `require`
- * ### 可能定义在任意对象上的变量
- *
- * - `__id__`
- * - `__type__`
- * - `_iN$t`
- * - `_rawext`
- *
- * ### 可能定义在任意类型或 prototype 上的变量
- *
- * - 任何以 `_attrs$` 开头的变量
- * - `__classname__`
- * - `__cid__`
- *
- * ### FireClass 上的静态变量
- *
- * - `get`
- * - `set`
- * - `getset`
- * - `prop`
- * - `$super`
- * - `__props__`
- *
- * ### FireClass 上的成员变量
- *
- * - `_observing`
- * - `_$erialized`
- *
- * @module Reserved-Words
- */
+///**
+// * !#en
+// *
+// * !#zh
+// * ```
+// * 本模块不含实际代码，仅仅为了声明本页面而定义。
+// * ```
+// *
+// * @module Reserved-Words
+// */
+
+///**
+// * @module Fire
+// * @class Fire
+// */
 
 var Destroying = Fire._ObjectFlags.Destroying;
 var DontDestroy = Fire._ObjectFlags.DontDestroy;
@@ -214,32 +130,100 @@ var HideInGame = Fire._ObjectFlags.HideInGame;
 var HideInEditor = Fire._ObjectFlags.HideInEditor;
 
 
+/**
+ * !#zh 内容适配策略负责缩放摄像机画面以适应画布(Canvas)。
+ * @class ContentStrategyType
+ * @static
+ */
 var ContentStrategyType = Fire.defineEnum({
 
+    /**
+     * !#zh 不缩放内容，所有元素以原始大小显示在 Canvas 上。
+     *
+     * @property NoScale
+     * @type number
+     * @readOnly
+     */
     NoScale: -1,
 
+    ///**
+    // * !#zh FixedWidth 模式会横向放大游戏世界以适应 Canvas 的宽度，纵向按原始宽高比放大。结果有可能导致放大（上下被裁剪），也有可能导致缩小（上下露出黑边）。
+    // *
+    // * @property FixedWidth
+    // * @type number
+    // * @readOnly
+    // */
+    //FixedWidth: -1,
+
     /**
-     * The application takes the height of the design resolution size and modifies the width of the internal canvas,
+     * !#en The application takes the height of the design resolution size and modifies the width of the internal canvas,
      * so that it fits the aspect ratio of the device and no distortion will occur,
      * however you must make sure your application works on different aspect ratios
+     *
+     * !#zh FixedHeight 模式会纵向放大游戏世界以适应 Canvas 的高度，横向按原始宽高比放大。结果有可能导致放大（左右被裁剪），也有可能导致缩小（左右露出黑边）。这是目前最推荐的适配方案。
+     *
+     * @property FixedHeight
+     * @type number
+     * @readOnly
      */
     FixedHeight: -1
 });
 Fire.ContentStrategyType = ContentStrategyType;
 
 /**
- * @module Fire
+ * !#en The interface to get time information from Fireball.
+ *
+ * See [Time](/en/scripting/time/)
+ * !#zh Time 模块用于获得游戏里的时间和帧率相关信息。直接使用 Fire.Time.*** 访问即可。
+ *
+ * 请参考教程[计时和帧率](/zh/scripting/time/)
+ *
  * @class Time
  * @static
  */
-
 var Time = (function () {
     var Time = {};
 
+    /**
+     * The time at the beginning of this frame. This is the time in seconds since the start of the game.
+     * @property time
+     * @type {number}
+     * @readOnly
+     */
     Time.time = 0;
+
+    /**
+     * The time at the beginning of this frame. This is the real time in seconds since the start of the game.
+     *
+     * `Time.realTime` not affected by time scale, and also keeps increasing while the player is paused in editor or in the background.
+     * @property realTime
+     * @type {number}
+     * @readOnly
+     */
     Time.realTime = 0;
+
+    /**
+     * The time in seconds it took to complete the last frame. Use this property to make your game frame rate independent.
+     * @property deltaTime
+     * @type {number}
+     * @readOnly
+     */
     Time.deltaTime = 0;
+
+    /**
+     * The total number of frames that have passed.
+     * @property frameCount
+     * @type {number}
+     * @readOnly
+     */
     Time.frameCount = 0;
+
+    /**
+     * The maximum time a frame can take.
+     * @property maxDeltaTime
+     * @type {number}
+     * @readOnly
+     */
     Time.maxDeltaTime = 0.3333333;
 
     var lastUpdateTime = 0;
@@ -281,6 +265,8 @@ var Event = (function () {
 
     /**
      * An event allows for signaling that something has occurred. E.g. that an asset has completed downloading.
+     * @class Event
+     * @constructor
      * @param {string} type - The name of the event (case-sensitive), e.g. "click", "fire", or "submit"
      * @param {boolean} [bubbles=false] - A boolean indicating whether the event bubbles up through the tree or not
      */
@@ -290,19 +276,22 @@ var Event = (function () {
 
         /**
          * The name of the event (case-sensitive), e.g. "click", "fire", or "submit"
-         * @property {string}
+         * @property type
+         * @type {string}
          */
         this.type = type;
 
         /**
          * A reference to the target to which the event was originally dispatched
-         * @property {object}
+         * @property target
+         * @type {object}
          */
         this.target = null;
 
         /**
          * A reference to the currently registered target for the event
-         * @property {object}
+         * @property currentTarget;
+         * @type {object}
          */
         this.currentTarget = null;
 
@@ -316,31 +305,39 @@ var Event = (function () {
          * The phases are explained in the [section 3.1, Event dispatch and DOM event flow]
          * (http://www.w3.org/TR/DOM-Level-3-Events/#event-flow), of the DOM Level 3 Events specification.
          *
-         * @property {number}
+         * @property eventPhase
+         * @type {number}
          */
         this.eventPhase = 0;
 
         /**
          * A boolean indicating whether the event bubbles up through the hierarchy or not
-         * @property {boolean}
+         * @property bubbles
+         * @type {boolean}
          */
         this.bubbles = bubbles;
 
         /**
          * Indicates whether or not event.preventDefault() has been called on the event
-         * @property {boolean}
+         * @property _defaultPrevented
+         * @type {boolean}
+         * @private
          */
         this._defaultPrevented = false;
 
         /**
          * Indicates whether or not event.stop() has been called on the event
-         * @property {boolean}
+         * @property _propagationStopped
+         * @type {boolean}
+         * @private
          */
         this._propagationStopped = false;
 
         /**
          * Indicates whether or not event.stop(true) has been called on the event
-         * @property {boolean}
+         * @property _propagationImmediateStopped
+         * @type {boolean}
+         * @private
          */
         this._propagationImmediateStopped = false;
 
@@ -354,32 +351,47 @@ var Event = (function () {
 
     /**
 	 * Events not currently dispatched are in this phase
-	 * @constant {number}
+	 * @property NONE
+     * @type {number}
+     * @static
+     * @final
      */
     Event.NONE = 0;
     /**
 	 * The capturing phase comprises the journey from the root to the last node before the event target's node
 	 * see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-	 * @constant {number}
+     * @property CAPTURING_PHASE
+     * @type {number}
+     * @static
+     * @final
      */
     Event.CAPTURING_PHASE = 1;
     /**
 	 * The target phase comprises only the event target node
 	 * see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-	 * @constant {number}
+     * @property AT_TARGET
+     * @type {number}
+     * @static
+     * @final
      */
     Event.AT_TARGET = 2;
     /**
 	 * The bubbling phase comprises any subsequent nodes encountered on the return trip to the root of the hierarchy
 	 * see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-	 * @constant {number}
+     * @property BUBBLING_PHASE
+     * @type {number}
+     * @static
+     * @final
      */
     Event.BUBBLING_PHASE = 3;
 
     /**
      * Stop propagation. When dispatched in a tree, invoking this method prevents event from reaching any other objects than the current.
+     *
+     * @method stop
      * @param {boolean} [immediate=false] - Indicates whether or not to immediate stop the propagation, default is false.
-     *                                      If true, for this particular event, no other callback will be called. Neither those attached on the same event target,
+     *                                      If true, for this particular event, no other callback will be called.
+     *                                      Neither those attached on the same event target,
      *                                      nor those attached on targets which will be traversed later.
      */
     Event.prototype.stop = function (immediate) {
@@ -391,11 +403,16 @@ var Event = (function () {
 
     /**
      * If invoked when the cancelable attribute value is true, signals to the operation that caused event to be dispatched that it needs to be canceled.
+     * @method preventDefault
      */
     Event.prototype.preventDefault = function () {
         this._defaultPrevented = true;
     };
 
+    /**
+     * @method _reset
+     * @private
+     */
     Event.prototype._reset = function () {
         this.target = null;
         this.currentTarget = null;
@@ -421,7 +438,7 @@ var EventListeners = (function () {
     JS.extend(EventListeners, Fire._CallbacksHandler);
 
     /**
-     * @param {Fire.Event} event
+     * @param {Event} event
      */
     EventListeners.prototype.invoke = function (event) {
         var list = this._callbackTable[event.type];
@@ -480,11 +497,28 @@ var EventTarget = (function () {
      * Event targets can implement the following methods:
      *  - _getCapturingTargets
      *  - _getBubblingTargets
+     *
+     * @class EventTarget
+     * @extends HashObject
+     * @constructor
      */
     function EventTarget() {
         HashObject.call(this);
 
+        /**
+         * @property _capturingListeners
+         * @type {EventListeners}
+         * @default null
+         * @private
+         */
         this._capturingListeners = null;
+
+        /**
+         * @property _bubblingListeners
+         * @type {EventListeners}
+         * @default null
+         * @private
+         */
         this._bubblingListeners = null;
     }
     JS.extend(EventTarget, HashObject);
@@ -493,9 +527,11 @@ var EventTarget = (function () {
      * Register an callback of a specific event type on the EventTarget.
      * This method is merely an alias to addEventListener.
      *
+     * @method on
      * @param {string} type - A string representing the event type to listen for.
      * @param {function} callback - The callback that will be invoked when the event is dispatched.
      *                              The callback is ignored if it is a duplicate (the callbacks are unique).
+     * @param {Event} callback.param event
      * @param {boolean} [useCapture=false] - When set to true, the capture argument prevents callback
      *                              from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE.
      *                              When false, callback will NOT be invoked when event's eventPhase attribute value is CAPTURING_PHASE.
@@ -523,6 +559,7 @@ var EventTarget = (function () {
      * Removes the callback previously registered with the same type, callback, and capture.
      * This method is merely an alias to removeEventListener.
      *
+     * @method off
      * @param {string} type - A string representing the event type being removed.
      * @param {function} callback - The callback to remove.
      * @param {boolean} [useCapture=false] - Specifies whether the callback being removed was registered as a capturing callback or not.
@@ -544,9 +581,11 @@ var EventTarget = (function () {
     /**
      * Register an callback of a specific event type on the EventTarget, the callback will remove itself after the first time it is triggered.
      *
+     * @method once
      * @param {string} type - A string representing the event type to listen for.
      * @param {function} callback - The callback that will be invoked when the event is dispatched.
      *                              The callback is ignored if it is a duplicate (the callbacks are unique).
+     * @param {Event} callback.param event
      * @param {boolean} [useCapture=false] - When set to true, the capture argument prevents callback
      *                              from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE.
      *                              When false, callback will NOT be invoked when event's eventPhase attribute value is CAPTURING_PHASE.
@@ -626,7 +665,8 @@ var EventTarget = (function () {
     /**
      * Dispatches an event into the event flow. The event target is the EventTarget object upon which the dispatchEvent() method is called.
      *
-     * @param {Fire.Event} event - The Event object that is dispatched into the event flow
+     * @method dispatchEvent
+     * @param {Event} event - The Event object that is dispatched into the event flow
      * @return {boolean} - returns true if either the event's preventDefault() method was not invoked,
      *                      or its cancelable attribute value is false, and false otherwise.
      */
@@ -641,7 +681,9 @@ var EventTarget = (function () {
     /**
      * Send an event to this object directly, this method will not propagate the event to any other objects.
      *
-     * @param {Fire.Event} event - The Event object that is sent to this event target.
+     * @method _doSendEvent
+     * @param {Event} event - The Event object that is sent to this event target.
+     * @private
      */
     EventTarget.prototype._doSendEvent = function (event) {
         // Event.AT_TARGET
@@ -661,7 +703,7 @@ var EventTarget = (function () {
     ///**
     // * Send an event to this object directly, this method will not propagate the event to any other objects.
     // *
-    // * @param {Fire.Event} event - The Event object that is sent to this event target.
+    // * @param {Event} event - The Event object that is sent to this event target.
     // * @return {boolean} - returns true if either the event's preventDefault() method was not invoked,
     // *                      or its cancelable attribute value is false, and false otherwise.
     // */
@@ -677,6 +719,7 @@ var EventTarget = (function () {
      * Get all the targets listening to the supplied type of event in the target's capturing phase.
      * The capturing phase comprises the journey from the root to the last node BEFORE the event target's node.
      * The result should save in the array parameter, and MUST SORT from child nodes to parent nodes.
+     *
      * Subclasses can override this method to make event propagable.
      *
      * @param {string} type - the event type
@@ -699,6 +742,7 @@ var EventTarget = (function () {
      * Get all the targets listening to the supplied type of event in the target's bubbling phase.
 	 * The bubbling phase comprises any SUBSEQUENT nodes encountered on the return trip to the root of the tree.
      * The result should save in the array parameter, and MUST SORT from child nodes to parent nodes.
+     *
      * Subclasses can override this method to make event propagable.
      *
      * @param {string} type - the event type
@@ -733,16 +777,22 @@ var Component = (function () {
         Fire._AssetsWatcher.initComponent(this);
     };
     /**
+     * Base class for everything attached to Entity.
      *
-     * Base class for everything attached to Entity
      * NOTE: Not allowed to use construction parameters for Component's subclasses,
-     *       because Component is created by the engine.
-     * @class Component
-     * @static
+     *         because Component is created by the engine.
      *
+     * @class Component
+     * @extends HashObject
+     * @constructor
      */
     var Component = Fire.extend('Fire.Component', HashObject, compCtor);
 
+    /**
+     * The entity this component is attached to. A component is always attached to an entity.
+     * @property entity
+     * @type {Entity}
+     */
     Component.prop('entity', null, Fire.HideInInspector);
 
     // 如果不带有 uuid，则返回空字符串
@@ -769,17 +819,23 @@ var Component = (function () {
             }
         },
         Fire.DisplayName("Script"),
-        Fire.ObjectType(Fire.ScriptAsset, true)
+        Fire._ScriptUuid
     );
 
-    // enabled self
+    /**
+     * @property _enabled
+     * @type boolean
+     * @private
+     */
     Component.prop('_enabled', true, Fire.HideInInspector);
 
     // properties
+
     /**
-     * If component is enabled.
+     * indicates whether this component is enabled or not.
      * @property enabled
      * @type boolean
+     * @default true
      */
     Object.defineProperty(Component.prototype, 'enabled', {
         get: function () {
@@ -798,9 +854,10 @@ var Component = (function () {
     });
 
     /**
-     * If the component is enabled in hierarchy.
+     * indicates whether this component is enabled and its entity is also active in the hierarchy.
      * @property enabledInHierarchy
-     * @type Transform
+     * @type {boolean}
+     * @readOnly
      */
     Object.defineProperty(Component.prototype, 'enabledInHierarchy', {
         get: function () {
@@ -811,7 +868,8 @@ var Component = (function () {
     /**
      * Returns the {% crosslink Fire.Transform Transform %} attached to the entity.
      * @property transform
-     * @type Transform
+     * @type {Transform}
+     * @readOnly
      */
     Object.defineProperty(Component.prototype, 'transform', {
         get: function () {
@@ -820,6 +878,7 @@ var Component = (function () {
     });
 
     // callback functions
+
     /**
      * Update is called every frame, if the Component is enabled.
      * @event update
@@ -832,43 +891,75 @@ var Component = (function () {
      */
     Component.prototype.lateUpdate = null;
     //(NYI) Component.prototype.onCreate = null;  // customized constructor for template
+
     /**
      * When attaching to an active entity or its entity first activated
      * @event onLoad
      */
-    Component.prototype.onLoad = null;    //
-    Component.prototype.onStart = null;   // called before all scripts' update if the Component is enabled
+    Component.prototype.onLoad = null;
+
+    /**
+     * Called before all scripts' update if the Component is enabled
+     * @event onStart
+     */
+    Component.prototype.onStart = null;
+
+    /**
+     * Called when this component becomes enabled and its entity becomes active
+     * @event onEnable
+     */
     Component.prototype.onEnable = null;
+
+    /**
+     * Called when this component becomes disabled or its entity becomes inactive
+     * @event onDisable
+     */
     Component.prototype.onDisable = null;
+
+    /**
+     * Called when this component will be destroyed.
+     * @event onDestroy
+     */
     Component.prototype.onDestroy = null;
+
+    /**
+     * Called when the engine starts rendering the scene.
+     * @event onPreRender
+     */
     Component.prototype.onPreRender = null;
 
 
     /**
-     * @param {function|string} typeOrTypename
-     * @return {Component}
+     * Adds a component class to the entity. You can also add component to entity by passing in the name of the script.
+     *
+     * @method addComponent
+     * @param {function|string} typeOrName - the constructor or the class name of the component to add
+     * @return {Component} - the newly added component
      */
     Component.prototype.addComponent = function (typeOrTypename) {
         return this.entity.addComponent(typeOrTypename);
     };
 
     /**
-     * @param {function|string} typeOrTypename
+     * Returns the component of supplied type if the entity has one attached, null if it doesn't. You can also get component in the entity by passing in the name of the script.
+     *
+     * @method getComponent
+     * @param {function|string} typeOrName
      * @return {Component}
      */
     Component.prototype.getComponent = function (typeOrTypename) {
         return this.entity.getComponent(typeOrTypename);
     };
 
-    /**
-     * This method will be invoked when the scene graph changed, which is means the parent of its transform changed,
-     * or one of its ancestor's parent changed, or one of their sibling index changed.
-     * NOTE: This callback only available after onLoad.
-     *
-     * @param {Fire.Transform} transform - the transform which is changed, can be any of this transform's ancestor.
-     * @param {Fire.Transform} oldParent - the transform's old parent, if not changed, its sibling index changed.
-     * @return {boolean} return whether stop propagation to this component's child components.
-     */
+    ///**
+    // * This method will be invoked when the scene graph changed, which is means the parent of its transform changed,
+    // * or one of its ancestor's parent changed, or one of their sibling index changed.
+    // * NOTE: This callback only available after onLoad.
+    // *
+    // * @param {Transform} transform - the transform which is changed, can be any of this transform's ancestor.
+    // * @param {Transform} oldParent - the transform's old parent, if not changed, its sibling index changed.
+    // * @return {boolean} return whether stop propagation to this component's child components.
+    // */
     //Component.prototype.onHierarchyChanged = function (transform, oldParent) {};
 
     // overrides
@@ -881,46 +972,22 @@ var Component = (function () {
         }
     };
 
-    function callOnEnableInTryCatch (c) {
+    function call_FUNC_InTryCatch (c) {
         try {
-            c.onEnable();
+            c._FUNC_();
         }
         catch (e) {
-            Fire.error(e);
+            Fire._throw(e);
         }
     }
-    function callOnDisableInTryCatch (c) {
-        try {
-            c.onDisable();
-        }
-        catch (e) {
-            Fire.error(e);
-        }
-    }
-    function callOnLoadInTryCatch (c) {
-        try {
-            c.onLoad();
-        }
-        catch (e) {
-            Fire.error(e);
-        }
-    }
-    function callOnStartInTryCatch (c) {
-        try {
-            c.onStart();
-        }
-        catch (e) {
-            Fire.error(e);
-        }
-    }
-    function callOnDestroyInTryCatch (c) {
-        try {
-            c.onDestroy();
-        }
-        catch (e) {
-            Fire.error(e);
-        }
-    }
+    var execInTryCatchTmpl = '(' + call_FUNC_InTryCatch + ')';
+    // jshint evil: true
+    var callOnEnableInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, 'onEnable'));
+    var callOnDisableInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, 'onDisable'));
+    var callOnLoadInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, 'onLoad'));
+    var callOnStartInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, 'onStart'));
+    var callOnDestroyInTryCatch = eval(execInTryCatchTmpl.replace(/_FUNC_/g, 'onDestroy'));
+    // jshint evil: false
     // Should not call onEnable/onDisable in other place
     function _callOnEnable (self, enable) {
         if ( enable ) {
@@ -979,8 +1046,7 @@ var Component = (function () {
 
     /**
      * invoke starts on entities
-     * @method _invokeStarts
-     * @param {Fire.Entity} entity
+     * @param {Entity} entity
      */
     Component._invokeStarts = function (entity) {
         var countBefore = entity._components.length;
@@ -1042,15 +1108,21 @@ Fire.Component = Component;
 
 Fire._componentMenuItems = [];
 /**
+ * @class Fire
+ */
+/**
  * Register a component to the "Component" menu.
  *
  * @method addComponentMenu
- * @static
  * @param {function} constructor - the class you want to register, must inherit from Component
  * @param {string} menuPath - the menu path name. Eg. "Rendering/Camera"
  * @param {number} [priority] - the order which the menu item are displayed
  */
 Fire.addComponentMenu = function (constructor, menuPath, priority) {
+    if ( !Fire.isChildClassOf(constructor, Component) ) {
+        Fire.error('[Fire.addComponentMenu] constructor must inherit from Component');
+        return;
+    }
     Fire._componentMenuItems.push({
         component: constructor,
         menuPath: menuPath,
@@ -1066,10 +1138,13 @@ Fire.attr(Component, 'executeInEditMode', false);
  * By calling this function, each component will also have its callback executed in edit mode.
  *
  * @method executeInEditMode
- * @static
- * @param {function} constructor - the class you want to register, must inherit from Component
+ * @param {Component} constructor - the class you want to register, must inherit from Component
  */
 Fire.executeInEditMode = function (constructor) {
+    if ( !Fire.isChildClassOf(constructor, Component) ) {
+        Fire.error('[Fire.executeInEditMode] constructor must inherit from Component');
+        return;
+    }
     Fire.attr(constructor, 'executeInEditMode', true);
 };
 
@@ -1161,20 +1236,36 @@ Fire._doDefine = function (className, baseClass, constructor) {
 var Transform = (function () {
 
     /**
-     * Position, rotation and scale of an object.
+     * Defines position, rotation and scale of an entity.
+     *
      * @class Transform
      * @extends Component
+     * @constructor
      */
-
     var Transform = Fire.extend('Fire.Transform', Component, function () {
+        /**
+         * @property _position;
+         * @type {Vec2}
+         * @default new Vec2(0, 0)
+         * @private
+         */
         this._position = new Vec2(0, 0);
+        /**
+         * @property _scale;
+         * @type {Vec2}
+         * @default new Vec2(1, 1)
+         * @private
+         */
         this._scale = new Vec2(1, 1);
 
         this._worldTransform = new Matrix23();
 
         /**
-         * @property {Fire.Transform} _parent - the cached reference to parent transform
+         * the cached reference to parent transform
+         * @property _parent
+         * @type {Transform}
          * @default null
+         * @private
          */
         this._parent = null;
 
@@ -1193,8 +1284,9 @@ var Transform = (function () {
 
     /**
      * The local position in its parent's coordinate system
-     * @member {Fire.Vec2} position
-     * @instance
+     * @property position
+     * @type {Vec2}
+     * @default new Vec2(0, 0)
      */
     Transform.getset('position',
         function () {
@@ -1216,8 +1308,9 @@ var Transform = (function () {
 
     /**
      * The local x position in its parent's coordinate system
-     * @member {number} x
-     * @instance
+     * @property x
+     * @type {number}
+     * @default 0
      */
     Object.defineProperty(Transform.prototype, 'x', {
         get: function () {
@@ -1237,8 +1330,9 @@ var Transform = (function () {
 
     /**
      * The local y position in its parent's coordinate system
-     * @member {number} y
-     * @instance
+     * @property y
+     * @type {number}
+     * @default 0
      */
     Object.defineProperty(Transform.prototype, 'y', {
         get: function () {
@@ -1258,7 +1352,9 @@ var Transform = (function () {
 
     /**
      * The position of the transform in world space
-     * @property {Fire.Vec2} Fire.Transform#worldPosition
+     * @property worldPosition
+     * @type {Vec2}
+     * @default new Vec2(0, 0)
      */
     Object.defineProperty(Transform.prototype, 'worldPosition', {
         get: function () {
@@ -1285,8 +1381,9 @@ var Transform = (function () {
 
     /**
      * The x position of the transform in world space
-     * @member {number} x
-     * @instance
+     * @property worldX
+     * @type {number}
+     * @default 0
      */
     Object.defineProperty(Transform.prototype, 'worldX', {
         get: function () {
@@ -1323,8 +1420,9 @@ var Transform = (function () {
 
     /**
      * The y position of the transform in world space
-     * @member {number} y
-     * @instance
+     * @property worldY
+     * @type {number}
+     * @default 0
      */
     Object.defineProperty(Transform.prototype, 'worldY', {
         get: function () {
@@ -1355,7 +1453,9 @@ var Transform = (function () {
 
     /**
      * The counterclockwise degrees of rotation relative to the parent
-     * @property {number} Fire.Transform#rotation
+     * @property rotation
+     * @type {number}
+     * @default 0
      */
     Transform.getset('rotation',
         function () {
@@ -1374,7 +1474,9 @@ var Transform = (function () {
 
     /**
      * The counterclockwise degrees of rotation in world space
-     * @property {number} Fire.Transform#worldRotation
+     * @property worldRotation
+     * @type {number}
+     * @default 0
      */
     Object.defineProperty(Transform.prototype, 'worldRotation', {
         get: function () {
@@ -1402,7 +1504,8 @@ var Transform = (function () {
 
     /**
      * The local scale factor relative to the parent
-     * @property {Fire.Vec2} Fire.Transform#scale
+     * @property scale
+     * @type {Vec2}
      * @default new Vec2(1, 1)
      */
     Transform.getset('scale',
@@ -1425,8 +1528,9 @@ var Transform = (function () {
 
     /**
      * The local x scale factor relative to the parent
-     * @member {number} x
-     * @instance
+     * @property scaleX
+     * @type {number}
+     * @default 1
      */
     Object.defineProperty(Transform.prototype, 'scaleX', {
         get: function () {
@@ -1446,8 +1550,9 @@ var Transform = (function () {
 
     /**
      * The local y scale factor relative to the parent
-     * @member {number} y
-     * @instance
+     * @property scaleY
+     * @type {number}
+     * @default 1
      */
     Object.defineProperty(Transform.prototype, 'scaleY', {
         get: function () {
@@ -1467,7 +1572,10 @@ var Transform = (function () {
 
     /**
      * The lossy scale of the transform in world space (Read Only)
-     * @property {Fire.Vec2} Fire.Transform#worldScale
+     * @property worldScale
+     * @type {Vec2}
+     * @default new Vec2(1, 1)
+     * @readOnly
      */
     Object.defineProperty(Transform.prototype, 'worldScale', {
         get: function () {
@@ -1553,9 +1661,9 @@ var Transform = (function () {
 
     /**
      * Get the local matrix that transforms a point from local space into parents space.
-     * @method Fire.Transform#getLocalMatrix
-     * @param {Fire.Matrix23} [out]
-     * @return {Fire.Matrix23}
+     * @method getLocalMatrix
+     * @param {Matrix23} [out] - optional, the receiving vector
+     * @return {Matrix23}
      */
     Transform.prototype.getLocalMatrix = function (out) {
         out = out || new Matrix23();
@@ -1593,9 +1701,9 @@ var Transform = (function () {
 
     /**
      * Get the world transform matrix that transforms a point from local space into world space.
-     * @method Transform#getLocalToWorldMatrix
-     * @param {Fire.Matrix23} [out]
-     * @return {Fire.Matrix23}
+     * @method getLocalToWorldMatrix
+     * @param {Matrix23} [out] - optional, the receiving vector
+     * @return {Matrix23}
      */
     Transform.prototype.getLocalToWorldMatrix = function (out) {
         // todo, merge with this._worldTransform
@@ -1610,17 +1718,18 @@ var Transform = (function () {
 
     /**
      * Get the inverse world transform matrix that transforms a point from world space into local space.
-     * @method Transform#getWorldToLocalMatrix
-     * @param {Fire.Matrix23} [out]
-     * @return {Fire.Matrix23}
+     * @method getWorldToLocalMatrix
+     * @param {Matrix23} [out] - optional, the receiving vector
+     * @return {Matrix23}
      */
     Transform.prototype.getWorldToLocalMatrix = function (out) {
         return this.getLocalToWorldMatrix(out).invert();
     };
 
     /**
-     * @method Transform#rotateAround
-     * @param {Fire.Vec2} point - the world point rotates through
+     * Rotates this transform through point in world space by angle degrees.
+     * @method rotateAround
+     * @param {Vec2} point - the world point rotates through
      * @param {number} angle - degrees
      */
     Transform.prototype.rotateAround = function (point, angle) {
@@ -1632,8 +1741,8 @@ var Transform = (function () {
 
     /**
      * Moves the transform in the direction and distance of translation. The movement is applied relative to the transform's local space.
-     * @method Transform#translate
-     * @param {Fire.Vec2} translation
+     * @method translate
+     * @param {Vec2} translation
      */
     Transform.prototype.translate = function (translation) {
         var rotated = translation.rotate(Math.deg2rad(this._rotation));
@@ -1641,7 +1750,9 @@ var Transform = (function () {
     };
 
     /**
-     * @property {Fire.Vec2} up - up direction in world space, point to the y(green) axis
+     * up direction in world space, point to the y(green) axis
+     * @property up
+     * @type {Vec2}
      */
     Object.defineProperty(Transform.prototype, 'up', {
         get: function () {
@@ -1658,7 +1769,9 @@ var Transform = (function () {
     });
 
     /**
-     * @property {Fire.Vec2} right - right direction in world space, point to the x(red) axis
+     * right direction in world space, point to the x(red) axis
+     * @property right
+     * @type {Vec2}
      */
     Object.defineProperty(Transform.prototype, 'right', {
         get: function () {
@@ -1682,7 +1795,7 @@ var Transform = (function () {
     // * 这里不支持自定义回调，因为如果忘了反注册很容易就会内存泄漏。
     // *
     // * @method Fire.Transform#_addListener
-    // * @param {Fire.Component} component - the component to be invoked.
+    // * @param {Component} component - the component to be invoked.
     // * @private
     // */
     //Transform.prototype._addListener = function (component) {
@@ -1739,6 +1852,9 @@ var Renderer = (function () {
 
     /**
      * The base for all renderer
+     * @class Renderer
+     * @extends HashObject
+     * @constructor
      */
     var Renderer = Fire.extend('Fire.Renderer', Component);
 
@@ -1747,8 +1863,8 @@ var Renderer = (function () {
     // * The returned box is relative only to its parent.
     // *
     // * @function Fire.Renderer#getLocalBounds
-    // * @param {Fire.Rect} [out] - optional, the receiving rect
-    // * @return {Fire.Rect}
+    // * @param {Rect} [out] - optional, the receiving rect
+    // * @return {Rect}
     // */
     //Renderer.prototype.getLocalBounds = function (out) {
     //    Fire.warn('interface not yet implemented');
@@ -1760,9 +1876,9 @@ var Renderer = (function () {
     /**
      * Returns a "world" axis aligned bounding box(AABB) of the renderer.
      *
-     * @function Fire.Renderer#getWorldBounds
-     * @param {Fire.Rect} [out] - optional, the receiving rect
-     * @return {Fire.Rect} - the rect represented in world position
+     * @method getWorldBounds
+     * @param {Rect} [out] - optional, the receiving rect
+     * @return {Rect} - the rect represented in world position
      */
     Renderer.prototype.getWorldBounds = function (out) {
         var worldMatrix = this.entity.transform.getLocalToWorldMatrix();
@@ -1779,23 +1895,38 @@ var Renderer = (function () {
     /**
      * Returns a "world" oriented bounding box(OBB) of the renderer.
      *
-     * @function Fire.Renderer#getWorldOrientedBounds
-     * @param {...Fire.Vec2} [out] - optional, the vector to receive the world position
-     * @return {Fire.Vec2[]} - the array contains vectors represented in world position
+     * @method getWorldOrientedBounds
+     * @param {Vec2} [out_bl] - optional, the vector to receive the world position of bottom left
+     * @param {Vec2} [out_tl] - optional, the vector to receive the world position of top left
+     * @param {Vec2} [out_tr] - optional, the vector to receive the world position of top right
+     * @param {Vec2} [out_br] - optional, the vector to receive the world position of bottom right
+     * @return {Vec2} - the array contains vectors represented in world position,
+     *                    in the sequence of BottomLeft, TopLeft, TopRight, BottomRight
      */
-    Renderer.prototype.getWorldOrientedBounds = function (out1, out2, out3, out4){
-        out1 = out1 || new Vec2(0, 0);
-        out2 = out2 || new Vec2(0, 0);
-        out3 = out3 || new Vec2(0, 0);
-        out4 = out4 || new Vec2(0, 0);
+    Renderer.prototype.getWorldOrientedBounds = function (out_bl, out_tl, out_tr, out_br){
+        out_bl = out_bl || new Vec2(0, 0);
+        out_tl = out_tl || new Vec2(0, 0);
+        out_tr = out_tr || new Vec2(0, 0);
+        out_br = out_br || new Vec2(0, 0);
         var worldMatrix = this.entity.transform.getLocalToWorldMatrix();
-        _doGetOrientedBounds.call(this, worldMatrix, out1, out2, out3, out4);
-        return [out1, out2, out3, out4];
+        _doGetOrientedBounds.call(this, worldMatrix, out_bl, out_tl, out_tr, out_br);
+        return [out_bl, out_tl, out_tr, out_br];
     };
 
+    /**
+     * !#zh 返回表示 renderer 的 width/height/pivot/skew/shear 等变换的 matrix，
+     * 这些变换不影响子物体，getLocalToWorldMatrix 返回的变换会影响子物体。
+     *
+     * @method getSelfMatrix
+     * @param {Matrix23} out - the receiving matrix
+     */
     Renderer.prototype.getSelfMatrix = function (out) {
     };
 
+    /**
+     * @method getWorldSize
+     * @return {Vec2}
+     */
     Renderer.prototype.getWorldSize = function () {
         return new Vec2(0, 0);
     };
@@ -1833,6 +1964,12 @@ Fire.Renderer = Renderer;
 
 var SpriteRenderer = (function () {
 
+    /**
+     * Renders a sprite in the scene.
+     * @class SpriteRenderer
+     * @extends Renderer
+     * @constructor
+     */
     var SpriteRenderer = Fire.extend('Fire.SpriteRenderer', Renderer, function () {
         RenderContext.initRenderer(this);
         this._hasRenderObj = false;
@@ -1841,6 +1978,12 @@ var SpriteRenderer = (function () {
     Fire.executeInEditMode(SpriteRenderer);
 
     SpriteRenderer.prop('_sprite', null, Fire.HideInInspector);
+    /**
+     * The sprite to render.
+     * @property sprite
+     * @type {Sprite}
+     * @default null
+     */
     SpriteRenderer.getset('sprite',
         function () {
             return this._sprite;
@@ -1855,6 +1998,13 @@ var SpriteRenderer = (function () {
     );
 
     SpriteRenderer.prop('_color', new Fire.Color(1, 1, 1, 1), Fire.HideInInspector);
+    /**
+     * !#en The rendering color.
+     * !#zh Sprite 渲染的颜色，其中 alpha 为 1 时表示不透明，0.5 表示半透明，0 则全透明。
+     * @property color
+     * @type Color
+     * @default new Color(1, 1, 1, 1)
+     */
     SpriteRenderer.getset('color',
         function () {
             return this._color;
@@ -1868,6 +2018,17 @@ var SpriteRenderer = (function () {
     );
 
     SpriteRenderer.prop('customSize_', false, Fire.HideInInspector);
+
+    /**
+     * !#en Indicates that this renderer uses custom width and height to render the sprite.
+     * !#zh 是否使用自定义尺寸渲染。
+     * - 为 true 时将忽略 sprite 的大小，使用 renderer 的 width 和 height 进行渲染。
+     * - 为 false 则使用 sprite 原有的 width 和 height 进行渲染。
+     *
+     * @property customSize
+     * @type {boolean}
+     * @default false
+     */
     SpriteRenderer.getset('customSize',
         function () {
             return this.customSize_;
@@ -1881,6 +2042,14 @@ var SpriteRenderer = (function () {
                         Fire.Watch( 'customSize_', function ( obj, propEL ) {
                             propEL.disabled = !obj.customSize_;
                         } ));
+    /**
+     * !#en The custom width of this renderer.
+     * !#zh 获取该 Renderer 的渲染宽度，如果使用的是 customSize，获取到的是 custom width，否则是 sprite width。
+     * 设置这个值时，会修改 custom width。
+     * @property width
+     * @type {number}
+     * @beta
+     */
     SpriteRenderer.getset('width',
         function () {
             if ( !this.customSize_ ) {
@@ -1900,6 +2069,15 @@ var SpriteRenderer = (function () {
                         Fire.Watch( 'customSize_', function ( obj, propEL) {
                             propEL.disabled = !obj.customSize;
                         } ));
+
+    /**
+     * !#en The custom height of this renderer.
+     * !#zh 获取该 Renderer 的渲染高度，如果使用的是 customSize，获取到的是 custom height，否则是 sprite height。
+     * 设置这个值时，会修改 custom height。
+     * @property height
+     * @type {number}
+     * @beta
+     */
     SpriteRenderer.getset('height',
         function () {
             if ( !this.customSize_ ) {
@@ -1957,8 +2135,6 @@ var SpriteRenderer = (function () {
         Engine._renderContext.remove(this);
     };
 
-    // 返回表示 sprite 的 width/height/pivot/skew/shear 等变换的 matrix，
-    // 由于这些变换不影响子物体，所以不能放到 getLocalToWorldMatrix
     SpriteRenderer.prototype.getSelfMatrix = function (out) {
         var w = this.width;
         var h = this.height;
@@ -2008,27 +2184,94 @@ Fire.SpriteRenderer = SpriteRenderer;
 
 var BitmapText = (function () {
 
+    /**
+     * @class BitmapText
+     */
+    /**
+     * @namespace BitmapText
+     */
+    /**
+     * @class TextAlign
+     * @static
+     */
     var TextAlign = Fire.defineEnum({
+        /**
+         * @property left
+         * @type {number}
+         */
         left: -1,
+        /**
+         * @property center
+         * @type {number}
+         */
         center: -1,
+        /**
+         * @property right
+         * @type {number}
+         */
         right: -1
     });
 
+    /**
+     * @class TextAnchor
+     * @static
+     */
     var TextAnchor = (function (t) {
+        /**
+         * @property topLeft
+         * @type {number}
+         */
         t[t.topLeft = 0] = 'Top Left';
+        /**
+         * @property topCenter
+         * @type {number}
+         */
         t[t.topCenter = 1] = 'Top Center';
+        /**
+         * @property topRight
+         * @type {number}
+         */
         t[t.topRight = 2] = 'Top Right';
+        /**
+         * @property midLeft
+         * @type {number}
+         */
         t[t.midLeft = 3] = 'Middle Left';
+        /**
+         * @property midCenter
+         * @type {number}
+         */
         t[t.midCenter = 4] = 'Middle Center';
+        /**
+         * @property midRight
+         * @type {number}
+         */
         t[t.midRight = 5] = 'Middle Right';
+        /**
+         * @property botLeft
+         * @type {number}
+         */
         t[t.botLeft = 6] = 'Bottom Left';
+        /**
+         * @property botCenter
+         * @type {number}
+         */
         t[t.botCenter = 7] = 'Bottom Center';
+        /**
+         * @property botRight
+         * @type {number}
+         */
         t[t.botRight = 8] = 'Bottom Right';
         return t;
     })({});
 
 
-    //-- 增加 Bitmap Text 到 组件菜单上
+    /**
+     * The bitmap font renderer component.
+     * @class BitmapText
+     * @extends Renderer
+     * @constructor
+     */
     var BitmapText = Fire.extend("Fire.BitmapText", Renderer, function () {
         RenderContext.initRenderer(this);
     });
@@ -2041,6 +2284,12 @@ var BitmapText = (function () {
     Fire.executeInEditMode(BitmapText);
 
     BitmapText.prop('_bitmapFont', null, Fire.HideInInspector);
+    /**
+     * The font to render.
+     * @property bitmapFont
+     * @type {BitmapFont}
+     * @default null
+     */
     BitmapText.getset('bitmapFont',
         function () {
             return this._bitmapFont;
@@ -2053,6 +2302,13 @@ var BitmapText = (function () {
     );
 
     BitmapText.prop('_text', 'Text', Fire.HideInInspector);
+
+    /**
+     * The text to render.
+     * @property text
+     * @type {string}
+     * @default ""
+     */
     BitmapText.getset('text',
         function () {
             return this._text;
@@ -2072,6 +2328,13 @@ var BitmapText = (function () {
     );
 
     BitmapText.prop('_anchor', BitmapText.TextAnchor.midCenter, Fire.HideInInspector);
+
+    /**
+     * The anchor point of the text.
+     * @property anchor
+     * @type {BitmapText.TextAnchor}
+     * @default BitmapText.TextAnchor.midCenter
+     */
     BitmapText.getset('anchor',
         function () {
             return this._anchor;
@@ -2085,6 +2348,13 @@ var BitmapText = (function () {
     );
 
     BitmapText.prop('_align', BitmapText.TextAlign.left, Fire.HideInInspector);
+
+    /**
+     * How lines of text are aligned (left, right, center).
+     * @property align
+     * @type {BitmapText.TextAlign}
+     * @default BitmapText.TextAlign.left
+     */
     BitmapText.getset('align',
         function () {
             return this._align;
@@ -2181,6 +2451,11 @@ var BitmapText = (function () {
 
 Fire.BitmapText = BitmapText;
 
+/**
+ * @class Camera
+ * @extends Component
+ * @constructor
+ */
 var Camera = Fire.Class({
     name: 'Fire.Camera',
     extends: Component,
@@ -2191,10 +2466,14 @@ var Camera = Fire.Class({
 
     properties: {
 
-        _background: {
-            default: Fire.Color.black,
-            visible: false
-        },
+        _background: Fire.Color.black,
+
+        /**
+         * The color of the screen background.
+         * @property background
+         * @type {Color}
+         * @default Fire.Color.black
+         */
         background: {
             get: function () {
                 return this._background;
@@ -2207,10 +2486,15 @@ var Camera = Fire.Class({
             }
         },
 
-        _size: {
-            default: 800,
-            visible: false
-        },
+        _size: 800,
+
+        /**
+         * The height of Design Resolution in pixels
+         * @property size
+         * @type {number}
+         * @default 800
+         * @beta
+         */
         size: {
             get: function () {
                 return this._size;
@@ -2226,10 +2510,14 @@ var Camera = Fire.Class({
             }
         },
 
-        _contentStrategy: {
-            default: Fire.ContentStrategyType.FixedHeight,
-            visible: false
-        },
+        _contentStrategy: Fire.ContentStrategyType.FixedHeight,
+
+        /**
+         * The Content Strategy of the camera.
+         * @property contentStrategy
+         * @type {ContentStrategyType}
+         * @default Fire.ContentStrategyType.FixedHeight
+         */
         contentStrategy: {
             type: Fire.ContentStrategyType,
             get: function () {
@@ -2243,6 +2531,11 @@ var Camera = Fire.Class({
             tooltip: "The type of scale strategy for this camera"
         },
 
+        /**
+         * @property viewportInfo
+         * @type {object}
+         * @private
+         */
         viewportInfo: {
             get: function (value) {
                 var viewportSize = (this._renderContext || Engine._renderContext).size;
@@ -2251,7 +2544,12 @@ var Camera = Fire.Class({
             visible: false
         },
 
-        // save the render context this camera belongs to, if null, main render context will be used.
+        /**
+         * save the render context this camera belongs to, if null, main render context will be used.
+         * @property renderContext
+         * @type {RenderContext}
+         * @private
+         */
         renderContext: {
             set: function (value) {
                 this._renderContext = value;
@@ -2281,32 +2579,42 @@ var Camera = Fire.Class({
         if (Engine._scene.camera === this) {
             Engine._scene.camera = null;
         }
-        this._renderContext.camera = null;
+        if (this._renderContext) {
+            this._renderContext.camera = null;
+        }
     },
 
     // other functions
 
     /**
      * Transforms position from viewport space into screen space.
-     * @method Fire.Camera#viewportToScreen
-     * @param {Fire.Vec2} position
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2}
+     * @method viewportToScreen
+     * @param {Vec2} position
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2}
      */
     viewportToScreen: function (position, out) {
+        if ( !this._renderContext ) {
+            Fire.error("Camera not yet inited.");
+            return;
+        }
         out = this._renderContext.size.scale(position, out);
         return out;
     },
 
     /**
      * Transforms position from screen space into viewport space.
-     * @method Fire.Camera#screenToViewport
-     * @param {Fire.Vec2} position
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2}
+     * @method screenToViewport
+     * @param {Vec2} position
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2}
      */
     screenToViewport: function (position, out) {
         out = out || new Vec2();
+        if ( !this._renderContext ) {
+            Fire.error("Camera not yet inited.");
+            return;
+        }
         var size = this._renderContext.size;
         out.x = position.x / size.x;
         out.y = position.y / size.y;
@@ -2315,10 +2623,10 @@ var Camera = Fire.Class({
 
     /**
      * Transforms position from viewport space into world space.
-     * @method Fire.Camera#viewportToWorld
-     * @param {Fire.Vec2} position
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2}
+     * @method viewportToWorld
+     * @param {Vec2} position
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2}
      */
     viewportToWorld: function (position, out) {
         out = this.viewportToScreen(position, out);
@@ -2327,10 +2635,10 @@ var Camera = Fire.Class({
 
     /**
      * Transforms position from screen space into world space.
-     * @method Fire.Camera#screenToWorld
-     * @param {Fire.Vec2} position
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2}
+     * @method screenToWorld
+     * @param {Vec2} position
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2}
      */
     screenToWorld: function (position, out) {
         var halfScreenSize = (this._renderContext || Engine._renderContext).size.mulSelf(0.5);
@@ -2347,10 +2655,10 @@ var Camera = Fire.Class({
 
     /**
      * Transforms position from world space into screen space.
-     * @method Fire.Camera#worldToScreen
-     * @param {Fire.Vec2} position
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2}
+     * @method worldToScreen
+     * @param {Vec2} position
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2}
      */
     worldToScreen: function (position, out) {
         var mat = new Matrix23();
@@ -2365,10 +2673,10 @@ var Camera = Fire.Class({
 
     /**
      * Transforms position from world space into viewport space.
-     * @method Fire.Camera#worldToViewport
-     * @param {Fire.Vec2} position
-     * @param {Fire.Vec2} [out] - optional, the receiving vector
-     * @return {Fire.Vec2}
+     * @method worldToViewport
+     * @param {Vec2} position
+     * @param {Vec2} [out] - optional, the receiving vector
+     * @return {Vec2}
      */
     worldToViewport: function (position, out) {
         out = this.worldToScreen(position, out);
@@ -2400,7 +2708,7 @@ var Camera = Fire.Class({
             return;
         }
         this._renderContext.background = this._background;
-    },
+    }
 });
 
 Fire.addComponentMenu(Camera, 'Camera');
@@ -2417,12 +2725,13 @@ Fire.executeInEditMode(Camera);
 
 Fire.Camera = Camera;
 
+
 var MissingScript = (function () {
 
     /**
      * A temp fallback to contain the original component which can not be loaded.
      * Actually, this class will be used whenever a class failed to deserialize,
-     * regardless of whether it is component.
+     * regardless of whether it is child class of component.
      */
     var MissingScript = Fire.extend('Fire.MissingScript', Component);
 
@@ -2454,8 +2763,8 @@ var InteractionContext = (function () {
 
     /**
      * Pick the top most entity, using their oriented bounding boxes.
-     * @param {Fire.Vec2} worldPosition
-     * @return {Fire.Entity}
+     * @param {Vec2} worldPosition
+     * @return {Entity}
      */
     InteractionContext.prototype.pick = function (worldPosition) {
         for (var i = this.entities.length - 1; i >= 0; --i) {
@@ -2532,6 +2841,12 @@ var InteractionContext = (function () {
 
 Fire._InteractionContext = InteractionContext;
 
+/**
+ * Class of all entities in scenes.
+ * @class Entity
+ * @constructor
+ * @param {string} name - the name of the entity
+ */
 var Entity = Fire.Class({
 
     name: 'Fire.Entity', extends: EventTarget,
@@ -2556,21 +2871,25 @@ var Entity = Fire.Class({
             transform.entity = this;
             this._components = [transform];
             this.transform = transform;
+
             // add to scene
             if (Engine._scene) {
                 Engine._scene.appendRoot(this);
             }
-            // invoke callbacks
-            Engine._renderContext.onRootEntityCreated(this);
 
-            // activate componet
-            transform._onEntityActivated(true);     // 因为是刚刚创建，所以 activeInHierarchy 肯定为 true
+            if ( Engine._canModifyCurrentScene ) {
+                // invoke callbacks
+                Engine._renderContext.onRootEntityCreated(this);
 
-            if (editorCallback.onEntityCreated) {
-                editorCallback.onEntityCreated(this);
-            }
-            if (editorCallback.onComponentAdded) {
-                editorCallback.onComponentAdded(this, transform);
+                // activate componet
+                transform._onEntityActivated(true);     // 因为是刚刚创建，所以 activeInHierarchy 肯定为 true
+
+                if (editorCallback.onEntityCreated) {
+                    editorCallback.onEntityCreated(this);
+                }
+                if (editorCallback.onComponentAdded) {
+                    editorCallback.onComponentAdded(this, transform);
+                }
             }
         }
     },
@@ -2589,6 +2908,12 @@ var Entity = Fire.Class({
             }
         },
 
+        /**
+         * The local active state of this Entity.
+         * @property active
+         * @type {boolean}
+         * @default true
+         */
         active: {
             get: function () {
                 return this._active;
@@ -2606,12 +2931,23 @@ var Entity = Fire.Class({
             }
         },
 
+        /**
+         * Indicates whether this entity is active in the scene.
+         * @property activeInHierarchy
+         * @type {boolean}
+         */
         activeInHierarchy: {
             get: function () {
                 return this._activeInHierarchy;
             }
         },
 
+        /**
+         * Returns the {% crosslink Fire.Transform Transform %} attached to the entity.
+         * @property transform
+         * @type {Transform}
+         * @readOnly
+         */
         transform: {
             default: null,
             visible: false
@@ -2620,7 +2956,9 @@ var Entity = Fire.Class({
         /**
          * The parent of the entity.
          * Changing the parent will keep the transform's local space position, rotation and scale the same but modify the world space position, scale and rotation.
-         * @property {Fire.Entity} Fire.Entity#parent
+         * @property parent
+         * @type {Entity}
+         * @default null
          */
         parent: {
             get: function () {
@@ -2677,7 +3015,8 @@ var Entity = Fire.Class({
 
         /**
          * Get the amount of children
-         * @property {number} Fire.Entity#childCount
+         * @property childCount
+         * @type {number}
          */
         childCount: {
             get: function () {
@@ -2686,9 +3025,15 @@ var Entity = Fire.Class({
             visible: false
         },
 
+        /**
+         * If true, the entity will not be destroyed automatically when loading a new scene.
+         * @property dontDestroyOnLoad
+         * @type {boolean}
+         * @default false
+         */
         dontDestroyOnLoad: {
             get: function () {
-                return this.dontDestroyOnLoad;
+                return !!(this._objFlags | DontDestroy);
             },
             set: function (value) {
                 if (value) {
@@ -2702,22 +3047,26 @@ var Entity = Fire.Class({
 
         // internal properties
 
-        _active: {
-            default: true,
-            visible: false
-        },
-        _parent: {
-            default: null,
-            visible: false
-        },
-        _children: {
-            default: [],
-            visible: false
-        },
-        _components: {
-            default: null,
-            visible: false
-        }
+        _active: true,
+        _parent: null,
+
+        /**
+         * @property _children
+         * @type {Entity[]}
+         * @default []
+         * @readOnly
+         * @private
+         */
+        _children: [],
+
+        /**
+         * @property _components
+         * @type {Component[]}
+         * @default []
+         * @readOnly
+         * @private
+         */
+        _components: null
     },
 
     ////////////////////////////////////////////////////////////////////
@@ -2766,15 +3115,6 @@ var Entity = Fire.Class({
         }
     },
 
-    /**
-     * Get all the targets listening to the supplied type of event in the target's capturing phase.
-     * The capturing phase comprises the journey from the root to the last node BEFORE the event target's node.
-     * The result should save in the array parameter, and MUST SORT from child nodes to parent nodes.
-     * Subclasses can override this method to make event propagable.
-     *
-     * @param {string} type - the event type
-     * @param {array} array - the array to receive targets
-     */
     _getCapturingTargets: function (type, array) {
         for (var target = this._parent; target; target = target._parent) {
             if (target._activeInHierarchy && target._capturingListeners && target._capturingListeners.has(type)) {
@@ -2783,15 +3123,6 @@ var Entity = Fire.Class({
         }
     },
 
-    /**
-     * Get all the targets listening to the supplied type of event in the target's bubbling phase.
-     * The bubbling phase comprises any SUBSEQUENT nodes encountered on the return trip to the root of the hierarchy.
-     * The result should save in the array parameter, and MUST SORT from child nodes to parent nodes.
-     * Subclasses can override this method to make event propagable.
-     *
-     * @param {string} type - the event type
-     * @param {array} array - the array to receive targets
-     */
     _getBubblingTargets: function (type, array) {
         for (var target = this._parent; target; target = target._parent) {
             if (target._activeInHierarchy && target._bubblingListeners && target._bubblingListeners.has(type)) {
@@ -2800,11 +3131,6 @@ var Entity = Fire.Class({
         }
     },
 
-    /**
-     * Send an event to this object directly, this method will not propagate the event to any other objects.
-     *
-     * @param {Fire.Event} event - The Event object that is sent to this event target.
-     */
     _doSendEvent: function (event) {
         if (this._activeInHierarchy) {
             Entity.$super.prototype._doSendEvent.call(this, event);
@@ -2816,8 +3142,11 @@ var Entity = Fire.Class({
     ////////////////////////////////////////////////////////////////////
 
     /**
-     * @param {function|string} typeOrTypename
-     * @return {Component}
+     * Adds a component class to the entity. You can also add component to entity by passing in the name of the script.
+     *
+     * @method addComponent
+     * @param {function|string} typeOrName - the constructor or the class name of the component to add
+     * @return {Component} - the newly added component
      */
     addComponent: function (typeOrTypename) {
         var constructor;
@@ -2862,7 +3191,10 @@ var Entity = Fire.Class({
     },
 
     /**
-     * @param {function|string} typeOrTypename
+     * Returns the component of supplied type if the entity has one attached, null if it doesn't. You can also get component in the entity by passing in the name of the script.
+     *
+     * @method getComponent
+     * @param {function|string} typeOrName
      * @return {Component}
      */
     getComponent: function (typeOrTypename) {
@@ -2913,6 +3245,15 @@ var Entity = Fire.Class({
     // hierarchy methods
     ////////////////////////////////////////////////////////////////////
 
+    /**
+     * Finds an entity by name in all children of this entity. This function will still returns the entity even if it is inactive.
+     * It is recommended to not use this function every frame instead cache the result at startup.
+     *
+     * @method find
+     * @param {string} path
+     * @return {Entity} - If not found, null will be returned.
+     * @beta
+     */
     find: function (path) {
         if (!path && path !== '') {
             Fire.error('Argument must be non-nil');
@@ -2956,16 +3297,33 @@ var Entity = Fire.Class({
         return match;
     },
 
+    /**
+     * Returns an entity child by index.
+     *
+     * @method getChild
+     * @param {number} index
+     * @return {Entity} - If not found, undefined will be returned.
+     */
     getChild: function (index) {
         return this._children[index];
     },
 
+    /**
+     * Returns a new arrays of all children.
+     *
+     * @method getChildren
+     * @return {Entity[]}
+     */
     getChildren: function () {
         return this._children.slice();
     },
 
     /**
-     * is or is child of
+     * Is this entity a child of the parent?
+     *
+     * @method isChildOf
+     * @param {Entity} parent
+     * @return {boolean} - Returns true if this entity is a child, deep child or identical to the given entity.
      */
     isChildOf: function (parent) {
         var child = this;
@@ -2981,10 +3339,11 @@ var Entity = Fire.Class({
 
     /**
      * Get the sibling index.
+     *
      * NOTE: If this entity does not have parent and not belongs to the current scene,
      *       The return value will be -1
      *
-     * @method Fire.Entity#getSiblingIndex
+     * @method getSiblingIndex
      * @return {number}
      */
     getSiblingIndex: function () {
@@ -2998,9 +3357,10 @@ var Entity = Fire.Class({
 
     /**
      * Get the indexed sibling.
-     * @method Fire.Entity#getSibling
+     *
+     * @method getSibling
      * @param {number} index
-     * @return {Fire.Entity}
+     * @return {Entity} - If not found, undefined will be returned.
      */
     getSibling: function (index) {
         if (this._parent) {
@@ -3012,8 +3372,9 @@ var Entity = Fire.Class({
     },
 
     /**
-     * Set the sibling index.
-     * @method Fire.Entity#setSiblingIndex
+     * Set the sibling index of this entity.
+     *
+     * @method setSiblingIndex
      * @param {number} index
      */
     setSiblingIndex: function (index) {
@@ -3040,7 +3401,8 @@ var Entity = Fire.Class({
 
     /**
      * Move the entity to the top.
-     * @method Fire.Entity#setAsFirstSibling
+     *
+     * @method setAsFirstSibling
      */
     setAsFirstSibling: function () {
         this.setSiblingIndex(0);
@@ -3048,7 +3410,8 @@ var Entity = Fire.Class({
 
     /**
      * Move the entity to the bottom.
-     * @method Fire.Entity#setAsFirstSibling
+     *
+     * @method setAsLastSibling
      */
     setAsLastSibling: function () {
         this.setSiblingIndex(-1);
@@ -3142,11 +3505,13 @@ var Entity = Fire.Class({
 ////////////////////////////////////////////////////////////////////
 
 /**
- * the temp property that indicates the current creating entity should
- * binded with supplied object flags.
- * only used in editor
+ * The temp property that indicates the current creating entity should
+ * binded with supplied object flags. This property only used in editor.
  *
- * @property {number} Entity._defaultFlags
+ * @property _defaultFlags
+ * @type {number}
+ * @default 0
+ * @static
  * @private
  */
 Entity._defaultFlags = 0;
@@ -3155,18 +3520,20 @@ Entity._defaultFlags = 0;
  * Finds an entity by hierarchy path, the path is case-sensitive, and must start with a '/' character.
  * It will traverse the hierarchy by splitting the path using '/' character.
  * It is recommended to not use this function every frame instead cache the result at startup.
- * @method Fire.Entity.find
+ *
+ * @method find
  * @param {string} path
- * @return {Fire.Entity} the entity or null if not found
+ * @return {Entity} the entity or null if not found
+ * @static
  */
 Entity.find = function (path) {
     if (!path && path !== '') {
         Fire.error('Argument must be non-nil');
-        return;
+        return null;
     }
     if (path[0] !== '/') {
         Fire.error("Path must start with a '/' character");
-        return;
+        return null;
     }
     return Engine._scene.findEntity(path);
 };
@@ -3174,11 +3541,7 @@ Entity.find = function (path) {
 Fire.Entity = Entity;
 
 var Scene = (function () {
-    /**
-     * @class Fire.Scene
-     * @extends Fire.Asset
-     * @private
-     */
+
     var Scene = Fire.Class({
         name: "Fire.Scene",
         extends: Asset,
@@ -3186,13 +3549,15 @@ var Scene = (function () {
         properties: {
             /**
              * root entities
-             * @member {Fire.Entity[]} Fire.Scene#entities
+             * @property entities
+             * @type {Entity[]}
              */
             entities: [],
 
             /**
              * the active camera
-             * @member {Fire.Camera} Fire.Scene#camera
+             * @property camera
+             * @type {Camera}
              */
             camera: null
         }
@@ -3228,7 +3593,7 @@ var Scene = (function () {
             c._FUNC_();
         }
         catch (e) {
-            Fire.error(e);
+            Fire._throw(e);
         }
     }
     visitFunctionTmpl = "(function () {" +
@@ -3426,6 +3791,8 @@ Fire._Scene = Scene;
  * - It will NOT:
  *   - cache what has being loaded
  *   - load depends of resource
+ * @class LoadManager
+ * @static
  */
 var LoadManager = (function () {
 
@@ -3481,19 +3848,29 @@ var LoadManager = (function () {
 
         /**
          * Max allowed concurrent request count
-         * @property {number} LoadManager.maxConcurrent
+         * @property maxConcurrent
+         * @type {number}
+         * @default 2
          */
         maxConcurrent: 2,
 
         /**
          * Current concurrent request count
-         * @property {number} LoadManager._curConcurrent
-         * @private
+         * @property _curConcurrent
+         * @type {number}
+         * @readOnly
          */
         _curConcurrent: 0,
 
         /**
-         * NOTE: Request the same url with different loader for same url is not allowed
+         * NOTE: Request the same url with different loader is disallowed
+         * @method loadByLoader
+         * @param {function} loader
+         * @param {string} url
+         * @param {function} callback
+         * @param {string} callback.param error - null or the error info
+         * @param {any} callback.param data - the loaded data
+         * @private
          */
         loadByLoader: function (loader, url, callback) {
             if (urlToCallbacks.add(url, callback)) {
@@ -3512,10 +3889,14 @@ var LoadManager = (function () {
         },
 
         /**
+         * @method load
          * @param {string} url
          * @param {string} rawType
          * @param {string} [rawExtname]
          * @param {function} callback
+         * @param {string} callback.param error - null or the error info
+         * @param {any} callback.param data - the loaded data
+         * @private
          */
         load: function (url, rawType, rawExtname, callback) {
             if (typeof rawExtname === 'function') {
@@ -3540,6 +3921,7 @@ var LoadManager = (function () {
         _rawTypes: getBuiltinRawTypes(),
 
         /**
+         * @method registerRawTypes
          * @param {string} rawType
          * @param {function} loader
          * @param {string} defaultExtname
@@ -3604,8 +3986,12 @@ var LoadManager = (function () {
 
 Fire.LoadManager = LoadManager;
 
-// A asset library which managing loading/unloading assets in project
-
+/**
+ * The asset library which managing loading/unloading assets in project.
+ *
+ * @class AssetLibrary
+ * @static
+ */
 var AssetLibrary = (function () {
 
     // configs
@@ -3655,11 +4041,15 @@ var AssetLibrary = (function () {
     var AssetLibrary = {
 
         /**
+         * @method loadAsset
          * @param {string} uuid
          * @param {function} callback
+         * @param {string} callback.param error - null or the error info
+         * @param {Asset} callback.param data - the loaded asset or null
          * @param {boolean} [readMainCache=true] - If false, the asset and all its depends assets will reload and create new instances from library.
          * @param {boolean} [writeMainCache=true] - If true, the result will cache to AssetLibrary, and MUST be unload by user manually.
-         * @param {Fire.Asset} [existingAsset] - load to existing asset, this argument is only available in editor
+         * @param {Asset} [existingAsset] - load to existing asset, this argument is only available in editor
+         * @private
          */
         loadAsset: function (uuid, callback, readMainCache, writeMainCache, existingAsset) {
             readMainCache = typeof readMainCache !== 'undefined' ? readMainCache : true;
@@ -3672,20 +4062,24 @@ var AssetLibrary = (function () {
         _LoadingHandle: LoadingHandle,
 
         /**
-         * uuid加载流程：
+         * !#zh uuid加载流程：
          * 1. 查找_uuidToAsset，如果已经加载过，直接返回
          * 2. 查找_uuidToCallbacks，如果已经在加载，则注册回调，直接返回
          * 3. 如果没有url，则将uuid直接作为路径
          * 4. 递归加载Asset及其引用到的其它Asset
          *
+         * @method _loadAssetByUuid
          * @param {string} uuid
-         * @param {AssetLibrary~loadCallback} callback - the callback to receive the asset
+         * @param {AssetLibrary~loadCallback} callback - the callback to receive the asset, can be null
          * @param {LoadingHandle} handle - the loading context which reserves all relevant parameters
-         * @param {Fire.Asset} [existingAsset] - load to existing asset, this argument is only available in editor
+         * @param {Asset} [existingAsset] - load to existing asset, this argument is only available in editor
+         * @private
          */
         _loadAssetByUuid: function (uuid, callback, handle, existingAsset) {
             if (typeof uuid !== 'string') {
-                callback('[AssetLibrary] uuid must be string', null);
+                if (callback) {
+                    callback('[AssetLibrary] uuid must be string', null);
+                }
                 return;
             }
             // step 1
@@ -3722,7 +4116,7 @@ var AssetLibrary = (function () {
                         if ( canShareLoadingTask ) {
                             _uuidToCallbacks.invokeAndRemove(uuid, err, asset);
                         }
-                        else {
+                        else if (callback) {
                             callback(err, asset);
                         }
                     }
@@ -3737,9 +4131,13 @@ var AssetLibrary = (function () {
         },
 
         /**
+         * @method loadJson
          * @param {string|object} json
          * @param {function} callback
+         * @param {string} callback.param error - null or the error info
+         * @param {object} callback.param data - the loaded object or null
          * @param {boolean} [dontCache=false] - If false, the result will cache to AssetLibrary, and MUST be unload by user manually.
+         * @private
          */
         loadJson: function (json, callback, dontCache) {
             var handle = new LoadingHandle(!dontCache, !dontCache);
@@ -3747,11 +4145,15 @@ var AssetLibrary = (function () {
         },
 
         /**
+         * @method _deserializeWithDepends
          * @param {string|object} json
          * @param {string} url
          * @param {function} callback
+         * @param {string} callback.param error - null or the error info
+         * @param {object} callback.param data - the loaded object or null
          * @param {object} handle - the loading context which reserves all relevant parameters
-         * @param {Fire.Asset} [existingAsset] - existing asset to reload
+         * @param {Asset} [existingAsset] - existing asset to reload
+         * @private
          */
         _deserializeWithDepends: function (json, url, callback, handle, existingAsset) {
             // deserialize asset
@@ -3870,8 +4272,10 @@ var AssetLibrary = (function () {
         /**
          * Get the exists asset by uuid.
          *
+         * @method getAssetByUuid
          * @param {string} uuid
-         * @return {Fire.Asset} - the existing asset, if not loaded, just returns null.
+         * @return {Asset} - the existing asset, if not loaded, just returns null.
+         * @private
          */
         getAssetByUuid: function (uuid) {
             return AssetLibrary._uuidToAsset[uuid] || null;
@@ -3879,20 +4283,22 @@ var AssetLibrary = (function () {
 
         /**
          * @callback AssetLibrary~loadCallback
-         * @param {Fire.Asset} asset - if failed, asset will be null
+         * @param {Asset} asset - if failed, asset will be null
          * @param {string} [error] - error info, if succeed, error will be empty or nil
          */
 
         /**
-         * Kill references to the asset so it can be garbage collected.
+         * !#en Kill references to the asset so it can be garbage collected.
          * Fireball will reload the asset from disk or remote if loadAssetByUuid being called again.
-         * This function will be called if the Asset was destroyed.
-         * 如果还有地方引用到asset，除非destroyAsset为true，否则不应该执行这个方法，因为那样可能会导致 asset 被多次创建。
+         * You rarely use this function in scripts, since it will be called automatically when the Asset is destroyed.
+         * !#zh 手动卸载指定的资源，这个方法会在 Asset 被 destroy 时自动调用，一般不需要用到这个方法。卸载以后，Fireball 可以重新从硬盘或网络加载这个资源。
          *
-         * @method Fire.AssetLibrary.unloadAsset
-         * @param {Fire.Asset|string} assetOrUuid
-         * @param {boolean} [destroyImmediate=false] - When destroyAsset is true, if there are objects
-         *                                         referencing the asset, the references will become invalid.
+         * 如果还有地方引用到asset，除非 destroyImmediated 为true，否则不应该执行这个方法，因为那样可能会导致 asset 被多次创建。
+         *
+         * @method unloadAsset
+         * @param {Asset|string} assetOrUuid
+         * @param {boolean} [destroyImmediate=false] When destroyImmediate is true, if there are objects
+         *                                           referencing the asset, the references will become invalid.
          */
         unloadAsset: function (assetOrUuid, destroyImmediate) {
             var asset;
@@ -3914,10 +4320,8 @@ var AssetLibrary = (function () {
 
         /**
          * init the asset library
-         * @method Fire.AssetLibrary.init
-         * @param {string} baseUrl
-         * @param {object} [uuidToUrl]
-         * @private
+         * @method init
+         * @param {string} libraryPath
          */
         init: function (libraryPath) {
             if (_libraryBase && !Fire.isUnitTest) {
@@ -3938,13 +4342,19 @@ var AssetLibrary = (function () {
     // unload asset if it is destoryed
 
     /**
-     * uuid to all loaded assets
+     * !#en Caches uuid to all loaded assets in scenes.
      *
-     * 这里保存所有已经加载的资源，防止同一个资源在内存中加载出多份拷贝。
-     * 由于弱引用尚未标准化，在浏览器中所有加载过的资源都只能手工调用 unloadAsset 释放。
+     * !#zh 这里保存所有已经加载的场景资源，防止同一个资源在内存中加载出多份拷贝。
+     *
+     * 这里用不了WeakMap，在浏览器中所有加载过的资源都只能手工调用 unloadAsset 释放。
+     *
      * 参考：
      * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
      * https://github.com/TooTallNate/node-weak
+     *
+     * @property _uuidToAsset
+     * @type {object}
+     * @private
      */
     AssetLibrary._uuidToAsset = {};
 
@@ -4045,16 +4455,42 @@ Fire.EventRegister = EventRegister;
 
 var Input = (function () {
 
+    /**
+     * Interface into the Input system.
+     * @class Input
+     * @static
+     * @beta
+     */
     var Input = {
         _eventListeners: new EventListeners()
     };
 
+    /**
+     * Returns whether the current device supports touch input
+     */
     Object.defineProperty(Input, 'hasTouch', {
         get: function () {
             return !!Engine._inputContext && Engine._inputContext.hasTouch;
         }
     });
 
+    /**
+     * !#en Register an callback of a specific input event type.
+     *
+     * For all supported event and type, please see [Input Events](/en/scripting/input-events)
+     *
+     * !#zh 注册输入事件的回调方法。
+     *
+     * 请参考：
+     * - [获取用户输入](/zh/scripting/input)
+     * - [输入事件列表](/zh/scripting/input-events)
+     *
+     * @method on
+     * @param {string} type - eg. "keydown", "click"
+     * @param {function} callback
+     * @param {Event} callback.param event - the input event
+     * @beta
+     */
     Input.on = function (type, callback) {
         if (callback) {
             this._eventListeners.add(type, callback);
@@ -4064,6 +4500,13 @@ var Input = (function () {
         }
     };
 
+    /**
+     * Removes the callback previously registered with the same type and callback.
+     * @method off
+     * @param {string} type
+     * @param {function} callback
+     * @beta
+     */
     Input.off = function (type, callback) {
         if (callback) {
             if (! this._eventListeners.remove(type, callback)) {

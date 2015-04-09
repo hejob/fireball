@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Fire.Scene - Fireball Game API</title>
+    <title>Engine - Fireball Engine API</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -14,8 +14,9 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
-                    <p class="description">Fireball Game API: your toolbox</p>
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
             </div>
             <ul class="jump-links">
                 <li><a href="#index" class="index-jump-link">index</a></li>
@@ -39,28 +40,66 @@
             
                     <div id="api-tabview-panel">
                         <ul id="api-classes" class="apis classes">
-                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
                             <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
                             <li><a class="type" href="../classes/Color.html">Color</a></li>
                             <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
                             <li><a class="type" href="../classes/Fire.html">Fire</a></li>
-                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
-                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
                             <li><a class="type" href="../classes/FObject.html">FObject</a></li>
                             <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
                             <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
                             <li><a class="type" href="../classes/Math.html">Math</a></li>
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
                             <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
-                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
                         </ul>
                     </div>
                 </div>
@@ -69,15 +108,12 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>Fire.Scene Class</h1>
+                <h1>Engine Class</h1>
                 <div class="box meta">
                 
-                        <div class="extends">
-                            Extends Fire.Asset
-                        </div>
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l8709"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:8709</code></a>
+                            Defined in: <a href="../files/utils_api_engine_engine.js.html#l8"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:8</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -86,7 +122,8 @@
                 
                 
                 <div class="box intro">
-                    
+                    <p>!#zh 这个模块提供引擎的一些全局接口和状态状态</p>
+                
                 </div>
                 
                 <!-- Class member index -->
@@ -122,37 +159,45 @@
                     <div class="index-section properties">
                         <h3>Properties</h3>
                 
-                        <ul class="index-list properties extends">
-                                <li class="index-item property">
-                                    <a href="#property_button - indicates which button was pressed on the mouse to trigger the event.!~YUIDOC_LINE~!                            (0: Left button, 1: Wheel button or middle button (if present), 2: Right button)">button - indicates which button was pressed on the mouse to trigger the event.!~YUIDOC_LINE~!                            (0: Left button, 1: Wheel button or middle button (if present), 2: Right button)</a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_buttonStates - indicates which buttons were pressed on the mouse to trigger the event">buttonStates - indicates which buttons were pressed on the mouse to trigger the event</a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_deltaX - The X coordinate of the mouse pointer relative to the position of the last mousemove event.">deltaX - The X coordinate of the mouse pointer relative to the position of the last mousemove event.</a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_deltaY - The Y coordinate of the mouse pointer relative to the position of the last mousemove event.">deltaY - The Y coordinate of the mouse pointer relative to the position of the last mousemove event.</a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_Engine._scene - the active scene">Engine._scene - the active scene</a>
+                        <ul class="index-list properties">
+                                <li class="index-item property private">
+                                    <a href="#property__canModifyCurrentScene">_canModifyCurrentScene</a>
                 
                                 </li>
                                 <li class="index-item property private">
-                                    <a href="#property_LoadManager._curConcurrent">LoadManager._curConcurrent</a>
+                                    <a href="#property__curRenderContext">_curRenderContext</a>
+                
+                                </li>
+                                <li class="index-item property private">
+                                    <a href="#property__inputContext">_inputContext</a>
+                
+                                </li>
+                                <li class="index-item property private">
+                                    <a href="#property__interactionContext">_interactionContext</a>
+                
+                                </li>
+                                <li class="index-item property private">
+                                    <a href="#property__renderContext">_renderContext</a>
+                
+                                </li>
+                                <li class="index-item property private">
+                                    <a href="#property__scene">_scene</a>
                 
                                 </li>
                                 <li class="index-item property">
-                                    <a href="#property_LoadManager.maxConcurrent">LoadManager.maxConcurrent</a>
+                                    <a href="#property_inited">inited</a>
                 
                                 </li>
                                 <li class="index-item property">
-                                    <a href="#property_relatedTarget - The secondary target for the event, if there is one.">relatedTarget - The secondary target for the event, if there is one.</a>
+                                    <a href="#property_isLoadingScene">isLoadingScene</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_isPaused">isPaused</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_isPlaying">isPlaying</a>
                 
                                 </li>
                         </ul>
@@ -163,39 +208,47 @@
                     <div class="index-section methods">
                         <h3>Methods</h3>
                 
-                        <ul class="index-list methods extends">
+                        <ul class="index-list methods">
                 
                 
                                 <li class="index-item method private">
-                                    <a href="#method_Fire.AssetLibrary.init">Fire.AssetLibrary.init</a>
-                
-                                </li>
-                                <li class="index-item method">
-                                    <a href="#method_Fire.AssetLibrary.unloadAsset">Fire.AssetLibrary.unloadAsset</a>
+                                    <a href="#method__launchScene">_launchScene</a>
                 
                                 </li>
                                 <li class="index-item method private">
-                                    <a href="#method_Fire.Engine._setCurrentScene">Fire.Engine._setCurrentScene</a>
+                                    <a href="#method__loadSceneByUuid">_loadSceneByUuid</a>
                 
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_Fire.Engine.loadScene">Fire.Engine.loadScene</a>
+                                    <a href="#method_init">init</a>
                 
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_Fire.Engine.loadScene">Fire.Engine.loadScene</a>
+                                    <a href="#method_loadScene">loadScene</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_pause">pause</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_play">play</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_preloadScene">preloadScene</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_step">step</a>
+                
+                                </li>
+                                <li class="index-item method">
+                                    <a href="#method_stop">stop</a>
                 
                                 </li>
                                 <li class="index-item method private">
-                                    <a href="#method_Fire.Engine.update">Fire.Engine.update</a>
-                
-                                </li>
-                                <li class="index-item method">
-                                    <a href="#method_Fire.Scene#camera">Fire.Scene#camera</a>
-                
-                                </li>
-                                <li class="index-item method">
-                                    <a href="#method_Fire.Scene#entities">Fire.Scene#entities</a>
+                                    <a href="#method_update">update</a>
                 
                                 </li>
                         </ul>
@@ -209,161 +262,10 @@
                     <div class="properties-detail">
                         <h2>Properties</h2>
                 
-                            <a name="property_button - indicates which button was pressed on the mouse to trigger the event.!~YUIDOC_LINE~!                            (0: Left button, 1: Wheel button or middle button (if present), 2: Right button)" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code>button - indicates which button was pressed on the mouse to trigger the event.!~YUIDOC_LINE~!                            (0: Left button, 1: Wheel button or middle button (if present), 2: Right button)</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9814"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9814</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_buttonStates - indicates which buttons were pressed on the mouse to trigger the event" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code>buttonStates - indicates which buttons were pressed on the mouse to trigger the event</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9820"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9820</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_deltaX - The X coordinate of the mouse pointer relative to the position of the last mousemove event." class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code>deltaX - The X coordinate of the mouse pointer relative to the position of the last mousemove event.</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9829"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9829</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_deltaY - The Y coordinate of the mouse pointer relative to the position of the last mousemove event." class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code>deltaY - The Y coordinate of the mouse pointer relative to the position of the last mousemove event.</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9834"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9834</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_Engine._scene - the active scene" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code>Engine._scene - the active scene</code>
-                                <span class="type">Scene</span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9437"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9437</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>当前激活的场景，如果为空，一般是因为正在加载场景或Entity(例如执行Fire.deserialize)。
-                            这样是为了防止加载中的东西不小心影响到当前场景。一般代码不用关心这个问题，但大部分构造函数里执行的代码，
-                            如果涉及到场景物件的操作，都要注意这点。
-                            也就是说构造函数调用到的代码如果要操作 Engine._scene，必须判断非空，如果操作不直接针对 Engine._scene，
-                            也判断 Engine._canModifyCurrentScene。
-                            另外，如果存在辅助场景，当在辅助场景内创建物件时，Engine._scene会被临时修改为辅助场景。</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_LoadManager._curConcurrent" class="anchor-link"></a>
+                            <a name="property__canModifyCurrentScene" class="anchor-link"></a>
                             <div class="property item private">
-                                <h3 class="name"><code>LoadManager._curConcurrent</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                <h3 class="name"><code>_canModifyCurrentScene</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             
                             
                                     <span class="flag private">private</span>
@@ -375,7 +277,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9003"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9003</code></a>
+                                    <a href="../files/utils_api_engine_engine.js.html#l119"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:119</code></a>
                                     </p>
                             
                             
@@ -383,7 +285,9 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        <p>Current concurrent request count</p>
+                                        <p>!#en You should check whether you can modify the scene in constructors which may called by the engine while deserializing.
+                            !#zh 这个属性用来判断场景物体的构造函数执行时是否可以把物体加到场景里。
+                            这个属性和 Fire._isCloning 很类似。但这里关注的是场景是否能修改，而 Fire._isCloning 强调的是持有的对象是否需要重新创建。</p>
                             
                                     </div>
                             
@@ -391,10 +295,172 @@
                             
                                 </div>
                             </div>
-                            <a name="property_LoadManager.maxConcurrent" class="anchor-link"></a>
+                            <a name="property__curRenderContext" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_curRenderContext</code>
+                                <span class="type">RenderContext</span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l65"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:65</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>the render context currently rendering</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__inputContext" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_inputContext</code>
+                                <span class="type">InputContext</span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l73"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:73</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>The InputContext attached to game or game view.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__interactionContext" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_interactionContext</code>
+                                <span class="type">InteractionContext</span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l57"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:57</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>The InteractionContext attached to game or game view.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__renderContext" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_renderContext</code>
+                                <span class="type">RenderContext</span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l49"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:49</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>The RenderContext attached to game or game view.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__scene" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_scene</code>
+                                <span class="type">Scene</span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l29"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:29</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>!#en the active scene
+                            !#zh 当前激活的场景。</p>
+                            <p>如果为空，一般是因为正在加载场景或Entity(例如执行Fire.deserialize)。
+                            这样是为了防止加载中的东西不小心影响到当前场景。一般代码不用关心这个问题，但大部分构造函数里执行的代码，
+                            如果涉及到场景物件的操作，都要注意这点。
+                            也就是说构造函数调用到的代码如果要操作 Engine._scene，必须判断非空，如果操作不直接针对 Engine._scene，
+                            也可以判断 Engine._canModifyCurrentScene。
+                            另外，如果存在辅助场景，当在辅助场景内创建物件时，Engine._scene会被临时修改为辅助场景。</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_inited" class="anchor-link"></a>
                             <div class="property item">
-                                <h3 class="name"><code>LoadManager.maxConcurrent</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                <h3 class="name"><code>inited</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             
                             
                             
@@ -405,37 +471,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l8997"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:8997</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>Max allowed concurrent request count</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_relatedTarget - The secondary target for the event, if there is one." class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code>relatedTarget - The secondary target for the event, if there is one.</code>
-                                <span class="type">Fire.EventTarget</span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9839"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9839</code></a>
+                                    <a href="../files/utils_api_engine_engine.js.html#l149"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:149</code></a>
                                     </p>
                             
                             
@@ -444,6 +480,96 @@
                                 <div class="extended-detail">
                                     <div class="description">
                                         
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_isLoadingScene" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>isLoadingScene</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l105"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:105</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>is loading scene?</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_isPaused" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>isPaused</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l93"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:93</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>is editor currently paused?</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_isPlaying" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>isPlaying</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l81"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:81</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>is in player or playing in editor?</p>
+                            
                                     </div>
                             
                             
@@ -462,161 +588,9 @@
                     <div class="methods-detail">
                         <h2>Methods</h2>
                 
-                            <a name="method_Fire.AssetLibrary.init" class="anchor-link"></a>
+                            <a name="method__launchScene" class="anchor-link"></a>
                             <div class="method item private">
-                                <h3 class="name"><code>Fire.AssetLibrary.init</code>
-                            
-                                    <div class="args">
-                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                            <li class="arg">
-                                                    <code>baseUrl</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code class="optional">[uuidToUrl]</code>
-                                            </li>
-                                        </ul><span class="paren">)</span>
-                                    </div>
-                            
-                            
-                            
-                                    <span class="flag private">private</span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9376"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9376</code></a>
-                                    </p>
-                            
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                            
-                                    <div class="description">
-                                        <p>init the asset library</p>
-                            
-                                    </div>
-                            
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name">baseUrl</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[uuidToUrl]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="method_Fire.AssetLibrary.unloadAsset" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>Fire.AssetLibrary.unloadAsset</code>
-                            
-                                    <div class="args">
-                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                            <li class="arg">
-                                                    <code>assetOrUuid</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code class="optional">[destroyImmediate=false]</code>
-                                            </li>
-                                        </ul><span class="paren">)</span>
-                                    </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9347"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9347</code></a>
-                                    </p>
-                            
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                            
-                                    <div class="description">
-                                        <p>Kill references to the asset so it can be garbage collected.
-                            Fireball will reload the asset from disk or remote if loadAssetByUuid being called again.
-                            This function will be called if the Asset was destroyed.
-                            如果还有地方引用到asset，除非destroyAsset为true，否则不应该执行这个方法，因为那样可能会导致 asset 被多次创建。</p>
-                            
-                                    </div>
-                            
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name">assetOrUuid</code>
-                                                        <span class="type">Fire.Asset | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[destroyImmediate=false]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                        <ul>
-                            <li>When destroyAsset is true, if there are objects<pre><code>                                  referencing the asset, the references will become invalid.
-                            </code></pre></li>
-                            </ul>
-                            
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="method_Fire.Engine._setCurrentScene" class="anchor-link"></a>
-                            <div class="method item private">
-                                <h3 class="name"><code>Fire.Engine._setCurrentScene</code>
+                                <h3 class="name"><code>_launchScene</code>
                             
                                     <div class="args">
                                         <span class="paren">(</span><ul class="args-list inline commas">
@@ -642,7 +616,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9646"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9646</code></a>
+                                    <a href="../files/utils_api_engine_engine.js.html#l334"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:334</code></a>
                                     </p>
                             
                             
@@ -652,7 +626,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Set current scene directly</p>
+                                        <p>Launch loaded scene.</p>
                             
                                     </div>
                             
@@ -687,101 +661,9 @@
                             
                                 </div>
                             </div>
-                            <a name="method_Fire.Engine.loadScene" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>Fire.Engine.loadScene</code>
-                            
-                                    <div class="args">
-                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                            <li class="arg">
-                                                    <code>sceneName</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code class="optional">[onLaunched]</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code class="optional">[onUnloaded]</code>
-                                            </li>
-                                        </ul><span class="paren">)</span>
-                                    </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9686"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9686</code></a>
-                                    </p>
-                            
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                            
-                                    <div class="description">
-                                        <p>Loads the scene by its name.</p>
-                            
-                                    </div>
-                            
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name">sceneName</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                        <ul>
-                            <li>the name of the scene to load</li>
-                            </ul>
-                            
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[onLaunched]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[onUnloaded]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                        <ul>
-                            <li>will be called when the previous scene was unloaded</li>
-                            </ul>
-                            
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="method_Fire.Engine.loadScene" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>Fire.Engine.loadScene</code>
+                            <a name="method__loadSceneByUuid" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>_loadSceneByUuid</code>
                             
                                     <div class="args">
                                         <span class="paren">(</span><ul class="args-list inline commas">
@@ -799,6 +681,7 @@
                             
                             
                             
+                                    <span class="flag private">private</span>
                             
                             
                             
@@ -809,7 +692,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9703"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9703</code></a>
+                                    <a href="../files/utils_api_engine_engine.js.html#l417"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:417</code></a>
                                     </p>
                             
                             
@@ -819,7 +702,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Load scene</p>
+                                        <p>Loads the scene by its uuid.</p>
                             
                                     </div>
                             
@@ -858,10 +741,7 @@
                             
                             
                                                     <div class="param-description">
-                                                        <ul>
-                            <li>will be called when the previous scene was unloaded</li>
-                            </ul>
-                            
+                                                         
                                                     </div>
                             
                                                 </li>
@@ -871,17 +751,474 @@
                             
                                 </div>
                             </div>
-                            <a name="method_Fire.Engine.update" class="anchor-link"></a>
-                            <div class="method item private">
-                                <h3 class="name"><code>Fire.Engine.update</code>
+                            <a name="method_init" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>init</code>
                             
                                     <div class="args">
                                         <span class="paren">(</span><ul class="args-list inline commas">
                                             <li class="arg">
-                                                    <code class="optional">[unused]</code>
+                                                    <code class="optional">[width]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[height]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[canvas]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[options]</code>
                                             </li>
                                         </ul><span class="paren">)</span>
                                     </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type">RenderContext</span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l165"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:165</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Initialize the engine. This method will be called by boot.js or editor.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name optional">[width]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[height]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[canvas]</code>
+                                                        <span class="type">Canvas</span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[options]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                         
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type">RenderContext</span>:
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_loadScene" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>loadScene</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>sceneName</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[onLaunched]</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[onUnloaded]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l392"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:392</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Loads the scene by its name.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">sceneName</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the name of the scene to load</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[onLaunched]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>callback, will be called after scene launched</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[onUnloaded]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>callback, will be called when the previous scene was unloaded</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                                                    <p>if error, return false</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_pause" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>pause</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l263"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:263</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Pause the engine loop.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_play" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>play</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l203"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:203</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Start the engine loop. This method will be called by boot.js or editor.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_preloadScene" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>preloadScene</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>sceneName</code>
+                                            </li>
+                                            <li class="arg">
+                                                    <code class="optional">[onLoaded]</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l451"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:451</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Preloads the scene to reduces loading time. You can call this method at any time you want.</p>
+                            <p>After calling this method, you still need to launch the scene by <code>Engine.loadScene</code> because the loading logic will not changed. It will be totally fine to call <code>Engine.loadScene</code> at any time even if the preloading is not yet finished, the scene will be launched after loaded automatically.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">sceneName</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>the name of the scene to preload</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                </li>
+                                                <li class="param">
+                                                        <code class="param-name optional">[onLoaded]</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        <ul>
+                            <li>callback, will be called after the scene loaded</li>
+                            </ul>
+                            
+                                                    </div>
+                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                                                                <div class="param-description">
+                                                                    <p>error - null or the error info</p>
+                            
+                                                                </div>
+                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type"><a href="../classes/Asset.html" class="crosslink">Asset</a></span>
+                            
+                                                                <div class="param-description">
+                                                                    <p>data - the loaded scene or null</p>
+                            
+                                                                </div>
+                            
+                                                            </li>
+                                                        </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_step" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>step</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l276"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:276</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Perform a single frame step.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_stop" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>stop</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_engine.js.html#l235"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:235</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Stop the engine loop.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="method_update" class="anchor-link"></a>
+                            <div class="method item private">
+                                <h3 class="name"><code>update</code>
+                            
+                                    <span class="paren">()</span>
                             
                             
                             
@@ -896,7 +1233,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l9619"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:9619</code></a>
+                                    <a href="../files/utils_api_engine_engine.js.html#l306"><code>utils&#x2F;api&#x2F;engine&#x2F;engine.js:306</code></a>
                                     </p>
                             
                             
@@ -907,98 +1244,6 @@
                             
                                     <div class="description">
                                         
-                                    </div>
-                            
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name optional">[unused]</code>
-                                                        <span class="type">Float</span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                        <ul>
-                            <li>not used parameter, can omit</li>
-                            </ul>
-                            
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="method_Fire.Scene#camera" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>Fire.Scene#camera</code>
-                            
-                                    <span class="paren">()</span>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l8725"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:8725</code></a>
-                                    </p>
-                            
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                            
-                                    <div class="description">
-                                        <p>the active camera</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="method_Fire.Scene#entities" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>Fire.Scene#entities</code>
-                            
-                                    <span class="paren">()</span>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l8719"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:8719</code></a>
-                                    </p>
-                            
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                            
-                                    <div class="description">
-                                        <p>root entities</p>
-                            
                                     </div>
                             
                             

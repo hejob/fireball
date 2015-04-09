@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/pixi-bitmap-font-util.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/pixi-bitmap-font-util.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                PIXI.BitmapText.prototype.updateTransform = function () {
+                };
+                
+                Fire.BitmapFont.prototype._onPreDestroy = function () {
+                    if (this._uuid) {
+                        PIXI.BitmapText.fonts[this._uuid] = null;
+                    }
+                };
+                
+                var PixiBitmapFontUtil = {};
+                
+                var defaultFace = &quot;None&quot;;
+                
+                function _getStyle (target) {
+                    if (target.bitmapFont &amp;&amp; target.bitmapFont._uuid) {
+                        return {
+                            font : target.bitmapFont.size + &quot; &quot; + target.bitmapFont._uuid,
+                            align: BitmapText.TextAlign[target.align].toLowerCase(),
+                        };
+                    }
+                    else {
+                        return {
+                            font : 1 + &quot; &quot; + defaultFace,
+                            align: &quot;left&quot;,
+                        };
+                    }
+                }
+                
+                function _setStyle (target) {
+                    var style = _getStyle(target);
+                    if (target._renderObj) {
+                        target._renderObj.setStyle(style);
+                    }
+                    if (target._renderObjInScene) {
+                        target._renderObjInScene.setStyle(style);
+                    }
+                }
+                
+                function _getNewMatrix23 (child, tempMatrix) {
+                    var mat = new Fire.Matrix23();
+                    mat.a = child.scale.x;
+                    mat.b = 0;
+                    mat.c = 0;
+                    mat.d = child.scale.y;
+                    mat.tx = child.position.x;
+                    mat.ty = -child.position.y;
+                
+                    mat.prepend(tempMatrix);
+                
+                    mat.b = -mat.b;
+                    mat.c = -mat.c;
+                    mat.ty = Fire.Engine._curRenderContext.renderer.height - mat.ty;
+                    return mat;
+                }
+                var tempData = {
+                    face      : defaultFace,
+                    size      : 1,
+                    chars     : {},
+                    lineHeight: 1
+                };
+                
+                function _registerFont (bitmapFont) {
+                
+                    //var registered = _hasPixiBitmapFont(bitmapFont);
+                    //if (registered) {
+                    //    return;
+                    //}
+                
+                    var data = {};
+                    if (bitmapFont &amp;&amp; bitmapFont._uuid) {
+                        data.face = bitmapFont._uuid;
+                        data.size = bitmapFont.size;
+                        data.lineHeight = bitmapFont.lineHeight;
+                        data.chars = {};
+                
+                        if (bitmapFont.texture) {
+                            var img = new PIXI.BaseTexture(bitmapFont.texture.image);
+                
+                            var charInfos = bitmapFont.charInfos, len = charInfos.length;
+                            for (var i = 0; i &lt; len; i++) {
+                                var charInfo = charInfos[i];
+                                var id = charInfo.id;
+                                var textureRect = new PIXI.Rectangle(
+                                    charInfo.x,
+                                    charInfo.y,
+                                    charInfo.width,
+                                    charInfo.height
+                                );
+                
+                                if ((textureRect.x + textureRect.width) &gt; img.width || (textureRect.y + textureRect.height) &gt; img.height) {
+                                    Fire.error(&#x27;Character in %s does not fit inside the dimensions of texture %s&#x27;, bitmapFont.name, bitmapFont.texture.name);
+                                    break;
+                                }
+                
+                                var texture = new PIXI.Texture(img, textureRect);
+                
+                                data.chars[id] = {
+                                    xOffset : charInfo.xOffset,
+                                    yOffset : charInfo.yOffset,
+                                    xAdvance: charInfo.xAdvance,
+                                    kerning : {},
+                                    texture : texture
+                                };
+                            }
+                        }
+                        else {
+                            Fire.error(&#x27;Invalid texture of bitmapFont: %s&#x27;, bitmapFont.name);
+                        }
+                
+                        var kernings = bitmapFont.kernings;
+                        for (var j = 0; j &lt; kernings.length; j++) {
+                            var kerning = kernings[j];
+                            var first = kerning.first;
+                            var second = kerning.second;
+                            var amount = kerning.amount;
+                            data.chars[second].kerning[first] = amount;
+                        }
+                    }
+                    else {
+                        data = tempData;
+                    }
+                    PIXI.BitmapText.fonts[data.face] = data;
+                }
+                
+                var _hasPixiBitmapFont = function (bitmapFont) {
+                    if (bitmapFont) {
+                        return PIXI.BitmapText.fonts[bitmapFont._uuid];
+                    }
+                    return null;
+                };
+                
+                RenderContext.prototype.getTextSize = function (target) {
+                    var inGame = !(target.entity._objFlags &amp; HideInGame);
+                    var w = 0, h = 0;
+                    if (inGame &amp;&amp; target._renderObj) {
+                        if (target._renderObj.dirty) {
+                            target._renderObj.updateText();
+                            target._renderObj.dirty = false;
+                        }
+                
+                        w = target._renderObj.textWidth;
+                        h = target._renderObj.textHeight;
+                    }
+                    else if (target._renderObjInScene) {
+                        if (target._renderObjInScene.dirty) {
+                            target._renderObjInScene.updateText();
+                            target._renderObjInScene.dirty = false;
+                        }
+                
+                        w = target._renderObjInScene.textWidth;
+                        h = target._renderObjInScene.textHeight;
+                    }
+                    return new Vec2(w, h);
+                };
+                
+                RenderContext.prototype.setText = function (target, newText) {
+                    if (target._renderObj) {
+                        target._renderObj.setText(newText);
+                    }
+                    if (this.sceneView &amp;&amp; target._renderObjInScene) {
+                        target._renderObjInScene.setText(newText);
+                    }
+                };
+                
+                RenderContext.prototype.setAlign = function (target) {
+                    _setStyle(target);
+                };
+                
+                RenderContext.prototype.updateBitmapFont = function (target) {
+                    _registerFont(target.bitmapFont);
+                    _setStyle(target);
+                };
+                
+                RenderContext.prototype.addBitmapText = function (target) {
+                    _registerFont(target.bitmapFont);
+                
+                    var style = _getStyle(target);
+                
+                    var inGame = !(target.entity._objFlags &amp; HideInGame);
+                    if (inGame) {
+                        target._renderObj = new PIXI.BitmapText(target.text, style);
+                        target.entity._pixiObj.addChildAt(target._renderObj, 0);
+                    }
+                    if (this.sceneView) {
+                        target._renderObjInScene = new PIXI.BitmapText(target.text, style);
+                        target.entity._pixiObjInScene.addChildAt(target._renderObjInScene, 0);
+                    }
+                };
+                
+                PixiBitmapFontUtil.updateTransform = function (target, tempMatrix) {
+                    var i = 0, childrens = null, len = 0, child = null;
+                    var isGameView = Engine._curRenderContext === Engine._renderContext;
+                    if (isGameView &amp;&amp; target._renderObj) {
+                        if (target._renderObj.dirty) {
+                            target._renderObj.updateText();
+                            target._renderObj.dirty = false;
+                        }
+                        childrens = target._renderObj.children;
+                        for (len = childrens.length; i &lt; len; i++) {
+                            child = childrens[i];
+                            child.worldTransform = _getNewMatrix23(child, tempMatrix);
+                        }
+                    }
+                    else if (target._renderObjInScene) {
+                        if (target._renderObjInScene.dirty) {
+                            target._renderObjInScene.updateText();
+                            target._renderObjInScene.dirty = false;
+                        }
+                        childrens = target._renderObjInScene.children;
+                        for (i = 0, len = childrens.length; i &lt; len; i++) {
+                            child = childrens[i];
+                            child.worldTransform = _getNewMatrix23(child, tempMatrix);
+                        }
+                    }
+                };
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

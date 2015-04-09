@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Component - Fireball Game API</title>
+    <title>Component - Fireball Engine API</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -14,8 +14,9 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
-                    <p class="description">Fireball Game API: your toolbox</p>
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
             </div>
             <ul class="jump-links">
                 <li><a href="#index" class="index-jump-link">index</a></li>
@@ -39,28 +40,66 @@
             
                     <div id="api-tabview-panel">
                         <ul id="api-classes" class="apis classes">
-                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
                             <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
                             <li><a class="type" href="../classes/Color.html">Color</a></li>
                             <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
                             <li><a class="type" href="../classes/Fire.html">Fire</a></li>
-                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
-                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
                             <li><a class="type" href="../classes/FObject.html">FObject</a></li>
                             <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
                             <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
                             <li><a class="type" href="../classes/Math.html">Math</a></li>
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
                             <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
-                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,9 +111,12 @@
                 <h1>Component Class</h1>
                 <div class="box meta">
                 
+                        <div class="extends">
+                            Extends <a href="../classes/HashObject.html" class="crosslink">HashObject</a>
+                        </div>
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6424"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6424</code></a>
+                            Defined in: <a href="../files/utils_api_engine_component.js.html#l27"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:27</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -83,9 +125,9 @@
                 
                 
                 <div class="box intro">
-                    <p>Base class for everything attached to Entity
-                 NOTE: Not allowed to use construction parameters for Component&#39;s subclasses,
-                       because Component is created by the engine.</p>
+                    <p>Base class for everything attached to Entity.</p>
+                <p>NOTE: Not allowed to use construction parameters for Component&#39;s subclasses,
+                        because Component is created by the engine.</p>
                 
                 </div>
                 
@@ -122,13 +164,53 @@
                     <div class="index-section properties">
                         <h3>Properties</h3>
                 
-                        <ul class="index-list properties">
+                        <ul class="index-list properties extends">
+                                <li class="index-item property private">
+                                    <a href="#property__enabled">_enabled</a>
+                
+                                </li>
+                                <li class="index-item property private inherited">
+                                    <a href="#property__hashCode">_hashCode</a>
+                
+                                </li>
+                                <li class="index-item property private inherited">
+                                    <a href="#property__id">_id</a>
+                
+                                </li>
+                                <li class="index-item property private inherited">
+                                    <a href="#property__name">_name</a>
+                
+                                </li>
+                                <li class="index-item property private inherited">
+                                    <a href="#property__objFlags">_objFlags</a>
+                
+                                </li>
                                 <li class="index-item property">
                                     <a href="#property_enabled">enabled</a>
                 
                                 </li>
                                 <li class="index-item property">
                                     <a href="#property_enabledInHierarchy">enabledInHierarchy</a>
+                
+                                </li>
+                                <li class="index-item property">
+                                    <a href="#property_entity">entity</a>
+                
+                                </li>
+                                <li class="index-item property inherited">
+                                    <a href="#property_hashCode">hashCode</a>
+                
+                                </li>
+                                <li class="index-item property inherited">
+                                    <a href="#property_id">id</a>
+                
+                                </li>
+                                <li class="index-item property inherited">
+                                    <a href="#property_isValid">isValid</a>
+                
+                                </li>
+                                <li class="index-item property inherited">
+                                    <a href="#property_name">name</a>
                 
                                 </li>
                                 <li class="index-item property">
@@ -143,22 +225,34 @@
                     <div class="index-section methods">
                         <h3>Methods</h3>
                 
-                        <ul class="index-list methods">
+                        <ul class="index-list methods extends">
                 
+                                <li class="index-item method constructor">
+                                    <a href="#method_Component">Component</a>
                 
-                                <li class="index-item method">
-                                    <a href="#method__invokeStarts">_invokeStarts</a>
+                                    <span class="flag constructor">constructor</span>
+                
+                                </li>
+                
+                                <li class="index-item method private inherited">
+                                    <a href="#method__destruct">_destruct</a>
+                
+                                </li>
+                                <li class="index-item method private inherited">
+                                    <a href="#method__onPreDestroy">_onPreDestroy</a>
                 
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_addComponentMenu">addComponentMenu</a>
+                                    <a href="#method_addComponent">addComponent</a>
                 
-                                        <span class="flag static">static</span>
+                                </li>
+                                <li class="index-item method inherited">
+                                    <a href="#method_destroy">destroy</a>
+                
                                 </li>
                                 <li class="index-item method">
-                                    <a href="#method_executeInEditMode">executeInEditMode</a>
+                                    <a href="#method_getComponent">getComponent</a>
                 
-                                        <span class="flag static">static</span>
                                 </li>
                         </ul>
                     </div>
@@ -166,13 +260,33 @@
                         <div class="index-section events">
                             <h3>Events</h3>
                 
-                            <ul class="index-list events">
+                            <ul class="index-list events extends">
                                     <li class="index-item event">
                                         <a href="#event_lateUpdate">lateUpdate</a>
                 
                                     </li>
                                     <li class="index-item event">
+                                        <a href="#event_onDestroy">onDestroy</a>
+                
+                                    </li>
+                                    <li class="index-item event">
+                                        <a href="#event_onDisable">onDisable</a>
+                
+                                    </li>
+                                    <li class="index-item event">
+                                        <a href="#event_onEnable">onEnable</a>
+                
+                                    </li>
+                                    <li class="index-item event">
                                         <a href="#event_onLoad">onLoad</a>
+                
+                                    </li>
+                                    <li class="index-item event">
+                                        <a href="#event_onPreRender">onPreRender</a>
+                
+                                    </li>
+                                    <li class="index-item event">
+                                        <a href="#event_onStart">onStart</a>
                 
                                     </li>
                                     <li class="index-item event">
@@ -189,6 +303,156 @@
                     <div class="properties-detail">
                         <h2>Properties</h2>
                 
+                            <a name="property__enabled" class="anchor-link"></a>
+                            <div class="property item private">
+                                <h3 class="name"><code>_enabled</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_component.js.html#l77"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:77</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__hashCode" class="anchor-link"></a>
+                            <div class="property item private inherited">
+                                <h3 class="name"><code>_hashCode</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/HashObject.html#property__hashCode" class="type">HashObject</a>:
+                                    <a href="../files/utils_api_core_hash-object.js.html#l16"><code>utils&#x2F;api&#x2F;core&#x2F;hash-object.js:16</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__id" class="anchor-link"></a>
+                            <div class="property item private inherited">
+                                <h3 class="name"><code>_id</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/HashObject.html#property__id" class="type">HashObject</a>:
+                                    <a href="../files/utils_api_core_hash-object.js.html#l26"><code>utils&#x2F;api&#x2F;core&#x2F;hash-object.js:26</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__name" class="anchor-link"></a>
+                            <div class="property item private inherited">
+                                <h3 class="name"><code>_name</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/FObject.html#property__name" class="type">FObject</a>:
+                                    <a href="../files/utils_api_core_object.js.html#l16"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:16</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property__objFlags" class="anchor-link"></a>
+                            <div class="property item private inherited">
+                                <h3 class="name"><code>_objFlags</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                                    <span class="flag private">private</span>
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/FObject.html#property__objFlags" class="type">FObject</a>:
+                                    <a href="../files/utils_api_core_object.js.html#l23"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:23</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
                             <a name="property_enabled" class="anchor-link"></a>
                             <div class="property item">
                                 <h3 class="name"><code>enabled</code>
@@ -203,7 +467,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6441"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6441</code></a>
+                                    <a href="../files/utils_api_engine_component.js.html#l86"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:86</code></a>
                                     </p>
                             
                             
@@ -211,10 +475,11 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        <p>If component is enabled.</p>
+                                        <p>indicates whether this component is enabled or not.</p>
                             
                                     </div>
                             
+                                        <p class="default"><strong>Default:</strong> <span class="default-value">true</span></p>
                             
                             
                                 </div>
@@ -222,7 +487,7 @@
                             <a name="property_enabledInHierarchy" class="anchor-link"></a>
                             <div class="property item">
                                 <h3 class="name"><code>enabledInHierarchy</code>
-                                <span class="type"><a href="../classes/Transform.html" class="crosslink">Transform</a></span>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             
                             
                             
@@ -233,7 +498,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6462"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6462</code></a>
+                                    <a href="../files/utils_api_engine_component.js.html#l108"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:108</code></a>
                                     </p>
                             
                             
@@ -241,7 +506,156 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        <p>If the component is enabled in hierarchy.</p>
+                                        <p>indicates whether this component is enabled and its entity is also active in the hierarchy.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_entity" class="anchor-link"></a>
+                            <div class="property item">
+                                <h3 class="name"><code>entity</code>
+                                <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_component.js.html#l39"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:39</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>The entity this component is attached to. A component is always attached to an entity.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_hashCode" class="anchor-link"></a>
+                            <div class="property item inherited">
+                                <h3 class="name"><code>hashCode</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/HashObject.html#property_hashCode" class="type">HashObject</a>:
+                                    <a href="../files/utils_api_core_hash-object.js.html#l42"><code>utils&#x2F;api&#x2F;core&#x2F;hash-object.js:42</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_id" class="anchor-link"></a>
+                            <div class="property item inherited">
+                                <h3 class="name"><code>id</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/HashObject.html#property_id" class="type">HashObject</a>:
+                                    <a href="../files/utils_api_core_hash-object.js.html#l53"><code>utils&#x2F;api&#x2F;core&#x2F;hash-object.js:53</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_isValid" class="anchor-link"></a>
+                            <div class="property item inherited">
+                                <h3 class="name"><code>isValid</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/FObject.html#property_isValid" class="type">FObject</a>:
+                                    <a href="../files/utils_api_core_object.js.html#l75"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:75</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>Indicates whether the object is not yet destroyed</p>
+                            
+                                    </div>
+                            
+                                        <p class="default"><strong>Default:</strong> <span class="default-value">true</span></p>
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="property_name" class="anchor-link"></a>
+                            <div class="property item inherited">
+                                <h3 class="name"><code>name</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/FObject.html#property_name" class="type">FObject</a>:
+                                    <a href="../files/utils_api_core_object.js.html#l60"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:60</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                                    <div class="description">
+                                        <p>The name of the object.</p>
                             
                                     </div>
                             
@@ -263,7 +677,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6473"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6473</code></a>
+                                    <a href="../files/utils_api_engine_component.js.html#l120"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:120</code></a>
                                     </p>
                             
                             
@@ -287,24 +701,57 @@
                     </div>
                 
                 
+                    <div class="constructor">
+                        <h2>Constructor</h2>
+                        <a name="method_Component" class="anchor-link"></a>
+                        <div class="method item">
+                            <h3 class="name"><code>Component</code>
+                        
+                                <span class="paren">()</span>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                            </h3>
+                        
+                            <div class="meta">
+                                        <p>
+                                        Defined in
+                                <a href="../files/utils_api_engine_component.js.html#l27"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:27</code></a>
+                                </p>
+                        
+                        
+                        
+                            </div>
+                        
+                            <div class="extended-detail">
+                        
+                                <div class="description">
+                                    
+                                </div>
+                        
+                        
+                        
+                            </div>
+                        </div>
+                    </div>
                 
                     <div class="methods-detail">
                         <h2>Methods</h2>
                 
-                            <a name="method__invokeStarts" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>_invokeStarts</code>
+                            <a name="method__destruct" class="anchor-link"></a>
+                            <div class="method item private inherited">
+                                <h3 class="name"><code>_destruct</code>
                             
-                                    <div class="args">
-                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                            <li class="arg">
-                                                    <code>entity</code>
-                                            </li>
-                                        </ul><span class="paren">)</span>
-                                    </div>
+                                    <span class="paren">()</span>
                             
                             
                             
+                                    <span class="flag private">private</span>
                             
                             
                             
@@ -313,9 +760,9 @@
                                 </h3>
                             
                                 <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6582"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6582</code></a>
+                                            <p>Inherited from
+                                            <a href="../classes/FObject.html#method__destruct" class="type">FObject</a>:
+                                    <a href="../files/utils_api_core_object.js.html#l108"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:108</code></a>
                                     </p>
                             
                             
@@ -325,62 +772,36 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>invoke starts on entities</p>
+                                        <p>Clear all references in the instance.</p>
+                            <p>NOTE: this method will not clear the getter or setter functions which defined in the INSTANCE of FObject.
+                                  You can override the _destruct method if you need.</p>
                             
                                     </div>
                             
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name">entity</code>
-                                                        <span class="type">Fire.Entity</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                         
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
                             
                             
                                 </div>
                             </div>
-                            <a name="method_addComponentMenu" class="anchor-link"></a>
-                            <div class="method item">
-                                <h3 class="name"><code>addComponentMenu</code>
+                            <a name="method__onPreDestroy" class="anchor-link"></a>
+                            <div class="method item private inherited">
+                                <h3 class="name"><code>_onPreDestroy</code>
                             
-                                    <div class="args">
-                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                            <li class="arg">
-                                                    <code>constructor</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code>menuPath</code>
-                                            </li>
-                                            <li class="arg">
-                                                    <code class="optional">[priority]</code>
-                                            </li>
-                                        </ul><span class="paren">)</span>
-                                    </div>
+                                    <span class="paren">()</span>
                             
                             
                             
+                                    <span class="flag private">private</span>
                             
                             
-                                    <span class="flag static">static</span>
                             
                             
                             
                                 </h3>
                             
                                 <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6629"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6629</code></a>
+                                            <p>Inherited from
+                                            <a href="../classes/FObject.html#method__onPreDestroy" class="type">FObject</a>:
+                                    <a href="../files/utils_api_core_object.js.html#l139"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:139</code></a>
                                     </p>
                             
                             
@@ -390,77 +811,32 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Register a component to the &quot;Component&quot; menu.</p>
-                            
+                                        
                                     </div>
                             
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                            
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name">constructor</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                        <ul>
-                            <li>the class you want to register, must inherit from Component</li>
-                            </ul>
-                            
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name">menuPath</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                                                    <div class="param-description">
-                                                        <ul>
-                            <li>the menu path name. Eg. &quot;Rendering/Camera&quot;</li>
-                            </ul>
-                            
-                                                    </div>
-                            
-                                                </li>
-                                                <li class="param">
-                                                        <code class="param-name optional">[priority]</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                            
-                            
-                                                    <div class="param-description">
-                                                        <ul>
-                            <li>the order which the menu item are displayed</li>
-                            </ul>
-                            
-                                                    </div>
-                            
-                                                </li>
-                                            </ul>
-                                        </div>
                             
                             
                                 </div>
                             </div>
-                            <a name="method_executeInEditMode" class="anchor-link"></a>
+                            <a name="method_addComponent" class="anchor-link"></a>
                             <div class="method item">
-                                <h3 class="name"><code>executeInEditMode</code>
+                                <h3 class="name"><code>addComponent</code>
                             
                                     <div class="args">
                                         <span class="paren">(</span><ul class="args-list inline commas">
                                             <li class="arg">
-                                                    <code>constructor</code>
+                                                    <code>typeOrName</code>
                                             </li>
                                         </ul><span class="paren">)</span>
                                     </div>
                             
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Component.html" class="crosslink">Component</a></span>
+                                    </span>
                             
                             
                             
                             
-                                    <span class="flag static">static</span>
                             
                             
                             
@@ -469,7 +845,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6641"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6641</code></a>
+                                    <a href="../files/utils_api_engine_component.js.html#l184"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:184</code></a>
                                     </p>
                             
                             
@@ -479,10 +855,7 @@
                                 <div class="extended-detail">
                             
                                     <div class="description">
-                                        <p>Makes a component execute in edit mode.
-                            By default, all components are only executed in play mode,
-                            which means they will not have their callback functions executed while the Editor is in edit mode.
-                            By calling this function, each component will also have its callback executed in edit mode.</p>
+                                        <p>Adds a component class to the entity. You can also add component to entity by passing in the name of the script.</p>
                             
                                     </div>
                             
@@ -491,13 +864,13 @@
                             
                                             <ul class="params-list">
                                                 <li class="param">
-                                                        <code class="param-name">constructor</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                                        <code class="param-name">typeOrName</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                             
                             
                                                     <div class="param-description">
                                                         <ul>
-                            <li>the class you want to register, must inherit from Component</li>
+                            <li>the constructor or the class name of the component to add</li>
                             </ul>
                             
                                                     </div>
@@ -506,6 +879,135 @@
                                             </ul>
                                         </div>
                             
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Component.html" class="crosslink">Component</a></span>:
+                                                    <ul>
+                            <li>the newly added component</li>
+                            </ul>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_destroy" class="anchor-link"></a>
+                            <div class="method item inherited">
+                                <h3 class="name"><code>destroy</code>
+                            
+                                    <span class="paren">()</span>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>Inherited from
+                                            <a href="../classes/FObject.html#method_destroy" class="type">FObject</a>:
+                                    <a href="../files/utils_api_core_object.js.html#l87"><code>utils&#x2F;api&#x2F;core&#x2F;object.js:87</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Destroy this FObject, and release all its own references to other resources.</p>
+                            <p>After destory, this FObject is not usable any more.
+                            You can use Fire.isValid(obj) (or obj.isValid if obj is non-nil) to check whether the object is destroyed before accessing it.</p>
+                            
+                                    </div>
+                            
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                                                    <p>whether it is the first time the destroy being called</p>
+                            
+                                            </div>
+                                        </div>
+                            
+                                </div>
+                            </div>
+                            <a name="method_getComponent" class="anchor-link"></a>
+                            <div class="method item">
+                                <h3 class="name"><code>getComponent</code>
+                            
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                            <li class="arg">
+                                                    <code>typeOrName</code>
+                                            </li>
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                            
+                                    <span class="returns-inline">
+                                        <span class="type"><a href="../classes/Component.html" class="crosslink">Component</a></span>
+                                    </span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                </h3>
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_component.js.html#l195"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:195</code></a>
+                                    </p>
+                            
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Returns the component of supplied type if the entity has one attached, null if it doesn&#39;t. You can also get component in the entity by passing in the name of the script.</p>
+                            
+                                    </div>
+                            
+                                        <div class="params">
+                                            <h4>Parameters:</h4>
+                            
+                                            <ul class="params-list">
+                                                <li class="param">
+                                                        <code class="param-name">typeOrName</code>
+                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            
+                            
+                                                    <div class="param-description">
+                                                        
+                                                    </div>
+                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                            
+                                        <div class="returns">
+                                            <h4>Returns:</h4>
+                            
+                                            <div class="returns-description">
+                                                        <span class="type"><a href="../classes/Component.html" class="crosslink">Component</a></span>:
+                                            </div>
+                                        </div>
                             
                                 </div>
                             </div>
@@ -530,7 +1032,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6491"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6491</code></a>
+                                    <a href="../files/utils_api_engine_component.js.html#l140"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:140</code></a>
                                     </p>
                             
                             
@@ -540,6 +1042,90 @@
                             
                                     <div class="description">
                                         <p>LateUpdate is called every frame, if the Component is enabled.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="event_onDestroy" class="anchor-link"></a>
+                            <div class="events item">
+                                <h3 class="name"><code>onDestroy</code></h3>
+                            
+                            
+                            
+                            
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_component.js.html#l171"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:171</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Called when this component will be destroyed.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="event_onDisable" class="anchor-link"></a>
+                            <div class="events item">
+                                <h3 class="name"><code>onDisable</code></h3>
+                            
+                            
+                            
+                            
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_component.js.html#l165"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:165</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Called when this component becomes disabled or its entity becomes inactive</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="event_onEnable" class="anchor-link"></a>
+                            <div class="events item">
+                                <h3 class="name"><code>onEnable</code></h3>
+                            
+                            
+                            
+                            
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_component.js.html#l159"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:159</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Called when this component becomes enabled and its entity becomes active</p>
                             
                                     </div>
                             
@@ -558,7 +1144,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6497"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6497</code></a>
+                                    <a href="../files/utils_api_engine_component.js.html#l147"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:147</code></a>
                                     </p>
                             
                             
@@ -568,6 +1154,62 @@
                             
                                     <div class="description">
                                         <p>When attaching to an active entity or its entity first activated</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="event_onPreRender" class="anchor-link"></a>
+                            <div class="events item">
+                                <h3 class="name"><code>onPreRender</code></h3>
+                            
+                            
+                            
+                            
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_component.js.html#l177"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:177</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Called when the engine starts rendering the scene.</p>
+                            
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                            </div>
+                            <a name="event_onStart" class="anchor-link"></a>
+                            <div class="events item">
+                                <h3 class="name"><code>onStart</code></h3>
+                            
+                            
+                            
+                            
+                            
+                                <div class="meta">
+                                            <p>
+                                            Defined in
+                                    <a href="../files/utils_api_engine_component.js.html#l153"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:153</code></a>
+                                    </p>
+                            
+                            
+                                </div>
+                            
+                                <div class="extended-detail">
+                            
+                                    <div class="description">
+                                        <p>Called before all scripts&#39; update if the Component is enabled</p>
                             
                                     </div>
                             
@@ -586,7 +1228,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l6485"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:6485</code></a>
+                                    <a href="../files/utils_api_engine_component.js.html#l134"><code>utils&#x2F;api&#x2F;engine&#x2F;component.js:134</code></a>
                                     </p>
                             
                             

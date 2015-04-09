@@ -1,24 +1,24 @@
 {
-    "name": "code-editor",
-    "version": "0.1.0",
-    "description": "The code editor plugin for Fireball Editor",
-    "author": "KamiSama <1457434343@qq.com>",
-    "fireball": {
-        "main": "editor/main.js",
-        "panels": {
-            "code-editor": {
-                "type": "dockable",
-                "view": "editor/code-editor.html",
-                "ctor": "CodeEditor",
-                "title": "Code Editor",
-                "width": 1200,
-                "height": 600,
-                "min-width": 400,
-                "min-height": 400,
-                "messages": {
-                    "asset:changed": "asset-changed"
-                }
-            }
+  "name": "code-editor",
+  "version": "0.1.0",
+  "description": "The code editor plugin for Fireball Editor",
+  "author": "KamiSama <1457434343@qq.com>",
+  "fireball": {
+    "main": "editor/main.js",
+    "panels": {
+      "code-editor": {
+        "type": "dockable",
+        "view": "editor/code-editor.html",
+        "ctor": "CodeEditor",
+        "title": "Code Editor",
+        "width": 1200,
+        "height": 600,
+        "min-width": 400,
+        "min-height": 400,
+        "messages": {
+          "asset:changed": "asset-changed"
         }
+      }
     }
+  }
 }

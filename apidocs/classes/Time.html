@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Time - Fireball Game API</title>
+    <title>Time - Fireball Engine API</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -14,8 +14,9 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
-                    <p class="description">Fireball Game API: your toolbox</p>
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
             </div>
             <ul class="jump-links">
                 <li><a href="#index" class="index-jump-link">index</a></li>
@@ -39,28 +40,66 @@
             
                     <div id="api-tabview-panel">
                         <ul id="api-classes" class="apis classes">
-                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
                             <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
                             <li><a class="type" href="../classes/Color.html">Color</a></li>
                             <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
                             <li><a class="type" href="../classes/Fire.html">Fire</a></li>
-                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
-                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
                             <li><a class="type" href="../classes/FObject.html">FObject</a></li>
                             <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
                             <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
                             <li><a class="type" href="../classes/Math.html">Math</a></li>
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
                             <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
-                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +113,7 @@
                 
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l4996"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:4996</code></a>
+                            Defined in: <a href="../files/utils_api_engine_time.js.html#l5"><code>utils&#x2F;api&#x2F;engine&#x2F;time.js:5</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -83,7 +122,11 @@
                 
                 
                 <div class="box intro">
-                    
+                    <p>!#en The interface to get time information from Fireball.</p>
+                <p>See <a href="/en/scripting/time/">Time</a>
+                !#zh Time 模块用于获得游戏里的时间和帧率相关信息。直接使用 Fire.Time.<em>*</em> 访问即可。</p>
+                <p>请参考教程<a href="/zh/scripting/time/">计时和帧率</a></p>
+                
                 </div>
                 
                 <!-- Class member index -->
@@ -121,35 +164,23 @@
                 
                         <ul class="index-list properties">
                                 <li class="index-item property">
-                                    <a href="#property_"></a>
+                                    <a href="#property_deltaTime">deltaTime</a>
                 
                                 </li>
                                 <li class="index-item property">
-                                    <a href="#property_"></a>
+                                    <a href="#property_frameCount">frameCount</a>
                 
                                 </li>
                                 <li class="index-item property">
-                                    <a href="#property_"></a>
+                                    <a href="#property_maxDeltaTime">maxDeltaTime</a>
                 
                                 </li>
                                 <li class="index-item property">
-                                    <a href="#property_"></a>
+                                    <a href="#property_realTime">realTime</a>
                 
                                 </li>
                                 <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
-                
-                                </li>
-                                <li class="index-item property">
-                                    <a href="#property_"></a>
+                                    <a href="#property_time">time</a>
                 
                                 </li>
                         </ul>
@@ -178,99 +209,9 @@
                     <div class="properties-detail">
                         <h2>Properties</h2>
                 
-                            <a name="property_" class="anchor-link"></a>
+                            <a name="property_deltaTime" class="anchor-link"></a>
                             <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5057"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5057</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>The name of the event (case-sensitive), e.g. &quot;click&quot;, &quot;fire&quot;, or &quot;submit&quot;</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5063"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5063</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>A reference to the target to which the event was originally dispatched</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5069"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5069</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>A reference to the currently registered target for the event</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                            <a name="property_" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code></code>
+                                <h3 class="name"><code>deltaTime</code>
                                 <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                             
                             
@@ -282,7 +223,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5075"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5075</code></a>
+                                    <a href="../files/utils_api_engine_time.js.html#l37"><code>utils&#x2F;api&#x2F;engine&#x2F;time.js:37</code></a>
                                     </p>
                             
                             
@@ -290,16 +231,7 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        <p>Indicates which phase of the event flow is currently being evaluated.
-                            Returns an integer value represented by 4 constants:</p>
-                            <ul>
-                            <li>Event.NONE = 0</li>
-                            <li>Event.CAPTURING_PHASE = 1</li>
-                            <li>Event.AT_TARGET = 2</li>
-                            <li>Event.BUBBLING_PHASE = 3
-                            The phases are explained in the [section 3.1, Event dispatch and DOM event flow]
-                            (<a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-flow">http://www.w3.org/TR/DOM-Level-3-Events/#event-flow</a>), of the DOM Level 3 Events specification.</li>
-                            </ul>
+                                        <p>The time in seconds it took to complete the last frame. Use this property to make your game frame rate independent.</p>
                             
                                     </div>
                             
@@ -307,10 +239,10 @@
                             
                                 </div>
                             </div>
-                            <a name="property_" class="anchor-link"></a>
+                            <a name="property_frameCount" class="anchor-link"></a>
                             <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                <h3 class="name"><code>frameCount</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                             
                             
                             
@@ -321,7 +253,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5089"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5089</code></a>
+                                    <a href="../files/utils_api_engine_time.js.html#l45"><code>utils&#x2F;api&#x2F;engine&#x2F;time.js:45</code></a>
                                     </p>
                             
                             
@@ -329,7 +261,7 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        <p>A boolean indicating whether the event bubbles up through the hierarchy or not</p>
+                                        <p>The total number of frames that have passed.</p>
                             
                                     </div>
                             
@@ -337,10 +269,10 @@
                             
                                 </div>
                             </div>
-                            <a name="property_" class="anchor-link"></a>
+                            <a name="property_maxDeltaTime" class="anchor-link"></a>
                             <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                <h3 class="name"><code>maxDeltaTime</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                             
                             
                             
@@ -351,7 +283,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5095"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5095</code></a>
+                                    <a href="../files/utils_api_engine_time.js.html#l53"><code>utils&#x2F;api&#x2F;engine&#x2F;time.js:53</code></a>
                                     </p>
                             
                             
@@ -359,7 +291,7 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        <p>Indicates whether or not event.preventDefault() has been called on the event</p>
+                                        <p>The maximum time a frame can take.</p>
                             
                                     </div>
                             
@@ -367,10 +299,10 @@
                             
                                 </div>
                             </div>
-                            <a name="property_" class="anchor-link"></a>
+                            <a name="property_realTime" class="anchor-link"></a>
                             <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                <h3 class="name"><code>realTime</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                             
                             
                             
@@ -381,7 +313,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5101"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5101</code></a>
+                                    <a href="../files/utils_api_engine_time.js.html#l27"><code>utils&#x2F;api&#x2F;engine&#x2F;time.js:27</code></a>
                                     </p>
                             
                             
@@ -389,7 +321,8 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        <p>Indicates whether or not event.stop() has been called on the event</p>
+                                        <p>The time at the beginning of this frame. This is the real time in seconds since the start of the game.</p>
+                            <p><code>Time.realTime</code> not affected by time scale, and also keeps increasing while the player is paused in editor or in the background.</p>
                             
                                     </div>
                             
@@ -397,10 +330,10 @@
                             
                                 </div>
                             </div>
-                            <a name="property_" class="anchor-link"></a>
+                            <a name="property_time" class="anchor-link"></a>
                             <div class="property item">
-                                <h3 class="name"><code></code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                <h3 class="name"><code>time</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                             
                             
                             
@@ -411,7 +344,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5107"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5107</code></a>
+                                    <a href="../files/utils_api_engine_time.js.html#l19"><code>utils&#x2F;api&#x2F;engine&#x2F;time.js:19</code></a>
                                     </p>
                             
                             
@@ -419,7 +352,7 @@
                             
                                 <div class="extended-detail">
                                     <div class="description">
-                                        <p>Indicates whether or not event.stop(true) has been called on the event</p>
+                                        <p>The time at the beginning of this frame. This is the time in seconds since the start of the game.</p>
                             
                                     </div>
                             
@@ -464,7 +397,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l5014"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:5014</code></a>
+                                    <a href="../files/utils_api_engine_time.js.html#l64"><code>utils&#x2F;api&#x2F;engine&#x2F;time.js:64</code></a>
                                     </p>
                             
                             

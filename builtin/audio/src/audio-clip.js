@@ -1,28 +1,76 @@
 Fire.AudioClip = (function () {
-    var AudioClip = Fire.extend("Fire.AudioClip", Fire.Asset);
 
-    AudioClip.prop('rawData', null, Fire.RawType('audio'), Fire.HideInInspector);
-
-    AudioClip.get('buffer', function () {
-        return Fire.AudioContext.getClipBuffer(this);
-    }, Fire.HideInInspector);
-
-    AudioClip.get("length", function () {
-        return Fire.AudioContext.getClipLength(this);
+    /**
+     * The audio clip is an audio source data.
+     * @class AudioClip
+     * @extends Asset
+     */
+    var AudioClip = Fire.Class({
+        //
+        name: "Fire.AudioClip",
+        //
+        extends: Fire.Asset,
+        //
+        properties: {
+            //
+            rawData: {
+                default: null,
+                rawType: 'audio',
+                visible: false
+            },
+            //
+            buffer:{
+                get: function() {
+                    return Fire.AudioContext.getClipBuffer(this);
+                },
+                visible: false,
+            },
+            /**
+             * The length of the audio clip in seconds (Read Only).
+             * @property length
+             * @type {number}
+             * @readOnly
+             */
+            length: {
+                get: function() {
+                    return Fire.AudioContext.getClipLength(this);
+                }
+            },
+            /**
+             * The length of the audio clip in samples (Read Only).
+             * @property samples
+             * @type {number}
+             * @readOnly
+             */
+            samples: {
+                get: function() {
+                    return Fire.AudioContext.getClipSamples(this);
+                }
+            },
+            /**
+             * Channels in audio clip (Read Only).
+             * @property channels
+             * @type {number}
+             * @readOnly
+             */
+            channels: {
+                get: function() {
+                    return Fire.AudioContext.getClipChannels(this);
+                }
+            },
+            /**
+             * Sample frequency (Read Only).
+             * @property frequency
+             * @type {number}
+             * @readOnly
+             */
+            frequency: {
+                get: function() {
+                    return Fire.AudioContext.getClipFrequency(this);
+                }
+            }
+        }
     });
-
-    AudioClip.get("samples", function () {
-        return Fire.AudioContext.getClipSamples(this);
-    });
-
-    AudioClip.get("channels", function () {
-        return Fire.AudioContext.getClipChannels(this);
-    });
-
-    AudioClip.get("frequency", function () {
-        return Fire.AudioContext.getClipFrequency(this);
-    });
-
     return AudioClip;
 })();
 

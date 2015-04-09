@@ -89,7 +89,7 @@
 
         // 播放结束后的回调
         target._audio.addEventListener('ended', function () {
-            target.onPlayEnd.bind(target);
+            target._onPlayEnd.bind(target);
         }, false);
     };
 

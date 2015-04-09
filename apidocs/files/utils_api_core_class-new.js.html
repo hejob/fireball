@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/class-new.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/class-new.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * !#en Defines a FireClass using the given literal prototype object, please see [Class](/en/scripting/class/) for details.
+                 * !#zh 定义一个 FireClass，传入参数必须是一个包含类型参数的字面量对象，具体用法请查阅[类型定义](/zh/scripting/class/)。
+                 *
+                 * @method Class
+                 * @param {object} options
+                 * @return {function} - the created class
+                 *
+                 * @example
+                    // define base class
+                    var Node = Fire.Class();
+                
+                    // define sub class
+                    var Sprite = Fire.Class({
+                        name: &#x27;Sprite&#x27;,
+                        extends: Node,
+                        constructor: function () {
+                            this.url = &quot;&quot;;
+                            this.id = 0;
+                        },
+                
+                        properties {
+                            width: {
+                                default: 128,
+                                type: &#x27;Integer&#x27;,
+                                tooltip: &#x27;The width of sprite&#x27;
+                            },
+                            height: 128,
+                            size: {
+                                get: function () {
+                                    return Fire.v2(this.width, this.height);
+                                }
+                            }
+                        },
+                
+                        load: function () {
+                            // load this.url
+                        };
+                    });
+                
+                    // instantiate
+                
+                    var obj = new Sprite();
+                    obj.url = &#x27;sprite.png&#x27;;
+                    obj.load();
+                
+                    // define static member
+                
+                    Sprite.count = 0;
+                    Sprite.getBounds = function (spriteList) {
+                        // ...
+                    };
+                 */
+                Fire.Class = function (options) {
+                    if (arguments.length === 0) {
+                        return Fire.define();
+                    }
+                    if ( !options ) {
+                        Fire.error(&#x27;[Fire.Class] Option must be non-nil&#x27;);
+                        return Fire.define();
+                    }
+                
+                    var name = options.name;
+                    var base = options.extends;
+                    var ctor = (options.hasOwnProperty(&#x27;constructor&#x27;) &amp;&amp; options.constructor) || undefined;
+                
+                    // create constructor
+                    var cls;
+                    if (base) {
+                        if (name) {
+                            cls = Fire.extend(name, base, ctor);
+                        }
+                        else {
+                            cls = Fire.extend(base, ctor);
+                            name = Fire.JS.getClassName(cls);
+                        }
+                    }
+                    else {
+                        if (name) {
+                            cls = Fire.define(name, ctor);
+                        }
+                        else {
+                            cls = Fire.define(ctor);
+                            name = Fire.JS.getClassName(cls);
+                        }
+                    }
+                
+                    // define properties
+                    var properties = options.properties;
+                    if (properties) {
+                        for (var propName in properties) {
+                            var val = properties[propName];
+                            var isObj = val &amp;&amp; typeof val === &#x27;object&#x27; &amp;&amp; !Array.isArray(val);
+                            var isLiteral = isObj &amp;&amp; val.constructor === ({}).constructor;
+                            if ( !isLiteral ) {
+                                val = {
+                                    default: val
+                                };
+                            }
+                            //var isValueType = typeof val.prototype.clone === &#x27;function&#x27;;
+                            //if (isValueType) {
+                            //    cls.prop(propName, val);
+                            //    continue;
+                            //}
+                            var attrs = parseAttributes(val, name, propName);
+                            if (val.hasOwnProperty(&#x27;default&#x27;)) {
+                                cls.prop.apply(cls, [propName, val.default].concat(attrs));
+                            }
+                            else {
+                                var getter = val.get;
+                                var setter = val.set;
+                                // @ifdef EDITOR
+                                if (!getter &amp;&amp; !setter) {
+                                    Fire.error(&#x27;Property %s.%s must define at least one of &quot;default&quot;, &quot;get&quot; or &quot;set&quot;.&#x27;, name, propName);
+                                }
+                                // @endif
+                                if (getter) {
+                                    cls.get.apply(cls, [propName, getter].concat(attrs));
+                                }
+                                if (setter) {
+                                    cls.set(propName, setter);
+                                }
+                            }
+                        }
+                    }
+                
+                    // define functions
+                    for (var funcName in options) {
+                        if (funcName === &#x27;name&#x27; || funcName === &#x27;extends&#x27; || funcName === &#x27;constructor&#x27; || funcName === &#x27;properties&#x27;) {
+                            continue;
+                        }
+                        var func = options[funcName];
+                        var type = typeof func;
+                        if (type === &#x27;function&#x27;) {
+                            cls.prototype[funcName] = func;
+                        }
+                        // @ifdef EDITOR
+                        else {
+                            var TypoCheckList = {
+                                extend: &#x27;extends&#x27;,
+                                property: &#x27;properties&#x27;
+                            };
+                            var correct = TypoCheckList[funcName];
+                            if (correct) {
+                                Fire.warn(&#x27;Unknown parameter of %s.%s, maybe you want is &quot;%s&quot;.&#x27;, name, funcName, correct);
+                            }
+                            else {
+                                Fire.error(&#x27;Unknown parameter of %s.%s&#x27;, name, funcName);
+                            }
+                        }
+                        // @endif
+                    }
+                
+                    return cls;
+                };
+                
+                var tmpAttrs = [];
+                function parseAttributes (attrs, className, propName) {
+                    // @ifdef EDITOR
+                    var ERR_Type = &#x27;The %s of %s must be type %s&#x27;;
+                    // @endif
+                
+                    tmpAttrs.length = 0;
+                    var result = tmpAttrs;
+                
+                    var type = attrs.type;
+                    if (type) {
+                        if (type === Fire.Integer) {
+                            result.push(Fire.Integer_Obsoleted);
+                        }
+                        else if (type === Fire.Float || type === Number) {
+                            result.push(Fire.Float_Obsoleted);
+                        }
+                        else if (type === Fire.Boolean || type === Boolean) {
+                            result.push(Fire.Boolean_Obsoleted);
+                        }
+                        else if (type === Fire.String || type === String) {
+                            result.push(Fire.String_Obsoleted);
+                        }
+                        else if (type === &#x27;Object&#x27; || type === Object) {
+                            // @ifdef EDITOR
+                            Fire.error(&#x27;Please define &quot;type&quot; parameter of %s.%s as the actual constructor.&#x27;, className, propName);
+                            // @endif
+                        }
+                        else if (typeof type === &#x27;object&#x27;) {
+                            if (type.hasOwnProperty(&#x27;__enums__&#x27;)) {
+                                result.push(Fire.Enum(type));
+                            }
+                            // @ifdef EDITOR
+                            else {
+                                Fire.error(&#x27;Please define &quot;type&quot; parameter of %s.%s as the constructor of %s.&#x27;, className, propName, type);
+                            }
+                            // @endif
+                        }
+                        else if (typeof type === &#x27;function&#x27;) {
+                            result.push(Fire.ObjectType(type));
+                        }
+                        // @ifdef EDITOR
+                        else {
+                            Fire.error(&#x27;Unknown &quot;type&quot; parameter of %s.%s：%s&#x27;, className, propName, type);
+                        }
+                        // @endif
+                    }
+                
+                    function parseSimpleAttr (attrName, expectType, attrCreater) {
+                        var val = attrs[attrName];
+                        if (val) {
+                            if (typeof val === expectType) {
+                                result.push(typeof attrCreater === &#x27;function&#x27; ? attrCreater(val) : attrCreater);
+                            }
+                            // @ifdef EDITOR
+                            else {
+                                Fire.error(&#x27;The %s of %s.%s must be type %s&#x27;, attrName, className, propName, expectType);
+                            }
+                            // @endif
+                        }
+                    }
+                
+                    parseSimpleAttr(&#x27;rawType&#x27;, &#x27;string&#x27;, Fire.RawType);
+                    parseSimpleAttr(&#x27;editorOnly&#x27;, &#x27;boolean&#x27;, Fire.EditorOnly);
+                    parseSimpleAttr(&#x27;displayName&#x27;, &#x27;string&#x27;, Fire.DisplayName);
+                    parseSimpleAttr(&#x27;multiline&#x27;, &#x27;boolean&#x27;, Fire.MultiText);
+                    parseSimpleAttr(&#x27;readonly&#x27;, &#x27;boolean&#x27;, Fire.ReadOnly);
+                    parseSimpleAttr(&#x27;tooltip&#x27;, &#x27;string&#x27;, Fire.Tooltip);
+                
+                    if (attrs.serializable === false) {
+                        result.push(Fire.NonSerialized);
+                    }
+                
+                    var visible = attrs.visible;
+                    if (typeof visible !== &#x27;undefined&#x27;) {
+                        if ( !attrs.visible ) {
+                            result.push(Fire.HideInInspector);
+                        }
+                    }
+                    else {
+                        // if starts with &#x27;_&#x27;, hide in inspector by default
+                        if (propName.charCodeAt(0) === 95) {
+                            result.push(Fire.HideInInspector);
+                        }
+                    }
+                
+                    //if (attrs.custom) {
+                    //    result.push(Fire.Custom(attrs.custom));
+                    //}
+                
+                    var range = attrs.range;
+                    if (range) {
+                        if (Array.isArray(range)) {
+                            if (range.length &gt;= 2) {
+                                result.push(Fire.Range(range[0], range[1]));
+                            }
+                            // @ifdef EDITOR
+                            else {
+                                Fire.error(&#x27;The length of range array must be 2&#x27;);
+                            }
+                            // @endif
+                        }
+                        // @ifdef EDITOR
+                        else {
+                            Fire.error(ERR_Type, &#x27;&quot;range&quot;&#x27;, className + &#x27;.&#x27; + propName, &#x27;array&#x27;);
+                        }
+                        // @endif
+                    }
+                
+                    var nullable = attrs.nullable;
+                    if (nullable) {
+                        if (typeof nullable === &#x27;object&#x27;) {
+                            var boolPropName = nullable.propName;
+                            if (typeof boolPropName === &#x27;string&#x27;) {
+                                var def = nullable.default;
+                                if (typeof def === &#x27;boolean&#x27;) {
+                                    result.push(Fire.Nullable(boolPropName, def));
+                                }
+                                // @ifdef EDITOR
+                                else {
+                                    Fire.error(ERR_Type, &#x27;&quot;default&quot;&#x27;, &#x27;nullable object&#x27;, &#x27;boolean&#x27;);
+                                }
+                                // @endif
+                            }
+                            // @ifdef EDITOR
+                            else {
+                                Fire.error(ERR_Type, &#x27;&quot;propName&quot;&#x27;, &#x27;nullable object&#x27;, &#x27;string&#x27;);
+                            }
+                            // @endif
+                        }
+                        // @ifdef EDITOR
+                        else {
+                            Fire.error(ERR_Type, &#x27;&quot;nullable&quot;&#x27;, className + &#x27;.&#x27; + propName, &#x27;object&#x27;);
+                        }
+                        // @endif
+                    }
+                
+                    var watch = attrs.watch;
+                    if (watch) {
+                        if (typeof watch === &#x27;object&#x27;) {
+                            for (var watchKey in watch) {
+                                var watchCallback = watch[watchKey];
+                                if (typeof watchCallback === &#x27;function&#x27;) {
+                                    result.push(Fire.Watch(watchKey.split(&#x27; &#x27;), watchCallback));
+                                }
+                                // @ifdef EDITOR
+                                else {
+                                    Fire.error(ERR_Type, &#x27;value&#x27;, &#x27;watch object&#x27;, &#x27;function&#x27;);
+                                }
+                                // @endif
+                            }
+                        }
+                        // @ifdef EDITOR
+                        else {
+                            Fire.error(ERR_Type, &#x27;watch&#x27;, className + &#x27;.&#x27; + propName, &#x27;object&#x27;);
+                        }
+                        // @endif
+                    }
+                
+                    return result;
+                }
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

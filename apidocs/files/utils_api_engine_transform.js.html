@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/transform.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/transform.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Transform = (function () {
+                
+                    /**
+                     * Defines position, rotation and scale of an entity.
+                     *
+                     * @class Transform
+                     * @extends Component
+                     * @constructor
+                     */
+                    var Transform = Fire.extend(&#x27;Fire.Transform&#x27;, Component, function () {
+                        /**
+                         * @property _position;
+                         * @type {Vec2}
+                         * @default new Vec2(0, 0)
+                         * @private
+                         */
+                        this._position = new Vec2(0, 0);
+                        /**
+                         * @property _scale;
+                         * @type {Vec2}
+                         * @default new Vec2(1, 1)
+                         * @private
+                         */
+                        this._scale = new Vec2(1, 1);
+                
+                        this._worldTransform = new Matrix23();
+                
+                        /**
+                         * the cached reference to parent transform
+                         * @property _parent
+                         * @type {Transform}
+                         * @default null
+                         * @private
+                         */
+                        this._parent = null;
+                
+                        //this._hierarchyChangedListeners = null;
+                    });
+                
+                    Fire.executeInEditMode(Transform);
+                
+                    Transform.prop(&#x27;_position&#x27;, null, Fire.HideInInspector);
+                    Transform.prop(&#x27;_rotation&#x27;, 0, Fire.HideInInspector);
+                    Transform.prop(&#x27;_scale&#x27;, null, Fire.HideInInspector);
+                
+                    // properties
+                
+                    var ERR_NaN = &#x27;The %s must not be NaN&#x27;;
+                
+                    /**
+                     * The local position in its parent&#x27;s coordinate system
+                     * @property position
+                     * @type {Vec2}
+                     * @default new Vec2(0, 0)
+                     */
+                    Transform.getset(&#x27;position&#x27;,
+                        function () {
+                            return new Vec2(this._position.x, this._position.y);
+                        },
+                        function (value) {
+                            var x = value.x;
+                            var y = value.y;
+                            if ( !isNaN(x) &amp;&amp; !isNaN(y) ) {
+                                this._position.x = x;
+                                this._position.y = y;
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;xy of new position&#x27;);
+                            }
+                        },
+                        Fire.Tooltip(&quot;The local position in its parent&#x27;s coordinate system&quot;)
+                    );
+                
+                    /**
+                     * The local x position in its parent&#x27;s coordinate system
+                     * @property x
+                     * @type {number}
+                     * @default 0
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;x&#x27;, {
+                        get: function () {
+                            return this._position.x;
+                        },
+                        set: function (value) {
+                            if ( !isNaN(value) ) {
+                                this._position.x = value;
+                // @ifdef EDITOR
+                                // notify change
+                                this._position = this._position;
+                // @endif
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;new x&#x27;);
+                            }
+                        }
+                    });
+                
+                    /**
+                     * The local y position in its parent&#x27;s coordinate system
+                     * @property y
+                     * @type {number}
+                     * @default 0
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;y&#x27;, {
+                        get: function () {
+                            return this._position.y;
+                        },
+                        set: function (value) {
+                            if ( !isNaN(value) ) {
+                                this._position.y = value;
+                // @ifdef EDITOR
+                                // notify change
+                                this._position = this._position;
+                // @endif
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;new y&#x27;);
+                            }
+                        }
+                    });
+                
+                    /**
+                     * The position of the transform in world space
+                     * @property worldPosition
+                     * @type {Vec2}
+                     * @default new Vec2(0, 0)
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;worldPosition&#x27;, {
+                        get: function () {
+                            var l2w = this.getLocalToWorldMatrix();
+                            return new Vec2(l2w.tx, l2w.ty);
+                        },
+                        set: function (value) {
+                            var x = value.x;
+                            var y = value.y;
+                            if ( !isNaN(x) &amp;&amp; !isNaN(y) ) {
+                                if ( this._parent ) {
+                                    var w2l = this._parent.getWorldToLocalMatrix();
+                                    this.position = w2l.transformPoint(value);
+                                }
+                                else {
+                                    this.position = value;
+                                }
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;xy of new worldPosition&#x27;);
+                            }
+                        }
+                    });
+                
+                    /**
+                     * The x position of the transform in world space
+                     * @property worldX
+                     * @type {number}
+                     * @default 0
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;worldX&#x27;, {
+                        get: function () {
+                            return this.worldPosition.x;
+                        },
+                        set: function (value) {
+                            if ( !isNaN(value) ) {
+                                if ( this._parent ) {
+                                    var pl2w = this._parent.getLocalToWorldMatrix();
+                                    var l2w = this.getLocalMatrix().prepend(pl2w);
+                                    if (l2w.tx !== value) {
+                                        this._position.x = value;
+                                        this._position.y = l2w.ty;
+                                        pl2w.invert().transformPoint(this._position, this._position);
+                                    }
+                                }
+                                else {
+                                    this._position.x = value;
+                                }
+                // @ifdef EDITOR
+                                // notify change
+                                this._position = this._position;
+                // @endif
+                                //将来优化做好了以后，上面的代码可以简化成下面这些
+                                //var pos = this.worldPosition;
+                                //if (pos.x !== value) {
+                                //    pos.x = value;
+                                //    this.worldPosition = pos;
+                                //}
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;new worldX&#x27;);
+                            }
+                        }
+                    });
+                
+                    /**
+                     * The y position of the transform in world space
+                     * @property worldY
+                     * @type {number}
+                     * @default 0
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;worldY&#x27;, {
+                        get: function () {
+                            return this.worldPosition.y;
+                        },
+                        set: function (value) {
+                            if ( !isNaN(value) ) {
+                                if ( this._parent ) {
+                                    var pl2w = this._parent.getLocalToWorldMatrix();
+                                    var l2w = this.getLocalMatrix().prepend(pl2w);
+                                    if (l2w.ty !== value) {
+                                        this._position.x = l2w.tx;
+                                        this._position.y = value;
+                                        pl2w.invert().transformPoint(this._position, this._position);
+                                    }
+                                }
+                                else {
+                                    this._position.y = value;
+                                }
+                // @ifdef EDITOR
+                                // notify change
+                                this._position = this._position;
+                // @endif
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;new worldY&#x27;);
+                            }
+                        }
+                    });
+                
+                    /**
+                     * The counterclockwise degrees of rotation relative to the parent
+                     * @property rotation
+                     * @type {number}
+                     * @default 0
+                     */
+                    Transform.getset(&#x27;rotation&#x27;,
+                        function () {
+                            return this._rotation;
+                        },
+                        function (value) {
+                            if ( !isNaN(value) ) {
+                                this._rotation = value;
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;new rotation&#x27;);
+                            }
+                        },
+                        Fire.Tooltip(&#x27;The counterclockwise degrees of rotation relative to the parent&#x27;)
+                    );
+                
+                    /**
+                     * The counterclockwise degrees of rotation in world space
+                     * @property worldRotation
+                     * @type {number}
+                     * @default 0
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;worldRotation&#x27;, {
+                        get: function () {
+                            if ( this._parent ) {
+                                return this.rotation + this._parent.worldRotation;
+                            }
+                            else {
+                                return this.rotation;
+                            }
+                        },
+                        set: function (value) {
+                            if ( !isNaN(value) ) {
+                                if ( this._parent ) {
+                                    this.rotation = value - this._parent.worldRotation;
+                                }
+                                else {
+                                    this.rotation = value;
+                                }
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;new worldRotation&#x27;);
+                            }
+                        }
+                    });
+                
+                    /**
+                     * The local scale factor relative to the parent
+                     * @property scale
+                     * @type {Vec2}
+                     * @default new Vec2(1, 1)
+                     */
+                    Transform.getset(&#x27;scale&#x27;,
+                        function () {
+                            return new Vec2(this._scale.x, this._scale.y);
+                        },
+                        function (value) {
+                            var x = value.x;
+                            var y = value.y;
+                            if ( !isNaN(x) &amp;&amp; !isNaN(y) ) {
+                                this._scale.x = x;
+                                this._scale.y = y;
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;xy of new scale&#x27;);
+                            }
+                        },
+                        Fire.Tooltip(&#x27;The local scale factor relative to the parent&#x27;)
+                    );
+                
+                    /**
+                     * The local x scale factor relative to the parent
+                     * @property scaleX
+                     * @type {number}
+                     * @default 1
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;scaleX&#x27;, {
+                        get: function () {
+                            return this._scale.x;
+                        },
+                        set: function (value) {
+                            if ( !isNaN(value) ) {
+                                this._scale.x = value;
+                // @ifdef EDITOR
+                                // notify change
+                                this._scale = this._scale;
+                // @endif
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;new scaleX&#x27;);
+                            }
+                        }
+                    });
+                
+                    /**
+                     * The local y scale factor relative to the parent
+                     * @property scaleY
+                     * @type {number}
+                     * @default 1
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;scaleY&#x27;, {
+                        get: function () {
+                            return this._scale.y;
+                        },
+                        set: function (value) {
+                            if ( !isNaN(value) ) {
+                                this._scale.y = value;
+                // @ifdef EDITOR
+                                // notify change
+                                this._scale = this._scale;
+                // @endif
+                            }
+                            else {
+                                Fire.error(ERR_NaN, &#x27;new scaleY&#x27;);
+                            }
+                        }
+                    });
+                
+                    /**
+                     * The lossy scale of the transform in world space (Read Only)
+                     * @property worldScale
+                     * @type {Vec2}
+                     * @default new Vec2(1, 1)
+                     * @readOnly
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;worldScale&#x27;, {
+                        get: function () {
+                            var l2w = this.getLocalToWorldMatrix();
+                            return l2w.getScale();
+                        }
+                    });
+                
+                    // override functions
+                
+                    Transform.prototype.onLoad = function () {
+                        this._parent = this.entity._parent &amp;&amp; this.entity._parent.transform;
+                    };
+                
+                    Transform.prototype.destroy = function () {
+                        Fire.error(&quot;Not allowed to destroy the transform. Please destroy the entity instead.&quot;);
+                    };
+                
+                    // other functions
+                
+                    Transform.prototype._updateTransform = function (parentMatrix) {
+                        //var mat = this._worldTransform;
+                
+                        //var px = this._pivot.x;
+                        //var py = this._pivot.y;
+                
+                        //var radians = this._rotation * 0.017453292519943295;
+                        //var sin = this._rotation === 0 ? 0 : Math.sin(radians);
+                        //var cos = this._rotation === 0 ? 1 : Math.cos(radians);
+                
+                        //// get local
+                        //mat.a = this._scale.x * cos;
+                        //mat.b = this._scale.x * sin;   // 这里如果是pixi，b和c是反过来的
+                        //mat.c = this._scale.y * - sin;
+                        //mat.d = this._scale.y * cos;
+                        //mat.tx = this._position.x;
+                        //mat.ty = this._position.y;
+                
+                        //// parent
+                        //var pa = parentMatrix.a;
+                        //var pb = parentMatrix.b;
+                        //var pc = parentMatrix.c;
+                        //var pd = parentMatrix.d;
+                
+                        //// local x parent
+                        //if (pa !== 1 || pb !== 0 || pc !== 0 || pd !== 1) {
+                        //    mat.a = mat.a * pa + mat.b * pc;
+                        //    mat.b = mat.a * pb + mat.b * pd;
+                        //    mat.c = mat.c * pa + mat.d * pc;
+                        //    mat.d = mat.c * pb + mat.d * pd;
+                        //    mat.tx = mat.tx * pa + mat.ty * pc + parentMatrix.tx;
+                        //    mat.ty = mat.tx * pb + mat.ty * pd + parentMatrix.ty;
+                        //}
+                        //else {
+                        //    mat.tx += parentMatrix.tx;
+                        //    mat.ty += parentMatrix.ty;
+                        //}
+                
+                        var mat = this._worldTransform;
+                        this.getLocalMatrix(mat);
+                        mat.prepend(parentMatrix);
+                
+                        //this._worldAlpha = this._alpha * this._parent._worldAlpha;
+                
+                        // update children
+                        var children = this.entity._children;
+                        for (var i = 0, len = children.length; i &lt; len; i++) {
+                            children[i].transform._updateTransform(mat);
+                        }
+                    };
+                
+                    Transform.prototype._updateRootTransform = function () {
+                        var mat = this._worldTransform;
+                        this.getLocalMatrix(mat);
+                        //this._worldAlpha = this._alpha;
+                
+                        // update children
+                        var children = this.entity._children;
+                        for (var i = 0, len = children.length; i &lt; len; i++) {
+                            children[i].transform._updateTransform(mat);
+                        }
+                    };
+                
+                    /**
+                     * Get the local matrix that transforms a point from local space into parents space.
+                     * @method getLocalMatrix
+                     * @param {Matrix23} [out] - optional, the receiving vector
+                     * @return {Matrix23}
+                     */
+                    Transform.prototype.getLocalMatrix = function (out) {
+                        out = out || new Matrix23();
+                
+                        //var px = this._pivot.x;
+                        //var py = this._pivot.y;
+                
+                        var radians = this._rotation * 0.017453292519943295;
+                        var sin = this._rotation === 0 ? 0 : Math.sin(radians);
+                        var cos = this._rotation === 0 ? 1 : Math.cos(radians);
+                
+                        out.a = this._scale.x * cos;   // scaleMat.a * rotateMat.a(cos) 00
+                        // 这里如果是pixi，b和c是反过来的
+                        out.b = this._scale.x * sin;   // scaleMat.a * rotateMat.b(sin)
+                        out.c = this._scale.y * - sin; // scaleMat.d * rotateMat.c(-sin)
+                        //
+                        out.d = this._scale.y * cos;   // scaleMat.d * rotateMat.d(cos) 11
+                        out.tx = this._position.x;/* * ra + this._position.y * rc*/
+                        out.ty = this._position.y;/* * rb + this._position.y * rd*/
+                        //out.tx = this._position.x/* - out.a * px - py * out.b*/;    // 02
+                        //out.ty = this._position.y/* - out.d * py - px * out.c*/;    // 12
+                
+                        //above should equivalent to:
+                        //  var t = new Matrix23();
+                        //  t.tx = this._position.x;
+                        //  t.ty = this._position.y;
+                        //  var r = new Matrix23();
+                        //  r.rotate(radians);
+                        //  var s = new Matrix23();
+                        //  s.setScale(this._scale);
+                        //  out.set(s.prepend(r).prepend(t));
+                
+                        return out;
+                    };
+                
+                    /**
+                     * Get the world transform matrix that transforms a point from local space into world space.
+                     * @method getLocalToWorldMatrix
+                     * @param {Matrix23} [out] - optional, the receiving vector
+                     * @return {Matrix23}
+                     */
+                    Transform.prototype.getLocalToWorldMatrix = function (out) {
+                        // todo, merge with this._worldTransform
+                        out = out || new Matrix23();
+                        this.getLocalMatrix(out);
+                        var t = new Fire.Matrix23();
+                        for (var p = this._parent; p !== null; p = p._parent) {
+                            out.prepend(p.getLocalMatrix(t));
+                        }
+                        return out;
+                    };
+                
+                    /**
+                     * Get the inverse world transform matrix that transforms a point from world space into local space.
+                     * @method getWorldToLocalMatrix
+                     * @param {Matrix23} [out] - optional, the receiving vector
+                     * @return {Matrix23}
+                     */
+                    Transform.prototype.getWorldToLocalMatrix = function (out) {
+                        return this.getLocalToWorldMatrix(out).invert();
+                    };
+                
+                    /**
+                     * Rotates this transform through point in world space by angle degrees.
+                     * @method rotateAround
+                     * @param {Vec2} point - the world point rotates through
+                     * @param {number} angle - degrees
+                     */
+                    Transform.prototype.rotateAround = function (point, angle) {
+                        var delta = this.worldPosition.subSelf(point);
+                        delta.rotateSelf(Math.deg2rad(angle));
+                        this.worldPosition = point.addSelf(delta);
+                        this.rotation = this._rotation + angle;
+                    };
+                
+                    /**
+                     * Moves the transform in the direction and distance of translation. The movement is applied relative to the transform&#x27;s local space.
+                     * @method translate
+                     * @param {Vec2} translation
+                     */
+                    Transform.prototype.translate = function (translation) {
+                        var rotated = translation.rotate(Math.deg2rad(this._rotation));
+                        this.position = this._position.add(rotated, rotated);
+                    };
+                
+                    /**
+                     * up direction in world space, point to the y(green) axis
+                     * @property up
+                     * @type {Vec2}
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;up&#x27;, {
+                        get: function () {
+                            return (new Vec2(0.0, 1.0)).rotateSelf(Math.deg2rad(this.worldRotation));
+                        },
+                        set: function (value) {
+                            if (value.x === 0.0 &amp;&amp; value.y === 0.0) {
+                                Fire.warn(&quot;Can&#x27;t get rotation from zero vector&quot;);
+                                return;
+                            }
+                            var radians = Math.atan2(value.y, value.x) - Math.HALF_PI;
+                            this.worldRotation = Math.rad2deg(radians);
+                        }
+                    });
+                
+                    /**
+                     * right direction in world space, point to the x(red) axis
+                     * @property right
+                     * @type {Vec2}
+                     */
+                    Object.defineProperty(Transform.prototype, &#x27;right&#x27;, {
+                        get: function () {
+                            return (new Vec2(1.0, 0.0)).rotateSelf(Math.deg2rad(this.worldRotation));
+                        },
+                        set: function (value) {
+                            if (value.x === 0.0 &amp;&amp; value.y === 0.0) {
+                                Fire.warn(&quot;Can&#x27;t get rotation from zero vector&quot;);
+                                return;
+                            }
+                            var radians = Math.atan2(value.y, value.x);
+                            this.worldRotation = Math.rad2deg(radians);
+                        }
+                    });
+                
+                    ///**
+                    // * Subscribe the &#x60;onHierarchyChanged&#x60; event.
+                    // * When this transform or one of its parents&#x27; hierarchy changed, the &#x60;onHierarchyChanged&#x60;
+                    // * method will be invoked on supplied instance of Component. If you want to unsubscribe this event,
+                    // * you must destroy the Component.
+                    // * 这里不支持自定义回调，因为如果忘了反注册很容易就会内存泄漏。
+                    // *
+                    // * @method Fire.Transform#_addListener
+                    // * @param {Component} component - the component to be invoked.
+                    // * @private
+                    // */
+                    //Transform.prototype._addListener = function (component) {
+                    //    //if (component.entity === this.entity) {
+                    //        if (this._hierarchyChangedListeners) {
+                    //            this._hierarchyChangedListeners.push(component);
+                    //        }
+                    //        else {
+                    //            this._hierarchyChangedListeners = [component];
+                    //        }
+                    //    //}
+                    //    //else {
+                    //    //    Fire.error(&quot;Can not listen other entity&#x27;s onHierarchyChanged event&quot;);
+                    //    //}
+                    //};
+                
+                    //// 这里就算不调用，内存也不会泄露，因为component本身就会被destroy。
+                    //// 只不过调用了以后内存能清理的更及时。
+                    //Transform.prototype._removeListener = function (component) {
+                    //    if (this._hierarchyChangedListeners) {
+                    //        var idx = this._hierarchyChangedListeners.indexOf(component);
+                    //        this._hierarchyChangedListeners.splice(idx, 1);
+                    //    }
+                    //};
+                
+                    //Transform.prototype._onHierarchyChanged = function (transform, oldParent) {
+                    //    // notify self listener
+                    //    if (this._hierarchyChangedListeners) {
+                    //        for (var i = this._hierarchyChangedListeners.length - 1; i &gt;= 0; --i) {
+                    //            var target = this._hierarchyChangedListeners[i];
+                    //            if (target.isValid) {
+                    //                if (target.onHierarchyChanged(transform, oldParent)) {
+                    //                    // 目前只有一种component会终止事件，如果有多种，这里需要做分类
+                    //                    return;
+                    //                }
+                    //            }
+                    //            else {
+                    //                this._hierarchyChangedListeners.splice(i, 1);
+                    //            }
+                    //        }
+                    //    }
+                    //    // notify children
+                    //    for (var c = 0, len = this._children.length; c &lt; len; c++) {
+                    //        this._children[c]._onHierarchyChanged(transform, oldParent);
+                    //    }
+                    //};
+                
+                    return Transform;
+                })();
+                
+                Fire.Transform = Transform;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/builtin/code-editor/editor/elements/code-mirror.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/builtin/code-editor/editor/elements/code-mirror.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Fs = require(&quot;fire-fs&quot;);
+                var Path = require(&#x27;fire-path&#x27;);
+                
+                Polymer({
+                    value: &quot;&quot;,
+                    mode: &#x27;htmlmixed&#x27;,
+                    theme: &#x27;zenburn&#x27;,
+                    tabSize: 4,
+                    indentUnit: 4,
+                    keyMap: &#x27;sublime&#x27;,
+                    lineNumbers: true,
+                    jshintError: &quot;&quot;,
+                    lineCount: 0,
+                    fontSize: 12,
+                    fontFamily: &quot;DejaVu Sans Mono&quot;,
+                    autoComplete: true,
+                
+                    fspath: &quot;&quot;,
+                    uuid: &quot;&quot;,
+                    initialLoad: false,
+                    dirty: false,
+                
+                    timeLock: false,
+                    allowShowHint: false,
+                
+                    settings: null,
+                
+                    created: function () {
+                        this.cursor = {
+                            &quot;line&quot; : 0,
+                            &quot;ch&quot; : 0
+                        };
+                    },
+                
+                    refresh: function() {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.refresh();
+                    },
+                
+                    createEditor: function () {
+                        CodeMirror.commands.save = function () {
+                            this.save();
+                        }.bind(this);
+                
+                        CodeMirror.commands.autoformat = function () {
+                            this.autoFormat();
+                        }.bind(this);
+                
+                        CodeMirror.commands.increaseFontSize = function () {
+                            this.fontSize = Math.min( this.fontSize+1, 30 );
+                        }.bind(this);
+                
+                        CodeMirror.commands.decreaseFontSize = function () {
+                            this.fontSize = Math.max( this.fontSize-1, 8 );
+                        }.bind(this);
+                
+                        CodeMirror.commands.resetFontSize = function () {
+                            this.fontSize = 12;
+                        }.bind(this);
+                
+                        var mac = CodeMirror.keyMap.default == CodeMirror.keyMap.macDefault;
+                
+                        var autoformat = (mac ? &quot;Cmd&quot; : &quot;Ctrl&quot;) + &quot;-O&quot;;
+                        var search = (mac ? &quot;Cmd&quot; : &quot;Ctrl&quot;) + &quot;-F&quot;;
+                        var increaseFontSize = (mac ? &quot;Cmd&quot; : &quot;Ctrl&quot;) + &quot;-=&quot;;
+                        var decreaseFontSize = (mac ? &quot;Cmd&quot; : &quot;Ctrl&quot;) + &quot;--&quot;;
+                        var resetFontSize = (mac ? &quot;Cmd&quot; : &quot;Ctrl&quot;) + &quot;-0&quot;;
+                        var extraKeys = {};
+                
+                        extraKeys[autoformat] = &quot;autoformat&quot;;
+                        extraKeys[increaseFontSize] = &quot;increaseFontSize&quot;;
+                        extraKeys[decreaseFontSize] = &quot;decreaseFontSize&quot;;
+                        extraKeys[resetFontSize] = &quot;resetFontSize&quot;;
+                
+                        this.options = {
+                            value: this.value,
+                            mode: this.mode,
+                            theme: this.theme,
+                            scroll: false,
+                            tabSize: this.tabSize,
+                            lineNumbers: this.lineNumbers,
+                            autofocus: true,
+                            foldGutter: true,
+                            autoCloseTags: true,
+                            matchBrackets: true,
+                            styleActiveLine: true,
+                            autoCloseBrackets: true,
+                            showCursorWhenSelecting: true,
+                            keyMap: this.keyMap,
+                            extraKeys: extraKeys,
+                            indentUnit: this.indentUnit,
+                            completeSingle: false,
+                            gutters: [&quot;CodeMirror-linenumbers&quot;, &quot;CodeMirror-lint-markers&quot;,&quot;CodeMirror-foldgutter&quot;,&quot;breakpoints&quot;],
+                        };
+                
+                        // codeMirror initialize
+                        this.codeMirror = CodeMirror(this.shadowRoot,this.options);
+                
+                        var codeMirrorStyle = this.shadowRoot.querySelectorAll(&#x27;.CodeMirror&#x27;)[0].style;
+                        codeMirrorStyle.fontFamily = this.fontFamily;
+                        codeMirrorStyle.fontSize = this.fontSize + &quot;px&quot;;
+                
+                        this.codeMirror.on(&#x27;change&#x27;,function () {
+                            if ( this.initialLoad ) {
+                                this.codeMirror.getDoc().clearHistory();
+                                this.initialLoad = false;
+                            }
+                            else {
+                                this.dirty = true;
+                            }
+                            this.lineCount = this.codeMirror.lineCount();
+                
+                            if (this.mode === &quot;javascript&quot;) {
+                                if (this.timeLock === false) {
+                                    this.timeLock = true;
+                                    var hintTime = setTimeout( function () {
+                                        this.updateHints();
+                                    }.bind(this), 500 );
+                                }
+                            }
+                
+                            if (this.allowShowHint === true &amp;&amp; this.autoComplete === true){
+                                var showHint = setTimeout( function () {
+                                    this.codeMirror.showHint();
+                                    this.allowShowHint = false;
+                                }.bind(this), 300 );
+                            }
+                        }.bind(this));
+                
+                        this.codeMirror.on(&#x27;keydown&#x27;,function (target,event) {
+                            // NOTE: 屏蔽组合键触发showhint
+                            if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+                                return;
+                            }
+                
+                            if (event.keyCode &gt;=65 &amp;&amp; event.keyCode&lt;=90 ||event.keyCode === 190){
+                                this.allowShowHint = true;
+                            }
+                        }.bind(this));
+                
+                        this.codeMirror.on(&#x27;cursorActivity&#x27;,function () {
+                            this.cursor = this.codeMirror.getCursor();
+                        }.bind(this));
+                
+                        this.lineCount = this.codeMirror.lineCount();
+                        this.detectTextMode();
+                    },
+                
+                    detectTextMode: function () {
+                        switch (Path.extname(this.fspath).toLowerCase()) {
+                            case &quot;.js&quot; :
+                                this.mode = &quot;javascript&quot;;
+                                break;
+                            case &quot;.html&quot; :
+                                this.mode = &quot;htmlmixed&quot;;
+                                break;
+                            case &quot;.htm&quot; :
+                                this.mode = &quot;htmlmixed&quot;;
+                                break;
+                            case &quot;.css&quot; :
+                                this.mode = &quot;css&quot;;
+                                break;
+                            case &quot;.styl&quot; :
+                                this.mode = &quot;css&quot;;
+                                break;
+                            case &quot;.json&quot; :
+                                this.mode = &quot;css&quot;;
+                                break;
+                            case &quot;.xml&quot; :
+                                this.mode = &quot;xml&quot;;
+                                break;
+                            case &quot;.xaml&quot; :
+                                this.mode = &quot;xml&quot;;
+                                break;
+                            default:
+                                this.mode = &quot;&quot;;
+                                break;
+                        }
+                
+                        if (this.mode === &quot;javascript&quot;) {
+                            this.updateHints();
+                        }
+                    },
+                
+                    valueChanged: function() {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.setValue(this.value);
+                    },
+                
+                    fontFamilyChanged: function () {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.shadowRoot.querySelectorAll(&#x27;.CodeMirror&#x27;)[0].style.fontFamily = this.fontFamily;
+                    },
+                
+                    keyMapChanged: function () {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.setOption(&#x27;keyMap&#x27;, this.keyMap);
+                    },
+                
+                    modeChanged: function() {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.setOption(&#x27;mode&#x27;, this.mode);
+                    },
+                
+                    fontSizeChanged: function () {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.shadowRoot.querySelectorAll(&#x27;.CodeMirror&#x27;)[0].style.fontSize = this.fontSize + &quot;px&quot;;
+                    },
+                
+                    themeChanged: function() {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.setOption(&#x27;theme&#x27;, this.theme);
+                    },
+                
+                    indentUnitChanged: function () {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.setOption(&quot;indentUnit&quot;,this.indentUnit);
+                    },
+                
+                    tabSizeChanged: function() {
+                        this.indentUnit = this.tabSize;
+                
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.setOption(&#x27;tabSize&#x27;, this.tabSize);
+                    },
+                
+                    lineNumbersChanged: function() {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.setOption(&#x27;lineNumbers&#x27;, this.lineNumbers);
+                    },
+                
+                    dirtyChanged: function () {
+                        this.fire(&#x27;dirty-changed&#x27;);
+                    },
+                
+                    reloadAction: function () {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.setValue(this.value);
+                    },
+                
+                    lineComment: function () {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        var range = { from: this.codeMirror.getCursor(true), to: this.codeMirror.getCursor(false) };
+                        this.codeMirror.lineComment(range.from, range.to);
+                    },
+                
+                    autoFormat: function () {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        switch (this.mode) {
+                            case &quot;javascript&quot;:
+                                this.codeMirror.setValue(js_beautify(this.codeMirror.getValue(),this.tabSize,&#x27;&#x27;));
+                                break;
+                
+                            case &quot;css&quot;:
+                                var options = {
+                                    indent: &#x27;    &#x27;,
+                                };
+                                this.codeMirror.setValue(cssbeautify(this.codeMirror.getValue(),options));
+                                break;
+                
+                            case &quot;htmlmixed&quot;:
+                                this.codeMirror.setValue(style_html(this.codeMirror.getValue(),this.tabSize,&#x27; &#x27;,80));
+                                break;
+                        }
+                    },
+                
+                    save: function () {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        Fs.writeFile(this.fspath, this.codeMirror.getValue(), &#x27;utf8&#x27;, function ( err ) {
+                            if ( err ) {
+                                Fire.error( err.message );
+                                return;
+                            }
+                
+                            this.dirty = false;
+                
+                            //
+                            Fire.sendToAll(&#x27;asset:changed&#x27;, {
+                                uuid: this.uuid
+                            });
+                            Fire.sendToAll(&#x27;asset-db:synced&#x27;);
+                        }.bind(this));
+                    },
+                
+                    updateHints: function() {
+                        if ( !this.codeMirror )
+                            return;
+                
+                        this.codeMirror.operation(function(){
+                            JSHINT(this.codeMirror.getValue());
+                            if (JSHINT.errors.length &gt; 0) {
+                                var errorMsg = &quot;Jshint: [ line &quot; +
+                                               JSHINT.errors[0].line +
+                                               &quot; column &quot; + JSHINT.errors[0].character +
+                                               &quot; &quot; +  JSHINT.errors[0].reason + &quot; ]&quot;
+                                               ;
+                                this.jshintError = errorMsg;
+                                this.jshint = JSHINT;
+                            }
+                            else {
+                                this.jshintError = &quot;&quot;;
+                            }
+                            this.timeLock = false;
+                        }.bind(this));
+                    },
+                });
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

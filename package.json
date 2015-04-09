@@ -1,6 +1,6 @@
 {
     "name": "Fireball",
-    "version": "0.1.7",
+    "version": "0.2.0",
     "fire-shell-version": "0.22.1",
     "atom-shell-version": "0.22.1",
     "description": "Fireball is the Html5 game engine for the future.",
@@ -35,15 +35,15 @@
         "vinyl-buffer": "^1.0.0",
         "vinyl-source-stream": "1.0.0",
         "gulp-uglify": "1.1.0",
-        "fire-fs": "0.1.7",
-        "fire-url": "",
+        "fire-fs": "0.1.8",
+        "fire-url": "0.1.6",
         "fire-path": "",
         "node-uuid": "1.4.2",
         "chalk": "0.5.1",
-        "image-size": "0.3.5",
         "vinyl": "0.4.6",
         "vinyl-fs": "0.3.13",
-        "async": "0.9.0"
+        "async": "0.9.0",
+        "source-map": "^0.4.2"
     },
     "devDependencies": {},
     "native-modules": [

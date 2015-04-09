@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/serialize.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/serialize.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                function _getType (obj) {
+                    var p = obj.constructor.prototype;
+                    if (p.hasOwnProperty(&#x27;__cid__&#x27;)) {
+                        return obj.__cid__;
+                    }
+                    if (p.hasOwnProperty(&#x27;__classname__&#x27;)) {
+                        return obj.__classname__;
+                    }
+                    return &#x27;&#x27;;
+                }
+                
+                var _Serializer = (function () {
+                
+                    /**
+                     * @param {boolean} [exporting=false] - if true, property with Fire.EditorOnly will be discarded
+                     */
+                    function _Serializer(obj, exporting) {
+                        this._exporting = exporting;
+                
+                        this.serializedList = [];  // list of serialized data for all Fire.FObject objs
+                        this._parsingObjs = [];    // 记录当前引用对象，防止循环引用
+                        this._parsingData = [];    // 记录当前引用对象的序列化结果
+                        this._objsToResetId = [];
+                
+                        _serializeMainObj(this, obj);
+                
+                        for (var i = 0; i &lt; this._objsToResetId.length; ++i) {
+                            this._objsToResetId[i].__id__ = undefined;
+                        }
+                
+                        this._parsingObjs = null;
+                        this._parsingData = null;
+                        this._objsToResetId = null;
+                    }
+                
+                    // even array may caused circular reference, so we&#x27;d be better check it all the time, 否则就要像unity限制递归层次，有好有坏
+                    var _checkCircularReference = function (self, obj) {
+                        var parsingIndex = self._parsingObjs.indexOf(obj);
+                        var circularReferenced = (parsingIndex !== -1);
+                        if (circularReferenced) {
+                            // register new referenced object
+                            var id = self.serializedList.length;
+                            obj.__id__ = id;        // we add this prop dynamically to simply lookup whether an obj has been serialized.
+                                                    // If it will lead to performance degradations in V8, we just need to save ids to another table.
+                            self._objsToResetId.push(obj);
+                            var data = self._parsingData[parsingIndex];
+                            if (Array.isArray(obj) === false) {
+                                //data.__id__ = id;   // also save id in source data, just for debugging
+                                var type = _getType(obj);
+                                if (type) {
+                                    data.__type__ = type;
+                                }
+                            }
+                            self.serializedList.push(data);
+                            return data;
+                        }
+                    };
+                
+                    /**
+                     * @param {object} obj - The object to serialize
+                     * @param {array|object} data - The array or dict where serialized data to store
+                     * @return {object} The reference info used to embed to its container.
+                     *                   if the serialized data not contains in serializedList, then return the data directly.
+                     */
+                    var _enumerateObject = function (self, obj, data) {
+                        if (Array.isArray(obj)) {
+                            //var oldSerializedCount = self.serializedList.length;
+                            for (var i = 0; i &lt; obj.length; ++i) {
+                                var item = _serializeField(self, obj[i]);
+                                if (typeof item !== &#x27;undefined&#x27;) {     // strip undefined item (dont save)
+                                    data.push(item);
+                                }
+                            }
+                            /*
+                            // check whether obj has been serialized to serializedList,
+                            // if so, no need to serialized to data again
+                            var index = self.serializedList.indexOf(data, oldSerializedCount);
+                            if (index !== -1) {
+                                return { __id__: index };
+                            }
+                            */
+                        }
+                        else {
+                            var klass = obj.constructor;
+                            if (!Fire._isFireClass(klass)) {
+                                // primitive javascript object
+                                for (var key in obj) {
+                                    //Fire.log(key);
+                                    if ( !obj.hasOwnProperty(key) || (key.charCodeAt(0) === 95 &amp;&amp; key.charCodeAt(1) === 95))    // starts with __
+                                        continue;
+                                    // undefined value (if dont save) will be stripped from JSON
+                                    data[key] = _serializeField(self, obj[key]);
+                                }
+                            }
+                            else {
+                                // FireClass
+                
+                                //if (obj.onBeforeSerialize) {
+                                //    obj.onBeforeSerialize();
+                                //}
+                                // only __props__ will be serialized
+                                var props = klass.__props__;
+                                if (props) {
+                                    if (props[props.length - 1] !== &#x27;_$erialized&#x27;) {
+                                        for (var p = 0; p &lt; props.length; p++) {
+                                            var propName = props[p];
+                                            var attrs = Fire.attr(klass, propName);
+                                            // assume all prop in __props__ must have attr
+                
+                                            // skip nonSerialized
+                                            if (attrs.serializable === false) {
+                                                continue;
+                                            }
+                
+                                            // skip editor only when exporting
+                                            if (self._exporting &amp;&amp; attrs.editorOnly) {
+                                                continue;
+                                            }
+                
+                                            // undefined value (if dont save) will be stripped from JSON
+                                            data[propName] = _serializeField(self, obj[propName]);
+                                        }
+                                    }
+                                    else {
+                                        // If is missing script proxy, serialized as original data
+                                        data.__type__ = obj._$erialized.__type__;
+                                        _enumerateObject(self, obj._$erialized, data);
+                                    }
+                                }
+                            }
+                            /*
+                            // check whether obj has been serialized to serializedList,
+                            // if so, no need to serialized to data again
+                            var refId = data.__id__;
+                            // notEqual(refId, obj.__id__);
+                            if (refId !== undefined) {
+                                return { __id__: refId };
+                            }
+                            */
+                        }
+                        //return data;
+                    };
+                
+                    /**
+                     * serialize any type
+                     * @param {*} val - The element to serialize
+                     */
+                    var _serializeField = function (self, val) {
+                        var type = typeof val;
+                        if (type === &#x27;object&#x27;) {
+                            if (val instanceof FObject) {
+                                var objFlags = val._objFlags;
+                                if (objFlags &amp; DontSave) {
+                                    return undefined;
+                                }
+                                else if (self._exporting &amp;&amp; (objFlags &amp; EditorOnly)) {
+                                    return undefined;
+                                }
+                            }
+                            return _serializeObj(self, val);
+                        }
+                        else if (type !== &#x27;function&#x27;) {
+                            return val;
+                        }
+                        else /*function*/ {
+                            return null;
+                        }
+                    };
+                
+                    /**
+                     * serialize only primitive object type
+                     * @param {object} obj - The object to serialize
+                     */
+                    var _serializePrimitiveObj = function (self, obj) {
+                        var data;
+                        if (Array.isArray(obj)) {
+                            data = [];
+                        }
+                        else {  // &#x27;object&#x27;
+                            data = {};
+                            var type = _getType(obj);
+                            if (type) {
+                                data.__type__ = type;
+                            }
+                        }
+                
+                        var oldSerializedCount = self.serializedList.length;
+                
+                        // mark parsing to prevent circular reference
+                        self._parsingObjs.push(obj);
+                        self._parsingData.push(data);
+                
+                        _enumerateObject(self, obj, data);
+                
+                        self._parsingObjs.pop();
+                        self._parsingData.pop();
+                
+                        // check whether obj has been serialized to serializedList,
+                        // if it is, no need to serialized to data again
+                        if (self.serializedList.length &gt; oldSerializedCount) {
+                            var index = self.serializedList.indexOf(data, oldSerializedCount);
+                            if (index !== -1) {
+                                return { __id__: index };
+                            }
+                        }
+                
+                        // inline
+                        return data;
+                    };
+                
+                    /**
+                     * serialize object
+                     * @param {object} obj - The object to serialize
+                     */
+                    var _serializeObj = function (self, obj) {
+                        //Fire.log(obj);
+                        if (!obj) {
+                            return null;
+                        }
+                
+                        // has been serialized ?
+                        var id = obj.__id__;
+                        if (typeof id !== &#x27;undefined&#x27;) {
+                            return { __id__: id }; // no need to parse again
+                        }
+                
+                        if (obj instanceof FObject) {
+                            // FObject
+                            if ( !obj.isValid ) {
+                                return null;
+                            }
+                            var uuid = obj._uuid;
+                            if (uuid) {
+                                // Asset
+                                return { __uuid__: uuid };
+                            }
+                
+                            // assign id for FObject
+                            id = self.serializedList.length;
+                            obj.__id__ = id;        // we add this prop dynamically to simply lookup whether an obj has been serialized.
+                                                    // If it will lead to performance degradations in V8, we just need to save ids to another table.
+                            self._objsToResetId.push(obj);
+                
+                            var data = {};
+                            self.serializedList.push(data);
+                
+                            // get FObject data
+                            var type = _getType(obj);
+                            if (type) {
+                                data.__type__ = type;
+                            }
+                            _enumerateObject(self, obj, data);
+                            data._objFlags &amp;= PersistentMask;
+                
+                            return { __id__: id };
+                        }
+                        else if (_isDomNode(obj)) {
+                            // raw obj
+                            //Fire.warn(&quot;&quot; + obj + &quot; won&#x27;t be serialized&quot;);
+                            return null;
+                        }
+                        else {
+                            // check circular reference if primitive object
+                            // 对于原生javascript类型，只做循环引用的保护，
+                            // 并不保证同个对象的多处引用反序列化后仍然指向同一个对象。
+                            // 如果有此需求，应该继承自FObject
+                            var referencedData = _checkCircularReference(self, obj);
+                            if (referencedData) {
+                                // already referenced
+                                id = obj.__id__;
+                                return { __id__: id };
+                            }
+                            else {
+                                return _serializePrimitiveObj(self, obj);
+                            }
+                        }
+                    };
+                
+                    /**
+                     * serialize main object
+                     * 这个方法主要是对 main object 做特殊处理，虽然和 _serializeObj 很接近，但为了
+                     * 避免增加 _serializeObj 的额外开销并不和它合并到一起。
+                     * @param {object} obj - The object to serialize
+                     */
+                    var _serializeMainObj = function (self, obj) {
+                        if (obj instanceof FObject) {
+                            var uuid = obj._uuid;
+                            if (typeof uuid !== &#x27;undefined&#x27;) {
+                                // force Asset serializable, or _serializeObj will just return { __uuid__: ... }
+                                obj._uuid = null;
+                            }
+                
+                            _serializeObj(self, obj);
+                
+                            if (typeof uuid !== &#x27;undefined&#x27;) {
+                                // restore uuid
+                                obj._uuid = uuid;
+                            }
+                        }
+                        else if (typeof obj === &#x27;object&#x27; &amp;&amp; obj) {
+                            if (_isDomNode(obj)) {
+                                Fire.warn(&quot;&quot; + obj + &quot; won&#x27;t be serialized&quot;);
+                                self.serializedList.push(null);
+                                return;
+                            }
+                
+                            var data;
+                            if (Array.isArray(obj)) {
+                                data = [];
+                            }
+                            else {
+                                data = {};
+                                var type = _getType(obj);
+                                if (type) {
+                                    data.__type__ = type;
+                                }
+                            }
+                
+                            obj.__id__ = 0;
+                            self._objsToResetId.push(obj);
+                            self.serializedList.push(data);
+                            _enumerateObject(self, obj, data);
+                        }
+                        else {
+                            self.serializedList.push(_serializeObj(self, obj));
+                        }
+                    };
+                
+                    return _Serializer;
+                })();
+                
+                /**
+                 * Serialize Fire.Asset to a json string
+                 * @method serialize
+                 * @param {Asset} obj - The object to serialize
+                 * @param {object} [options=null]
+                 * @return {string|object} The json string to represent the object or json object if dontStringify is true
+                 */
+                Fire.serialize = function (obj, options) {
+                    var exporting = (options &amp;&amp; options.exporting);
+                    // indicates whether needs to convert the result by JSON.stringify, default is true
+                    var stringify = (options &amp;&amp; &#x27;stringify&#x27; in options) ? options.stringify : true;
+                    var minify = (options &amp;&amp; &#x27;minify&#x27; in options) ? options.minify : false;
+                    var nicify = minify || (options &amp;&amp; options.nicify);
+                
+                    var serializer = new _Serializer(obj, exporting);
+                    var serializedList = serializer.serializedList;
+                
+                    if (nicify) {
+                        nicifySerialized(serializedList);
+                    }
+                
+                    var serializedData = serializedList.length === 1 ? serializedList[0] : serializedList;
+                    if (stringify === false) {
+                        return serializedData;
+                    }
+                    else {
+                        return JSON.stringify(serializedData, null, minify ? 0 : 2);
+                    }
+                };
+                
+                /**
+                 * Create a pseudo object which will be force serialized as a reference to any asset by specified uuid.
+                 * @method serialize.asAsset
+                 * @param {string} uuid
+                 * @return {Asset}
+                 */
+                Fire.serialize.asAsset = function (uuid) {
+                    if ( !uuid ) {
+                        Fire.error(&#x27;[Fire.serialize.asAsset] The uuid must be non-nil!&#x27;);
+                    }
+                    var pseudoAsset = new Asset();
+                    pseudoAsset._uuid = uuid;
+                    return pseudoAsset;
+                };
+                
+                /**
+                 * Set the asset&#x27;s name directly in JSON object
+                 * @method serialize.setName
+                 * @param {object} jsonObj
+                 * @param {string} name
+                 */
+                Fire.serialize.setName = function (jsonObj, name) {
+                    if ( Array.isArray(jsonObj) ) {
+                        jsonObj[0]._name = name;
+                    }
+                    else {
+                        jsonObj._name = name;
+                    }
+                };
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

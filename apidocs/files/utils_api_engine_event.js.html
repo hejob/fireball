@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/event.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/event.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Event = (function () {
+                
+                    /**
+                     * An event allows for signaling that something has occurred. E.g. that an asset has completed downloading.
+                     * @class Event
+                     * @constructor
+                     * @param {string} type - The name of the event (case-sensitive), e.g. &quot;click&quot;, &quot;fire&quot;, or &quot;submit&quot;
+                     * @param {boolean} [bubbles=false] - A boolean indicating whether the event bubbles up through the tree or not
+                     */
+                    function Event (type, bubbles) {
+                        //HashObject.call(this);
+                        if (typeof bubbles === &#x27;undefined&#x27;) { bubbles = false; }
+                
+                        /**
+                         * The name of the event (case-sensitive), e.g. &quot;click&quot;, &quot;fire&quot;, or &quot;submit&quot;
+                         * @property type
+                         * @type {string}
+                         */
+                        this.type = type;
+                
+                        /**
+                         * A reference to the target to which the event was originally dispatched
+                         * @property target
+                         * @type {object}
+                         */
+                        this.target = null;
+                
+                        /**
+                         * A reference to the currently registered target for the event
+                         * @property currentTarget;
+                         * @type {object}
+                         */
+                        this.currentTarget = null;
+                
+                        /**
+                         * Indicates which phase of the event flow is currently being evaluated.
+                         * Returns an integer value represented by 4 constants:
+                         *  - Event.NONE = 0
+                         *  - Event.CAPTURING_PHASE = 1
+                         *  - Event.AT_TARGET = 2
+                         *  - Event.BUBBLING_PHASE = 3
+                         * The phases are explained in the [section 3.1, Event dispatch and DOM event flow]
+                         * (http://www.w3.org/TR/DOM-Level-3-Events/#event-flow), of the DOM Level 3 Events specification.
+                         *
+                         * @property eventPhase
+                         * @type {number}
+                         */
+                        this.eventPhase = 0;
+                
+                        /**
+                         * A boolean indicating whether the event bubbles up through the hierarchy or not
+                         * @property bubbles
+                         * @type {boolean}
+                         */
+                        this.bubbles = bubbles;
+                
+                        /**
+                         * Indicates whether or not event.preventDefault() has been called on the event
+                         * @property _defaultPrevented
+                         * @type {boolean}
+                         * @private
+                         */
+                        this._defaultPrevented = false;
+                
+                        /**
+                         * Indicates whether or not event.stop() has been called on the event
+                         * @property _propagationStopped
+                         * @type {boolean}
+                         * @private
+                         */
+                        this._propagationStopped = false;
+                
+                        /**
+                         * Indicates whether or not event.stop(true) has been called on the event
+                         * @property _propagationImmediateStopped
+                         * @type {boolean}
+                         * @private
+                         */
+                        this._propagationImmediateStopped = false;
+                
+                        //this.cancelable = false;
+                        //this.clipboardData = undefined;
+                        //this.path = NodeList[0];
+                        //this.returnValue = true;
+                        //this.srcElement = null;
+                        //this.timeStamp = 1415761681529;
+                    }
+                
+                    /**
+                     * Events not currently dispatched are in this phase
+                     * @property NONE
+                     * @type {number}
+                     * @static
+                     * @final
+                     */
+                    Event.NONE = 0;
+                    /**
+                     * The capturing phase comprises the journey from the root to the last node before the event target&#x27;s node
+                     * see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
+                     * @property CAPTURING_PHASE
+                     * @type {number}
+                     * @static
+                     * @final
+                     */
+                    Event.CAPTURING_PHASE = 1;
+                    /**
+                     * The target phase comprises only the event target node
+                     * see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
+                     * @property AT_TARGET
+                     * @type {number}
+                     * @static
+                     * @final
+                     */
+                    Event.AT_TARGET = 2;
+                    /**
+                     * The bubbling phase comprises any subsequent nodes encountered on the return trip to the root of the hierarchy
+                     * see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
+                     * @property BUBBLING_PHASE
+                     * @type {number}
+                     * @static
+                     * @final
+                     */
+                    Event.BUBBLING_PHASE = 3;
+                
+                    /**
+                     * Stop propagation. When dispatched in a tree, invoking this method prevents event from reaching any other objects than the current.
+                     *
+                     * @method stop
+                     * @param {boolean} [immediate=false] - Indicates whether or not to immediate stop the propagation, default is false.
+                     *                                      If true, for this particular event, no other callback will be called.
+                     *                                      Neither those attached on the same event target,
+                     *                                      nor those attached on targets which will be traversed later.
+                     */
+                    Event.prototype.stop = function (immediate) {
+                        this._propagationStopped = true;
+                        if (immediate) {
+                            this._propagationImmediateStopped = true;
+                        }
+                    };
+                
+                    /**
+                     * If invoked when the cancelable attribute value is true, signals to the operation that caused event to be dispatched that it needs to be canceled.
+                     * @method preventDefault
+                     */
+                    Event.prototype.preventDefault = function () {
+                        this._defaultPrevented = true;
+                    };
+                
+                    /**
+                     * @method _reset
+                     * @private
+                     */
+                    Event.prototype._reset = function () {
+                        this.target = null;
+                        this.currentTarget = null;
+                        this.eventPhase = 0;
+                        this._defaultPrevented = false;
+                        this._propagationStopped = false;
+                        this._propagationImmediateStopped = false;
+                    };
+                
+                    return Event;
+                })();
+                
+                Fire.Event = Event;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

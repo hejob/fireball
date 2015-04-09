@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/builtin/sprite-animation/sprite-animation.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/builtin/sprite-animation/sprite-animation.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var SpriteAnimationClip = require(&#x27;sprite-animation-clip&#x27;);
+                var SpriteAnimationState = require(&#x27;sprite-animation-state&#x27;);
+                
+                /**
+                 * The sprite animation Component.
+                 * @class SpriteAnimation
+                 * @extends Component
+                 * @constructor
+                 */
+                var SpriteAnimation = Fire.Class({
+                    //
+                    name: &quot;Fire.SpriteAnimation&quot;,
+                    //
+                    extends: Fire.Component,
+                    //
+                    constructor: function() {
+                        this._nameToState = null;
+                        this._curAnimation = null;
+                        this._spriteRenderer = null;
+                        this._defaultSprite = null;
+                        this._lastFrameIndex = -1;
+                        this._curIndex = -1;
+                        this._playStartFrame = 0;// 在调用Play的当帧的LateUpdate不进行step
+                    },
+                    //
+                    properties:{
+                        /**
+                         * The default animation.
+                         * @property defaultAnimation
+                         * @type {SpriteAnimationClip}
+                         * @default null
+                         */
+                        defaultAnimation: {
+                            default: null,
+                            type: Fire.SpriteAnimationClip
+                        },
+                        /**
+                         * The Animated clip list.
+                         * @property animations
+                         * @type {SpriteAnimationClip[]}
+                         * @default []
+                         */
+                        animations: {
+                            default: [],
+                            type: Fire.SpriteAnimationClip
+                        },
+                        //
+                        _playAutomatically: true,
+                        /**
+                         * Should the default animation clip (Animation.clip) automatically start playing on startup.
+                         * @property playAutomatically
+                         * @type {boolean}
+                         * @default true
+                         */
+                        playAutomatically: {
+                            get: function() {
+                                return this._playAutomatically;
+                            },
+                            set: function (value) {
+                                this._playAutomatically = value;
+                            }
+                        }
+                    },
+                    //
+                    _init: function() {
+                        var initialized = (this._nameToState !== null);
+                        if (initialized === false) {
+                            this._spriteRenderer = this.entity.getComponent(Fire.SpriteRenderer);
+                            this._defaultSprite = this._spriteRenderer.sprite;
+                
+                            this._nameToState = {};
+                            var state = null;
+                            for (var i = 0; i &lt; this.animations.length; ++i) {
+                                var clip = this.animations[i];
+                                if (clip !== null) {
+                                    state = new SpriteAnimationState(clip);
+                                    this._nameToState[state.name] = state;
+                                }
+                            }
+                
+                            if (!this.getAnimState(this.defaultAnimation.name)) {
+                                state = new SpriteAnimationState(this.defaultAnimation);
+                                this._nameToState[state.name] = state;
+                            }
+                        }
+                    },
+                    /**
+                     * Get Animation State.
+                     * @method getAnimState
+                     * @param {string} animName - The name of the animation
+                     * @return {SpriteAnimationState}
+                     */
+                    getAnimState: function (name) {
+                        return this._nameToState &amp;&amp; this._nameToState[name];
+                    },
+                    /**
+                     * Indicates whether the animation is playing
+                     * @method isPlaying
+                     * @param {string} [name] - The name of the animation
+                     * @return {boolean}
+                     */
+                    isPlaying: function(name) {
+                        var playingAnim = this.enabled &amp;&amp; this._curAnimation;
+                        return !!playingAnim &amp;&amp; ( !name || playingAnim.name === name );
+                    },
+                    /**
+                     * Play Animation
+                     * @method play
+                     * @param {SpriteAnimationState} [animState] - The animState of the sprite Animation state or animation name
+                     * @param {number} [time] - The time of the animation time
+                     */
+                    play: function (animState, time) {
+                        if (typeof animState === &#x27;string&#x27;) {
+                            this._curAnimation = this.getAnimState(animState);
+                        }
+                        else {
+                            this._curAnimation = animState || new SpriteAnimationState(this.defaultAnimation);
+                        }
+                
+                        if (this._curAnimation !== null) {
+                            this._curIndex = -1;
+                            this._curAnimation.time = time || 0;
+                            this._playStartFrame = Fire.Time.frameCount;
+                            this._sample();
+                        }
+                    },
+                    /**
+                     * Stop Animation
+                     * @method stop
+                     * @param {SpriteAnimationState} [animState] - The animState of the sprite animation state or animation name
+                     */
+                    stop: function (animState) {
+                        if (typeof animState === &#x27;string&#x27;) {
+                            this._curAnimation = this.getAnimState(animState);
+                        }
+                        else {
+                            this._curAnimation = animState || new SpriteAnimationState(this.defaultAnimation);
+                        }
+                
+                        if (this._curAnimation !== null) {
+                
+                            this._curAnimation.time = 0;
+                
+                            var stopAction = this._curAnimation.stopAction;
+                
+                            switch (stopAction) {
+                                case SpriteAnimationClip.StopAction.DoNothing:
+                                    break;
+                                case SpriteAnimationClip.StopAction.DefaultSprite:
+                                    this._spriteRenderer.sprite = this._defaultSprite;
+                                    break;
+                                case SpriteAnimationClip.StopAction.Hide:
+                                    this._spriteRenderer.enabled = false;
+                                    break;
+                                case SpriteAnimationClip.StopAction.Destroy:
+                                    this.entity.destroy();
+                                    break;
+                                default:
+                                    break;
+                            }
+                
+                            this._curAnimation = null;
+                        }
+                    },
+                    onLoad: function() {
+                        this._init();
+                        if (this.enabled) {
+                            if (this._playAutomatically &amp;&amp; this.defaultAnimation) {
+                                var animState = this.getAnimState(this.defaultAnimation.name);
+                                this.play(animState, 0);
+                            }
+                        }
+                    },
+                    lateUpdate: function() {
+                        if (this._curAnimation !== null &amp;&amp; Fire.Time.frameCount &gt; this._playStartFrame) {
+                            var delta = Fire.Time.deltaTime * this._curAnimation.speed;
+                            this._step(delta);
+                        }
+                    },
+                    _step: function (deltaTime) {
+                        if (this._curAnimation !== null) {
+                            this._curAnimation.time += deltaTime;
+                            this._sample();
+                            var stop = false;
+                            if (this._curAnimation.wrapMode === SpriteAnimationClip.WrapMode.Once ||
+                                this._curAnimation.wrapMode === SpriteAnimationClip.WrapMode.Default ||
+                                this._curAnimation.wrapMode === SpriteAnimationClip.WrapMode.ClampForever) {
+                                if (this._curAnimation.speed &gt; 0 &amp;&amp; this._curAnimation.frame &gt;= this._curAnimation.totalFrames) {
+                                    if (this._curAnimation.wrapMode === SpriteAnimationClip.WrapMode.ClampForever) {
+                                        stop = false;
+                                        this._curAnimation.frame = this._curAnimation.totalFrames;
+                                        this._curAnimation.time = this._curAnimation.frame / this._curAnimation.clip.frameRate;
+                                    }
+                                    else {
+                                        stop = true;
+                                        this._curAnimation.frame = this._curAnimation.totalFrames;
+                                    }
+                                }
+                                else if (this._curAnimation.speed &lt; 0 &amp;&amp; this._curAnimation.frame &lt; 0) {
+                                    if (this._curAnimation.wrapMode === SpriteAnimationClip.WrapMode.ClampForever) {
+                                        stop = false;
+                                        this._curAnimation.time = 0;
+                                        this._curAnimation.frame = 0;
+                                    }
+                                    else {
+                                        stop = true;
+                                        this._curAnimation.frame = 0;
+                                    }
+                                }
+                            }
+                
+                            // do stop
+                            if (stop) {
+                                this.stop(this._curAnimation);
+                            }
+                        }
+                        else {
+                            this._curIndex = -1;
+                        }
+                    },
+                    _sample: function () {
+                        if (this._curAnimation !== null) {
+                            var newIndex = this._curAnimation.getCurrentIndex();
+                            if (newIndex &gt;= 0 &amp;&amp; newIndex != this._curIndex) {
+                                this._spriteRenderer.sprite = this._curAnimation.clip.frameInfos[newIndex].sprite;
+                            }
+                            this._curIndex = newIndex;
+                        }
+                        else {
+                            this._curIndex = -1;
+                        }
+                    }
+                });
+                
+                Fire.SpriteAnimation = SpriteAnimation;
+                
+                Fire.addComponentMenu(SpriteAnimation, &#x27;Sprite Animation&#x27;);
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

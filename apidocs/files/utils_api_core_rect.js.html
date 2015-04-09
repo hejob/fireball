@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/rect.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/rect.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Rect = (function () {
+                    /**
+                     * A 2D rectangle defined by x, y position and width, height.
+                     *
+                     * see {% crosslink Fire.rect Fire.rect %}
+                     *
+                     * @class Rect
+                     * @constructor
+                     * @param {number} [x=0]
+                     * @param {number} [y=0]
+                     * @param {number} [w=0]
+                     * @param {number} [h=0]
+                     */
+                    function Rect( x, y, w, h ) {
+                        this.x = typeof x === &#x27;number&#x27; ? x : 0.0;
+                        this.y = typeof y === &#x27;number&#x27; ? y : 0.0;
+                        this.width = typeof w === &#x27;number&#x27; ? w : 0.0;
+                        this.height = typeof h === &#x27;number&#x27; ? h : 0.0;
+                    }
+                    JS.setClassName(&#x27;Fire.Rect&#x27;, Rect);
+                
+                    /**
+                     * Creates a rectangle from two coordinate values.
+                     * @static
+                     * @method fromMinMax
+                     * @param {Vec2} v1
+                     * @param {Vec2} v2
+                     * @return {Rect}
+                     */
+                    Rect.fromMinMax = function ( v1, v2 ) {
+                        var min_x = Math.min( v1.x, v2.x );
+                        var min_y = Math.min( v1.y, v2.y );
+                        var max_x = Math.max( v1.x, v2.x );
+                        var max_y = Math.max( v1.y, v2.y );
+                
+                        return new Rect ( min_x, min_y, max_x - min_x, max_y - min_y );
+                    };
+                
+                    /**
+                     * Creates a rectangle from left-top coordinate value and size.
+                     * @static
+                     * @method fromVec2
+                     * @param {Vec2} leftTop
+                     * @param {Vec2} size
+                     * @return {Rect}
+                     */
+                    Rect.fromVec2 = function ( leftTop, size ) {
+                        return new Rect ( leftTop.x, leftTop.y, size.x, size.y );
+                    };
+                
+                    /**
+                     * Checks if rect contains
+                     * @static
+                     * @method contain
+                     * @param a {Rect} Rect a
+                     * @param b {Rect} Rect b
+                     * @return {Number} The contains result, 1 is a contains b, -1 is b contains a, 0 is no contains
+                     */
+                    Rect.contain = function _Contain ( a, b ) {
+                        if ( a.x &lt;= b.x &amp;&amp;
+                             a.x + a.width &gt;= b.x + b.width &amp;&amp;
+                             a.y &lt;= b.y &amp;&amp;
+                             a.y + a.height &gt;= b.y + b.height )
+                        {
+                            // a contains b
+                            return 1;
+                        }
+                        if ( b.x &lt;= a.x &amp;&amp;
+                             b.x + b.width &gt;= a.x + a.width &amp;&amp;
+                             b.y &lt;= a.y &amp;&amp;
+                             b.y + b.height &gt;= a.y + a.height )
+                        {
+                            // b contains a
+                            return -1;
+                        }
+                        return 0;
+                    };
+                
+                    /**
+                     * @method clone
+                     * @return {Rect}
+                     */
+                    Rect.prototype.clone = function () {
+                        return new Rect(this.x, this.y, this.width, this.height);
+                    };
+                
+                    /**
+                     * @method equals
+                     * @param {Rect} other
+                     * @return {boolean}
+                     */
+                    Rect.prototype.equals = function (other) {
+                        return this.x === other.x &amp;&amp;
+                               this.y === other.y &amp;&amp;
+                               this.width === other.width &amp;&amp;
+                               this.height === other.height;
+                    };
+                
+                    /**
+                     * @method toString
+                     * @return {string}
+                     */
+                    Rect.prototype.toString = function () {
+                        return &#x27;(&#x27; + this.x.toFixed(2) + &#x27;, &#x27; + this.y.toFixed(2) + &#x27;, &#x27; + this.width.toFixed(2) +
+                               &#x27;, &#x27; + this.height.toFixed(2) + &#x27;)&#x27;;
+                    };
+                
+                    /**
+                     * @property xMin
+                     * @type number
+                     */
+                    Object.defineProperty(Rect.prototype, &#x27;xMin&#x27;, {
+                        get: function () { return this.x; },
+                        set: function (value) {
+                            this.width += this.x - value;
+                            this.x = value;
+                        }
+                    });
+                
+                    /**
+                     * @property yMin
+                     * @type number
+                     */
+                    Object.defineProperty(Rect.prototype, &#x27;yMin&#x27;, {
+                        get: function () { return this.y; },
+                        set: function (value) {
+                            this.height += this.y - value;
+                            this.y = value;
+                        }
+                    });
+                
+                    /**
+                     * @property xMax
+                     * @type number
+                     */
+                    Object.defineProperty(Rect.prototype, &#x27;xMax&#x27;, {
+                        get: function () { return this.x + this.width; },
+                        set: function (value) { this.width = value - this.x; }
+                    });
+                
+                    /**
+                     * @property yMax
+                     * @type number
+                     */
+                    Object.defineProperty(Rect.prototype, &#x27;yMax&#x27;, {
+                        get: function () { return this.y + this.height; },
+                        set: function (value) { this.height = value - this.y; }
+                    });
+                
+                    /**
+                     * @property center
+                     * @type number
+                     */
+                    Object.defineProperty(Rect.prototype, &#x27;center&#x27;, {
+                        get: function () {
+                            return new Fire.Vec2( this.x + this.width * 0.5,
+                                                  this.y + this.height * 0.5 );
+                        },
+                        set: function (value) {
+                            this.x = value.x - this.width * 0.5;
+                            this.y = value.y - this.height * 0.5;
+                        }
+                    });
+                
+                    /**
+                     * @method intersects
+                     * @param {Rect} rect
+                     * @type {boolean}
+                     */
+                    Rect.prototype.intersects = function ( rect ) {
+                        return Fire.Intersection.rectRect( this, rect );
+                    };
+                
+                    /**
+                     * Returns true if the point inside this rectangle.
+                     * @method contains
+                     * @param {Vec2} point
+                     * @type {boolean}
+                     */
+                    Rect.prototype.contains = function ( point ) {
+                        if ( this.x &lt;= point.x &amp;&amp;
+                             this.x + this.width &gt;= point.x &amp;&amp;
+                             this.y &lt;= point.y &amp;&amp;
+                             this.y + this.height &gt;= point.y )
+                        {
+                            return true;
+                        }
+                        return false;
+                    };
+                
+                    /**
+                     * Returns true if the other rect totally inside this rectangle.
+                     * @method containsRect
+                     * @param {Rect} rect
+                     * @type {boolean}
+                     */
+                    Rect.prototype.containsRect = function ( rect ) {
+                        if ( this.x &lt;= rect.x &amp;&amp;
+                             this.x + this.width &gt;= rect.x + rect.width &amp;&amp;
+                             this.y &lt;= rect.y &amp;&amp;
+                             this.y + this.height &gt;= rect.y + rect.height )
+                        {
+                            return true;
+                        }
+                        return false;
+                    };
+                
+                    return Rect;
+                })();
+                
+                Fire.Rect = Rect;
+                
+                /**
+                 * @class Fire
+                 */
+                /**
+                 * The convenience method to create a new Rect
+                 * @method rect
+                 * @param {number} [x=0]
+                 * @param {number} [y=0]
+                 * @param {number} [w=0]
+                 * @param {number} [h=0]
+                 * @return {Rect}
+                 */
+                Fire.rect = function rect (x, y, w, h) {
+                    if (Array.isArray(x)) {
+                        return new Rect(x[0], x[1], x[2], x[3]);
+                    }
+                    else {
+                        return new Rect(x, y, w, h);
+                    }
+                };
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

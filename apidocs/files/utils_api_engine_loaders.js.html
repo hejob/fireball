@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/loaders.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/loaders.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                // @ifdef EDITOR
+                var FireUrl = Fire.isNode ? require(&#x27;fire-url&#x27;) : null;
+                // @endif
+                
+                /**
+                 *
+                 */
+                function ImageLoader(url, callback, onProgress) {
+                // @ifdef EDITOR
+                    if (FireUrl) {
+                        url = FireUrl.addRandomQuery(url);
+                    }
+                // @endif
+                
+                    var image = document.createElement(&#x27;img&#x27;);
+                    image.crossOrigin = &#x27;Anonymous&#x27;;
+                
+                    var onload = function () {
+                        if (callback) {
+                            callback(null, this);
+                        }
+                        image.removeEventListener(&#x27;load&#x27;, onload);
+                        image.removeEventListener(&#x27;error&#x27;, onerror);
+                        image.removeEventListener(&#x27;progress&#x27;, onProgress);
+                    };
+                    var onerror = function (msg, line, url) {
+                        if (callback) {
+                            var error = &#x27;Failed to load image: &#x27; + msg + &#x27; Url: &#x27; + url;
+                            callback(error, null);
+                        }
+                        image.removeEventListener(&#x27;load&#x27;, onload);
+                        image.removeEventListener(&#x27;error&#x27;, onerror);
+                        image.removeEventListener(&#x27;progress&#x27;, onProgress);
+                    };
+                
+                    image.addEventListener(&#x27;load&#x27;, onload);
+                    image.addEventListener(&#x27;error&#x27;, onerror);
+                    if (onProgress) {
+                        image.addEventListener(&#x27;progress&#x27;, onProgress);
+                    }
+                    image.src = url;
+                    return image;
+                }
+                
+                /**
+                 * @param {string} [responseType=&quot;text&quot;] - the XMLHttpRequestResponseType
+                 */
+                function _LoadFromXHR(url, callback, onProgress, responseType) {
+                    var xhr = new XMLHttpRequest();
+                    //xhr.withCredentials = true;   // INVALID_STATE_ERR: DOM Exception 11 in phantomjs
+                    var total = -1;
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === xhr.DONE) {
+                            if (callback) {
+                                if (xhr.status === 200 || xhr.status === 0) {
+                                    callback(null, xhr);
+                                }
+                                else {
+                                    callback(&#x27;LoadFromXHR: Could not load &quot;&#x27; + url + &#x27;&quot;, status: &#x27; + xhr.status, null);
+                                }
+                            }
+                            xhr.onreadystatechange = null;
+                            //xhr.onload = null;
+                            if (addedProgressListener) {
+                                xhr.removeEventListener(&#x27;progress&#x27;, addedProgressListener);
+                            }
+                        }
+                        else {
+                            if (onProgress &amp;&amp; xhr.readyState === xhr.LOADING &amp;&amp; !(&#x27;onprogress&#x27; in xhr)) {
+                                if (total === -1) {
+                                    total = xhr.getResponseHeader(&#x27;Content-Length&#x27;);
+                                }
+                                onProgress(xhr.responseText.length, total);
+                            }
+                            if (onProgress &amp;&amp; xhr.readyState === xhr.HEADERS_RECEIVED) {
+                                total = xhr.getResponseHeader(&#x27;Content-Length&#x27;);
+                            }
+                        }
+                    };
+                    //xhr.onload = function () {
+                    //    if (callback) {
+                    //        if (xhr.status === 200 || xhr.status === 0) {
+                    //            callback(xhr);
+                    //        }
+                    //        else {
+                    //            callback(null, &#x27;LoadFromXHR: Could not load &quot;&#x27; + url + &#x27;&quot;, status: &#x27; + xhr.status);
+                    //        }
+                    //    }
+                    //    xhr.onreadystatechange = null;
+                    //    xhr.onload = null;
+                    //    if (addedProgressListener) {
+                    //        xhr.removeEventListener(&#x27;progress&#x27;, addedProgressListener);
+                    //    }
+                    //};
+                    xhr.open(&#x27;GET&#x27;, url, true);
+                    if (responseType) {
+                        xhr.responseType = responseType;
+                    }
+                    var addedProgressListener;
+                    if (onProgress &amp;&amp; &#x27;onprogress&#x27; in xhr) {
+                        addedProgressListener = function (event) {
+                            if (event.lengthComputable) {
+                                onProgress(event.loaded, event.total);
+                            }
+                        };
+                        xhr.addEventListener(&#x27;progress&#x27;, onprogress);
+                    }
+                    xhr.send();
+                }
+                
+                function TextLoader(url, callback, onProgress) {
+                    var cb = callback &amp;&amp; function(error, xhr) {
+                        if (xhr &amp;&amp; xhr.responseText) {
+                            callback(null, xhr.responseText);
+                        }
+                        else {
+                            callback(&#x27;TextLoader: &quot;&#x27; + url +
+                                &#x27;&quot; seems to be unreachable or the file is empty. InnerMessage: &#x27; + error, null);
+                        }
+                    };
+                    _LoadFromXHR(url, cb, onProgress);
+                }
+                
+                /**
+                 * @method _JsonLoader
+                 * @param {string} url
+                 * @param {function} callback
+                 * @param {string} callback.param error - null or the error info
+                 * @param {object} callback.param data - the loaded json object or null
+                 * @async
+                 * @private
+                 */
+                function JsonLoader(url, callback, onProgress) {
+                    var cb = callback &amp;&amp; function(error, xhr) {
+                        if (xhr &amp;&amp; xhr.responseText) {
+                            var json;
+                            try {
+                                json = JSON.parse(xhr.responseText);
+                            }
+                            catch (e) {
+                                callback(e, null);
+                                return;
+                            }
+                            callback(null, json);
+                        }
+                        else {
+                            callback(&#x27;JsonLoader: &quot;&#x27; + url +
+                                &#x27;&quot; seems to be unreachable or the file is empty. InnerMessage: &#x27; + error, null);
+                        }
+                    };
+                    _LoadFromXHR(url, cb, onProgress);
+                }
+                
+                Fire._JsonLoader = JsonLoader;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

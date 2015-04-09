@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/instantiate.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/instantiate.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * !#en Clones the object original and returns the clone.
+                 *
+                 * See [Clone exists Entity](/en/scripting/create-destroy-entities/#instantiate)
+                 *
+                 * !#zh 复制给定的对象
+                 *
+                 * 详细用法可参考[复制已有Entity](/zh/scripting/create-destroy-entities/#instantiate)
+                 *
+                 * Instantiate 时，对于不可序列化的字段(包含function和dom)，直接设为 null。
+                 * 对可以被序列化的字段则统一进行拷贝，不考虑引用是否该和现有场景共享，但能保证实例化后的对象间能共享一份引用。
+                 * 对于 Asset 永远只拷贝引用。对于 Entity / Component 等 Scene Object，如果对方也会被一起 Instantiate，则重定向到新的引用，否则设置为原来的引用。
+                 *
+                 * @method instantiate
+                 * @param {object} original - An existing object that you want to make a copy of.
+                 * @return {object} the newly instantiated object
+                 */
+                Fire.instantiate = function (original) {
+                    if (typeof original !== &#x27;object&#x27; || Array.isArray(original)) {
+                        Fire.error(&#x27;The thing you want to instantiate must be an object&#x27;);
+                        return null;
+                    }
+                    if (!original) {
+                        Fire.error(&#x27;The thing you want to instantiate is nil&#x27;);
+                        return null;
+                    }
+                    if (original instanceof Fire.FObject &amp;&amp; !original.isValid) {
+                        Fire.error(&#x27;The thing you want to instantiate is destroyed&#x27;);
+                        return null;
+                    }
+                    var clone;
+                    // invoke _instantiate method if supplied
+                    if (original._instantiate) {
+                        Fire._isCloning = true;
+                        clone = original._instantiate();
+                        Fire._isCloning = false;
+                        return clone;
+                    }
+                    else if (original instanceof Fire.Asset) {
+                        // 不使用通用的方法实例化资源
+                        Fire.error(&#x27;The instantiate method for given asset do not implemented&#x27;);
+                        return null;
+                    }
+                    //
+                    Fire._isCloning = true;
+                    clone = Fire._doInstantiate(original);
+                    Fire._isCloning = false;
+                    return clone;
+                };
+                
+                Fire._doInstantiate = (function () {
+                
+                    var objsToClearTmpVar = [];   // 用于重设临时变量
+                
+                    /**
+                     * Do instantiate object, the object to instantiate must be non-nil.
+                     * 这是一个实例化的通用方法，可能效率比较低。
+                     * 之后可以给各种类型重载快速实例化的特殊实现，但应该在单元测试中将结果和这个方法的结果进行对比。
+                     * 值得注意的是，这个方法不可重入。
+                     *
+                     * @param {object} obj - 该方法仅供内部使用，用户需负责保证参数合法。什么参数是合法的请参考 Fire.instantiate().
+                     * @return {object}
+                     * @private
+                     */
+                    function doInstantiate (obj) {
+                        if (Array.isArray(obj)) {
+                            Fire.error(&#x27;Can not instantiate array&#x27;);
+                            return null;
+                        }
+                        if (_isDomNode(obj)) {
+                            Fire.error(&#x27;Can not instantiate DOM element&#x27;);
+                            return null;
+                        }
+                
+                        var clone = enumerateObject(obj);
+                
+                        for (var i = 0, len = objsToClearTmpVar.length; i &lt; len; ++i) {
+                            objsToClearTmpVar[i]._iN$t = null;
+                        }
+                        objsToClearTmpVar.length = 0;
+                
+                        return clone;
+                    }
+                
+                    /**
+                     * @param {object} obj - The object to instantiate, typeof mustbe &#x27;object&#x27; and should not be an array.
+                     * @return {object} - the instantiated instance
+                     */
+                    var enumerateObject = function (obj) {
+                        var value, type;
+                        var klass = obj.constructor;
+                        var clone = new klass();
+                        obj._iN$t = clone;
+                        objsToClearTmpVar.push(obj);
+                        if (Fire._isFireClass(klass)) {
+                            // only __props__ will be serialized
+                            var props = klass.__props__;
+                            if (props) {
+                                for (var p = 0; p &lt; props.length; p++) {
+                                    var propName = props[p];
+                                    var attrs = Fire.attr(klass, propName);
+                                    // assume all prop in __props__ must have attr
+                
+                                    if (attrs.serializable !== false) {
+                                        value = obj[propName];
+                                        // instantiate field
+                                        type = typeof value;
+                                        clone[propName] = (type === &#x27;object&#x27;) ?
+                                                            (value ? instantiateObj(value) : value) :
+                                                            ((type !== &#x27;function&#x27;) ? value : null);
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            // primitive javascript object
+                            for (var key in obj) {
+                                //Fire.log(key);
+                                if (obj.hasOwnProperty(key) === false || (key.charCodeAt(0) === 95 &amp;&amp; key.charCodeAt(1) === 95)) {  // starts with __
+                                    continue;
+                                }
+                                value = obj[key];
+                                if (value === clone) {
+                                    continue;   // value is obj._iN$t
+                                }
+                                // instantiate field
+                                type = typeof value;
+                                clone[key] = (type === &#x27;object&#x27;) ?
+                                                (value ? instantiateObj(value) : value) :
+                                                ((type !== &#x27;function&#x27;) ? value : null);
+                            }
+                        }
+                        if (obj instanceof FObject) {
+                            clone._objFlags &amp;= PersistentMask;
+                        }
+                        return clone;
+                    };
+                
+                    /**
+                     * @return {object} - the original non-nil object, typeof must be &#x27;object&#x27;
+                     */
+                    function instantiateObj (obj) {
+                        // 目前使用“_iN$t”这个特殊字段来存实例化后的对象，这样做主要是为了防止循环引用
+                        // 注意，为了避免循环引用，所有新创建的实例，必须在赋值前被设为源对象的_iN$t
+                        var clone = obj._iN$t;
+                        if (clone) {
+                            // has been instantiated
+                            return clone;
+                        }
+                
+                        if (obj instanceof Asset) {
+                            // 所有资源直接引用，不进行拷贝
+                            return obj;
+                        }
+                        else if (Array.isArray(obj)) {
+                            var len = obj.length;
+                            clone = new Array(len);
+                            obj._iN$t = clone;
+                            for (var i = 0; i &lt; len; ++i) {
+                                var value = obj[i];
+                                // instantiate field
+                                var type = typeof value;
+                                clone[i] = (type === &#x27;object&#x27;) ?
+                                                (value ? instantiateObj(value) : value) :
+                                                ((type !== &#x27;function&#x27;) ? value : null);
+                            }
+                            objsToClearTmpVar.push(obj);
+                            return clone;
+                        }
+                        else if (!_isDomNode(obj)) {
+                            // instantiate common object
+                            return enumerateObject(obj);
+                        }
+                        else {
+                            // dom
+                            return null;
+                        }
+                    }
+                
+                    return doInstantiate;
+                
+                })();
+                
+                /**
+                 * @class Fire
+                 */
+                /**
+                 * @property _isCloning
+                 * @type {boolean}
+                 * @private
+                 */
+                Fire._isCloning = false;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

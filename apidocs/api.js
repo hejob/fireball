@@ -1,37 +1,80 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "CallbacksHandler",
+        "Asset",
+        "AssetLibrary",
+        "AudioClip",
+        "AudioSource",
+        "BitmapFont",
+        "BitmapText",
+        "BitmapText.TextAlign",
+        "BitmapText.TextAnchor",
         "CallbacksInvoker",
+        "Camera",
         "Color",
         "Component",
+        "ContentStrategyType",
+        "Engine",
+        "Entity",
+        "EqualToFrame",
+        "Event",
+        "EventTarget",
         "FObject",
         "Fire",
-        "Fire.Scene",
-        "Fire._DeserializeInfo",
+        "FixedHeight",
         "HashObject",
+        "Input",
         "Intersection",
+        "JS",
+        "KeyboardEvent",
+        "LoadManager",
         "Math",
         "Matrix23",
+        "ModifierKeyStates",
+        "MouseEvent",
+        "NoScale",
         "Path",
         "Rect",
+        "Renderer",
+        "Screen",
+        "Screen.ContainerStrategy",
+        "Screen.ContentStrategy",
+        "Sprite",
+        "SpriteAnimation",
+        "SpriteAnimationClip",
+        "SpriteAnimationClip.StopAction",
+        "SpriteAnimationClip.WrapMode",
+        "SpriteAnimationState",
+        "SpriteRenderer",
+        "Texture",
+        "Texture.FilterMode",
+        "Texture.WrapMode",
         "Time",
         "Transform",
-        "Vec2"
+        "Vec2",
+        "_CallbacksHandler",
+        "_DeserializeInfo",
+        "_ObjectFlags"
     ],
     "modules": [
+        "Editor",
         "Fire",
-        "Reserved-Words"
+        "Math"
     ],
     "allModules": [
         {
-            "displayName": "Fire",
-            "name": "Fire"
+            "displayName": "Editor",
+            "name": "Editor"
         },
         {
-            "displayName": "Reserved-Words",
-            "name": "Reserved-Words",
-            "description": "!#en\n\n!#zh 除了类已经定义的变量外，以下是其它 Fireball-x 中已经使用的变量名，请避免冲突。这些变量有一些是保留用途，只有特殊情况才会声明。\n### 全局变量\n- `Fire`\n- `PIXI`\n- `require`\n### 可能定义在任意对象上的变量\n\n- `__id__`\n- `__type__`\n- `_iN$t`\n- `_rawext`\n\n### 可能定义在任意类型或 prototype 上的变量\n\n- 任何以 `_attrs$` 开头的变量\n- `__classname__`\n- `__cid__`\n\n### FireClass 上的静态变量\n\n- `get`\n- `set`\n- `getset`\n- `prop`\n- `$super`\n- `__props__`\n\n### FireClass 上的成员变量\n\n- `_observing`\n- `_$erialized`"
+            "displayName": "Fire",
+            "name": "Fire",
+            "description": "Global object with classes, properties and methods you can access from anywhere.\n\nSee [methods and properties](../classes/Fire.html)."
+        },
+        {
+            "displayName": "Math",
+            "name": "Math",
+            "description": "Extends the JavaScript built-in object that has properties and methods for mathematical constants and functions.\nSee [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)"
         }
     ]
 } };

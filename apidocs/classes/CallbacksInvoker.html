@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CallbacksInvoker - Fireball Game API</title>
+    <title>CallbacksInvoker - Fireball Engine API</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -14,8 +14,9 @@
     <header class="main-header">
         <div class="content">
             <div class="project-title">
-                    <h1 class="project-name">Fireball Game API</h1> <span class="project-version">0.1.7</span>
-                    <p class="description">Fireball Game API: your toolbox</p>
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
             </div>
             <ul class="jump-links">
                 <li><a href="#index" class="index-jump-link">index</a></li>
@@ -39,28 +40,66 @@
             
                     <div id="api-tabview-panel">
                         <ul id="api-classes" class="apis classes">
-                            <li><a class="type" href="../classes/CallbacksHandler.html">CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
                             <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
                             <li><a class="type" href="../classes/Color.html">Color</a></li>
                             <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
                             <li><a class="type" href="../classes/Fire.html">Fire</a></li>
-                            <li><a class="type" href="../classes/Fire._DeserializeInfo.html">Fire._DeserializeInfo</a></li>
-                            <li><a class="type" href="../classes/Fire.Scene.html">Fire.Scene</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
                             <li><a class="type" href="../classes/FObject.html">FObject</a></li>
                             <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
                             <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
                             <li><a class="type" href="../classes/Math.html">Math</a></li>
                             <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
                             <li><a class="type" href="../classes/Path.html">Path</a></li>
                             <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
                             <li><a class="type" href="../classes/Time.html">Time</a></li>
                             <li><a class="type" href="../classes/Transform.html">Transform</a></li>
                             <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
                         </ul>
             
                         <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
                             <li><a class="module" href="../modules/Fire.html">Fire</a></li>
-                            <li><a class="module" href="../modules/Reserved-Words.html">Reserved-Words</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
                         </ul>
                     </div>
                 </div>
@@ -73,11 +112,11 @@
                 <div class="box meta">
                 
                         <div class="extends">
-                            Extends <a href="../classes/CallbacksHandler.html" class="crosslink">CallbacksHandler</a>
+                            Extends <a href="../classes/_CallbacksHandler.html" class="crosslink">_CallbacksHandler</a>
                         </div>
                 
                         <div class="foundat">
-                            Defined in: <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l868"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:868</code></a>
+                            Defined in: <a href="../files/utils_api_core_callbacks-invoker.js.html#l95"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:95</code></a>
                         </div>
                 
                             Module: <a href="../modules/Fire.html">Fire</a>
@@ -120,16 +159,6 @@
                     </div>
                 
                 
-                    <div class="index-section properties">
-                        <h3>Properties</h3>
-                
-                        <ul class="index-list properties extends">
-                                <li class="index-item property">
-                                    <a href="#property_Fire.CallbacksInvoker">Fire.CallbacksInvoker</a>
-                
-                                </li>
-                        </ul>
-                    </div>
                 
                 
                 
@@ -181,45 +210,6 @@
                 
                 <div class="class-detail">
                 
-                    <div class="properties-detail">
-                        <h2>Properties</h2>
-                
-                            <a name="property_Fire.CallbacksInvoker" class="anchor-link"></a>
-                            <div class="property item">
-                                <h3 class="name"><code>Fire.CallbacksInvoker</code>
-                                <span class="type"><a href="../classes/CallbacksInvoker.html" class="crosslink">CallbacksInvoker</a></span>
-                            
-                            
-                            
-                            
-                            
-                                </h3>
-                            
-                                <div class="meta">
-                                            <p>
-                                            Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l879"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:879</code></a>
-                                    </p>
-                            
-                            
-                                </div>
-                            
-                                <div class="extended-detail">
-                                    <div class="description">
-                                        <p>This is a property accessible from {% crosslink Fire Fire %} global object</p>
-                            
-                                    </div>
-                            
-                            
-                            
-                                </div>
-                            </div>
-                
-                        <div class="no-visible-items-message">
-                            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-                        </div>
-                
-                    </div>
                 
                 
                     <div class="constructor">
@@ -242,7 +232,7 @@
                             <div class="meta">
                                         <p>
                                         Defined in
-                                <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l868"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:868</code></a>
+                                <a href="../files/utils_api_core_callbacks-invoker.js.html#l95"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:95</code></a>
                                 </p>
                         
                         
@@ -293,8 +283,8 @@
                             
                                 <div class="meta">
                                             <p>Inherited from
-                                            <a href="../classes/CallbacksHandler.html#method_add" class="type">CallbacksHandler</a>:
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l793"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:793</code></a>
+                                            <a href="../classes/_CallbacksHandler.html#method_add" class="type">_CallbacksHandler</a>:
+                                    <a href="../files/utils_api_core_callbacks-invoker.js.html#l20"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:20</code></a>
                                     </p>
                             
                             
@@ -376,7 +366,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l925"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:925</code></a>
+                                    <a href="../files/utils_api_core_callbacks-invoker.js.html#l148"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:148</code></a>
                                     </p>
                             
                             
@@ -461,8 +451,8 @@
                             
                                 <div class="meta">
                                             <p>Inherited from
-                                            <a href="../classes/CallbacksHandler.html#method_has" class="type">CallbacksHandler</a>:
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l821"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:821</code></a>
+                                            <a href="../classes/_CallbacksHandler.html#method_has" class="type">_CallbacksHandler</a>:
+                                    <a href="../files/utils_api_core_callbacks-invoker.js.html#l48"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:48</code></a>
                                     </p>
                             
                             
@@ -554,7 +544,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l886"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:886</code></a>
+                                    <a href="../files/utils_api_core_callbacks-invoker.js.html#l109"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:109</code></a>
                                     </p>
                             
                             
@@ -583,7 +573,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p1]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -594,7 +584,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p2]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -605,7 +595,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p3]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -616,7 +606,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p4]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -627,7 +617,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p5]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -681,7 +671,7 @@
                                 <div class="meta">
                                             <p>
                                             Defined in
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l904"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:904</code></a>
+                                    <a href="../files/utils_api_core_callbacks-invoker.js.html#l127"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:127</code></a>
                                     </p>
                             
                             
@@ -710,7 +700,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p1]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -721,7 +711,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p2]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -732,7 +722,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p3]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -743,7 +733,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p4]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -754,7 +744,7 @@
                                                 </li>
                                                 <li class="param">
                                                         <code class="param-name optional">[p5]</code>
-                                                        <span class="type"></span>
+                                                        <span class="type">Any</span>
                                                         <span class="flag optional" title="This parameter is optional.">optional</span>
                             
                             
@@ -798,8 +788,8 @@
                             
                                 <div class="meta">
                                             <p>Inherited from
-                                            <a href="../classes/CallbacksHandler.html#method_remove" class="type">CallbacksHandler</a>:
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l848"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:848</code></a>
+                                            <a href="../classes/_CallbacksHandler.html#method_remove" class="type">_CallbacksHandler</a>:
+                                    <a href="../files/utils_api_core_callbacks-invoker.js.html#l75"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:75</code></a>
                                     </p>
                             
                             
@@ -874,8 +864,8 @@
                             
                                 <div class="meta">
                                             <p>Inherited from
-                                            <a href="../classes/CallbacksHandler.html#method_removeAll" class="type">CallbacksHandler</a>:
-                                    <a href="../files/bin_tools_build_platforms_web-desktop_template-dev_firaball-x.dev.js.html#l840"><code>bin&#x2F;tools&#x2F;build&#x2F;platforms&#x2F;web-desktop&#x2F;template-dev&#x2F;firaball-x.dev.js:840</code></a>
+                                            <a href="../classes/_CallbacksHandler.html#method_removeAll" class="type">_CallbacksHandler</a>:
+                                    <a href="../files/utils_api_core_callbacks-invoker.js.html#l67"><code>utils&#x2F;api&#x2F;core&#x2F;callbacks-invoker.js:67</code></a>
                                     </p>
                             
                             

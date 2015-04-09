@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/core/class.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/core/class.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * both getter and prop must register the name into __props__ array
+                 * @param {string} name - prop name
+                 */
+                var _appendProp = function (name/*, isGetter*/) {
+                    // @ifdef DEV
+                    //var JsVarReg = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
+                    //if (!JsVarReg.test(name)) {
+                    //    Fire.error(&#x27;The property name &quot;&#x27; + name + &#x27;&quot; is not compliant with JavaScript naming standards&#x27;);
+                    //    return;
+                    //}
+                    // @endif
+                
+                    if (!this.__props__) {
+                        this.__props__ = [name];
+                    }
+                    else {
+                        var index = this.__props__.indexOf(name);
+                        if (index &lt; 0) {
+                            this.__props__.push(name);
+                        }
+                        // 这里不进行报错，因为重写 prop 可以是一个合法的行为，可以用于设置新的默认值。
+                        //else {
+                        //    Fire.error(Fire.getClassName(this) + &#x27;.&#x27; + name + &#x27; is already defined!&#x27;);
+                        //}
+                    }
+                };
+                
+                /**
+                 * the metaclass of the &quot;fire class&quot; created by Fire.define, all its static members
+                 * will inherited by fire class.
+                 */
+                var _metaClass = {
+                
+                    // string[]
+                    __props__: null,
+                
+                    /**
+                     * Add new instance field, propertie, or method made available on the class.
+                     * 该方法定义的变量默认情况下都会被序列化，也会在inspector中显示。
+                     * 如果传入属性包含Fire.HideInInspector则仍会序列化但不在inspector中显示。
+                     * 如果传入属性包含Fire.NonSerialized则不会序列化并且不会在inspector中显示。
+                     * 如果传入属性包含Fire.EditorOnly则只在编辑器下序列化，打包时不序列化。
+                     *
+                     * @method class.prop
+                     * @param {string} name - the property name
+                     * @param {*} defaultValue - the default value
+                     * @param {...object} attribute - additional property attributes, any number of attributes can be added
+                     * @return {function} the class itself
+                     * @private
+                     */
+                    prop: function (name, defaultValue, attribute) {
+                        &#x27;use strict&#x27;;
+                        // @ifdef DEV
+                        // check default object value
+                        if (typeof defaultValue === &#x27;object&#x27; &amp;&amp; defaultValue) {
+                            if (Array.isArray(defaultValue)) {
+                                // check array empty
+                                if (defaultValue.length &gt; 0) {
+                                    Fire.error(&#x27;Default array must be empty, set default value of &#x27; + JS.getClassName(this) + &#x27;.prop(&quot;&#x27; + name +
+                                        &#x27;&quot;, ...) to null or [], and initialize in constructor please. (just like &quot;this.&#x27; +
+                                        name + &#x27; = [...];&quot;)&#x27;);
+                                    return this;
+                                }
+                            }
+                            else if (!_isPlainEmptyObj_DEV(defaultValue)) {
+                                // check cloneable
+                                if (!_cloneable_DEV(defaultValue)) {
+                                    Fire.error(&#x27;Do not set default value to non-empty object, unless the object defines its own &quot;clone&quot; function. Set default value of &#x27; + JS.getClassName(this) + &#x27;.prop(&quot;&#x27; + name +
+                                        &#x27;&quot;, ...) to null or {}, and initialize in constructor please. (just like &quot;this.&#x27; +
+                                        name + &#x27; = {foo: bar};&quot;)&#x27;);
+                                    return this;
+                                }
+                            }
+                        }
+                        // @endif
+                
+                        // @ifdef DEV
+                        // check base prototype to avoid name collision
+                        for (var base = this.$super; base; base = base.$super) {
+                            // 这个循环只能检测到最上面的FireClass的父类，如果再上还有父类，将不做检测。（Fire.extend 将 prototype.constructor 设为子类）
+                            if (base.prototype.hasOwnProperty(name)) {
+                                Fire.error(&#x27;Can not declare &#x27; + JS.getClassName(this) + &#x27;.&#x27; + name +
+                                           &#x27;, it is already defined in the prototype of &#x27; + JS.getClassName(base));
+                                return;
+                            }
+                        }
+                        // @endif
+                
+                        // set default value
+                        Fire.attr(this, name, { &#x27;default&#x27;: defaultValue });
+                
+                        // register property
+                        _appendProp.call(this, name);
+                
+                        // 禁用，因为getter/setter需要动态获得类型，所以类型统一由上层处理
+                        //// apply default type (NOTE: if user provide type attribute, this one will be overwrote)
+                        //var mytype = typeof defaultValue;
+                        //if ( mytype === &#x27;number&#x27; ) {
+                        //    mytype = &#x27;float&#x27;;
+                        //}
+                        //Fire.attr( this, name, { &#x27;type&#x27;: mytype } );
+                
+                        // apply attributes
+                        if (attribute) {
+                            var onAfterProp = null;
+                            var AttrArgStart = 2;
+                            for (var i = AttrArgStart; i &lt; arguments.length; i++) {
+                                var attr = arguments[i];
+                                Fire.attr(this, name, attr);
+                                // register callback
+                                if (attr._onAfterProp) {
+                                    onAfterProp = onAfterProp || [];
+                                    onAfterProp.push(attr._onAfterProp);
+                                }
+                            }
+                            // call callback
+                            if (onAfterProp) {
+                                for (var c = 0; c &lt; onAfterProp.length; c++) {
+                                    onAfterProp[c](this, name);
+                                }
+                            }
+                        }
+                        return this;
+                    },
+                
+                    /**
+                     * 该方法定义的变量**不会**被序列化，默认会在inspector中显示。
+                     * 如果传入参数包含Fire.HideInInspector则不在inspector中显示。
+                     *
+                     * @method class.get
+                     * @param {string} name - the getter property
+                     * @param {function} getter - the getter function which returns the real property
+                     * @param {...object} attribute - additional property attributes, any number of attributes can be added
+                     * @return {function} the class itself
+                     * @private
+                     */
+                    get: function (name, getter, attribute) {
+                        &#x27;use strict&#x27;;
+                
+                        // @ifdef DEV
+                        var d = Object.getOwnPropertyDescriptor(this.prototype, name);
+                        if (d &amp;&amp; d.get) {
+                            Fire.error(JS.getClassName(this) + &#x27;: the getter of &quot;&#x27; + name + &#x27;&quot; is already defined!&#x27;);
+                            return this;
+                        }
+                        // @endif
+                
+                        if (attribute) {
+                            var AttrArgStart = 2;
+                            for (var i = AttrArgStart; i &lt; arguments.length; i++) {
+                                var attr = arguments[i];
+                                // @ifdef DEV
+                                if (attr._canUsedInGetter === false) {
+                                    Fire.error(&#x27;Can not apply the specified attribute to the getter of &quot;&#x27; + JS.getClassName(this) + &#x27;.&#x27; + name + &#x27;&quot;, attribute index: &#x27; + (i - AttrArgStart));
+                                    continue;
+                                }
+                                // @endif
+                
+                                Fire.attr(this, name, attr);
+                
+                                // @ifdef DEV
+                                // check attributes
+                                if (attr.serializable === false || attr.editorOnly === true) {
+                                    Fire.warn(&#x27;No need to use Fire.NonSerialized or Fire.EditorOnly for the getter of &#x27; +
+                                        JS.getClassName(this) + &#x27;.&#x27; + name + &#x27;, every getter is actually non-serialized.&#x27;);
+                                }
+                                if (attr.hasOwnProperty(&#x27;default&#x27;)) {
+                                    Fire.error(JS.getClassName(this) + &#x27;: Can not set default value of a getter!&#x27;);
+                                    return this;
+                                }
+                                // @endif
+                            }
+                        }
+                        Fire.attr(this, name, Fire.NonSerialized);
+                
+                        // @ifdef DEV
+                        // 不论是否 hide in inspector 都要添加到 props，否则 asset watcher 不能正常工作
+                        _appendProp.call(this, name/*, true*/);
+                        // @endif
+                
+                        Object.defineProperty(this.prototype, name, {
+                            get: getter,
+                            configurable: true
+                        });
+                        // @ifdef EDITOR
+                        Fire.attr(this, name, { hasGetter: true }); // 方便 editor 做判断
+                        // @endif
+                        return this;
+                    },
+                
+                    /**
+                     * 该方法定义的变量**不会**被序列化，除非有对应的getter否则不在inspector中显示。
+                     *
+                     * @method class.set
+                     * @static
+                     * @param {string} name - the setter property
+                     * @param {function} setter - the setter function
+                     * @return {function} the class itself
+                     * @private
+                     */
+                    set: function (name, setter) {
+                        // @ifdef DEV
+                        var d = Object.getOwnPropertyDescriptor(this.prototype, name);
+                        if (d &amp;&amp; d.set) {
+                            Fire.error(JS.getClassName(this) + &#x27;: the setter of &quot;&#x27; + name + &#x27;&quot; is already defined!&#x27;);
+                            return this;
+                        }
+                        // @endif
+                        // ================================================================
+                        // @ifdef EDITOR
+                        Object.defineProperty(this.prototype, name, {
+                            set: function setter_editorWrapper (value) {
+                                if (this._observing) {
+                                     Object.getNotifier(this).notify({
+                                        type: &#x27;update&#x27;,
+                                        name: name,
+                                        oldValue: this[name]
+                                    });
+                                }
+                                setter.call(this, value);
+                            },
+                            configurable: true
+                        });
+                        // @endif
+                        // ----------------------------------------------------------------
+                        // @ifndef EDITOR
+                        Object.defineProperty(this.prototype, name, {
+                            set: setter,
+                            configurable: true
+                        });
+                        // @endif
+                        // ================================================================
+                        // @ifdef EDITOR
+                        Fire.attr(this, name, { hasSetter: true }); // 方便 editor 做判断
+                        // @endif
+                        return this;
+                    },
+                
+                    /**
+                     * 该方法定义的变量**不会**被序列化，默认会在inspector中显示。
+                     * 如果传入参数包含Fire.HideInInspector则不在inspector中显示。
+                     *
+                     * @method class.getset
+                     * @static
+                     * @param {string} name - the getter property
+                     * @param {function} getter - the getter function which returns the real property
+                     * @param {function} setter - the setter function
+                     * @param {...object} attribute - additional property attributes, any number of attributes can be added
+                     * @return {function} the class itself
+                     * @private
+                     */
+                    getset: function (name, getter, setter, attribute) {
+                        &#x27;use strict&#x27;;
+                        if (attribute) {
+                            var getterArgs = [].slice.call(arguments);
+                            getterArgs.splice(2, 1);    // remove setter
+                            this.get.apply(this, getterArgs);
+                        }
+                        else {
+                            this.get(name, getter);
+                        }
+                        this.set(name, setter);
+                        return this;
+                    }
+                };
+                
+                var _createInstanceProps = function (instance, itsClass) {
+                    var propList = itsClass.__props__;
+                    if (propList) {
+                        for (var i = 0; i &lt; propList.length; i++) {
+                            var prop = propList[i];
+                            var attrs = Fire.attr(itsClass, prop);
+                            if (attrs &amp;&amp; attrs.hasOwnProperty(&#x27;default&#x27;)) {  // getter does not have default, default maybe 0
+                                var def = attrs.default;
+                                if (typeof def === &#x27;object&#x27; &amp;&amp; def) {
+                                    // 防止多个实例引用相同对象
+                                    if (def.clone) {
+                                        def = def.clone();
+                                    }
+                                    else if (Array.isArray(def)) {
+                                        def = [];
+                                    }
+                                    else {
+                                        def = {};
+                                    }
+                                }
+                                instance[prop] = def;
+                            }
+                        }
+                    }
+                };
+                
+                /**
+                 * Checks whether the constructor is created by Fire.define or Fire.Class
+                 *
+                 * @method _isFireClass
+                 * @param {function} constructor
+                 * @return {boolean}
+                 */
+                Fire._isFireClass = function (constructor) {
+                    return !!constructor &amp;&amp; (constructor.prop === _metaClass.prop);
+                };
+                
+                /**
+                 * Checks whether subclass is child of superclass or equals to superclass
+                 *
+                 * @method isChildClassOf
+                 * @param {function} subclass
+                 * @param {function} superclass
+                 * @return {boolean}
+                 */
+                Fire.isChildClassOf = function (subclass, superclass) {
+                    if (subclass &amp;&amp; superclass) {
+                        if (typeof subclass !== &#x27;function&#x27;) {
+                // @ifdef DEV
+                            Fire.warn(&#x27;[isChildClassOf] subclass should be function type, not&#x27;, subclass);
+                // @endif
+                            return false;
+                        }
+                        if (typeof superclass !== &#x27;function&#x27;) {
+                // @ifdef DEV
+                            Fire.warn(&#x27;[isChildClassOf] superclass should be function type, not&#x27;, superclass);
+                // @endif
+                            return false;
+                        }
+                        // fireclass
+                        for (; subclass &amp;&amp; subclass.$super; subclass = subclass.$super) {
+                            if (subclass === superclass) {
+                                return true;
+                            }
+                        }
+                        if (subclass === superclass) {
+                            return true;
+                        }
+                        // js class
+                        var dunderProto = Object.getPrototypeOf(subclass.prototype);
+                        while (dunderProto) {
+                            subclass = dunderProto.constructor;
+                            if (subclass === superclass) {
+                                return true;
+                            }
+                            dunderProto = Object.getPrototypeOf(subclass.prototype);
+                        }
+                    }
+                    return false;
+                };
+                
+                function _initClass(className, fireClass) {
+                    // occupy some non-inherited static members
+                    for (var staticMember in _metaClass) {
+                        Object.defineProperty(fireClass, staticMember, {
+                            value: _metaClass[staticMember],
+                            // __props__ is writable
+                            writable: staticMember === &#x27;__props__&#x27;,
+                            // __props__ is enumerable so it can be inherited by Fire.extend
+                            enumerable: staticMember === &#x27;__props__&#x27;
+                        });
+                    }
+                }
+                
+                Fire._doDefine = function (className, baseClass, constructor) {
+                    var fireClass = _createCtor(constructor, baseClass);
+                    _initClass(className, fireClass);
+                
+                    if (baseClass) {
+                        // inherit
+                        JS.extend(fireClass, baseClass);
+                        fireClass.$super = baseClass;
+                        if (baseClass.__props__) {
+                            // copy __props__
+                            fireClass.__props__ = baseClass.__props__.slice();
+                        }
+                    }
+                
+                    JS.setClassName(className, fireClass);
+                
+                    // @ifdef EDITOR
+                    _nicifyFireClass(fireClass, className);
+                    // @endif
+                
+                    return fireClass;
+                };
+                
+                /**
+                 * Defines a FireClass using the given constructor.
+                 *
+                 * @method define
+                 * @param {string} [className] - the name of class that is used to deserialize this class
+                 * @param {function} [constructor] - a constructor function that is used to instantiate this class
+                 * @return {function} the constructor of newly defined class
+                 * @private
+                 */
+                Fire.define = function (className, constructor) {
+                    return Fire.extend(className, null, constructor);
+                };
+                
+                /**
+                 * Creates a sub FireClass based on the specified baseClass parameter.
+                 *
+                 * @method extend
+                 * @param {string} [className] - the name of class that is used to deserialize this class
+                 * @param {function} baseClass - !#en The base class to inherit from
+                 *                               !#zh 继承的基类
+                 * @param {function} [constructor] - a constructor function that is used to instantiate this class,
+                 *                                   if not supplied, the constructor of baseClass will be called automatically.
+                 * @return {function} the constructor of newly defined class
+                 * @private
+                 */
+                Fire.extend = function (className, baseClass, constructor) {
+                    if (typeof className === &#x27;function&#x27;) {
+                // @ifdef DEV
+                        if (constructor) {
+                            Fire.error(&#x27;[Fire.extend] invalid type of arguments&#x27;);
+                            return null;
+                        }
+                // @endif
+                        constructor = baseClass;
+                        baseClass = className;
+                        className = &#x27;&#x27;;
+                    }
+                    if (typeof className === &#x27;string&#x27;) {
+                        return Fire._doDefine(className, baseClass, constructor);
+                    }
+                    else if (typeof className === &#x27;undefined&#x27;) {
+                        // 未传入任何参数
+                        return Fire._doDefine(&#x27;&#x27;, baseClass, constructor);
+                    }
+                // @ifdef DEV
+                    else if (className) {
+                        Fire.error(&#x27;[Fire.extend] unknown typeof first argument:&#x27; + className);
+                    }
+                // @endif
+                    return null;
+                };
+                
+                function _createCtor (constructor, baseClass) {
+                    // get base user constructors
+                    var ctors;
+                    if (Fire._isFireClass(baseClass)) {
+                        ctors = baseClass.__ctors__;
+                        if (ctors) {
+                            ctors = ctors.slice();
+                        }
+                    }
+                    else if (baseClass) {
+                        ctors = [baseClass];
+                    }
+                    // append subclass user constructors
+                    if (ctors) {
+                        if (constructor) {
+                            ctors.push(constructor);
+                        }
+                    }
+                    else if (constructor) {
+                        ctors = [constructor];
+                    }
+                    // create class constructor
+                    var fireClass;
+                    if (ctors) {
+                        // @ifdef EDITOR
+                        console.assert(ctors.length &gt; 0);
+                        // @endif
+                        switch (ctors.length) {
+                            case 1:
+                                fireClass = function () {
+                                    // @ifdef EDITOR
+                                    this._observing = false;
+                                    // @endif
+                                    _createInstanceProps(this, fireClass);
+                                    // call user constructors
+                                    var ctors = fireClass.__ctors__;
+                                    (ctors[0]).apply(this, arguments);
+                                };
+                                break;
+                            case 2:
+                                fireClass = function () {
+                                    // @ifdef EDITOR
+                                    this._observing = false;
+                                    // @endif
+                                    _createInstanceProps(this, fireClass);
+                                    // call user constructors
+                                    var ctors = fireClass.__ctors__;
+                                    (ctors[0]).apply(this, arguments);
+                                    (ctors[1]).apply(this, arguments);
+                                };
+                                break;
+                            case 3:
+                                fireClass = function () {
+                                    // @ifdef EDITOR
+                                    this._observing = false;
+                                    // @endif
+                                    _createInstanceProps(this, fireClass);
+                                    // call user constructors
+                                    var ctors = fireClass.__ctors__;
+                                    (ctors[0]).apply(this, arguments);
+                                    (ctors[1]).apply(this, arguments);
+                                    (ctors[2]).apply(this, arguments);
+                                };
+                                break;
+                            case 4:
+                                fireClass = function () {
+                                    // @ifdef EDITOR
+                                    this._observing = false;
+                                    // @endif
+                                    _createInstanceProps(this, fireClass);
+                                    // call user constructors
+                                    var ctors = fireClass.__ctors__;
+                                    (ctors[0]).apply(this, arguments);
+                                    (ctors[1]).apply(this, arguments);
+                                    (ctors[2]).apply(this, arguments);
+                                    (ctors[3]).apply(this, arguments);
+                                };
+                                break;
+                            default:
+                                fireClass = function () {
+                                    // @ifdef EDITOR
+                                    this._observing = false;
+                                    // @endif
+                                    _createInstanceProps(this, fireClass);
+                                    // call user constructors
+                                    var ctors = fireClass.__ctors__;
+                                    for (var i = 0, len = ctors.length; i &lt; len; ++i) {
+                                        (ctors[i]).apply(this, arguments);
+                                    }
+                                };
+                                break;
+                        }
+                    }
+                    else {
+                        // no user constructor
+                        fireClass = function () {
+                            // @ifdef EDITOR
+                            this._observing = false;
+                            // @endif
+                            _createInstanceProps(this, fireClass);
+                        };
+                    }
+                    Object.defineProperty(fireClass, &#x27;__ctors__&#x27;, {
+                        value: ctors || null,
+                        writable: false,
+                        enumerable: false
+                    });
+                    return fireClass;
+                }
+                /*
+                function _createCtor_old (constructor, baseClass) {
+                    var fireClass;
+                    var propsInitedByBase = baseClass &amp;&amp; Fire._isFireClass(baseClass);
+                    if (constructor) {
+                // @ifdef DEV
+                        _checkCtor(constructor);
+                // @endif
+                        if (baseClass) {
+                            if (propsInitedByBase) {
+                                fireClass = function () {
+                                    baseClass.apply(this, arguments);
+                                    constructor.apply(this, arguments);
+                                };
+                            }
+                            else {
+                                fireClass = function () {
+                                    // @ifdef EDITOR
+                                    this._observing = false;
+                                    // @endif
+                                    baseClass.apply(this, arguments);
+                                    _createInstanceProps(this, this.constructor);
+                                    constructor.apply(this, arguments);
+                                };
+                            }
+                        }
+                        else {
+                            fireClass = function () {
+                                // @ifdef EDITOR
+                                this._observing = false;
+                                // @endif
+                                _createInstanceProps(this, this.constructor);
+                                constructor.apply(this, arguments);
+                            };
+                        }
+                    }
+                    else {
+                        if (baseClass) {
+                            if (propsInitedByBase) {
+                                fireClass = function () {
+                                    baseClass.apply(this, arguments);
+                                };
+                            }
+                            else {
+                                fireClass = function () {
+                                    // @ifdef EDITOR
+                                    this._observing = false;
+                                    // @endif
+                                    baseClass.apply(this, arguments);
+                                    _createInstanceProps(this, this.constructor);
+                                };
+                            }
+                        }
+                        else {
+                            // no constructor
+                            fireClass = function () {
+                                // @ifdef EDITOR
+                                this._observing = false;
+                                // @endif
+                                _createInstanceProps(this, this.constructor);
+                            };
+                        }
+                    }
+                    return fireClass;
+                }
+                */
+                // @ifdef DEV
+                function _checkCtor (ctor) {
+                    if (Fire._isFireClass(ctor)) {
+                        Fire.error(&quot;Constructor can not be another FireClass&quot;);
+                        return;
+                    }
+                    if (typeof ctor !== &#x27;function&#x27;) {
+                        Fire.error(&quot;Constructor of FireClass must be function type&quot;);
+                        return;
+                    }
+                    if (ctor.length &gt; 0) {
+                        // fireball-x/dev#138: To make a unified FireClass serialization process,
+                        // we don&#x27;t allow parameters for constructor when creating instances of FireClass.
+                        // For advance user, construct arguments can still get from &#x27;arguments&#x27;.
+                        Fire.warn(&quot;Can not instantiate FireClass with arguments.&quot;);
+                        return;
+                    }
+                }
+                // @endif
+                
+                // @ifdef EDITOR
+                function _nicifyFireClass (fireClass, className) {
+                    if (className) {
+                        fireClass.toString = function () {
+                            var plain = Function.toString.call(this);
+                            return plain.replace(&#x27;function &#x27;, &#x27;function &#x27; + JS.getClassName(this));
+                        };
+                    }
+                }
+                // @endif
+                
+                /**
+                 * Specially optimized define function only for internal base classes
+                 *
+                 * @param {string} className
+                 * @param {function} constructor
+                 * @param {string[]} serializableFields
+                 * @private
+                 */
+                Fire._fastDefine = function (className, constructor, serializableFields) {
+                    JS.setClassName(className, constructor);
+                    constructor.__props__ = serializableFields;
+                    for (var i = 0; i &lt; serializableFields.length; i++) {
+                        Fire.attr(constructor, serializableFields[i], Fire.HideInInspector);
+                    }
+                };
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

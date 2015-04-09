@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/asset-library.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/asset-library.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                /**
+                 * The asset library which managing loading/unloading assets in project.
+                 *
+                 * @class AssetLibrary
+                 * @static
+                 */
+                var AssetLibrary = (function () {
+                
+                    // configs
+                
+                    var _libraryBase = &#x27;&#x27;;
+                
+                    // variables
+                
+                    // the loading uuid&#x27;s callbacks
+                    var _uuidToCallbacks = new Fire.CallbacksInvoker();
+                
+                    // temp deserialize info
+                    var _tdInfo = new Fire._DeserializeInfo();
+                
+                    // create a loading context which reserves all relevant parameters
+                    function LoadingHandle (readMainCache, writeMainCache) {
+                        this.readMainCache = readMainCache;
+                        this.writeMainCache = writeMainCache;
+                        var needIndieCache = !(this.readMainCache &amp;&amp; this.writeMainCache);
+                        this.taskIndieCache = needIndieCache ? {} : null;
+                    }
+                    LoadingHandle.prototype.readCache = function (uuid) {
+                        if (this.readMainCache &amp;&amp; this.writeMainCache) {
+                            return AssetLibrary._uuidToAsset[uuid];
+                        }
+                        else {
+                            if (this.readMainCache) {
+                                // writeMainCache == false
+                                return AssetLibrary._uuidToAsset[uuid] || this.taskIndieCache[uuid];
+                            }
+                            else {
+                                return this.taskIndieCache[uuid];
+                            }
+                        }
+                    };
+                    LoadingHandle.prototype.writeCache = function (uuid, asset) {
+                        if (this.writeMainCache) {
+                            AssetLibrary._uuidToAsset[uuid] = asset;
+                        }
+                        if (this.taskIndieCache) {
+                            this.taskIndieCache[uuid] = asset;
+                        }
+                    };
+                
+                    // publics
+                
+                    var AssetLibrary = {
+                
+                        /**
+                         * @method loadAsset
+                         * @param {string} uuid
+                         * @param {function} callback
+                         * @param {string} callback.param error - null or the error info
+                         * @param {Asset} callback.param data - the loaded asset or null
+                         * @param {boolean} [readMainCache=true] - If false, the asset and all its depends assets will reload and create new instances from library.
+                         * @param {boolean} [writeMainCache=true] - If true, the result will cache to AssetLibrary, and MUST be unload by user manually.
+                         * @param {Asset} [existingAsset] - load to existing asset, this argument is only available in editor
+                         * @private
+                         */
+                        loadAsset: function (uuid, callback, readMainCache, writeMainCache, existingAsset) {
+                            readMainCache = typeof readMainCache !== &#x27;undefined&#x27; ? readMainCache : true;
+                            writeMainCache = typeof writeMainCache !== &#x27;undefined&#x27; ? writeMainCache : true;
+                
+                            var handle = new LoadingHandle(readMainCache, writeMainCache);
+                            this._loadAssetByUuid(uuid, callback, handle, existingAsset);
+                        },
+                
+                        _LoadingHandle: LoadingHandle,
+                
+                        /**
+                         * !#zh uuid加载流程：
+                         * 1. 查找_uuidToAsset，如果已经加载过，直接返回
+                         * 2. 查找_uuidToCallbacks，如果已经在加载，则注册回调，直接返回
+                         * 3. 如果没有url，则将uuid直接作为路径
+                         * 4. 递归加载Asset及其引用到的其它Asset
+                         *
+                         * @method _loadAssetByUuid
+                         * @param {string} uuid
+                         * @param {AssetLibrary~loadCallback} callback - the callback to receive the asset, can be null
+                         * @param {LoadingHandle} handle - the loading context which reserves all relevant parameters
+                         * @param {Asset} [existingAsset] - load to existing asset, this argument is only available in editor
+                         * @private
+                         */
+                        _loadAssetByUuid: function (uuid, callback, handle, existingAsset) {
+                            if (typeof uuid !== &#x27;string&#x27;) {
+                                if (callback) {
+                                    callback(&#x27;[AssetLibrary] uuid must be string&#x27;, null);
+                                }
+                                return;
+                            }
+                            // step 1
+                            if ( !existingAsset ) {
+                                var asset = handle.readCache(uuid);
+                                if (asset) {
+                                    if (callback) {
+                                        callback(null, asset);
+                                    }
+                                    return;
+                                }
+                            }
+                
+                            // step 2
+                            // 如果必须重新加载，则不能合并到到 _uuidToCallbacks，否则现有的加载成功后会同时触发回调，
+                            // 导致提前返回的之前的资源。
+                            var canShareLoadingTask = handle.readMainCache &amp;&amp; !existingAsset;
+                            if ( canShareLoadingTask &amp;&amp; !_uuidToCallbacks.add(uuid, callback) ) {
+                                // already loading
+                                return;
+                            }
+                
+                            // step 4
+                            var url = _libraryBase + uuid.substring(0, 2) + Fire.Path.sep + uuid;
+                
+                            // step 5
+                            LoadManager.loadByLoader(JsonLoader, url,
+                                function (error, json) {
+                                    function onDeserializedWithDepends (err, asset) {
+                                        if (asset) {
+                                            asset._uuid = uuid;
+                                            handle.writeCache(uuid, asset);
+                                        }
+                                        if ( canShareLoadingTask ) {
+                                            _uuidToCallbacks.invokeAndRemove(uuid, err, asset);
+                                        }
+                                        else if (callback) {
+                                            callback(err, asset);
+                                        }
+                                    }
+                                    if (json) {
+                                        AssetLibrary._deserializeWithDepends(json, url, onDeserializedWithDepends, handle, existingAsset);
+                                    }
+                                    else {
+                                        onDeserializedWithDepends(error, null);
+                                    }
+                                }
+                            );
+                        },
+                
+                        /**
+                         * @method loadJson
+                         * @param {string|object} json
+                         * @param {function} callback
+                         * @param {string} callback.param error - null or the error info
+                         * @param {object} callback.param data - the loaded object or null
+                         * @param {boolean} [dontCache=false] - If false, the result will cache to AssetLibrary, and MUST be unload by user manually.
+                         * @private
+                         */
+                        loadJson: function (json, callback, dontCache) {
+                            var handle = new LoadingHandle(!dontCache, !dontCache);
+                            this._deserializeWithDepends(json, &#x27;&#x27;, callback, handle);
+                        },
+                
+                        /**
+                         * @method _deserializeWithDepends
+                         * @param {string|object} json
+                         * @param {string} url
+                         * @param {function} callback
+                         * @param {string} callback.param error - null or the error info
+                         * @param {object} callback.param data - the loaded object or null
+                         * @param {object} handle - the loading context which reserves all relevant parameters
+                         * @param {Asset} [existingAsset] - existing asset to reload
+                         * @private
+                         */
+                        _deserializeWithDepends: function (json, url, callback, handle, existingAsset) {
+                            // deserialize asset
+                            var isScene = json &amp;&amp; json[0] &amp;&amp; json[0].__type__ === JS._getClassId(Scene);
+                            var classFinder = isScene ? Fire._MissingScript.safeFindClass : function (id) {
+                                var cls = JS._getClassById(id);
+                                if (cls) {
+                                    return cls;
+                                }
+                                Fire.warn(&#x27;Can not get class &quot;%s&quot;&#x27;, id);
+                                return Object;
+                            };
+                            Engine._canModifyCurrentScene = false;
+                            var asset = Fire.deserialize(json, _tdInfo, {
+                                classFinder: classFinder,
+                                target: existingAsset
+                            });
+                            Engine._canModifyCurrentScene = true;
+                
+                            // load depends
+                            var pendingCount = _tdInfo.uuidList.length;
+                
+                            // load raw
+                            var rawProp = _tdInfo.rawProp;     // _tdInfo不能用在回调里！
+                            if (rawProp) {
+                                // load depends raw objects
+                                var attrs = Fire.attr(asset.constructor, _tdInfo.rawProp);
+                                var rawType = attrs.rawType;
+                                ++pendingCount;
+                                LoadManager.load(url, rawType, asset._rawext, function onRawObjLoaded (error, raw) {
+                                    if (error) {
+                                        Fire.error(&#x27;[AssetLibrary] Failed to load %s of %s. %s&#x27;, rawType, url, error);
+                                    }
+                                    asset[rawProp] = raw;
+                                    --pendingCount;
+                                    if (pendingCount === 0) {
+                                        callback(null, asset);
+                                    }
+                                });
+                            }
+                
+                            if (pendingCount === 0) {
+                                callback(null, asset);
+                            }
+                
+                            /*
+                             如果依赖的所有资源都要重新下载，批量操作时将会导致同时执行多次重复下载。优化方法是增加一全局事件队列，
+                             队列保存每个任务的注册，启动，结束事件，任务从注册到启动要延迟几帧，每个任务都存有父任务。
+                             这样通过队列的事件序列就能做到合并批量任务。
+                             如果依赖的资源不重新下载也行，但要判断是否刚好在下载过程中，如果是的话必须等待下载完成才能结束本资源的加载，
+                             否则外部获取到的依赖资源就会是旧的。
+                             */
+                
+                            // @ifdef EDITOR
+                            // AssetLibrary._loadAssetByUuid 的回调有可能在当帧也可能延后执行，这里要判断是否由它调用 callback，
+                            // 否则 callback 可能会重复调用
+                            var invokeCbByDepends = false;
+                            // @endif
+                
+                            // load depends assets
+                            for (var i = 0, len = _tdInfo.uuidList.length; i &lt; len; i++) {
+                                var dependsUuid = _tdInfo.uuidList[i];
+                                // @ifdef EDITOR
+                                if (existingAsset) {
+                                    var existingDepends = _tdInfo.uuidObjList[i][_tdInfo.uuidPropList[i]];
+                                    if (existingDepends &amp;&amp; existingDepends._uuid === dependsUuid) {
+                                        var dependsUrl = _libraryBase + dependsUuid.substring(0, 2) + Fire.Path.sep + dependsUuid;
+                                        if ( !LoadManager.isLoading(dependsUrl, true) ) {
+                                            // 如果有依赖但依赖不在加载过程中就直接略过
+                                            --pendingCount;
+                                        }
+                                        else {
+                                            // 等待依赖加载完成
+                                            (function (dependsUrl) {
+                                                var idToClear = setInterval(function () {
+                                                    if ( !LoadManager.isLoading(dependsUrl, true) ) {
+                                                        clearInterval(idToClear);
+                                                        --pendingCount;
+                                                        if (pendingCount === 0) {
+                                                            callback(null, asset);
+                                                        }
+                                                    }
+                                                }, 10);
+                                            })(dependsUrl);
+                                        }
+                                        continue;
+                                    }
+                                }
+                                // @endif
+                                var onDependsAssetLoaded = (function (dependsUuid, obj, prop) {
+                                    // create closure manually because its extremely faster than bind
+                                    return function (error, dependsAsset) {
+                                        if (error) {
+                                            // @ifdef EDITOR
+                                            if (Fire.AssetDB &amp;&amp; Fire.AssetDB.isValidUuid(dependsUuid)) {
+                                                Fire.error(&#x27;[AssetLibrary] Failed to load &quot;%s&quot;, %s&#x27;, dependsUuid, error);
+                                            }
+                                            // @endif
+                                        }
+                                        //else {
+                                        //    dependsAsset._uuid = dependsUuid;
+                                        //}
+                                        // update reference
+                                        obj[prop] = dependsAsset;
+                                        // check all finished
+                                        --pendingCount;
+                                        if (pendingCount === 0) {
+                                            callback(null, asset);
+                                        }
+                                    };
+                                })( dependsUuid, _tdInfo.uuidObjList[i], _tdInfo.uuidPropList[i] );
+                                AssetLibrary._loadAssetByUuid(dependsUuid, onDependsAssetLoaded, handle);
+                                invokeCbByDepends = true;
+                            }
+                
+                            // @ifdef EDITOR
+                            if ( !invokeCbByDepends &amp;&amp; pendingCount === 0) {
+                                callback(null, asset);
+                            }
+                            // @endif
+                
+                            // _tdInfo 是用来重用临时对象，每次使用后都要重设，这样才对 GC 友好。
+                            _tdInfo.reset();
+                        },
+                
+                        /**
+                         * Get the exists asset by uuid.
+                         *
+                         * @method getAssetByUuid
+                         * @param {string} uuid
+                         * @return {Asset} - the existing asset, if not loaded, just returns null.
+                         * @private
+                         */
+                        getAssetByUuid: function (uuid) {
+                            return AssetLibrary._uuidToAsset[uuid] || null;
+                        },
+                
+                        /**
+                         * @callback AssetLibrary~loadCallback
+                         * @param {Asset} asset - if failed, asset will be null
+                         * @param {string} [error] - error info, if succeed, error will be empty or nil
+                         */
+                
+                        /**
+                         * !#en Kill references to the asset so it can be garbage collected.
+                         * Fireball will reload the asset from disk or remote if loadAssetByUuid being called again.
+                         * You rarely use this function in scripts, since it will be called automatically when the Asset is destroyed.
+                         * !#zh 手动卸载指定的资源，这个方法会在 Asset 被 destroy 时自动调用，一般不需要用到这个方法。卸载以后，Fireball 可以重新从硬盘或网络加载这个资源。
+                         *
+                         * 如果还有地方引用到asset，除非 destroyImmediated 为true，否则不应该执行这个方法，因为那样可能会导致 asset 被多次创建。
+                         *
+                         * @method unloadAsset
+                         * @param {Asset|string} assetOrUuid
+                         * @param {boolean} [destroyImmediate=false] When destroyImmediate is true, if there are objects
+                         *                                           referencing the asset, the references will become invalid.
+                         */
+                        unloadAsset: function (assetOrUuid, destroyImmediate) {
+                            var asset;
+                            if (typeof assetOrUuid === &#x27;string&#x27;) {
+                                asset = AssetLibrary._uuidToAsset[assetOrUuid];
+                            }
+                            else {
+                                asset = assetOrUuid;
+                            }
+                            if (asset) {
+                                if (destroyImmediate &amp;&amp; asset.isValid) {
+                                    asset.destroy();
+                                    // simulate destroy immediate
+                                    FObject._deferredDestroy();
+                                }
+                                delete AssetLibrary._uuidToAsset[asset._uuid];
+                            }
+                        },
+                
+                        /**
+                         * init the asset library
+                         * @method init
+                         * @param {string} libraryPath
+                         */
+                        init: function (libraryPath) {
+                // @ifdef EDITOR
+                            if (_libraryBase &amp;&amp; !Fire.isUnitTest) {
+                                Fire.error(&#x27;AssetLibrary has already been initialized!&#x27;);
+                                return;
+                            }
+                // @endif
+                            _libraryBase = Fire.Path.setEndWithSep(libraryPath);
+                            //Fire.log(&#x27;[AssetLibrary] library: &#x27; + _libraryBase);
+                        }
+                
+                        ///**
+                        // * temporary flag for deserializing assets
+                        // * @property {boolean} Fire.AssetLibrary.isLoadingAsset
+                        // */
+                        //isLoadingAsset: false,
+                    };
+                
+                    // unload asset if it is destoryed
+                
+                    /**
+                     * !#en Caches uuid to all loaded assets in scenes.
+                     *
+                     * !#zh 这里保存所有已经加载的场景资源，防止同一个资源在内存中加载出多份拷贝。
+                     *
+                     * 这里用不了WeakMap，在浏览器中所有加载过的资源都只能手工调用 unloadAsset 释放。
+                     *
+                     * 参考：
+                     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+                     * https://github.com/TooTallNate/node-weak
+                     *
+                     * @property _uuidToAsset
+                     * @type {object}
+                     * @private
+                     */
+                    AssetLibrary._uuidToAsset = {};
+                
+                    // @ifdef DEV
+                    if (Asset.prototype._onPreDestroy) {
+                        Fire.error(&#x27;_onPreDestroy of Asset has already defined&#x27;);
+                    }
+                    // @endif
+                    Asset.prototype._onPreDestroy = function () {
+                        if (AssetLibrary._uuidToAsset[this._uuid] === this) {
+                            AssetLibrary.unloadAsset(this, false);
+                        }
+                    };
+                
+                    return AssetLibrary;
+                })();
+                
+                Fire.AssetLibrary = AssetLibrary;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

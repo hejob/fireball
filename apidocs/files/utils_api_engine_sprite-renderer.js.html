@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/sprite-renderer.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/sprite-renderer.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var SpriteRenderer = (function () {
+                
+                    /**
+                     * Renders a sprite in the scene.
+                     * @class SpriteRenderer
+                     * @extends Renderer
+                     * @constructor
+                     */
+                    var SpriteRenderer = Fire.extend(&#x27;Fire.SpriteRenderer&#x27;, Renderer, function () {
+                        RenderContext.initRenderer(this);
+                        this._hasRenderObj = false;
+                    });
+                    Fire.addComponentMenu(SpriteRenderer, &#x27;SpriteRenderer&#x27;);
+                    Fire.executeInEditMode(SpriteRenderer);
+                
+                    SpriteRenderer.prop(&#x27;_sprite&#x27;, null, Fire.HideInInspector);
+                    /**
+                     * The sprite to render.
+                     * @property sprite
+                     * @type {Sprite}
+                     * @default null
+                     */
+                    SpriteRenderer.getset(&#x27;sprite&#x27;,
+                        function () {
+                            return this._sprite;
+                        },
+                        function (value) {
+                            this._sprite = value;
+                            if (this._hasRenderObj) {
+                                Engine._renderContext.updateMaterial(this);
+                            }
+                        },
+                        Fire.ObjectType(Fire.Sprite)
+                    );
+                
+                    SpriteRenderer.prop(&#x27;_color&#x27;, new Fire.Color(1, 1, 1, 1), Fire.HideInInspector);
+                    /**
+                     * !#en The rendering color.
+                     * !#zh Sprite 渲染的颜色，其中 alpha 为 1 时表示不透明，0.5 表示半透明，0 则全透明。
+                     * @property color
+                     * @type Color
+                     * @default new Color(1, 1, 1, 1)
+                     */
+                    SpriteRenderer.getset(&#x27;color&#x27;,
+                        function () {
+                            return this._color;
+                        },
+                        function (value) {
+                            this._color = value;
+                            if (this._hasRenderObj) {
+                                Engine._renderContext.updateSpriteColor(this);
+                            }
+                        }
+                    );
+                
+                    SpriteRenderer.prop(&#x27;customSize_&#x27;, false, Fire.HideInInspector);
+                
+                    /**
+                     * !#en Indicates that this renderer uses custom width and height to render the sprite.
+                     * !#zh 是否使用自定义尺寸渲染。
+                     * - 为 true 时将忽略 sprite 的大小，使用 renderer 的 width 和 height 进行渲染。
+                     * - 为 false 则使用 sprite 原有的 width 和 height 进行渲染。
+                     *
+                     * @property customSize
+                     * @type {boolean}
+                     * @default false
+                     */
+                    SpriteRenderer.getset(&#x27;customSize&#x27;,
+                        function () {
+                            return this.customSize_;
+                        },
+                        function (value) {
+                            this.customSize_ = value;
+                        }
+                    );
+                
+                    SpriteRenderer.prop(&#x27;width_&#x27;, 100, Fire.DisplayName(&#x27;Width&#x27;),
+                                        Fire.Watch( &#x27;customSize_&#x27;, function ( obj, propEL ) {
+                                            propEL.disabled = !obj.customSize_;
+                                        } ));
+                    /**
+                     * !#en The custom width of this renderer.
+                     * !#zh 获取该 Renderer 的渲染宽度，如果使用的是 customSize，获取到的是 custom width，否则是 sprite width。
+                     * 设置这个值时，会修改 custom width。
+                     * @property width
+                     * @type {number}
+                     * @beta
+                     */
+                    SpriteRenderer.getset(&#x27;width&#x27;,
+                        function () {
+                            if ( !this.customSize_ ) {
+                                return Fire.isValid(this._sprite) ? this._sprite.width : 0;
+                            }
+                            else {
+                                return this.width_;
+                            }
+                        },
+                        function (value) {
+                            this.width_ = value;
+                        },
+                        Fire.HideInInspector
+                    );
+                
+                    SpriteRenderer.prop(&#x27;height_&#x27;, 100, Fire.DisplayName(&#x27;Height&#x27;),
+                                        Fire.Watch( &#x27;customSize_&#x27;, function ( obj, propEL) {
+                                            propEL.disabled = !obj.customSize;
+                                        } ));
+                
+                    /**
+                     * !#en The custom height of this renderer.
+                     * !#zh 获取该 Renderer 的渲染高度，如果使用的是 customSize，获取到的是 custom height，否则是 sprite height。
+                     * 设置这个值时，会修改 custom height。
+                     * @property height
+                     * @type {number}
+                     * @beta
+                     */
+                    SpriteRenderer.getset(&#x27;height&#x27;,
+                        function () {
+                            if ( !this.customSize_ ) {
+                                return Fire.isValid(this._sprite) ? this._sprite.height : 0;
+                            }
+                            else {
+                                return this.height_;
+                            }
+                        },
+                        function (value) {
+                            this.height_ = value;
+                        },
+                        Fire.HideInInspector
+                    );
+                
+                    // built-in functions
+                
+                    SpriteRenderer.prototype.onLoad = function () {
+                        Engine._renderContext.addSprite(this);
+                        this._hasRenderObj = true;
+                    };
+                    SpriteRenderer.prototype.onEnable = function () {
+                        Engine._renderContext.show(this, true);
+                    };
+                    SpriteRenderer.prototype.onDisable = function () {
+                        Engine._renderContext.show(this, false);
+                    };
+                
+                    SpriteRenderer.prototype.getWorldSize = function () {
+                        return new Fire.Vec2(this.width, this.height);
+                    };
+                
+                    var tempMatrix = new Fire.Matrix23();
+                
+                    SpriteRenderer.prototype.onPreRender = function () {
+                        this.getSelfMatrix(tempMatrix);
+                        if (this._sprite) {
+                            // calculate render matrix
+                            //   scale
+                            tempMatrix.a = this.width / this._sprite.width;
+                            tempMatrix.d = this.height / this._sprite.height;
+                            //   rotate cw
+                            if (this._sprite.rotated) {
+                                tempMatrix.b = tempMatrix.d;
+                                tempMatrix.c = -tempMatrix.a;
+                                tempMatrix.a = 0;
+                                tempMatrix.d = 0;
+                                tempMatrix.ty -= this.height;
+                            }
+                        }
+                        tempMatrix.prepend(this.transform._worldTransform);
+                        Engine._curRenderContext.updateTransform(this, tempMatrix);
+                    };
+                    SpriteRenderer.prototype.onDestroy = function () {
+                        Engine._renderContext.remove(this);
+                    };
+                
+                    SpriteRenderer.prototype.getSelfMatrix = function (out) {
+                        var w = this.width;
+                        var h = this.height;
+                
+                        var pivotX = 0.5;
+                        var pivotY = 0.5;
+                
+                        //var rotated = false;
+                        if (Fire.isValid(this._sprite)) {
+                            //rotated = this._sprite.rotated;
+                            pivotX = this._sprite.pivot.x;
+                            pivotY = this._sprite.pivot.y;
+                        }
+                
+                        //if ( !rotated ) {
+                            out.a = 1;
+                            out.b = 0;
+                            out.c = 0;
+                            out.d = 1;
+                            out.tx = - pivotX * w;
+                            out.ty = (1.0 - pivotY) * h;
+                        //}
+                        //else {
+                        //    // CCW
+                        //    //out.a = 0;
+                        //    //out.b = scaleY;
+                        //    //out.c = -scaleX;
+                        //    //out.d = 0;
+                        //    //out.tx = - (pivotY - 1.0) * w;
+                        //    //out.ty = - pivotX * h;
+                        //
+                        //    // CW
+                        //    out.a = 0;
+                        //    out.b = -scaleY;
+                        //    out.c = scaleX;
+                        //    out.d = 0;
+                        //    out.tx = (1.0 - pivotX) * w;
+                        //    out.ty = (1.0 - pivotY) * h;
+                        //}
+                    };
+                
+                    return SpriteRenderer;
+                })();
+                
+                Fire.SpriteRenderer = SpriteRenderer;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

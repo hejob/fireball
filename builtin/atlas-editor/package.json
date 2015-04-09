@@ -1,26 +1,26 @@
 {
-    "name": "atlas-editor",
-    "version": "0.1.0",
-    "description": "The Atlas Editor for Fireball Engine",
-    "author": "Johnny Wu <KarasAya@gmail.com>",
-    "fireball": {
-        "main": "editor/main.js",
-        "panels": {
-            "default": {
-                "type": "dockable",
-                "view": "editor/atlas-editor.html",
-                "ctor": "AtlasEditor",
-                "title": "Atlas Editor",
-                "width": 800,
-                "height": 600,
-                "min-width": 400,
-                "min-height": 400,
-                "messages": {
-                    "asset:changed": "ipcAssetChanged",
-                    "inspector:asset:dirty": "ipcInspectorAssetDirty",
-                    "inspector:meta:dirty": "ipcInspectorMetaDirty"
-                }
-            }
+  "name": "atlas-editor",
+  "version": "0.1.0",
+  "description": "The Atlas Editor for Fireball Engine",
+  "author": "Johnny Wu <KarasAya@gmail.com>",
+  "fireball": {
+    "main": "editor/main.js",
+    "panels": {
+      "default": {
+        "type": "dockable",
+        "view": "editor/atlas-editor.html",
+        "ctor": "AtlasEditor",
+        "title": "Atlas Editor",
+        "width": 800,
+        "height": 600,
+        "min-width": 400,
+        "min-height": 400,
+        "messages": {
+          "asset:changed": "ipcAssetChanged",
+          "inspector:asset:dirty": "ipcInspectorAssetDirty",
+          "inspector:meta:dirty": "ipcInspectorMetaDirty"
         }
+      }
     }
+  }
 }

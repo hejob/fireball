@@ -1,0 +1,30 @@
+{
+  "name": "auto-updater",
+  "version": "0.1.0",
+  "description": "The Check for Update plugin for Fireball Editor",
+  "author": "KamiSama <1457434343@qq.com>",
+  "fireball": {
+    "main": "editor/main.js",
+    "menus": [
+      {
+        "path": "Fireball/Check for Update",
+        "message": "auto-updater:open"
+      }
+    ],
+    "panels": {
+      "default": {
+        "type": "fixed-size",
+        "view": "editor/auto-updater.html",
+        "ctor": "AutoUpdater",
+        "title": "AutoUpdater",
+        "width": 400,
+        "height": 100,
+        "min-width": 400,
+        "min-height": 100,
+        "messages": {
+          "auto-updater:status-changed": "status-changed"
+        }
+      }
+    }
+  }
+}

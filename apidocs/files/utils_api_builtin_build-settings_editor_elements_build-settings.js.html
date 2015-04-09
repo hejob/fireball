@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/builtin/build-settings/editor/elements/build-settings.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/builtin/build-settings/editor/elements/build-settings.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Remote = require(&#x27;remote&#x27;);
+                var Url = require(&#x27;fire-url&#x27;);
+                var Fs = require(&#x27;fire-fs&#x27;);
+                var Path = require(&#x27;fire-path&#x27;);
+                var Shell = Remote.require(&#x27;shell&#x27;);
+                
+                Polymer({
+                    platformList: [
+                        { name: &#x27;Web Mobile&#x27;, value: &#x27;web-mobile&#x27; },
+                        { name: &#x27;Web Desktop&#x27;, value: &#x27;web-desktop&#x27; },
+                    ],
+                
+                    observe: {
+                        &#x27;settings.projectName&#x27;: &#x27;projectNameChanged&#x27;,
+                        &#x27;settings.defaultScene&#x27;: &#x27;defaultSceneChanged&#x27;,
+                        &#x27;settings.platform&#x27;: &#x27;platformChanged&#x27;,
+                        &#x27;settings.isDebug&#x27;: &#x27;isDebugChanged&#x27;,
+                        &#x27;settings.buildPath&#x27;: &#x27;buildPathChanged&#x27;,
+                    },
+                
+                    isProjectNameValid: true,
+                    isBuildPathValid: true,
+                    hoverBuildButton: false,
+                
+                    created: function () {
+                        var projectPath = Remote.getGlobal(&#x27;FIRE_PROJECT_PATH&#x27;);
+                        var projectName = Path.basename(projectPath);
+                
+                        this.settings = {
+                            projectName: projectName,
+                            defaultScene: &#x27;&#x27;,
+                            sceneList: [],
+                            isDebug: true,
+                            platform: &#x27;web-mobile&#x27;,
+                            buildPath: Path.join(projectPath, &#x27;mobile-&#x27; + projectName),
+                        };
+                    },
+                
+                    domReady: function () {
+                        Fire.sendToCore(&#x27;build-settings:query-scenes&#x27;);
+                    },
+                
+                    ipcQuerySceneResults: function ( event ) {
+                        var results = event.detail.results;
+                
+                        this.settings.sceneList = results.map( function ( item ) {
+                            return { name: item.url, value: item.uuid, checked: true };
+                        });
+                
+                        if ( this.settings.sceneList.indexOf(this.settings.defaultScene) === -1 ) {
+                            this.settings.defaultScene = this.settings.sceneList[0].value;
+                        }
+                        this.settings.save();
+                    },
+                
+                    defaultSceneChanged: function () {
+                        for (var i = 0; i &lt; this.settings.sceneList.length; ++i) {
+                            if (this.settings.sceneList[i].value === this.settings.defaultScene) {
+                                this.settings.sceneList[i].checked = true;
+                            }
+                        }
+                        this.settings.save();
+                    },
+                
+                    buildPathChanged: function () {
+                        this.settings.save();
+                        if (this.settings.buildPath) {
+                            this.isBuildPathValid = true;
+                            return;
+                        }
+                        this.isBuildPathValid = false;
+                    },
+                
+                    projectNameChanged: function () {
+                        this.settings.save();
+                        if ( this.settings.projectName ) {
+                            this.isProjectNameValid = true;
+                            return;
+                        }
+                
+                        this.isProjectNameValid = false;
+                    },
+                
+                    platformChanged: function () {
+                        var projectPath = Remote.getGlobal(&#x27;FIRE_PROJECT_PATH&#x27;);
+                        if ( this.settings.platform === &#x27;web-mobile&#x27; ) {
+                            this.settings.buildPath = projectPath + &#x27;/mobile-&#x27; + this.settings.projectName;
+                        }
+                        else {
+                            this.settings.buildPath = projectPath + &#x27;/desktop-&#x27; + this.settings.projectName;
+                        }
+                        this.settings.save();
+                    },
+                
+                    isDebugChanged: function () {
+                        this.settings.save();
+                    },
+                
+                    chooseDistPath: function () {
+                        var dialog = Remote.require(&#x27;dialog&#x27;);
+                        var projectPath = Remote.getGlobal(&#x27;FIRE_PROJECT_PATH&#x27;);
+                
+                        dialog.showOpenDialog({ defaultPath: projectPath, properties: [&#x27;openDirectory&#x27;]},function (res) {
+                            if (res) {
+                                if (this.settings.platform === &#x27;web-mobile&#x27;) {
+                                    this.settings.buildPath = res + &#x27;/mobile-&#x27; + Path.basename(projectPath);
+                                }
+                                else {
+                                    this.settings.buildPath = res + &#x27;/desktop-&#x27; + Path.basename(projectPath);
+                                }
+                            }
+                        }.bind(this));
+                    },
+                
+                    buildAction: function () {
+                        if ( this.isProjectNameValid &amp;&amp; this.isBuildPathValid ) {
+                            this.$.tip.style.display = &#x27;none&#x27;;
+                
+                            var buildUuidList = this.settings.sceneList.filter( function (item) {
+                                return item.checked;
+                            }).map(function (item) {
+                                return item.value;
+                            });
+                
+                            // move default scene to first
+                            var firstSceneIndex = buildUuidList.indexOf(this.settings.defaultScene);
+                            var toSwap = buildUuidList[0];
+                            buildUuidList[0] = buildUuidList[firstSceneIndex];
+                            buildUuidList[firstSceneIndex] = toSwap;
+                
+                            Fire.sendToCore(&#x27;build-project&#x27;, this.settings.platform, this.settings.buildPath, buildUuidList, this.settings);
+                        }
+                        else {
+                            this.$.tip.style.display = &#x27;block&#x27;;
+                            this.$.tip.animate([
+                                { color: &#x27;white&#x27; },
+                                { color: &#x27;red&#x27; },
+                                { color: &#x27;white&#x27; },
+                                { color: &#x27;red&#x27; },
+                            ], {
+                                duration: 300
+                            });
+                        }
+                    },
+                
+                    buildButtonHoverInAction: function (event) {
+                        this.hoverBuildButton = true;
+                    },
+                
+                    buildButtonHoverOutAction: function () {
+                        this.hoverBuildButton = false;
+                    },
+                
+                    previewAction: function () {
+                        Shell.openExternal(&#x27;http://localhost:7456&#x27;);
+                        Shell.beep();
+                    },
+                
+                    showInFinder: function () {
+                        if (!Fs.existsSync(this.settings.buildPath)) {
+                            Fire.warn( &#x27;%s not exists!&#x27;, this.settings.buildPath);
+                            return;
+                        }
+                        Shell.showItemInFolder(Path.normalize(this.settings.buildPath));
+                        Shell.beep();
+                    },
+                
+                    closeAction: function () {
+                        window.close();
+                    },
+                });
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

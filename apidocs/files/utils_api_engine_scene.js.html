@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utils/api/engine/scene.js - Fireball Engine API</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                    <a href="http://docs-zh.fireball-x.com"><img class="logo" src="http://docs-zh.fireball-x.com/images/logo.png" title="Fireball Engine API"></a>
+                    <h1 class="project-name">Fireball Engine API</h1> <span class="project-version">0.2.0</span>
+                    <p class="description">Fireball is the game engine for the future.</p>
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+                <div id="api-tabview" class="tabview">
+                    <ul class="tabs">
+                        <li><a href="#api-classes">Classes</a></li>
+                        <li><a href="#api-modules">Modules</a></li>
+                    </ul>
+            
+                    <div id="api-tabview-filter">
+                        <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                    </div>
+            
+                    <div id="api-tabview-panel">
+                        <ul id="api-classes" class="apis classes">
+                            <li><a class="type" href="../classes/_CallbacksHandler.html">_CallbacksHandler</a></li>
+                            <li><a class="type" href="../classes/_DeserializeInfo.html">_DeserializeInfo</a></li>
+                            <li><a class="type" href="../classes/_ObjectFlags.html">_ObjectFlags</a></li>
+                            <li><a class="type" href="../classes/Asset.html">Asset</a></li>
+                            <li><a class="type" href="../classes/AssetLibrary.html">AssetLibrary</a></li>
+                            <li><a class="type" href="../classes/AudioClip.html">AudioClip</a></li>
+                            <li><a class="type" href="../classes/AudioSource.html">AudioSource</a></li>
+                            <li><a class="type" href="../classes/BitmapFont.html">BitmapFont</a></li>
+                            <li><a class="type" href="../classes/BitmapText.html">BitmapText</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAlign.html">BitmapText.TextAlign</a></li>
+                            <li><a class="type" href="../classes/BitmapText.TextAnchor.html">BitmapText.TextAnchor</a></li>
+                            <li><a class="type" href="../classes/CallbacksInvoker.html">CallbacksInvoker</a></li>
+                            <li><a class="type" href="../classes/Camera.html">Camera</a></li>
+                            <li><a class="type" href="../classes/Color.html">Color</a></li>
+                            <li><a class="type" href="../classes/Component.html">Component</a></li>
+                            <li><a class="type" href="../classes/ContentStrategyType.html">ContentStrategyType</a></li>
+                            <li><a class="type" href="../classes/Engine.html">Engine</a></li>
+                            <li><a class="type" href="../classes/Entity.html">Entity</a></li>
+                            <li><a class="type" href="../classes/EqualToFrame.html">EqualToFrame</a></li>
+                            <li><a class="type" href="../classes/Event.html">Event</a></li>
+                            <li><a class="type" href="../classes/EventTarget.html">EventTarget</a></li>
+                            <li><a class="type" href="../classes/Fire.html">Fire</a></li>
+                            <li><a class="type" href="../classes/FixedHeight.html">FixedHeight</a></li>
+                            <li><a class="type" href="../classes/FObject.html">FObject</a></li>
+                            <li><a class="type" href="../classes/HashObject.html">HashObject</a></li>
+                            <li><a class="type" href="../classes/Input.html">Input</a></li>
+                            <li><a class="type" href="../classes/Intersection.html">Intersection</a></li>
+                            <li><a class="type" href="../classes/JS.html">JS</a></li>
+                            <li><a class="type" href="../classes/KeyboardEvent.html">KeyboardEvent</a></li>
+                            <li><a class="type" href="../classes/LoadManager.html">LoadManager</a></li>
+                            <li><a class="type" href="../classes/Math.html">Math</a></li>
+                            <li><a class="type" href="../classes/Matrix23.html">Matrix23</a></li>
+                            <li><a class="type" href="../classes/ModifierKeyStates.html">ModifierKeyStates</a></li>
+                            <li><a class="type" href="../classes/MouseEvent.html">MouseEvent</a></li>
+                            <li><a class="type" href="../classes/NoScale.html">NoScale</a></li>
+                            <li><a class="type" href="../classes/Path.html">Path</a></li>
+                            <li><a class="type" href="../classes/Rect.html">Rect</a></li>
+                            <li><a class="type" href="../classes/Renderer.html">Renderer</a></li>
+                            <li><a class="type" href="../classes/Screen.html">Screen</a></li>
+                            <li><a class="type" href="../classes/Screen.ContainerStrategy.html">Screen.ContainerStrategy</a></li>
+                            <li><a class="type" href="../classes/Screen.ContentStrategy.html">Screen.ContentStrategy</a></li>
+                            <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimation.html">SpriteAnimation</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.html">SpriteAnimationClip</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.StopAction.html">SpriteAnimationClip.StopAction</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationClip.WrapMode.html">SpriteAnimationClip.WrapMode</a></li>
+                            <li><a class="type" href="../classes/SpriteAnimationState.html">SpriteAnimationState</a></li>
+                            <li><a class="type" href="../classes/SpriteRenderer.html">SpriteRenderer</a></li>
+                            <li><a class="type" href="../classes/Texture.html">Texture</a></li>
+                            <li><a class="type" href="../classes/Texture.FilterMode.html">Texture.FilterMode</a></li>
+                            <li><a class="type" href="../classes/Texture.WrapMode.html">Texture.WrapMode</a></li>
+                            <li><a class="type" href="../classes/Time.html">Time</a></li>
+                            <li><a class="type" href="../classes/Transform.html">Transform</a></li>
+                            <li><a class="type" href="../classes/Vec2.html">Vec2</a></li>
+                        </ul>
+            
+                        <ul id="api-modules" class="apis modules">
+                            <li><a class="module" href="../modules/Editor.html">Editor</a></li>
+                            <li><a class="module" href="../modules/Fire.html">Fire</a></li>
+                            <li><a class="module" href="../modules/Math.html">Math</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: utils/api/engine/scene.js</h1>
+                
+                <div class="file">
+                    <pre class="code prettyprint linenums">
+                /**
+                 * @module Fire
+                 * @class Fire
+                 */
+                var Scene = (function () {
+                
+                    var Scene = Fire.Class({
+                        name: &quot;Fire.Scene&quot;,
+                        extends: Asset,
+                
+                        properties: {
+                            /**
+                             * root entities
+                             * @property entities
+                             * @type {Entity[]}
+                             */
+                            entities: [],
+                
+                            /**
+                             * the active camera
+                             * @property camera
+                             * @type {Camera}
+                             */
+                            camera: null
+                        }
+                    });
+                
+                    ////////////////////////////////////////////////////////////////////
+                    // traversal operations
+                    ////////////////////////////////////////////////////////////////////
+                
+                    var visitOperationTmpl = &quot;if(c._enabled &amp;&amp; c._FUNC_) c._FUNC_();&quot;;
+                // @ifdef EDITOR
+                        visitOperationTmpl =
+                           &quot;if (c._enabled &amp;&amp; c._FUNC_ &amp;&amp; &quot; +
+                           &quot;   (Fire.Engine.isPlaying || Fire.attr(c,&#x27;executeInEditMode&#x27;)) ) {&quot; +
+                           &quot;    execInTryCatch(c);&quot; +
+                           &quot;}&quot;;
+                // @endif
+                
+                    // 当引入DestroyImmediate后，entity和component可能会在遍历过程中变少，需要复制一个新的数组，或者做一些标记
+                    var visitFunctionTmpl = &quot;\
+                (function(e){\
+                    var i, len=e._components.length;\
+                    for(i=0;i&lt;len;++i){\
+                        var c=e._components[i];\
+                        &quot; + visitOperationTmpl + &quot;\
+                    }\
+                    var cs=e._children;\
+                    for(i=0,len=cs.length;i&lt;len;++i){\
+                        var sub=cs[i];\
+                        if(sub._active) _FUNC_Recursively(sub);\
+                    }\
+                })&quot;;
+                
+                // @ifdef EDITOR
+                    function execInTryCatch (c) {
+                        try {
+                            c._FUNC_();
+                        }
+                        catch (e) {
+                            Fire._throw(e);
+                        }
+                    }
+                    visitFunctionTmpl = &quot;(function () {&quot; +
+                                            execInTryCatch +
+                                            &quot;return &quot; + visitFunctionTmpl +
+                                        &quot;})()&quot;;
+                // @endif
+                
+                    // jshint evil: true
+                    var updateRecursively = eval(visitFunctionTmpl.replace(/_FUNC_/g, &#x27;update&#x27;));
+                    var lateUpdateRecursively = eval(visitFunctionTmpl.replace(/_FUNC_/g, &#x27;lateUpdate&#x27;));
+                    var onPreRenderRecursively = eval(visitFunctionTmpl.replace(/_FUNC_/g, &#x27;onPreRender&#x27;));
+                    // jshint evil: false
+                
+                    Scene.prototype.update = function () {
+                        // call update
+                        var entities = this.entities;
+                        var i = 0, len = entities.length;
+                        // invoke onStart
+                        // TODO: 使用一个数组将需要调用的 onStart 存起来，避免递归遍历
+                        for (; i &lt; len; ++i) {
+                            Component._invokeStarts(entities[i]);
+                        }
+                        // invoke update
+                        for (i = 0, len = entities.length; i &lt; len; ++i) {
+                            if (entities[i]._active) {
+                                updateRecursively(entities[i]);
+                            }
+                        }
+                        // invoke lateUpdate
+                        for (i = 0, len = entities.length; i &lt; len; ++i) {
+                            if (entities[i]._active) {
+                                lateUpdateRecursively(entities[i]);
+                            }
+                        }
+                    };
+                
+                    Scene.prototype.render = function (renderContext) {
+                        Engine._curRenderContext = renderContext;
+                
+                        // updateTransform
+                        this.updateTransform(renderContext.camera || this.camera);
+                
+                        // call onPreRender
+                        var entities = this.entities;
+                        for (var i = 0, len = entities.length; i &lt; len; ++i) {
+                            if (entities[i]._active) {
+                                onPreRenderRecursively(entities[i]);
+                            }
+                        }
+                
+                        // render
+                        renderContext.render();
+                
+                        Engine._curRenderContext = null;
+                    };
+                
+                    ////////////////////////////////////////////////////////////////////
+                    // other functions
+                    ////////////////////////////////////////////////////////////////////
+                
+                    Scene.prototype.updateTransform = function (camera) {
+                        var entities = this.entities;
+                        var i, len;
+                        if (camera) {
+                            // transform by camera
+                            var mat = new Matrix23();
+                            var camPos = new Vec2();
+                            camera._calculateTransform(mat, camPos);
+                            var offsetX = -camPos.x;
+                            var offsetY = -camPos.y;
+                            for (i = 0, len = entities.length; i &lt; len; ++i) {
+                                var pos = entities[i].transform._position;
+                                var x = pos.x;
+                                var y = pos.y;
+                                pos.x += offsetX;
+                                pos.y += offsetY;
+                                entities[i].transform._updateTransform(mat);
+                                pos.x = x;
+                                pos.y = y;
+                            }
+                        }
+                        else {
+                            // transform
+                            for (i = 0, len = entities.length; i &lt; len; ++i) {
+                                entities[i].transform._updateRootTransform();
+                            }
+                        }
+                    };
+                
+                    Scene.prototype.appendRoot = function (_entity) {
+                        this.entities.push(_entity);
+                    };
+                
+                    Scene.prototype.removeRoot = function (_entity) {
+                        // TODO: performence test
+                        var entities = this.entities;
+                        if (entities.length &gt; 0 &amp;&amp; entities[entities.length - 1] === _entity) {
+                            entities.pop();
+                            return;
+                        }
+                        var index = entities.indexOf(_entity);
+                        if (index !== -1) {
+                            entities.splice(index, 1);
+                        }
+                        else {
+                            Fire.error(&#x27;entity &#x27; + _entity + &#x27; not contains in roots of hierarchy, &#x27; +
+                                       &#x27;is may caused if entity not destroyed immediate before current scene changed&#x27;);
+                        }
+                    };
+                
+                    Scene.prototype.findEntity = function (path) {
+                        var nameList = path.split(&#x27;/&#x27;);
+                        var match = null;
+                
+                        // visit root entities
+                        var name = nameList[1];     // skip first &#x27;/&#x27;
+                        var entities = this.entities;
+                        for (var i = 0; i &lt; entities.length; i++) {
+                            if (entities[i].isValid &amp;&amp; entities[i]._name === name) {
+                                match = entities[i];
+                                break;
+                            }
+                        }
+                        if (!match) {
+                            return null;
+                        }
+                
+                        // parse path
+                        var n = 2;                  // skip first &#x27;/&#x27; and roots
+                        for (n; n &lt; nameList.length; n++) {
+                            name = nameList[n];
+                            // visit sub entities
+                            var children = match._children;
+                            match = null;
+                            for (var t = 0, len = children.length; t &lt; len; ++t) {
+                                var subEntity = children[t];
+                                if (subEntity.name === name) {
+                                    match = subEntity;
+                                    break;
+                                }
+                            }
+                            if (!match) {
+                                return null;
+                            }
+                        }
+                
+                        return match;
+                    };
+                
+                    Scene.prototype.activate = function () {
+                        // active entities, invoke onLoad and onEnable
+                        var entities = this.entities;
+                        var i = 0, len = entities.length;
+                        for (; i &lt; len; ++i) {
+                            var entity = entities[i];
+                            if (entity._active) {
+                                entity._onActivatedInHierarchy(true);
+                            }
+                        }
+                        if (Engine.isPlaying) {
+                            // invoke onStart
+                            for (i = 0, len = entities.length; i &lt; len; ++i) {
+                                Component._invokeStarts(entities[i]);
+                            }
+                        }
+                    };
+                
+                    Scene.prototype.destroy = function () {
+                        var entities = this.entities;
+                        for (var i = 0, len = entities.length; i &lt; len; ++i) {
+                            var entity = entities[i];
+                            if (entity.isValid) {
+                                if (entity._objFlags &amp; DontDestroy) {
+                                    Engine._dontDestroyEntities.push(entity);
+                                }
+                                else {
+                                    entity.destroy();
+                                }
+                            }
+                        }
+                        Asset.prototype.destroy.call(this);
+                    };
+                
+                    return Scene;
+                })();
+                
+                Fire._Scene = Scene;
+                
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
