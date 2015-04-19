@@ -1,3 +1,4 @@
+(function () {
 var Url = require('fire-url');
 var App = require('app');
 var AutoUpdater = require('auto-updater');
@@ -7,7 +8,7 @@ var ignoreDialog = false;
 
 module.exports = {
     load: function (plugin) {
-        if ( Fire.isDev ) {
+        if ( Editor.isDev ) {
             plugin.on('auto-updater:open', function () {
                 Fire.warn('auto-updater only works in release version.');
             });
@@ -98,3 +99,4 @@ module.exports = {
         AutoUpdater.removeAllListeners();
     },
 };
+})();

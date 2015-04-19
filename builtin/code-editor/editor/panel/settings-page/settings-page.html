@@ -1,0 +1,53 @@
+<polymer-element
+    name="settings-page"
+    constructor="SettingsPage"
+    >
+<template>
+    <link rel="stylesheet" href="settings-page.css">
+
+    <div style="border-radius: 5px" name="Editor Settings">
+        <div class="title">
+            <fire-ui-label>
+                <i class="fa fa-gear"></i>
+                Editor Settings
+            </fire-ui-label>
+        </div>
+        <div  class="section">
+            <div flex-row class="prop" on-focusin="{{focusedAction}}" on-focusout="{{blurAction}}">
+                <fire-ui-label flex-1>Tab Size:</fire-ui-label>
+                <fire-ui-unit-input flex-2 min="2" max="4" type="int" value="{{config.tabSize}}" ></fire-ui-unit-input>
+            </div>
+            <div flex-row class="prop" on-focusin="{{focusedAction}}" on-focusout="{{blurAction}}">
+                <fire-ui-label flex-1>Key Map:</fire-ui-label>
+                <fire-ui-select flex-2 value="{{config.keyMap}}" id="keymapSelect"></fire-ui-select>
+            </div>
+            <div flex-row class="prop" on-focusin="{{focusedAction}}" on-focusout="{{blurAction}}">
+                <fire-ui-label flex-1>Default Theme:</fire-ui-label>
+                <fire-ui-select flex-2 searchable value="{{config.theme}}" id="themeSelect"></fire-ui-select>
+            </div>
+            <div flex-row class="prop" on-focusin="{{focusedAction}}" on-focusout="{{blurAction}}">
+                <fire-ui-label flex-1>Font family:</fire-ui-label>
+                <fire-ui-select flex-2 searchable value="{{config.fontFamily}}" id="fontSelect"></fire-ui-select>
+            </div>
+            <div flex-row class="prop" on-focusin="{{focusedAction}}" on-focusout="{{blurAction}}">
+                <fire-ui-label flex-1>Font Size:</fire-ui-label>
+                <fire-ui-unit-input flex-2 min="8" max="30"  value="{{config.fontSize}}" ></fire-ui-unit-input>
+            </div>
+            <div flex-row class="prop" on-focusin="{{focusedAction}}" on-focusout="{{blurAction}}">
+                <fire-ui-label flex-1>Auto Complete:</fire-ui-label>
+                <fire-ui-checkbox flex-2 value="{{config.autoComplete}}" ></fire-ui-checkbox>
+            </div>
+
+        </div>
+    </div>
+    <div class="bar">
+        <fire-ui-button on-click="{{doneAction}}">
+            <i class="fa fa-check"></i>Done
+        </fire-ui-button>
+        <fire-ui-button on-click="{{cancelAction}}">
+            <i class="fa fa-close"></i>Cancel
+        </fire-ui-button>
+    </div>
+</template>
+<script type="text/javascript" src="settings-page.js"></script>
+</polymer-element>

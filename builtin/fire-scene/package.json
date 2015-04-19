@@ -1,0 +1,34 @@
+{
+  "name": "fire-scene",
+  "version": "0.2.1",
+  "description": "Fireball builtin scene view",
+  "author": "Firebox Technology",
+  "fireball": {
+    "main": "editor/main.js",
+    "menus": [
+      {
+        "path": "Fireball/Panels/Scene",
+        "message": "fire-scene:open"
+      }
+    ],
+    "panels": {
+      "default": {
+        "type": "dockable",
+        "view": "editor/panel/fire-scene.html",
+        "ctor": "FireScene",
+        "title": "Scene",
+        "width": "auto",
+        "height": "auto",
+        "messages": [
+          "scene:dirty",
+          "component:enabled",
+          "component:disabled",
+          "selection:entity:selected",
+          "selection:entity:unselected",
+          "selection:entity:hover",
+          "selection:entity:hoverout"
+        ]
+      }
+    }
+  }
+}

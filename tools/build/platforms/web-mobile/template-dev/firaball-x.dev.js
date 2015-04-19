@@ -15,6 +15,8 @@
      * @static
      */
     var Fire = root.Fire || {};
+    var Editor = root.Editor || {};
+    Fire.Editor = Editor;
 
 // global definitions
 
@@ -487,6 +489,47 @@ JS.getClassName = function (obj) {
     };
 
 })();
+
+/**
+ * Define get set accessor, just help to call Object.defineProperty(...)
+ * @method getset
+ * @param {any} obj
+ * @param {string} prop
+ * @param {function} getter
+ * @param {function} setter
+ */
+JS.getset = function (obj, prop, getter, setter) {
+    Object.defineProperty(obj, prop, {
+        get: getter,
+        set: setter
+    });
+};
+
+/**
+ * Define get accessor, just help to call Object.defineProperty(...)
+ * @method get
+ * @param {any} obj
+ * @param {string} prop
+ * @param {function} getter
+ */
+JS.get = function (obj, prop, getter) {
+    Object.defineProperty(obj, prop, {
+        get: getter
+    });
+};
+
+/**
+ * Define set accessor, just help to call Object.defineProperty(...)
+ * @method set
+ * @param {any} obj
+ * @param {string} prop
+ * @param {function} setter
+ */
+JS.set = function (obj, prop, setter) {
+    Object.defineProperty(obj, prop, {
+        set: setter
+    });
+};
 
 // logs
 
@@ -1020,7 +1063,7 @@ Fire.Intersection = (function () {
     /**
      * @method add
      * @param {string} key
-     * @param {function} callback
+     * @param {function} callback - can be null
      * @return {boolean} whether the key is new
      */
     CallbacksHandler.prototype.add = function (key, callback) {
@@ -2500,9 +2543,18 @@ Fire.Class = function (options) {
         }
     }
 
+    // define statics
+    var statics = options.statics;
+    if (statics) {
+        for (var staticPropName in statics) {
+            cls[staticPropName] = statics[staticPropName];
+        }
+    }
+
     // define functions
+    var BUILTIN_ENTRIES = ['name', 'extends', 'constructor', 'properties', 'statics'];
     for (var funcName in options) {
-        if (funcName === 'name' || funcName === 'extends' || funcName === 'constructor' || funcName === 'properties') {
+        if (BUILTIN_ENTRIES.indexOf(funcName) !== -1) {
             continue;
         }
         var func = options[funcName];
@@ -4319,6 +4371,83 @@ Fire.color = function color (r, g, b, a) {
     }
 };
 
+/**
+ * @class TextAlign
+ * @static
+ */
+Fire.TextAlign = Fire.defineEnum({
+    /**
+     * @property left
+     * @type {number}
+     */
+    left: -1,
+    /**
+     * @property center
+     * @type {number}
+     */
+    center: -1,
+    /**
+     * @property right
+     * @type {number}
+     */
+    right: -1
+});
+
+
+
+/**
+ * @class TextAnchor
+ * @static
+ */
+Fire.TextAnchor = (function (t) {
+    /**
+     * @property topLeft
+     * @type {number}
+     */
+    t[t.topLeft = 0] = 'Top Left';
+    /**
+     * @property topCenter
+     * @type {number}
+     */
+    t[t.topCenter = 1] = 'Top Center';
+    /**
+     * @property topRight
+     * @type {number}
+     */
+    t[t.topRight = 2] = 'Top Right';
+    /**
+     * @property midLeft
+     * @type {number}
+     */
+    t[t.midLeft = 3] = 'Middle Left';
+    /**
+     * @property midCenter
+     * @type {number}
+     */
+    t[t.midCenter = 4] = 'Middle Center';
+    /**
+     * @property midRight
+     * @type {number}
+     */
+    t[t.midRight = 5] = 'Middle Right';
+    /**
+     * @property botLeft
+     * @type {number}
+     */
+    t[t.botLeft = 6] = 'Bottom Left';
+    /**
+     * @property botCenter
+     * @type {number}
+     */
+    t[t.botCenter = 7] = 'Bottom Center';
+    /**
+     * @property botRight
+     * @type {number}
+     */
+    t[t.botRight = 8] = 'Bottom Right';
+    return t;
+})({});
+
 
 var _Deserializer = (function () {
     /**
@@ -4603,7 +4732,7 @@ Fire.deserialize = function (data, result, options) {
     Fire._isCloning = false;
 
     if (createAssetRefs) {
-        result.assignAssetsBy(Fire.serialize.asAsset);
+        result.assignAssetsBy(Editor.serialize.asAsset);
     }
 
     return deserializer.deserializedData;
@@ -5268,8 +5397,8 @@ Fire.Atlas = (function () {
         if ( opts.padding === undefined )
             opts.padding = 2;
 
-        Fire.AtlasUtils.sort( this, opts.algorithm, opts.sortBy, opts.sortOrder, opts.allowRotate );
-        Fire.AtlasUtils.layout( this, opts.algorithm, opts.autoSize, opts.padding, opts.allowRotate );
+        Editor.AtlasUtils.sort( this, opts.algorithm, opts.sortBy, opts.sortOrder, opts.allowRotate );
+        Editor.AtlasUtils.layout( this, opts.algorithm, opts.autoSize, opts.padding, opts.allowRotate );
     };
 
     return Atlas;
@@ -5726,7 +5855,7 @@ AtlasUtils.sort = function ( atlas, algorithm, sortBy, sortOrder, allowRotate ) 
     }
 };
 
-Fire.AtlasUtils = AtlasUtils;
+Editor.AtlasUtils = AtlasUtils;
 
 var JsonAsset = (function () {
 
@@ -5798,11 +5927,92 @@ var BitmapFont = (function () {
 
 Fire.BitmapFont = BitmapFont;
 
+Fire.AudioClip = (function () {
 
-    var __TESTONLY__ = {};
-    Fire.__TESTONLY__ = __TESTONLY__;
-    // The codes below is generated by script automatically:
-    // 
+    /**
+     * The audio clip is an audio source data.
+     * @class AudioClip
+     * @extends Asset
+     */
+    var AudioClip = Fire.Class({
+        //
+        name: "Fire.AudioClip",
+        //
+        extends: Fire.Asset,
+        //
+        properties: {
+            //
+            rawData: {
+                default: null,
+                rawType: 'audio',
+                visible: false
+            },
+            //
+            buffer:{
+                get: function() {
+                    return Fire.AudioContext.getClipBuffer(this);
+                },
+                visible: false,
+            },
+            /**
+             * The length of the audio clip in seconds (Read Only).
+             * @property length
+             * @type {number}
+             * @readOnly
+             */
+            length: {
+                get: function() {
+                    return Fire.AudioContext.getClipLength(this);
+                }
+            },
+            /**
+             * The length of the audio clip in samples (Read Only).
+             * @property samples
+             * @type {number}
+             * @readOnly
+             */
+            samples: {
+                get: function() {
+                    return Fire.AudioContext.getClipSamples(this);
+                }
+            },
+            /**
+             * Channels in audio clip (Read Only).
+             * @property channels
+             * @type {number}
+             * @readOnly
+             */
+            channels: {
+                get: function() {
+                    return Fire.AudioContext.getClipChannels(this);
+                }
+            },
+            /**
+             * Sample frequency (Read Only).
+             * @property frequency
+             * @type {number}
+             * @readOnly
+             */
+            frequency: {
+                get: function() {
+                    return Fire.AudioContext.getClipFrequency(this);
+                }
+            }
+        }
+    });
+    return AudioClip;
+})();
+
+
+/**
+ * show error stacks in unit tests
+ * @method _throw
+ * @param {Error} error
+ * @private
+ */
+Fire._throw = function (error) {
+    Fire.error(error.stack);
+};
 
 // Listen to assets change event, if changed, invoke Component's setters.
 var AssetsWatcher = {
@@ -5811,7 +6021,7 @@ var AssetsWatcher = {
     stop: function () { }
 };
 
-Fire._AssetsWatcher = AssetsWatcher;
+Editor._AssetsWatcher = AssetsWatcher;
 
 
 ///**
@@ -5884,14 +6094,6 @@ var editorCallback = {
 var ImageLoader, JsonLoader, TextLoader, _LoadFromXHR;
 var ModifierKeyStates, KeyboardEvent, MouseEvent;
 
-function RenderContext () {
-}
-
-RenderContext.initRenderer = function () {
-};
-
-Fire._RenderContext = RenderContext;
-
 ///**
 // * !#en
 // *
@@ -5954,6 +6156,18 @@ var ContentStrategyType = Fire.defineEnum({
     FixedHeight: -1
 });
 Fire.ContentStrategyType = ContentStrategyType;
+
+var __TESTONLY__ = {};
+Fire.__TESTONLY__ = __TESTONLY__;
+Fire._Runtime = {};
+JS.getset(Fire._Runtime, 'RenderContext',
+    function () {
+        return RenderContext;
+    },
+    function (value) {
+        RenderContext = value;
+    }
+);
 
 /**
  * !#en The interface to get time information from Fireball.
@@ -6600,738 +6814,6 @@ var Ticker = (function () {
 })();
 
 __TESTONLY__.Ticker = Ticker;
-(function () {
-    // Tweak PIXI
-    PIXI.dontSayHello = true;
-    var EMPTY_METHOD = function () {};
-    PIXI.DisplayObject.prototype.updateTransform = EMPTY_METHOD;
-    PIXI.DisplayObject.prototype.displayObjectUpdateTransform = EMPTY_METHOD;
-    PIXI.DisplayObjectContainer.prototype.displayObjectContainerUpdateTransform = EMPTY_METHOD;
-})();
-
-/**
- * The web renderer implemented rely on pixi.js
- */
-var RenderContext = (function () {
-
-    /**
-     * render context 将在 pixi 中维护同样的 scene graph，这样做主要是为之后的 clipping 和 culling 提供支持。
-     * 这里采用空间换时间的策略，所有 entity 都有对应的 PIXI.DisplayObjectContainer。
-     * 毕竟一般 dummy entity 不会很多，因此这样产生的冗余对象可以忽略。
-     * 值得注意的是，sprite 等 pixi object，被视为 entity 对应的 PIXI.DisplayObjectContainer 的子物体，
-     * 并且排列在所有 entity 之前，以达到最先渲染的效果。
-     *
-     * @param {number} width
-     * @param {number} height
-     * @param {Canvas} [canvas]
-     * @param {boolean} [transparent = false]
-     */
-    function RenderContext (width, height, canvas, transparent) {
-        width = width || 800;
-        height = height || 600;
-        transparent = transparent || false;
-
-        var antialias = false;
-        this.stage = new PIXI.Stage(0x000000);
-        this.stage.interactive = false;
-
-        this.root = this.stage;
-        this.renderer = PIXI.autoDetectRenderer(width, height, {
-            view: canvas,
-            transparent: transparent,
-            antialias: antialias
-        } );
-
-        // the shared render context that allows display the object which marked as Fire._ObjectFlags.HideInGame
-        this.sceneView = null;
-
-        this.isSceneView = false;
-
-        // binded camera, if supplied the scene will always rendered by this camera
-        this._camera = null;
-    }
-
-    var emptyTexture = new PIXI.Texture(new PIXI.BaseTexture());
-
-    // static
-
-    RenderContext.initRenderer = function (renderer) {
-        renderer._renderObj = null;
-        renderer._renderObjInScene = null;
-        renderer._tempMatrix = new Fire.Matrix23();
-    };
-
-    // properties
-
-    Object.defineProperty(RenderContext.prototype, 'canvas', {
-        get: function () {
-            return this.renderer.view;
-        }
-    });
-
-    Object.defineProperty(RenderContext.prototype, 'width', {
-        get: function () {
-            return this.renderer.width;
-        },
-        set: function (value) {
-            this.renderer.resize(value, this.renderer.height);
-        }
-    });
-
-    Object.defineProperty(RenderContext.prototype, 'height', {
-        get: function () {
-            return this.renderer.height;
-        },
-        set: function (value) {
-            this.renderer.resize(this.renderer.width, value);
-        }
-    });
-
-    Object.defineProperty(RenderContext.prototype, 'size', {
-        get: function () {
-            return new Vec2(this.renderer.width, this.renderer.height);
-        },
-        set: function (value) {
-            this.renderer.resize(value.x, value.y);
-            // DISABLE
-            // // auto resize scene view camera
-            // if (this._camera && (this._camera.entity._objFlags & Fire._ObjectFlags.EditorOnly)) {
-            //     this._camera.size = value.y;
-            // }
-        }
-    });
-
-    Object.defineProperty(RenderContext.prototype, 'background', {
-        set: function (value) {
-            this.stage.setBackgroundColor(value.toRGBValue());
-        }
-    });
-
-    Object.defineProperty(RenderContext.prototype, 'camera', {
-        get: function () {
-            //return (this._camera && this._camera.isValid) || null;
-            return this._camera;
-        },
-        set: function (value) {
-            this._camera = value;
-            if (Fire.isValid(value)) {
-                value.renderContext = this;
-            }
-        }
-    });
-
-    // functions
-
-    RenderContext.prototype.render = function () {
-        this.renderer.render(this.stage);
-    };
-
-    /**
-     * @param {Entity} entity
-     */
-    RenderContext.prototype.onRootEntityCreated = function (entity) {
-        entity._pixiObj = this._createNode();
-    };
-
-    RenderContext.prototype._createNode = function () {
-        // always create pixi node even if is scene gizmo, to keep all their indices sync with transforms' sibling indices.
-        var node = new PIXI.DisplayObjectContainer();
-        if (Engine._canModifyCurrentScene) {
-            // attach node if created dynamically
-            this.root.addChild(node);
-        }
-        return node;
-    };
-
-    /**
-     * removes a entity and all its children from scene
-     * @param {Entity} entity
-     */
-    RenderContext.prototype.onEntityRemoved = function (entity) {
-        this._removeNode(entity._pixiObj);
-        entity._pixiObj = null;
-    };
-
-    RenderContext.prototype._removeNode = function (node) {
-        if (node && node.parent) {
-            node.parent.removeChild(node);
-        }
-    };
-
-    /**
-     * @param {Entity} entity
-     * @param {Entity} oldParent
-     */
-    RenderContext.prototype.onEntityParentChanged = function (entity, oldParent) {
-        this._setParentNode(entity._pixiObj, entity._parent && entity._parent._pixiObj);
-    };
-
-    RenderContext.prototype._setParentNode = function (node, parent) {
-        if (node) {
-            if (parent) {
-                parent.addChild(node);
-            }
-            else {
-                this.root.addChild(node);
-            }
-        }
-    };
-
-    /**
-     * @param {Entity} entityParent
-     * @param {Entity} [customFirstChildEntity=null]
-     * @return {number}
-     */
-    RenderContext.prototype._getChildrenOffset = function (entityParent, customFirstChildEntity) {
-        if (entityParent) {
-            var pixiParent = this.isSceneView ? entityParent._pixiObjInScene : entityParent._pixiObj;
-            var firstChildEntity = customFirstChildEntity || entityParent._children[0];
-            if (firstChildEntity) {
-                var firstChildPixi = this.isSceneView ? firstChildEntity._pixiObjInScene : firstChildEntity._pixiObj;
-                var offset = pixiParent.children.indexOf(firstChildPixi);
-                if (offset !== -1) {
-                    return offset;
-                }
-                else if (customFirstChildEntity) {
-                    return pixiParent.children.length;
-                }
-                else {
-                    Fire.error("%s's pixi object not contains in its pixi parent's children", firstChildEntity.name);
-                    return -1;
-                }
-            }
-            else {
-                return pixiParent.children.length;
-            }
-        }
-        else {
-            return 0;   // the root of hierarchy
-        }
-    };
-
-    /**
-     * @param {Entity} entity
-     * @param {number} oldIndex
-     * @param {number} newIndex
-     */
-    RenderContext.prototype.onEntityIndexChanged = function (entity, oldIndex, newIndex) {
-        var lastFirstSibling;
-        if (newIndex === 0 && oldIndex > 0) {
-            // insert to first
-            lastFirstSibling = entity.getSibling(1);
-        }
-        else if (oldIndex === 0 && newIndex > 0) {
-            // move first to elsewhere
-            lastFirstSibling = entity;
-        }
-
-        if (entity._pixiObj) {
-            this._setNodeIndex(entity, oldIndex, newIndex, lastFirstSibling);
-        }
-    };
-
-    RenderContext.prototype._setNodeIndex = function (entity, oldIndex, newIndex, lastFirstSibling) {
-        // skip renderers of entity
-        var siblingOffset = this._getChildrenOffset(entity._parent, lastFirstSibling);
-        //
-        var node = this.isSceneView ? entity._pixiObjInScene : entity._pixiObj;
-        if (node) {
-            var array = node.parent.children;
-            array.splice(oldIndex + siblingOffset, 1);
-            var newPixiIndex = newIndex + siblingOffset;
-            if (newPixiIndex < array.length) {
-                array.splice(newPixiIndex, 0, node);
-            }
-            else {
-                array.push(node);
-            }
-        }
-    };
-
-    RenderContext.prototype.onSceneLaunched = function (scene) {
-        // attach root nodes
-        this._addToScene(scene);
-    };
-
-    RenderContext.prototype._addToScene = function (scene) {
-        var entities = scene.entities;
-        for (var i = 0, len = entities.length; i < len; i++) {
-            var node = this.isSceneView? entities[i]._pixiObjInScene : entities[i]._pixiObj;
-            if (node) {
-                this.root.addChild(node);
-            }
-        }
-    };
-
-    RenderContext.prototype.onSceneLoaded = function (scene) {
-        var entities = scene.entities;
-        for (var i = 0, len = entities.length; i < len; i++) {
-            this.onEntityCreated(entities[i], false);
-        }
-    };
-
-    /**
-     * create child nodes recursively
-     * 这个方法假定parent存在
-     * @param {Entity} entity - must have parent, and not scene gizmo
-     */
-    var _onChildEntityCreated = function (entity, hasSceneView) {
-        entity._pixiObj = new PIXI.DisplayObjectContainer();
-        entity._parent._pixiObj.addChild(entity._pixiObj);
-        var children = entity._children;
-        for (var i = 0, len = children.length; i < len; i++) {
-            _onChildEntityCreated(children[i], hasSceneView);
-        }
-    };
-
-    /**
-     * create pixi nodes recursively
-     * @param {Entity} entity
-     * @param {boolean} addToScene - add to pixi stage now if entity is root
-     */
-    RenderContext.prototype.onEntityCreated = function (entity, addToScene) {
-        entity._pixiObj = new PIXI.DisplayObjectContainer();
-        if (entity._parent) {
-            entity._parent._pixiObj.addChild(entity._pixiObj);
-        }
-        else if (addToScene) {
-            this.root.addChild(entity._pixiObj);
-        }
-        var children = entity._children;
-        for (var i = 0, len = children.length; i < len; i++) {
-            _onChildEntityCreated(children[i], this.sceneView);
-        }
-    };
-
-    RenderContext.prototype._addSprite = function (tex, parentNode) {
-        var sprite = new PIXI.Sprite(tex);
-        parentNode.addChildAt(sprite, 0);
-        return sprite;
-    };
-
-    /**
-     * @param {SpriteRenderer} target
-     */
-    RenderContext.prototype.addSprite = function (target) {
-        var tex = createTexture(target._sprite);
-
-        var inGame = !(target.entity._objFlags & HideInGame);
-        if (inGame) {
-            target._renderObj = this._addSprite(tex, target.entity._pixiObj);
-        }
-        this.updateSpriteColor(target);
-    };
-
-    /**
-     * @param {SpriteRenderer} target
-     * @param {boolean} show
-     */
-    RenderContext.prototype.show = function (target, show) {
-        if (target._renderObj) {
-            target._renderObj.visible = show;
-        }
-        if (target._renderObjInScene) {
-            target._renderObjInScene.visible = show;
-        }
-    };
-
-    /**
-     * @param target {SpriteRenderer}
-     * @param show {boolean}
-     */
-    RenderContext.prototype.remove = function (target) {
-        this._removeNode(target._renderObj);
-        target._renderObj = null;
-    };
-
-    RenderContext.prototype.updateSpriteColor = function (target) {
-        var tint = target._color.toRGBValue();
-        if (target._renderObj) {
-            target._renderObj.tint = tint;
-        }
-    };
-
-    /**
-     * @param target {SpriteRenderer}
-     */
-    RenderContext.prototype.updateMaterial = function (target) {
-        var tex = createTexture(target._sprite);
-        if (target._renderObj) {
-            target._renderObj.setTexture(tex);
-        }
-    };
-
-    /**
-     * Set the final transform to render
-     * @param {SpriteRenderer} target
-     * @param {Matrix23} matrix - the matrix to render (Read Only)
-     */
-    RenderContext.prototype.updateTransform = function (target, matrix) {
-        // caculate matrix for pixi
-        var mat = target._tempMatrix;
-        mat.a = matrix.a;
-        // negate the rotation because our rotation transform not the same with pixi
-        mat.b = - matrix.b;
-        mat.c = - matrix.c;
-        //
-        mat.d = matrix.d;
-        mat.tx = matrix.tx;
-        // revert Y axis for pixi
-        mat.ty = this.renderer.height - matrix.ty;
-
-        var worldAlpha = Math.clamp01(target._color.a);
-
-        // apply matrix
-        if ( !this.isSceneView ) {
-            if (target._renderObj) {
-                target._renderObj.worldTransform = mat;
-                target._renderObj.worldAlpha = worldAlpha;
-            }
-        }
-    };
-
-    ///**
-    // * @param {SpriteRenderer} target
-    // * @param {SpriteRenderer} transform
-    // * @param {SpriteRenderer} oldParent
-    // */
-    //RenderContext.prototype.updateHierarchy = function (target, transform, oldParent) {
-    //    if (target._renderObj || target._renderObjInScene) {
-    //        if (transform._parent === oldParent) {
-    //            // oldAncestor changed its sibling index
-    //            if (target._renderObj) {
-    //                this._updateSiblingIndex(transform);
-    //            }
-    //            if (target._renderObjInScene) {
-    //                this.sceneView._updateSiblingIndex(transform);
-    //            }
-    //            return true;
-    //        }
-    //        else {
-    //            // parent changed
-    //        }
-    //    }
-    //    else {
-    //        Fire.error('' + target + ' must be added to render context first!');
-    //    }
-    //    return false;
-    //};
-
-    //RenderContext.prototype._updateSiblingIndex = function (transform) {
-    //    var pixiNode = this._pixiObjects[transform.id];
-    //    var array = pixiNode.parent.children;
-    //    var oldIndex = array.indexOf(pixiNode);
-    //    var newIndex = transform.getSiblingIndex(); // TODO: 如果前面的节点包含空的entity，则这个new index会有问题
-    //    // skip entities not exists in pixi
-    //    while ((--newIndex) > 0) {
-    //        var previous = transform.getSibling(newIndex);
-    //        if (previous.id) {
-    //        }
-    //    }
-    //    array.splice(oldIndex, 1);
-    //    if (newIndex < array.length) {
-    //        array.splice(newIndex, 0, pixiNode);
-    //    }
-    //    else {
-    //        array.push(pixiNode);
-    //    }
-    //};
-
-    /**
-     * @param sprite {Sprite}
-     */
-    function createTexture(sprite) {
-        if (sprite && sprite.texture && sprite.texture.image) {
-            var img = new PIXI.BaseTexture(sprite.texture.image);
-            var frame = new PIXI.Rectangle(sprite.x, sprite.y, Math.min(img.width - sprite.x, sprite.rotatedWidth), Math.min(img.height - sprite.y, sprite.rotatedHeight));
-            return new PIXI.Texture(img, frame);
-        }
-        else {
-            return emptyTexture;
-        }
-    }
-
-    return RenderContext;
-})();
-
-/**
- * The debugging method that checks whether the render context matches the current scene or not.
- * @throws {string} error info
- */
-RenderContext.prototype.checkMatchCurrentScene = function () {
-    var entities = Engine._scene.entities;
-    var pixiGameNodes = this.stage.children;
-    var pixiSceneNodes;
-    if (this.sceneView) {
-        pixiSceneNodes = this.sceneView.stage.children;
-        pixiSceneNodes = pixiSceneNodes[1].children;    // skip forground and background
-    }
-    var scope = this;
-    function checkMatch (ent, gameNode, sceneNode) {
-        if (sceneNode && ent._pixiObjInScene !== sceneNode) {
-            throw new Error('entity does not match pixi scene node: ' + ent.name);
-        }
-        //if (!(ent._objFlags & HideInGame)) {
-        //    var gameNode = gameNodes[g++];
-        //}
-        if (ent._pixiObj !== gameNode) {
-            throw new Error('entity does not match pixi game node: ' + ent.name);
-        }
-
-        var childCount = ent._children.length;
-        var sceneChildrenOffset;
-        if (sceneNode) {
-            sceneChildrenOffset = scope.sceneView._getChildrenOffset(ent);
-            if (sceneNode.children.length !== childCount + sceneChildrenOffset) {
-                console.error('Mismatched list of child elements in Scene view, entity: %s,\n' +
-                    'pixi childCount: %s, entity childCount: %s, rcOffset: %s',
-                    ent.name, sceneNode.children.length, childCount, sceneChildrenOffset);
-                throw new Error('(see above error)');
-            }
-        }
-        var gameChildrenOffset = scope._getChildrenOffset(ent);
-        if (gameNode.children.length !== childCount + gameChildrenOffset) {
-            throw new Error('Mismatched list of child elements in Game view, entity: ' + ent.name);
-        }
-        for (var i = 0; i < childCount; i++) {
-            checkMatch(ent._children[i], gameNode.children[gameChildrenOffset + i], sceneNode && sceneNode.children[i + sceneChildrenOffset]);
-        }
-    }
-
-    for (var i = 0; i < entities.length; i++) {
-        if (pixiSceneNodes && pixiSceneNodes.length !== entities.length) {
-            throw new Error('Mismatched list of root elements in scene view');
-        }
-        if (pixiGameNodes.length !== entities.length) {
-            throw new Error('Mismatched list of root elements in game view');
-        }
-        checkMatch(entities[i], pixiGameNodes[i], pixiSceneNodes && pixiSceneNodes[i]);
-    }
-
-    //if (g !== pixiGameNodes.length) {
-    //    Fire.error('pixi has extra game node, pixi count: ' + pixiGameNodes.length + ' expected count: ' + g);
-    //    return false;
-    //}
-    // 目前不测试renderer
-};
-Fire._RenderContext = RenderContext;
-
-PIXI.BitmapText.prototype.updateTransform = function () {
-};
-
-Fire.BitmapFont.prototype._onPreDestroy = function () {
-    if (this._uuid) {
-        PIXI.BitmapText.fonts[this._uuid] = null;
-    }
-};
-
-var PixiBitmapFontUtil = {};
-
-var defaultFace = "None";
-
-function _getStyle (target) {
-    if (target.bitmapFont && target.bitmapFont._uuid) {
-        return {
-            font : target.bitmapFont.size + " " + target.bitmapFont._uuid,
-            align: BitmapText.TextAlign[target.align].toLowerCase(),
-        };
-    }
-    else {
-        return {
-            font : 1 + " " + defaultFace,
-            align: "left",
-        };
-    }
-}
-
-function _setStyle (target) {
-    var style = _getStyle(target);
-    if (target._renderObj) {
-        target._renderObj.setStyle(style);
-    }
-    if (target._renderObjInScene) {
-        target._renderObjInScene.setStyle(style);
-    }
-}
-
-function _getNewMatrix23 (child, tempMatrix) {
-    var mat = new Fire.Matrix23();
-    mat.a = child.scale.x;
-    mat.b = 0;
-    mat.c = 0;
-    mat.d = child.scale.y;
-    mat.tx = child.position.x;
-    mat.ty = -child.position.y;
-
-    mat.prepend(tempMatrix);
-
-    mat.b = -mat.b;
-    mat.c = -mat.c;
-    mat.ty = Fire.Engine._curRenderContext.renderer.height - mat.ty;
-    return mat;
-}
-var tempData = {
-    face      : defaultFace,
-    size      : 1,
-    chars     : {},
-    lineHeight: 1
-};
-
-function _registerFont (bitmapFont) {
-
-    //var registered = _hasPixiBitmapFont(bitmapFont);
-    //if (registered) {
-    //    return;
-    //}
-
-    var data = {};
-    if (bitmapFont && bitmapFont._uuid) {
-        data.face = bitmapFont._uuid;
-        data.size = bitmapFont.size;
-        data.lineHeight = bitmapFont.lineHeight;
-        data.chars = {};
-
-        if (bitmapFont.texture) {
-            var img = new PIXI.BaseTexture(bitmapFont.texture.image);
-
-            var charInfos = bitmapFont.charInfos, len = charInfos.length;
-            for (var i = 0; i < len; i++) {
-                var charInfo = charInfos[i];
-                var id = charInfo.id;
-                var textureRect = new PIXI.Rectangle(
-                    charInfo.x,
-                    charInfo.y,
-                    charInfo.width,
-                    charInfo.height
-                );
-
-                if ((textureRect.x + textureRect.width) > img.width || (textureRect.y + textureRect.height) > img.height) {
-                    Fire.error('Character in %s does not fit inside the dimensions of texture %s', bitmapFont.name, bitmapFont.texture.name);
-                    break;
-                }
-
-                var texture = new PIXI.Texture(img, textureRect);
-
-                data.chars[id] = {
-                    xOffset : charInfo.xOffset,
-                    yOffset : charInfo.yOffset,
-                    xAdvance: charInfo.xAdvance,
-                    kerning : {},
-                    texture : texture
-                };
-            }
-        }
-        else {
-            Fire.error('Invalid texture of bitmapFont: %s', bitmapFont.name);
-        }
-
-        var kernings = bitmapFont.kernings;
-        for (var j = 0; j < kernings.length; j++) {
-            var kerning = kernings[j];
-            var first = kerning.first;
-            var second = kerning.second;
-            var amount = kerning.amount;
-            data.chars[second].kerning[first] = amount;
-        }
-    }
-    else {
-        data = tempData;
-    }
-    PIXI.BitmapText.fonts[data.face] = data;
-}
-
-var _hasPixiBitmapFont = function (bitmapFont) {
-    if (bitmapFont) {
-        return PIXI.BitmapText.fonts[bitmapFont._uuid];
-    }
-    return null;
-};
-
-RenderContext.prototype.getTextSize = function (target) {
-    var inGame = !(target.entity._objFlags & HideInGame);
-    var w = 0, h = 0;
-    if (inGame && target._renderObj) {
-        if (target._renderObj.dirty) {
-            target._renderObj.updateText();
-            target._renderObj.dirty = false;
-        }
-
-        w = target._renderObj.textWidth;
-        h = target._renderObj.textHeight;
-    }
-    else if (target._renderObjInScene) {
-        if (target._renderObjInScene.dirty) {
-            target._renderObjInScene.updateText();
-            target._renderObjInScene.dirty = false;
-        }
-
-        w = target._renderObjInScene.textWidth;
-        h = target._renderObjInScene.textHeight;
-    }
-    return new Vec2(w, h);
-};
-
-RenderContext.prototype.setText = function (target, newText) {
-    if (target._renderObj) {
-        target._renderObj.setText(newText);
-    }
-    if (this.sceneView && target._renderObjInScene) {
-        target._renderObjInScene.setText(newText);
-    }
-};
-
-RenderContext.prototype.setAlign = function (target) {
-    _setStyle(target);
-};
-
-RenderContext.prototype.updateBitmapFont = function (target) {
-    _registerFont(target.bitmapFont);
-    _setStyle(target);
-};
-
-RenderContext.prototype.addBitmapText = function (target) {
-    _registerFont(target.bitmapFont);
-
-    var style = _getStyle(target);
-
-    var inGame = !(target.entity._objFlags & HideInGame);
-    if (inGame) {
-        target._renderObj = new PIXI.BitmapText(target.text, style);
-        target.entity._pixiObj.addChildAt(target._renderObj, 0);
-    }
-    if (this.sceneView) {
-        target._renderObjInScene = new PIXI.BitmapText(target.text, style);
-        target.entity._pixiObjInScene.addChildAt(target._renderObjInScene, 0);
-    }
-};
-
-PixiBitmapFontUtil.updateTransform = function (target, tempMatrix) {
-    var i = 0, childrens = null, len = 0, child = null;
-    var isGameView = Engine._curRenderContext === Engine._renderContext;
-    if (isGameView && target._renderObj) {
-        if (target._renderObj.dirty) {
-            target._renderObj.updateText();
-            target._renderObj.dirty = false;
-        }
-        childrens = target._renderObj.children;
-        for (len = childrens.length; i < len; i++) {
-            child = childrens[i];
-            child.worldTransform = _getNewMatrix23(child, tempMatrix);
-        }
-    }
-    else if (target._renderObjInScene) {
-        if (target._renderObjInScene.dirty) {
-            target._renderObjInScene.updateText();
-            target._renderObjInScene.dirty = false;
-        }
-        childrens = target._renderObjInScene.children;
-        for (i = 0, len = childrens.length; i < len; i++) {
-            child = childrens[i];
-            child.worldTransform = _getNewMatrix23(child, tempMatrix);
-        }
-    }
-};
-
 /**
  *
  */
@@ -7590,9 +7072,9 @@ var Component = (function () {
 
     /**
      * Called before all scripts' update if the Component is enabled
-     * @event onStart
+     * @event start
      */
-    Component.prototype.onStart = null;
+    Component.prototype.start = null;
 
     /**
      * Called when this component becomes enabled and its entity becomes active
@@ -7709,14 +7191,14 @@ var Component = (function () {
                 comp = entity._components[c];
                 if ( !(comp._objFlags & IsOnStartCalled) ) {
                     comp._objFlags |= IsOnStartCalled;
-                    if (comp.onStart) {
-                        comp.onStart();
+                    if (comp.start) {
+                        comp.start();
                     }
                 }
             }
         // activate its children recursively
         for (var i = 0, children = entity._children, len = children.length; i < len; ++i) {
-            var child = [i];
+            var child = children[i];
             if (child._active) {
                 Component._invokeStarts(child);
             }
@@ -7836,7 +7318,7 @@ Fire._doDefine = function (className, baseClass, constructor) {
             if (frame.uuid) {
                 // project component
                 if (className) {
-                    Fire.warn('Sorry, specifying class name for Component in project scripts is not allowed. Just use Fire.extend(baseComponent, constructor) please.');
+                    Fire.warn('Sorry, specifying class name for Component in project scripts is not allowed.');
                 }
             }
             //else {
@@ -8795,88 +8277,6 @@ Fire.SpriteRenderer = SpriteRenderer;
 var BitmapText = (function () {
 
     /**
-     * @class BitmapText
-     */
-    /**
-     * @namespace BitmapText
-     */
-    /**
-     * @class TextAlign
-     * @static
-     */
-    var TextAlign = Fire.defineEnum({
-        /**
-         * @property left
-         * @type {number}
-         */
-        left: -1,
-        /**
-         * @property center
-         * @type {number}
-         */
-        center: -1,
-        /**
-         * @property right
-         * @type {number}
-         */
-        right: -1
-    });
-
-    /**
-     * @class TextAnchor
-     * @static
-     */
-    var TextAnchor = (function (t) {
-        /**
-         * @property topLeft
-         * @type {number}
-         */
-        t[t.topLeft = 0] = 'Top Left';
-        /**
-         * @property topCenter
-         * @type {number}
-         */
-        t[t.topCenter = 1] = 'Top Center';
-        /**
-         * @property topRight
-         * @type {number}
-         */
-        t[t.topRight = 2] = 'Top Right';
-        /**
-         * @property midLeft
-         * @type {number}
-         */
-        t[t.midLeft = 3] = 'Middle Left';
-        /**
-         * @property midCenter
-         * @type {number}
-         */
-        t[t.midCenter = 4] = 'Middle Center';
-        /**
-         * @property midRight
-         * @type {number}
-         */
-        t[t.midRight = 5] = 'Middle Right';
-        /**
-         * @property botLeft
-         * @type {number}
-         */
-        t[t.botLeft = 6] = 'Bottom Left';
-        /**
-         * @property botCenter
-         * @type {number}
-         */
-        t[t.botCenter = 7] = 'Bottom Center';
-        /**
-         * @property botRight
-         * @type {number}
-         */
-        t[t.botRight = 8] = 'Bottom Right';
-        return t;
-    })({});
-
-
-    /**
      * The bitmap font renderer component.
      * @class BitmapText
      * @extends Renderer
@@ -8885,9 +8285,6 @@ var BitmapText = (function () {
     var BitmapText = Fire.extend("Fire.BitmapText", Renderer, function () {
         RenderContext.initRenderer(this);
     });
-
-    BitmapText.TextAlign = TextAlign;
-    BitmapText.TextAnchor = TextAnchor;
 
     //-- 增加 Bitmap Text 到 组件菜单上
     Fire.addComponentMenu(BitmapText, 'BitmapText');
@@ -8937,7 +8334,7 @@ var BitmapText = (function () {
         Fire.MultiText
     );
 
-    BitmapText.prop('_anchor', BitmapText.TextAnchor.midCenter, Fire.HideInInspector);
+    BitmapText.prop('_anchor', Fire.TextAnchor.midCenter, Fire.HideInInspector);
 
     /**
      * The anchor point of the text.
@@ -8954,10 +8351,10 @@ var BitmapText = (function () {
                 this._anchor = value;
             }
         },
-        Fire.Enum(BitmapText.TextAnchor)
+        Fire.Enum(Fire.TextAnchor)
     );
 
-    BitmapText.prop('_align', BitmapText.TextAlign.left, Fire.HideInInspector);
+    BitmapText.prop('_align', Fire.TextAlign.left, Fire.HideInInspector);
 
     /**
      * How lines of text are aligned (left, right, center).
@@ -8975,7 +8372,7 @@ var BitmapText = (function () {
                 Engine._renderContext.setAlign(this, value);
             }
         },
-        Fire.Enum(BitmapText.TextAlign)
+        Fire.Enum(Fire.TextAlign)
     );
 
     BitmapText.prototype.onLoad = function () {
@@ -9003,7 +8400,7 @@ var BitmapText = (function () {
     BitmapText.prototype.onPreRender = function () {
         this.getSelfMatrix(tempMatrix);
         tempMatrix.prepend(this.transform._worldTransform);
-        PixiBitmapFontUtil.updateTransform(this, tempMatrix);
+        RenderContext.updateBitmapTextTransform(this, tempMatrix);
     };
 
     BitmapText.prototype.getSelfMatrix = function (out) {
@@ -9015,33 +8412,33 @@ var BitmapText = (function () {
         var anchorOffsetY = 0;
 
         switch (this._anchor) {
-            case BitmapText.TextAnchor.topLeft:
+            case Fire.TextAnchor.topLeft:
                 break;
-            case BitmapText.TextAnchor.topCenter:
+            case Fire.TextAnchor.topCenter:
                 anchorOffsetX = w * -0.5;
                 break;
-            case BitmapText.TextAnchor.topRight:
+            case Fire.TextAnchor.topRight:
                 anchorOffsetX = -w;
                 break;
-            case BitmapText.TextAnchor.midLeft:
+            case Fire.TextAnchor.midLeft:
                 anchorOffsetY = h * 0.5;
                 break;
-            case BitmapText.TextAnchor.midCenter:
+            case Fire.TextAnchor.midCenter:
                 anchorOffsetX = w * -0.5;
                 anchorOffsetY = h * 0.5;
                 break;
-            case BitmapText.TextAnchor.midRight:
+            case Fire.TextAnchor.midRight:
                 anchorOffsetX = -w;
                 anchorOffsetY = h * 0.5;
                 break;
-            case BitmapText.TextAnchor.botLeft:
+            case Fire.TextAnchor.botLeft:
                 anchorOffsetY = h;
                 break;
-            case BitmapText.TextAnchor.botCenter:
+            case Fire.TextAnchor.botCenter:
                 anchorOffsetX = w * -0.5;
                 anchorOffsetY = h;
                 break;
-            case BitmapText.TextAnchor.botRight:
+            case Fire.TextAnchor.botRight:
                 anchorOffsetX = -w;
                 anchorOffsetY = h;
                 break;
@@ -9060,6 +8457,212 @@ var BitmapText = (function () {
 })();
 
 Fire.BitmapText = BitmapText;
+
+var Text = (function () {
+    /**
+     * @class FontType
+     * @static
+     */
+    var FontType = Fire.defineEnum({
+        /**
+         * @property Arial
+         * @type {number}
+         */
+        Arial: -1,
+        /**
+         * @property Custom
+         * @type {number}
+         */
+        Custom: -1
+    });
+
+    var tempMatrix = new Fire.Matrix23();
+
+    var Text = Fire.Class({
+        // 名字
+        name: "Fire.Text",
+        // 继承
+        extends: Renderer,
+        // 构造函数
+        constructor: function () {
+            RenderContext.initRenderer(this);
+        },
+        // 属性
+        properties: {
+            // 字体类型
+            _fontType: {
+                default: FontType.Arial,
+                type: FontType
+            },
+            fontType: {
+                get: function () {
+                    return this._fontType;
+                },
+                set: function (value) {
+                    this._fontType = value;
+                    Engine._renderContext.setTextStyle(this);
+                },
+                type: FontType
+            },
+            _customFontType: "Arial",
+            customFontType:{
+                get: function () {
+                    return this._customFontType;
+                },
+                set: function (value) {
+                    this._customFontType = value;
+                    Engine._renderContext.setTextStyle(this);
+                },
+                watch: {
+                    '_fontType': function (obj, propEL) {
+                        propEL.disabled = obj._fontType !== FontType.Custom;
+                    }
+                }
+            },
+            // 文字内容
+            _text: 'text',
+            //
+            text: {
+                get: function () {
+                    return this._text;
+                },
+                set: function (value) {
+                    this._text = value;
+                    Engine._renderContext.setTextContent(this, this._text);
+                },
+                multiline: true
+            },
+            // 字体大小
+            _size: 30,
+            size: {
+                get: function() {
+                    return this._size;
+                },
+                set: function(value) {
+                    if (value !== this._size && value > 0) {
+                        this._size = value;
+                        Engine._renderContext.setTextStyle(this);
+                    }
+                }
+            },
+            // 字体颜色
+            _color: Fire.Color.white,
+            color: {
+                get: function() {
+                    return this._color;
+                },
+                set: function(value) {
+                    this._color = value;
+                    Engine._renderContext.setTextStyle(this);
+                }
+            },
+            // 字体对齐方式
+            _align: Fire.TextAlign.left,
+            align: {
+                get: function() {
+                    return this._align;
+                },
+                set: function(value) {
+                    this._align = value;
+                    Engine._renderContext.setTextStyle(this);
+                },
+                type: Fire.TextAlign
+            },
+            // 字体锚点
+            _anchor: Fire.TextAnchor.midCenter,
+            anchor: {
+                get: function() {
+                    return this._anchor;
+                },
+                set: function(value){
+                    if (value !== this._anchor) {
+                        this._anchor = value;
+                    }
+                },
+                type: Fire.TextAnchor
+            }
+        },
+        onLoad: function () {
+            Engine._renderContext.addText(this);
+        },
+        onEnable: function () {
+            Engine._renderContext.show(this, true);
+        },
+        onDisable: function () {
+            Engine._renderContext.show(this, false);
+        },
+        onDestroy: function () {
+            Engine._renderContext.remove(this);
+        },
+        getWorldSize: function () {
+            return Engine._renderContext.getTextSize(this);
+        },
+        getSelfMatrix: function (out) {
+            var textSize = Engine._renderContext.getTextSize(this);
+            var w = textSize.x;
+            var h = textSize.y;
+
+            var anchorOffsetX = 0;
+            var anchorOffsetY = 0;
+
+            switch (this._anchor) {
+                case Fire.TextAnchor.topLeft:
+                    break;
+                case Fire.TextAnchor.topCenter:
+                    anchorOffsetX = w * -0.5;
+                    break;
+                case Fire.TextAnchor.topRight:
+                    anchorOffsetX = -w;
+                    break;
+                case Fire.TextAnchor.midLeft:
+                    anchorOffsetY = h * 0.5;
+                    break;
+                case Fire.TextAnchor.midCenter:
+                    anchorOffsetX = w * -0.5;
+                    anchorOffsetY = h * 0.5;
+                    break;
+                case Fire.TextAnchor.midRight:
+                    anchorOffsetX = -w;
+                    anchorOffsetY = h * 0.5;
+                    break;
+                case Fire.TextAnchor.botLeft:
+                    anchorOffsetY = h;
+                    break;
+                case Fire.TextAnchor.botCenter:
+                    anchorOffsetX = w * -0.5;
+                    anchorOffsetY = h;
+                    break;
+                case Fire.TextAnchor.botRight:
+                    anchorOffsetX = -w;
+                    anchorOffsetY = h;
+                    break;
+                default:
+                    break;
+            }
+            out.a = 1;
+            out.b = 0;
+            out.c = 0;
+            out.d = 1;
+            out.tx = anchorOffsetX;
+            out.ty = anchorOffsetY;
+        },
+        onPreRender: function () {
+            this.getSelfMatrix(tempMatrix);
+            tempMatrix.prepend(this.transform._worldTransform);
+            RenderContext.updateTextTransform(this, tempMatrix);
+        }
+    });
+
+    Text.FontType = FontType;
+
+    //-- 增加 Text 到 组件菜单上
+    Fire.addComponentMenu(Text, 'Text');
+    Fire.executeInEditMode(Text);
+
+    return Text;
+})();
+
+Fire.Text = Text;
 
 /**
  * @class Camera
@@ -9157,7 +8760,7 @@ var Camera = Fire.Class({
         /**
          * save the render context this camera belongs to, if null, main render context will be used.
          * @property renderContext
-         * @type {RenderContext}
+         * @type {_Runtime.RenderContext}
          * @private
          */
         renderContext: {
@@ -9248,7 +8851,7 @@ var Camera = Fire.Class({
      * @return {Vec2}
      */
     screenToWorld: function (position, out) {
-        var halfScreenSize = (this._renderContext || Engine._renderContext).size.mulSelf(0.5);
+        var halfScreenSize = (this._renderContext || Engine._renderContext).size.mul(0.5);
         var pivotToScreen = position.sub(halfScreenSize, halfScreenSize);
         pivotToScreen.y = -pivotToScreen.y; // 屏幕坐标的Y和世界坐标的Y朝向是相反的
         var mat = new Matrix23();
@@ -10917,7 +10520,7 @@ var Engine = (function () {
     /**
      * The RenderContext attached to game or game view.
      * @property _renderContext
-     * @type {RenderContext}
+     * @type {_Runtime.RenderContext}
      * @private
      */
     Engine._renderContext = null;
@@ -10933,7 +10536,7 @@ var Engine = (function () {
     /**
      * the render context currently rendering
      * @property _curRenderContext
-     * @type {RenderContext}
+     * @type {_Runtime.RenderContext}
      * @private
      */
     Engine._curRenderContext = null;
@@ -11037,7 +10640,7 @@ var Engine = (function () {
      * @param {number} [height]
      * @param {Canvas} [canvas]
      * @param {object} [options]
-     * @return {RenderContext}
+     * @return {_Runtime.RenderContext}
      */
     Engine.init = function ( w, h, canvas, options ) {
         if (inited) {
@@ -11046,7 +10649,7 @@ var Engine = (function () {
         }
         inited = true;
 
-        Engine._renderContext = new RenderContext( w, h, canvas );
+        Engine._renderContext = new Fire._Runtime.RenderContext( w, h, canvas );
         Engine._interactionContext = new InteractionContext();
 
         if (options) {
@@ -11478,6 +11081,23 @@ var MouseEvent = (function () {
         this.relatedTarget = nativeEvent.relatedTarget;
     };
 
+    MouseEvent.prototype.clone = function () {
+        var event = new MouseEvent(this.type);
+        event.bubbles = this.bubbles;
+        event.ctrlKey = this.ctrlKey;
+        event.shiftKey = this.shiftKey;
+        event.altKey = this.altKey;
+        event.metaKey = this.metaKey;
+        event.button = this.button;
+        event.buttonStates = this.buttonStates;
+        event.screenX = this.screenX;
+        event.screenY = this.screenY;
+        event.deltaX = this.deltaX;
+        event.deltaY = this.deltaY;
+        event.relatedTarget = this.relatedTarget;
+        return event;
+    };
+
     MouseEvent.prototype._reset = function () {
         ModifierKeyStates.prototype._reset.call(this);
 
@@ -11517,7 +11137,7 @@ var InputContext = (function () {
      * http://www.quirksmode.org/dom/events/index.html
      */
     var InputContext = function (renderContext) {
-        var canvas = renderContext.renderer.view;
+        var canvas = renderContext.canvas;
         canvas.tabIndex = canvas.tabIndex || 0;     // make key event receivable
 
         this.renderContext = renderContext;
@@ -11561,7 +11181,7 @@ var InputContext = (function () {
         // get canvas page offset
         var canvasPageX = 0,
             canvasPageY = 0;
-        var elem = scope.renderContext.renderer.view;
+        var elem = scope.renderContext.canvas;
         while (elem) {
             canvasPageX += parseInt(elem.offsetLeft);
             canvasPageY += parseInt(elem.offsetTop);
@@ -11641,13 +11261,23 @@ var InputContext = (function () {
     InputContext.prototype.onDomInputEvent = function (domEvent) {
         // wrap event
         var eventInfo = EventRegister.inputEvents[domEvent.type];
-        var event = new eventInfo.constructor(domEvent.type);
-        if (event.initFromNativeEvent) {
-            event.initFromNativeEvent(domEvent);
+        var fireEventCtor = eventInfo.constructor;
+
+        var event;
+        if (fireEventCtor) {
+            event = new fireEventCtor(domEvent.type);
+            if (event.initFromNativeEvent) {
+                event.initFromNativeEvent(domEvent);
+            }
+            event.bubbles = eventInfo.bubbles;
+            // event.cancelable = eventInfo.cancelable; (NYI)
         }
-        event.bubbles = eventInfo.bubbles;
-        // event.cancelable = eventInfo.cancelable; (NYI)
-        convertToRetina(event);
+        else {
+            event = domEvent;
+        }
+        if (event instanceof MouseEvent) {
+            convertToRetina(event);
+        }
 
         // inner dispatch
         Input._dispatchEvent(event, this);
@@ -12173,18 +11803,18 @@ Fire.Screen.ContentStrategy = ContentStrategy;
 ///////////////////////////////////////////////////////////////////////////////////////
 
 var FireMouseEvent = Fire.MouseEvent;
-var FireKeyboardEvent = Fire.KeyboardEvent;
+//var FireKeyboardEvent = Fire.KeyboardEvent;
 
 var EventRegister = {
     inputEvents: {
         // ref: http://www.w3.org/TR/DOM-Level-3-Events/#event-types-list
         keydown: {
-            constructor: FireKeyboardEvent,
+            constructor: null,
             bubbles: true,
             cancelable: true
         },
         keyup: {
-            constructor: FireKeyboardEvent,
+            constructor: null,
             bubbles: true,
             cancelable: true
         },
@@ -12228,16 +11858,16 @@ var EventRegister = {
         //    bubbles: true,
         //    cancelable: true
         //}
-        //mouseenter: {
-        //    constructor: FireMouseEvent,
-        //    bubbles: false,
-        //    cancelable: false,
-        //},
-        //mouseleave: {
-        //    constructor: FireMouseEvent,
-        //    bubbles: false,
-        //    cancelable: false,
-        //},
+        mouseenter: {
+            constructor: FireMouseEvent,
+            bubbles: false,
+            cancelable: false
+        },
+        mouseleave: {
+            constructor: FireMouseEvent,
+            bubbles: false,
+            cancelable: false
+        }
         //mouseout: {
         //    constructor: FireMouseEvent,
         //    bubbles: true,
@@ -12262,7 +11892,8 @@ var Input = (function () {
      * @beta
      */
     var Input = {
-        _eventListeners: new EventListeners()
+        _eventListeners: new EventListeners(),
+        _lastTarget: null
     };
 
     /**
@@ -12320,23 +11951,46 @@ var Input = (function () {
 
     Input._reset = function () {
         this._eventListeners = new EventListeners();
+        this._lastTarget = null;
     };
 
     Input._dispatchMouseEvent = function (event, inputContext) {
         var camera = inputContext.renderContext.camera || Engine._scene.camera;
         var worldMousePos = camera.screenToWorld(new Vec2(event.screenX, event.screenY));
         var target = Engine._interactionContext.pick(worldMousePos);
-        if (target) {
-            target.dispatchEvent(event);
+
+        // dispatch global mouse event
+        event.target = target;
+        this._eventListeners.invoke(event);
+
+        if (this._lastTarget && this._lastTarget !== target) {
+            // mouse leave event
+            var leaveEvent = event.clone();
+            leaveEvent.type = 'mouseleave';
+            leaveEvent.bubbles = EventRegister.inputEvents.mouseleave.bubbles;
+            this._lastTarget.dispatchEvent(leaveEvent);
         }
+        if (target) {
+            // dispatch mouse event
+            target.dispatchEvent(event);
+            // mouse enter event
+            if (this._lastTarget !== target) {
+                var enterEvent = event.clone();
+                enterEvent.type = 'mouseenter';
+                enterEvent.bubbles = EventRegister.inputEvents.mouseenter.bubbles;
+                target.dispatchEvent(enterEvent);
+            }
+        }
+        this._lastTarget = target;
     };
 
     Input._dispatchEvent = function (event, inputContext) {
-        // dispatch global event
-        this._eventListeners.invoke(event);
-        // dispatch mouse event through hierarchy
         if (event instanceof Fire.MouseEvent) {
             this._dispatchMouseEvent(event, inputContext);
+        }
+        else {
+            // dispatch global event
+            this._eventListeners.invoke(event);
         }
     };
 
@@ -12344,6 +11998,1447 @@ var Input = (function () {
 })();
 
 Fire.Input = Input;
+
+if (Fire.isIOS) {
+    Fire.LoadManager.load('empty','audio', 'mp3', function (err, data) {
+        var isPlayed = false;
+        window.addEventListener('touchstart', function listener () {
+            if (isPlayed) {
+                return;
+            }
+            isPlayed = true;
+            var defaultSource = new Fire.AudioSource();
+            var defaultClip = new Fire.AudioClip();
+            defaultClip.rawData = data;
+            defaultSource.clip = defaultClip;
+            Fire.AudioContext.play(defaultSource);
+            window.removeEventListener('touchstart', listener);
+        });
+    });
+}
+
+(function(){
+    var UseWebAudio = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext);
+    if (UseWebAudio) {
+        return;
+    }
+    var AudioContext = {};
+
+    // Audio状态可用数据足以开始播放
+    var HAVE_ENOUGH_DATA = 4;
+
+    function loader (url, callback, onProgress) {
+        var audio = document.createElement("audio");
+
+        if (Browser.type === Browser.BROWSER_TYPE_IE) {
+            var checkReadyState = setInterval(function () {
+                if(audio.readyState === HAVE_ENOUGH_DATA ) {
+                    callback(null, audio);
+                    clearInterval(checkReadyState);
+                }
+            }, 100);
+        }
+        else{
+            audio.addEventListener("canplaythrough", function () {
+                callback(null, audio);
+            }, false);
+        }
+
+        audio.addEventListener('error', function (e) {
+            callback('LoadAudioClip: "' + url +
+                    '" seems to be unreachable or the file is empty. InnerMessage: ' + e + '\n This may caused by fireball-x/dev#267', null);
+        }, false);
+
+        audio.src = url;
+    }
+
+    Fire.LoadManager.registerRawTypes('audio', loader);
+
+    AudioContext.initSource = function (target) {
+        target._audio = null;
+    };
+
+    AudioContext.getCurrentTime = function (target) {
+        if (target && target._audio && target._playing) {
+            return target._audio.currentTime;
+        }
+        else {
+            return 0;
+        }
+    };
+
+    AudioContext.updateTime = function (target, value) {
+        if (target && target._audio) {
+            var duration = target._audio.duration;
+            target._audio.currentTime = value;
+        }
+    };
+
+    // 靜音
+    AudioContext.updateMute = function (target) {
+        if (!target || !target._audio) { return; }
+        target._audio.muted = target.mute;
+    };
+
+    // 设置音量，音量范围是[0, 1]
+    AudioContext.updateVolume = function (target) {
+        if (!target || !target._audio) { return; }
+        target._audio.volume = target.volume;
+    };
+
+    // 设置循环
+    AudioContext.updateLoop = function (target) {
+        if (!target || !target._audio) { return; }
+        target._audio.loop = target.loop;
+    };
+
+    // 设置音频播放的速度
+    AudioContext.updatePlaybackRate = function (target) {
+        if ( !this.isPaused ) {
+            this.pause(target);
+            this.play(target);
+        }
+    };
+
+    // 将音乐源节点绑定具体的音频buffer
+    AudioContext.updateAudioClip = function (target) {
+        if (!target || !target.clip) { return; }
+        target._audio = target.clip.rawData;
+    };
+
+    // 暫停
+    AudioContext.pause = function (target) {
+        if (!target._audio) { return; }
+        target._audio.pause();
+    };
+
+    // 停止
+    AudioContext.stop = function (target) {
+        if (!target._audio) { return; }
+        target._audio.pause();
+        target._audio.currentTime = 0;
+        if(target._audio.onended) {
+            target._audio.removeEventListener('ended', target._audio.onended);
+        }
+    };
+
+    // 播放
+    AudioContext.play = function (target, at) {
+        if (!target || !target.clip || !target.clip.rawData) { return; }
+        if (target._playing && !target._paused) { return; }
+        this.updateAudioClip(target);
+        this.updateVolume(target);
+        this.updateLoop(target);
+        this.updateMute(target);
+        this.playbackRate = target.playbackRate;
+
+        target._audio.play();
+
+        target._audio.onended = function () {
+            target._onPlayEnd().bind(target);
+        }.bind(target);
+
+        // 播放结束后的回调
+        target._audio.addEventListener('ended', target._audio.onended);
+    };
+
+    // 获得音频剪辑的 buffer
+    AudioContext.getClipBuffer = function (clip) {
+        Fire.error("Audio does not contain the <Buffer> attribute!");
+        return null;
+    };
+
+    // 以秒为单位 获取音频剪辑的 长度
+    AudioContext.getClipLength = function (clip) {
+        return clip.rawData.duration;
+    };
+
+    // 音频剪辑的长度
+    AudioContext.getClipSamples = function (target) {
+        Fire.error("Audio does not contain the <Samples> attribute!");
+        return null;
+    };
+
+    // 音频剪辑的声道数
+    AudioContext.getClipChannels = function (target) {
+        Fire.error("Audio does not contain the <Channels> attribute!");
+        return null;
+    };
+
+    // 音频剪辑的采样频率
+    AudioContext.getClipFrequency = function (target) {
+        Fire.error("Audio does not contain the <Frequency> attribute!");
+        return null;
+    };
+
+
+    Fire.AudioContext = AudioContext;
+})();
+
+
+var AudioSource = (function () {
+
+    /**
+     * The audio source component.
+     * @class AudioSource
+     * @extends Component
+     * @constructor
+     */
+    var AudioSource = Fire.Class({
+        //
+        name: "Fire.AudioSource",
+        //
+        extends: Fire.Component,
+        //
+        constructor: function () {
+            // 声源暂停或者停止时候为false
+            this._playing = false;
+            // 来区分声源是暂停还是停止
+            this._paused = false;
+
+            this._startTime = 0;
+            this._lastPlay = 0;
+
+            this._buffSource = null;
+            this._volumeGain = null;
+
+            /**
+             * The callback function which will be invoked when the audio stops
+             * @property onEnd
+             * @type {function}
+             * @default null
+             */
+            this.onEnd = null;
+        },
+        properties: {
+            /**
+             * Is the audio source playing (Read Only)？
+             * @property isPlaying
+             * @type {boolean}
+             * @readOnly
+             * @default false
+             */
+            isPlaying: {
+                get: function () {
+                    return this._playing && !this._paused;
+                },
+                visible: false
+            },
+            /**
+             * Is the audio source paused (Read Only)?
+             * @property isPaused
+             * @type {boolean}
+             * @readOnly
+             * @default false
+             */
+            isPaused:{
+                get: function () {
+                    return this._paused;
+                },
+                visible: false
+            },
+            /**
+             * Playback position in seconds.
+             * @property time
+             * @type {number}
+             * @default 0
+             */
+            time: {
+                get: function () {
+                    return Fire.AudioContext.getCurrentTime(this);
+                },
+                set: function (value) {
+                    Fire.AudioContext.updateTime(this, value);
+                },
+                visible: false
+            },
+            _clip: {
+                default: null,
+                type: Fire.AudioClip
+            },
+            /**
+             * The audio clip to play.
+             * @property clip
+             * @type {AudioClip}
+             * @default null
+             */
+            clip:{
+                get: function () {
+                    return this._clip;
+                },
+                set: function (value) {
+                    if (this._clip !== value) {
+                        this._clip = value;
+                        Fire.AudioContext.updateAudioClip(this);
+                    }
+                }
+            },
+            //
+            _loop: false,
+            /**
+             * Is the audio source looping?
+             * @property loop
+             * @type {boolean}
+             * @default false
+             */
+            loop: {
+                get: function () {
+                    return this._loop;
+                },
+                set: function (value) {
+                    if (this._loop !== value) {
+                        this._loop = value;
+                        Fire.AudioContext.updateLoop(this);
+                    }
+                }
+            },
+            //
+            _mute: false,
+            /**
+             * Is the audio source mute?
+             * @property mute
+             * @type {boolean}
+             * @default false
+             */
+            mute: {
+                get: function () {
+                    return this._mute;
+                },
+                set: function (value) {
+                    if (this._mute !== value) {
+                        this._mute = value;
+                        Fire.AudioContext.updateMute(this);
+                    }
+                }
+            },
+            //
+            _volume: 1,
+            /**
+             * The volume of the audio source.
+             * @property volume
+             * @type {number}
+             * @default 1
+             */
+            volume: {
+                get: function () {
+                    return this._volume;
+                },
+                set: function (value) {
+                    if (this._volume !== value) {
+                        this._volume = Math.clamp01(value);
+                        Fire.AudioContext.updateVolume(this);
+                    }
+                },
+                range: [0, 1]
+            },
+            //
+            _playbackRate: 1.0,
+            /**
+             * The playback rate of the audio source.
+             * @property playbackRate
+             * @type {number}
+             * @default 1
+             */
+            playbackRate: {
+                get: function () {
+                    return this._playbackRate;
+                },
+                set: function (value) {
+                    if (this._playbackRate !== value) {
+                        this._playbackRate = value;
+                        if(this._playing) {
+                            Fire.AudioContext.updatePlaybackRate(this);
+                        }
+                    }
+                }
+            },
+            /**
+             * If set to true, the audio source will automatically start playing on onLoad.
+             * @property playOnLoad
+             * @type {boolean}
+             * @default true
+             */
+            playOnLoad: true
+        },
+        _onPlayEnd: function () {
+            if ( this.onEnd ) {
+                this.onEnd();
+            }
+
+            this._playing = false;
+            this._paused = false;
+        },
+        /**
+         * Pauses the clip.
+         * @method pause
+         */
+        pause: function () {
+            if ( this._paused )
+                return;
+
+            Fire.AudioContext.pause(this);
+            this._paused = true;
+        },
+        /**
+         * Plays the clip.
+         * @method play
+         */
+        play: function () {
+            if ( this._playing && !this._paused )
+                return;
+
+            if ( this._paused )
+                Fire.AudioContext.play(this, this._startTime);
+            else
+                Fire.AudioContext.play(this, 0);
+
+            this._playing = true;
+            this._paused = false;
+        },
+        /**
+         * Stops the clip
+         * @method stop
+         */
+        stop: function () {
+            if ( !this._playing ) {
+                return;
+            }
+
+            Fire.AudioContext.stop(this);
+            this._playing = false;
+            this._paused = false;
+        },
+        //
+        onLoad: function () {
+            if (this._playing ) {
+                this.stop();
+            }
+        },
+        //
+        onEnable: function () {
+            if (this.playOnLoad) {
+                this.play();
+            }
+        },
+        //
+        onDisable: function () {
+            this.stop();
+        }
+    });
+
+    //
+    Fire.addComponentMenu(AudioSource, 'AudioSource');
+
+    return AudioSource;
+})();
+
+Fire.AudioSource = AudioSource;
+
+(function () {
+    var NativeAudioContext = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext);
+    if ( !NativeAudioContext ) {
+        return;
+    }
+
+    // fix fireball-x/dev#365
+    if (!Fire.nativeAC) {
+        Fire.nativeAC = new NativeAudioContext();
+    }
+
+    // 添加safeDecodeAudioData的原因：https://github.com/fireball-x/dev/issues/318
+    function safeDecodeAudioData(context, buffer, url, callback) {
+        var timeout = false;
+        var timerId = setTimeout(function () {
+            callback('The operation of decoding audio data already timeout! Audio url: "' + url +
+                     '". Set Fire.AudioContext.MaxDecodeTime to a larger value if this error often occur. ' +
+                     'See fireball-x/dev#318 for details.', null);
+        }, AudioContext.MaxDecodeTime);
+
+        context.decodeAudioData(buffer,
+            function (decodedData) {
+                if (!timeout) {
+                    callback(null, decodedData);
+                    clearTimeout(timerId);
+                }
+            },
+            function (e) {
+                if (!timeout) {
+                    callback(null, 'LoadAudioClip: "' + url +
+                        '" seems to be unreachable or the file is empty. InnerMessage: ' + e);
+                    clearTimeout(timerId);
+                }
+            }
+        );
+    }
+
+    function loader(url, callback, onProgress) {
+        var cb = callback && function (error, xhr) {
+            if (xhr) {
+                safeDecodeAudioData(Fire.nativeAC, xhr.response, url, callback);
+            }
+            else {
+                callback('LoadAudioClip: "' + url +
+               '" seems to be unreachable or the file is empty. InnerMessage: ' + error, null);
+            }
+        };
+        Fire.LoadManager._loadFromXHR(url, cb, onProgress, 'arraybuffer');
+    }
+
+    Fire.LoadManager.registerRawTypes('audio', loader);
+
+    var AudioContext = {};
+
+    AudioContext.MaxDecodeTime = 4000;
+
+    AudioContext.getCurrentTime = function (target) {
+        if ( target._paused ) {
+            return target._startTime;
+        }
+
+        if ( target._playing ) {
+            return target._startTime + this.getPlayedTime(target);
+        }
+
+        return 0;
+    };
+
+    AudioContext.getPlayedTime = function (target) {
+        return (Fire.nativeAC.currentTime - target._lastPlay) * target._playbackRate;
+    };
+
+    //
+    AudioContext.updateTime = function (target, time) {
+        target._lastPlay = Fire.nativeAC.currentTime;
+        target._startTime = time;
+
+        if ( target.isPlaying ) {
+            this.pause(target);
+            this.play(target);
+        }
+    };
+
+    //
+    AudioContext.updateMute = function (target) {
+        if (!target._volumeGain) { return; }
+        target._volumeGain.gain.value = target.mute ? -1 : (target.volume - 1);
+    };
+
+    // range [0,1]
+    AudioContext.updateVolume = function (target) {
+        if (!target._volumeGain) { return; }
+        target._volumeGain.gain.value = target.volume - 1;
+    };
+
+    //
+    AudioContext.updateLoop = function (target) {
+        if (!target._buffSource) { return; }
+        target._buffSource.loop = target.loop;
+    };
+
+    // bind buffer source
+    AudioContext.updateAudioClip = function (target) {
+        if ( target.isPlaying ) {
+            this.stop(target,false);
+            this.play(target);
+        }
+    };
+
+    //
+    AudioContext.updatePlaybackRate = function (target) {
+        if ( !this.isPaused ) {
+            this.pause(target);
+            this.play(target);
+        }
+    };
+
+    //
+    AudioContext.pause = function (target) {
+        if (!target._buffSource) { return; }
+
+        target._startTime += this.getPlayedTime(target);
+        target._buffSource.onended = null;
+        target._buffSource.stop(0);
+    };
+
+    //
+    AudioContext.stop = function ( target, ended ) {
+        if (!target._buffSource) { return; }
+
+        if ( !ended ) {
+            target._buffSource.onended = null;
+        }
+        target._buffSource.stop(0);
+    };
+
+    //
+    AudioContext.play = function ( target, at ) {
+        if (!target.clip || !target.clip.rawData) { return; }
+
+        // create buffer source
+        var bufferSource = Fire.nativeAC.createBufferSource();
+
+        // create volume control
+        var gain = Fire.nativeAC.createGain();
+
+        // connect
+        bufferSource.connect(gain);
+        gain.connect(Fire.nativeAC.destination);
+        bufferSource.connect(Fire.nativeAC.destination);
+
+        // init parameters
+        bufferSource.buffer = target.clip.rawData;
+        bufferSource.loop = target.loop;
+        bufferSource.playbackRate.value = target.playbackRate;
+        bufferSource.onended = target._onPlayEnd.bind(target);
+        gain.gain.value = target.mute ? -1 : (target.volume - 1);
+
+        //
+        target._buffSource = bufferSource;
+        target._volumeGain = gain;
+        target._startTime = at || 0;
+        target._lastPlay = Fire.nativeAC.currentTime;
+
+        // play
+        bufferSource.start( 0, this.getCurrentTime(target) );
+    };
+
+    // ===================
+
+    //
+    AudioContext.getClipBuffer = function (clip) {
+        return clip.rawData;
+    };
+
+    //
+    AudioContext.getClipLength = function (clip) {
+        if (clip.rawData) {
+            return clip.rawData.duration;
+        }
+        return -1;
+    };
+
+    //
+    AudioContext.getClipSamples = function (clip) {
+        if (clip.rawData) {
+            return clip.rawData.length;
+        }
+        return -1;
+    };
+
+    //
+    AudioContext.getClipChannels = function (clip) {
+        if (clip.rawData) {
+            return clip.rawData.numberOfChannels;
+        }
+        return -1;
+    };
+
+    //
+    AudioContext.getClipFrequency = function (clip) {
+        if (clip.rawData) {
+            return clip.rawData.sampleRate;
+        }
+        return -1;
+    };
+
+
+    Fire.AudioContext = AudioContext;
+})();
+
+    // The codes below is generated by script automatically:
+    // 
+
+
+(function () {
+    // Tweak PIXI
+    PIXI.dontSayHello = true;
+    var EMPTY_METHOD = function () {};
+    PIXI.DisplayObject.prototype.updateTransform = EMPTY_METHOD;
+    PIXI.DisplayObject.prototype.displayObjectUpdateTransform = EMPTY_METHOD;
+    PIXI.DisplayObjectContainer.prototype.displayObjectContainerUpdateTransform = EMPTY_METHOD;
+})();
+
+/**
+ * The web renderer implemented rely on pixi.js
+ */
+var RenderContext = (function () {
+
+    /**
+     * render context 将在 pixi 中维护同样的 scene graph，这样做主要是为之后的 clipping 和 culling 提供支持。
+     * 这里采用空间换时间的策略，所有 entity 都有对应的 PIXI.DisplayObjectContainer。
+     * 毕竟一般 dummy entity 不会很多，因此这样产生的冗余对象可以忽略。
+     * 值得注意的是，sprite 等 pixi object，被视为 entity 对应的 PIXI.DisplayObjectContainer 的子物体，
+     * 并且排列在所有 entity 之前，以达到最先渲染的效果。
+     *
+     * @param {number} width
+     * @param {number} height
+     * @param {Canvas} [canvas]
+     * @param {boolean} [transparent = false]
+     */
+    function RenderContext (width, height, canvas, transparent) {
+        width = width || 800;
+        height = height || 600;
+        transparent = transparent || false;
+
+        var antialias = false;
+        this.stage = new PIXI.Stage(0x000000);
+        this.stage.interactive = false;
+
+        this.root = this.stage;
+        this.renderer = PIXI.autoDetectRenderer(width, height, {
+            view: canvas,
+            transparent: transparent,
+            antialias: antialias
+        } );
+
+        // the shared render context that allows display the object which marked as Fire._ObjectFlags.HideInGame
+        this.sceneView = null;
+
+        this.isSceneView = false;
+
+        // binded camera, if supplied the scene will always rendered by this camera
+        this._camera = null;
+    }
+
+    var emptyTexture = new PIXI.Texture(new PIXI.BaseTexture());
+
+    // static
+
+    RenderContext.initRenderer = function (renderer) {
+        renderer._renderObj = null;
+        renderer._renderObjInScene = null;
+        renderer._tempMatrix = new Fire.Matrix23();
+    };
+
+    // properties
+
+    Object.defineProperty(RenderContext.prototype, 'canvas', {
+        get: function () {
+            return this.renderer.view;
+        }
+    });
+
+    Object.defineProperty(RenderContext.prototype, 'width', {
+        get: function () {
+            return this.renderer.width;
+        },
+        set: function (value) {
+            this.renderer.resize(value, this.renderer.height);
+        }
+    });
+
+    Object.defineProperty(RenderContext.prototype, 'height', {
+        get: function () {
+            return this.renderer.height;
+        },
+        set: function (value) {
+            this.renderer.resize(this.renderer.width, value);
+        }
+    });
+
+    Object.defineProperty(RenderContext.prototype, 'size', {
+        get: function () {
+            return new Vec2(this.renderer.width, this.renderer.height);
+        },
+        set: function (value) {
+            this.renderer.resize(value.x, value.y);
+            // DISABLE
+            // // auto resize scene view camera
+            // if (this._camera && (this._camera.entity._objFlags & Fire._ObjectFlags.EditorOnly)) {
+            //     this._camera.size = value.y;
+            // }
+        }
+    });
+
+    Object.defineProperty(RenderContext.prototype, 'background', {
+        set: function (value) {
+            this.stage.setBackgroundColor(value.toRGBValue());
+        }
+    });
+
+    Object.defineProperty(RenderContext.prototype, 'camera', {
+        get: function () {
+            //return (this._camera && this._camera.isValid) || null;
+            return this._camera;
+        },
+        set: function (value) {
+            this._camera = value;
+            if (Fire.isValid(value)) {
+                value.renderContext = this;
+            }
+        }
+    });
+
+    // functions
+
+    RenderContext.prototype.render = function () {
+        this.renderer.render(this.stage);
+    };
+
+    RenderContext.prototype.onRootEntityCreated = function (entity) {
+        entity._pixiObj = this._createNode();
+    };
+
+    RenderContext.prototype._createNode = function () {
+        // always create pixi node even if is scene gizmo, to keep all their indices sync with transforms' sibling indices.
+        var node = new PIXI.DisplayObjectContainer();
+        if (Engine._canModifyCurrentScene) {
+            // attach node if created dynamically
+            this.root.addChild(node);
+        }
+        return node;
+    };
+
+    RenderContext.prototype.onEntityRemoved = function (entity) {
+        this._removeNode(entity._pixiObj);
+        entity._pixiObj = null;
+    };
+
+    RenderContext.prototype._removeNode = function (node) {
+        if (node && node.parent) {
+            node.parent.removeChild(node);
+        }
+    };
+
+    RenderContext.prototype.onEntityParentChanged = function (entity, oldParent) {
+        this._setParentNode(entity._pixiObj, entity._parent && entity._parent._pixiObj);
+    };
+
+    RenderContext.prototype._setParentNode = function (node, parent) {
+        if (node) {
+            if (parent) {
+                parent.addChild(node);
+            }
+            else {
+                this.root.addChild(node);
+            }
+        }
+    };
+
+    /**
+     * @param {Entity} entityParent
+     * @param {Entity} [customFirstChildEntity=null]
+     * @return {number}
+     */
+    RenderContext.prototype._getChildrenOffset = function (entityParent, customFirstChildEntity) {
+        if (entityParent) {
+            var pixiParent = this.isSceneView ? entityParent._pixiObjInScene : entityParent._pixiObj;
+            var firstChildEntity = customFirstChildEntity || entityParent._children[0];
+            if (firstChildEntity) {
+                var firstChildPixi = this.isSceneView ? firstChildEntity._pixiObjInScene : firstChildEntity._pixiObj;
+                var offset = pixiParent.children.indexOf(firstChildPixi);
+                if (offset !== -1) {
+                    return offset;
+                }
+                else if (customFirstChildEntity) {
+                    return pixiParent.children.length;
+                }
+                else {
+                    Fire.error("%s's pixi object not contains in its pixi parent's children", firstChildEntity.name);
+                    return -1;
+                }
+            }
+            else {
+                return pixiParent.children.length;
+            }
+        }
+        else {
+            return 0;   // the root of hierarchy
+        }
+    };
+
+    RenderContext.prototype.onEntityIndexChanged = function (entity, oldIndex, newIndex) {
+        var lastFirstSibling;
+        if (newIndex === 0 && oldIndex > 0) {
+            // insert to first
+            lastFirstSibling = entity.getSibling(1);
+        }
+        else if (oldIndex === 0 && newIndex > 0) {
+            // move first to elsewhere
+            lastFirstSibling = entity;
+        }
+
+        if (entity._pixiObj) {
+            this._setNodeIndex(entity, oldIndex, newIndex, lastFirstSibling);
+        }
+    };
+
+    RenderContext.prototype._setNodeIndex = function (entity, oldIndex, newIndex, lastFirstSibling) {
+        // skip renderers of entity
+        var siblingOffset = this._getChildrenOffset(entity._parent, lastFirstSibling);
+        //
+        var node = this.isSceneView ? entity._pixiObjInScene : entity._pixiObj;
+        if (node) {
+            var array = node.parent.children;
+            array.splice(oldIndex + siblingOffset, 1);
+            var newPixiIndex = newIndex + siblingOffset;
+            if (newPixiIndex < array.length) {
+                array.splice(newPixiIndex, 0, node);
+            }
+            else {
+                array.push(node);
+            }
+        }
+    };
+
+    RenderContext.prototype.onSceneLaunched = function (scene) {
+        // attach root nodes
+        this._addToScene(scene);
+    };
+
+    RenderContext.prototype._addToScene = function (scene) {
+        var entities = scene.entities;
+        for (var i = 0, len = entities.length; i < len; i++) {
+            var node = this.isSceneView? entities[i]._pixiObjInScene : entities[i]._pixiObj;
+            if (node) {
+                this.root.addChild(node);
+            }
+        }
+    };
+
+    RenderContext.prototype.onSceneLoaded = function (scene) {
+        var entities = scene.entities;
+        for (var i = 0, len = entities.length; i < len; i++) {
+            this.onEntityCreated(entities[i], false);
+        }
+    };
+
+    /**
+     * create child nodes recursively
+     * 这个方法假定parent存在
+     * @param {Entity} entity - must have parent, and not scene gizmo
+     */
+    var _onChildEntityCreated = function (entity, hasSceneView) {
+        entity._pixiObj = new PIXI.DisplayObjectContainer();
+        entity._parent._pixiObj.addChild(entity._pixiObj);
+        var children = entity._children;
+        for (var i = 0, len = children.length; i < len; i++) {
+            _onChildEntityCreated(children[i], hasSceneView);
+        }
+    };
+
+    RenderContext.prototype.onEntityCreated = function (entity, addToScene) {
+        entity._pixiObj = new PIXI.DisplayObjectContainer();
+        if (entity._parent) {
+            entity._parent._pixiObj.addChild(entity._pixiObj);
+        }
+        else if (addToScene) {
+            this.root.addChild(entity._pixiObj);
+        }
+        var children = entity._children;
+        for (var i = 0, len = children.length; i < len; i++) {
+            _onChildEntityCreated(children[i], this.sceneView);
+        }
+    };
+
+    RenderContext.prototype._addSprite = function (tex, parentNode) {
+        var sprite = new PIXI.Sprite(tex);
+        parentNode.addChildAt(sprite, 0);
+        return sprite;
+    };
+
+    RenderContext.prototype.addSprite = function (target) {
+        var tex = createTexture(target._sprite);
+
+        var inGame = !(target.entity._objFlags & HideInGame);
+        if (inGame) {
+            target._renderObj = this._addSprite(tex, target.entity._pixiObj);
+        }
+        this.updateSpriteColor(target);
+    };
+
+    RenderContext.prototype.show = function (target, show) {
+        if (target._renderObj) {
+            target._renderObj.visible = show;
+        }
+        if (target._renderObjInScene) {
+            target._renderObjInScene.visible = show;
+        }
+    };
+
+    RenderContext.prototype.remove = function (target) {
+        this._removeNode(target._renderObj);
+        target._renderObj = null;
+    };
+
+    RenderContext.prototype.updateSpriteColor = function (target) {
+        var tint = target._color.toRGBValue();
+        if (target._renderObj) {
+            target._renderObj.tint = tint;
+        }
+    };
+
+    RenderContext.prototype.updateMaterial = function (target) {
+        var tex = createTexture(target._sprite);
+        if (target._renderObj) {
+            target._renderObj.setTexture(tex);
+        }
+    };
+
+    RenderContext.prototype.updateTransform = function (target, matrix) {
+        // caculate matrix for pixi
+        var mat = target._tempMatrix;
+        mat.a = matrix.a;
+        // negate the rotation because our rotation transform not the same with pixi
+        mat.b = - matrix.b;
+        mat.c = - matrix.c;
+        //
+        mat.d = matrix.d;
+        mat.tx = matrix.tx;
+        // revert Y axis for pixi
+        mat.ty = this.renderer.height - matrix.ty;
+
+        var worldAlpha = Math.clamp01(target._color.a);
+
+        // apply matrix
+        if ( !this.isSceneView ) {
+            if (target._renderObj) {
+                target._renderObj.worldTransform = mat;
+                target._renderObj.worldAlpha = worldAlpha;
+            }
+        }
+    };
+
+    ///**
+    // * @param {SpriteRenderer} target
+    // * @param {SpriteRenderer} transform
+    // * @param {SpriteRenderer} oldParent
+    // */
+    //RenderContext.prototype.updateHierarchy = function (target, transform, oldParent) {
+    //    if (target._renderObj || target._renderObjInScene) {
+    //        if (transform._parent === oldParent) {
+    //            // oldAncestor changed its sibling index
+    //            if (target._renderObj) {
+    //                this._updateSiblingIndex(transform);
+    //            }
+    //            if (target._renderObjInScene) {
+    //                this.sceneView._updateSiblingIndex(transform);
+    //            }
+    //            return true;
+    //        }
+    //        else {
+    //            // parent changed
+    //        }
+    //    }
+    //    else {
+    //        Fire.error('' + target + ' must be added to render context first!');
+    //    }
+    //    return false;
+    //};
+
+    //RenderContext.prototype._updateSiblingIndex = function (transform) {
+    //    var pixiNode = this._pixiObjects[transform.id];
+    //    var array = pixiNode.parent.children;
+    //    var oldIndex = array.indexOf(pixiNode);
+    //    var newIndex = transform.getSiblingIndex(); // 如果前面的节点包含空的entity，则这个new index会有问题
+    //    // skip entities not exists in pixi
+    //    while ((--newIndex) > 0) {
+    //        var previous = transform.getSibling(newIndex);
+    //        if (previous.id) {
+    //        }
+    //    }
+    //    array.splice(oldIndex, 1);
+    //    if (newIndex < array.length) {
+    //        array.splice(newIndex, 0, pixiNode);
+    //    }
+    //    else {
+    //        array.push(pixiNode);
+    //    }
+    //};
+
+    /**
+     * @param sprite {Sprite}
+     */
+    function createTexture(sprite) {
+        if (sprite && sprite.texture && sprite.texture.image) {
+            var img = new PIXI.BaseTexture(sprite.texture.image);
+            var frame = new PIXI.Rectangle(sprite.x, sprite.y, Math.min(img.width - sprite.x, sprite.rotatedWidth), Math.min(img.height - sprite.y, sprite.rotatedHeight));
+            return new PIXI.Texture(img, frame);
+        }
+        else {
+            return emptyTexture;
+        }
+    }
+
+    return RenderContext;
+})();
+
+RenderContext.prototype.checkMatchCurrentScene = function () {
+    var entities = Engine._scene.entities;
+    var pixiGameNodes = this.stage.children;
+    var pixiSceneNodes;
+    if (this.sceneView) {
+        pixiSceneNodes = this.sceneView.stage.children;
+        pixiSceneNodes = pixiSceneNodes[1].children;    // skip foreground and background
+    }
+    var scope = this;
+    function checkMatch (ent, gameNode, sceneNode) {
+        if (sceneNode && ent._pixiObjInScene !== sceneNode) {
+            throw new Error('entity does not match pixi scene node: ' + ent.name);
+        }
+        //if (!(ent._objFlags & HideInGame)) {
+        //    var gameNode = gameNodes[g++];
+        //}
+        if (ent._pixiObj !== gameNode) {
+            throw new Error('entity does not match pixi game node: ' + ent.name);
+        }
+
+        var childCount = ent._children.length;
+        var sceneChildrenOffset;
+        if (sceneNode) {
+            sceneChildrenOffset = scope.sceneView._getChildrenOffset(ent);
+            if (sceneNode.children.length !== childCount + sceneChildrenOffset) {
+                console.error('Mismatched list of child elements in Scene view, entity: %s,\n' +
+                    'pixi childCount: %s, entity childCount: %s, rcOffset: %s',
+                    ent.name, sceneNode.children.length, childCount, sceneChildrenOffset);
+                throw new Error('(see above error)');
+            }
+        }
+        var gameChildrenOffset = scope._getChildrenOffset(ent);
+        if (gameNode.children.length !== childCount + gameChildrenOffset) {
+            throw new Error('Mismatched list of child elements in Game view, entity: ' + ent.name);
+        }
+        for (var i = 0; i < childCount; i++) {
+            checkMatch(ent._children[i], gameNode.children[gameChildrenOffset + i], sceneNode && sceneNode.children[i + sceneChildrenOffset]);
+        }
+    }
+
+    for (var i = 0; i < entities.length; i++) {
+        if (pixiSceneNodes && pixiSceneNodes.length !== entities.length) {
+            throw new Error('Mismatched list of root elements in scene view');
+        }
+        if (pixiGameNodes.length !== entities.length) {
+            throw new Error('Mismatched list of root elements in game view');
+        }
+        checkMatch(entities[i], pixiGameNodes[i], pixiSceneNodes && pixiSceneNodes[i]);
+    }
+
+    //if (g !== pixiGameNodes.length) {
+    //    Fire.error('pixi has extra game node, pixi count: ' + pixiGameNodes.length + ' expected count: ' + g);
+    //    return false;
+    //}
+    // 目前不测试renderer
+};
+Fire._Runtime.RenderContext = RenderContext;
+
+PIXI.BitmapText.prototype.updateTransform = function () {
+};
+
+// unload asset
+Fire.BitmapFont.prototype._onPreDestroy = function () {
+    if (this._uuid) {
+        PIXI.BitmapText.fonts[this._uuid] = null;
+    }
+};
+
+var defaultFace = "None";
+
+function _getStyle (target) {
+    if (target.bitmapFont && target.bitmapFont._uuid) {
+        return {
+            font : target.bitmapFont.size + " " + target.bitmapFont._uuid,
+            align: Fire.TextAlign[target.align].toLowerCase(),
+        };
+    }
+    else {
+        return {
+            font : 1 + " " + defaultFace,
+            align: "left",
+        };
+    }
+}
+
+function _setStyle (target) {
+    var style = _getStyle(target);
+    if (target._renderObj) {
+        target._renderObj.setStyle(style);
+    }
+    if (target._renderObjInScene) {
+        target._renderObjInScene.setStyle(style);
+    }
+}
+
+function _getNewMatrix23 (child, tempMatrix) {
+    var mat = new Fire.Matrix23();
+    mat.a = child.scale.x;
+    mat.b = 0;
+    mat.c = 0;
+    mat.d = child.scale.y;
+    mat.tx = child.position.x;
+    mat.ty = -child.position.y;
+
+    mat.prepend(tempMatrix);
+
+    mat.b = -mat.b;
+    mat.c = -mat.c;
+    mat.ty = Fire.Engine._curRenderContext.renderer.height - mat.ty;
+    return mat;
+}
+var tempData = {
+    face      : defaultFace,
+    size      : 1,
+    chars     : {},
+    lineHeight: 1
+};
+
+function _registerFont (bitmapFont) {
+
+    //var registered = _hasPixiBitmapFont(bitmapFont);
+    //if (registered) {
+    //    return;
+    //}
+
+    var data = {};
+    if (bitmapFont && bitmapFont._uuid) {
+        data.face = bitmapFont._uuid;
+        data.size = bitmapFont.size;
+        data.lineHeight = bitmapFont.lineHeight;
+        data.chars = {};
+
+        if (bitmapFont.texture) {
+            var img = new PIXI.BaseTexture(bitmapFont.texture.image);
+
+            var charInfos = bitmapFont.charInfos, len = charInfos.length;
+            for (var i = 0; i < len; i++) {
+                var charInfo = charInfos[i];
+                var id = charInfo.id;
+                var textureRect = new PIXI.Rectangle(
+                    charInfo.x,
+                    charInfo.y,
+                    charInfo.width,
+                    charInfo.height
+                );
+
+                if ((textureRect.x + textureRect.width) > img.width || (textureRect.y + textureRect.height) > img.height) {
+                    Fire.error('Character in %s does not fit inside the dimensions of texture %s', bitmapFont.name, bitmapFont.texture.name);
+                    break;
+                }
+
+                var texture = new PIXI.Texture(img, textureRect);
+
+                data.chars[id] = {
+                    xOffset : charInfo.xOffset,
+                    yOffset : charInfo.yOffset,
+                    xAdvance: charInfo.xAdvance,
+                    kerning : {},
+                    texture : texture
+                };
+            }
+        }
+        else {
+            Fire.error('Invalid texture of bitmapFont: %s', bitmapFont.name);
+        }
+
+        var kernings = bitmapFont.kernings;
+        for (var j = 0; j < kernings.length; j++) {
+            var kerning = kernings[j];
+            var first = kerning.first;
+            var second = kerning.second;
+            var amount = kerning.amount;
+            data.chars[second].kerning[first] = amount;
+        }
+    }
+    else {
+        data = tempData;
+    }
+    PIXI.BitmapText.fonts[data.face] = data;
+}
+
+var _hasPixiBitmapFont = function (bitmapFont) {
+    if (bitmapFont) {
+        return PIXI.BitmapText.fonts[bitmapFont._uuid];
+    }
+    return null;
+};
+
+RenderContext.prototype.getTextSize = function (target) {
+    var inGame = !(target.entity._objFlags & HideInGame);
+    var w = 0, h = 0;
+    if (inGame && target._renderObj) {
+        if (target._renderObj.dirty) {
+            target._renderObj.updateText();
+            target._renderObj.dirty = false;
+        }
+
+        w = target._renderObj.textWidth;
+        h = target._renderObj.textHeight;
+    }
+    else if (target._renderObjInScene) {
+        if (target._renderObjInScene.dirty) {
+            target._renderObjInScene.updateText();
+            target._renderObjInScene.dirty = false;
+        }
+
+        w = target._renderObjInScene.textWidth;
+        h = target._renderObjInScene.textHeight;
+    }
+    return new Vec2(w, h);
+};
+
+RenderContext.prototype.setText = function (target, newText) {
+    if (target._renderObj) {
+        target._renderObj.setText(newText);
+    }
+    if (this.sceneView && target._renderObjInScene) {
+        target._renderObjInScene.setText(newText);
+    }
+};
+
+RenderContext.prototype.setAlign = function (target) {
+    _setStyle(target);
+};
+
+RenderContext.prototype.updateBitmapFont = function (target) {
+    _registerFont(target.bitmapFont);
+    _setStyle(target);
+};
+
+RenderContext.prototype.addBitmapText = function (target) {
+    _registerFont(target.bitmapFont);
+
+    var style = _getStyle(target);
+
+    var inGame = !(target.entity._objFlags & HideInGame);
+    if (inGame) {
+        target._renderObj = new PIXI.BitmapText(target.text, style);
+        target.entity._pixiObj.addChildAt(target._renderObj, 0);
+    }
+    if (this.sceneView) {
+        target._renderObjInScene = new PIXI.BitmapText(target.text, style);
+        target.entity._pixiObjInScene.addChildAt(target._renderObjInScene, 0);
+    }
+};
+
+RenderContext.updateBitmapTextTransform = function (target, tempMatrix) {
+    var i = 0, childrens = null, len = 0, child = null;
+    var isGameView = Engine._curRenderContext === Engine._renderContext;
+    if (isGameView && target._renderObj) {
+        if (target._renderObj.dirty) {
+            target._renderObj.updateText();
+            target._renderObj.dirty = false;
+        }
+        childrens = target._renderObj.children;
+        for (len = childrens.length; i < len; i++) {
+            child = childrens[i];
+            child.worldTransform = _getNewMatrix23(child, tempMatrix);
+        }
+    }
+    else if (target._renderObjInScene) {
+        if (target._renderObjInScene.dirty) {
+            target._renderObjInScene.updateText();
+            target._renderObjInScene.dirty = false;
+        }
+        childrens = target._renderObjInScene.children;
+        for (i = 0, len = childrens.length; i < len; i++) {
+            child = childrens[i];
+            child.worldTransform = _getNewMatrix23(child, tempMatrix);
+        }
+    }
+};
+
+PIXI.Text.prototype.updateTransform = function () {
+};
+
+var PixiTextUtil = {};
+
+function _getTextStyle (target) {
+    if (target._renderObj || target._renderObjInScene) {
+        var style = {
+            fill : "#" + target.color.toHEX('#rrggbb'),
+            align: Fire.TextAlign[target.align].toLowerCase()
+        };
+        if (target.fontType !== Fire.Text.FontType.Custom){
+            style.font = target.size + "px" + " " + Fire.Text.FontType[target.fontType].toLowerCase();
+        }
+        else{
+            style.font = target.size + "px" + " " + target.customFontType;
+        }
+        return style;
+    }
+    else {
+        return {
+            font : "30px Arial",
+            fill : "white",
+            align: "left"
+        };
+    }
+}
+
+RenderContext.prototype.setTextContent = function (target, newText) {
+    if (target._renderObj) {
+        target._renderObj.setText(newText);
+    }
+    if (this.sceneView && target._renderObjInScene) {
+        target._renderObjInScene.setText(newText);
+    }
+};
+
+RenderContext.prototype.setTextStyle = function (target) {
+    var style = _getTextStyle(target);
+    if (target._renderObj) {
+        target._renderObj.setStyle(style);
+    }
+    if (target._renderObjInScene) {
+        target._renderObjInScene.setStyle(style);
+    }
+};
+
+RenderContext.prototype.addText = function (target) {
+    var style = _getTextStyle(target);
+
+    var inGame = !(target.entity._objFlags & HideInGame);
+    if (inGame) {
+        target._renderObj = new PIXI.Text(target.text, style);
+        target.entity._pixiObj.addChildAt(target._renderObj, 0);
+    }
+    if (this.sceneView) {
+        target._renderObjInScene = new PIXI.Text(target.text, style);
+        target.entity._pixiObjInScene.addChildAt(target._renderObjInScene, 0);
+    }
+};
+
+RenderContext.prototype.getTextSize = function (target) {
+    var inGame = !(target.entity._objFlags & HideInGame);
+    var w = 0, h = 0;
+    if (inGame && target._renderObj) {
+        if (target._renderObj.dirty) {
+            target._renderObj.updateText();
+            target._renderObj.dirty = false;
+        }
+
+        w = target._renderObj.textWidth | target._renderObj._width;
+        h = target._renderObj.textHeight | target._renderObj._height;
+    }
+    else if (target._renderObjInScene) {
+        if (target._renderObjInScene.dirty) {
+            target._renderObjInScene.updateText();
+            target._renderObjInScene.dirty = false;
+        }
+
+        w = target._renderObjInScene.textWidth | target._renderObjInScene._width;
+        h = target._renderObjInScene.textHeight | target._renderObjInScene._height;
+    }
+    return new Vec2(w, h);
+};
+
+RenderContext.updateTextTransform = function (target, tempMatrix) {
+    var i = 0, childrens = null, len = 0, child = null;
+    var isGameView = Engine._curRenderContext === Engine._renderContext;
+    if (isGameView && target._renderObj) {
+        if (target._renderObj.dirty) {
+            target._renderObj.updateText();
+            target._renderObj.dirty = false;
+        }
+        target._renderObj.worldTransform = _getNewMatrix23(target._renderObj, tempMatrix);
+    }
+    else if (target._renderObjInScene) {
+        if (target._renderObjInScene.dirty) {
+            target._renderObjInScene.updateText();
+            target._renderObjInScene.dirty = false;
+        }
+        target._renderObjInScene.worldTransform = _getNewMatrix23(target._renderObjInScene, tempMatrix);
+    }
+};
 
     // end of generated codes
 
@@ -12358,5 +13453,6 @@ Fire.Input = Input;
     }
     else {
         root.Fire = Fire;
+        root.Editor = Editor;
     }
 }).call(this);

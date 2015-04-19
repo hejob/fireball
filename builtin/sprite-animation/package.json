@@ -1,7 +1,7 @@
 {
-  "name": "Sprite Animation",
-  "version": "0.1.0",
+  "name": "sprite-animation",
+  "version": "0.2.1",
   "description": "The sprite animation plugin for Fireball",
-  "author": "Fireball",
+  "author": "Firebox Technology",
   "fireball": {}
 }

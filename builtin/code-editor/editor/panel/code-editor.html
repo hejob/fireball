@@ -1,0 +1,136 @@
+<style>
+    @font-face {
+        font-family: 'DejaVu Sans Mono';
+        src: url('fire://static/fonts/DejaVuSansMono.ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .CodeMirror-hints {
+        position: absolute;
+        z-index: 10;
+        overflow: hidden;
+        list-style: none;
+
+        margin: 0;
+        padding: 4px;
+
+        -webkit-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+        -moz-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+        box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+        border: 1px solid #333;
+
+        background: #2a2a2a;
+        font-size: 80%;
+        font-family: 'DejaVu Sans Mono';
+
+        max-height: 20em;
+        overflow-y: auto;
+    }
+
+    .CodeMirror-hint {
+        margin: 0;
+        padding: 3px 7px
+        max-width: 19em;
+        overflow: hidden;
+        white-space: pre;
+        color: #aaa;
+        cursor: pointer;
+    }
+
+    li.CodeMirror-hint-active {
+        background: #2865c7;
+        color: #aaa;
+    }
+</style>
+
+<link rel="import" href="code-mirror.html">
+<link rel="import" href="settings-page/settings-page.html">
+
+<polymer-element
+    name="code-editor"
+    constructor="CodeEditor"
+    on-dirty-changed="{{updateTitle}}"
+    >
+<template>
+    <link rel="stylesheet" href="code-editor.css">
+
+    <fire-ui-toolbar class="topbar">
+        <fire-ui-button on-click="{{saveAction}}">
+            <i class="fa fa-file-o"></i>
+            Save
+        </fire-ui-button>
+        <div class="space"></div>
+
+        <fire-ui-button on-click="{{reloadAction}}">
+            <i class="fa fa-refresh"></i>
+            Reload
+        </fire-ui-button>
+        <div class="space"></div>
+
+        <fire-ui-button on-click="{{settingsAction}}">
+            <i class="fa fa-gear"></i>
+            Settings
+        </fire-ui-button>
+        <div class="space"></div>
+
+        <fire-ui-button on-click="{{autoFormatAction}}">
+            <i class="fa fa-rotate-right"></i>
+            AutoFormat
+        </fire-ui-button>
+    </fire-ui-toolbar>
+
+    <div id="codeArea">
+        <code-mirror id="mirror"></code-mirror>
+    </div>
+
+    <span class="status-bar">
+        <fire-ui-toolbar justify-between>
+            <div flex-row>
+                <div class="space"></div>
+
+                <fire-ui-label class="label" >Line {{$.mirror.cursor.line+1}}, Column {{$.mirror.cursor.ch}}</fire-ui-label>
+                <div class="space"></div>
+
+                <fire-ui-label class="label" > {{$.mirror.lineCount}} — lines</fire-ui-label>
+                <div class="space"></div>
+
+                <fire-ui-label class="label" >{{$.mirror.jshintError}}</fire-ui-label>
+                <div class="space"></div>
+
+            </div>
+
+            <div flex-row>
+                <fire-ui-label>Key Map: </fire-ui-label>
+                <div class="space"></div>
+                <fire-ui-select id="keymapSelect" value="{{$.mirror.keyMap}}"></fire-ui-select>
+                <div class="space"></div>
+
+                <fire-ui-label>Theme: </fire-ui-label>
+                <div class="space"></div>
+                <fire-ui-select id="themeSelect" searchable value="{{$.mirror.theme}}"></fire-ui-select>
+                <div class="space"></div>
+
+                <fire-ui-label>Mode: </fire-ui-label>
+                <div class="space"></div>
+                <fire-ui-select id="modeSelect" searchable value="{{$.mirror.mode}}"></fire-ui-select>
+                <div class="space"></div>
+            </div>
+        </fire-ui-toolbar>
+    </span>
+
+    <div id="loader" class="loader-mask {{showLoader ? '' : 'hide'}}" fit>
+        <div class="loader-wrapper">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script type="text/javascript" src="code-editor.js"></script>
+</polymer-element>

@@ -1,3 +1,4 @@
+(function () {
 module.exports = {
     load: function (plugin) {
         plugin.on('fire-about:open', function () {
@@ -7,3 +8,4 @@ module.exports = {
     unload: function (plugin) {
     },
 };
+})();

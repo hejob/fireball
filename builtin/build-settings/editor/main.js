@@ -1,3 +1,4 @@
+(function () {
 var Url = require('fire-url');
 
 module.exports = {
@@ -8,10 +9,10 @@ module.exports = {
 
         plugin.on('build-settings:query-scenes', function () {
             var results = [];
-            for ( var p in Fire.AssetDB._pathToUuid ) {
-                var url = Fire.AssetDB._url(p);
+            for ( var p in Editor.AssetDB._pathToUuid ) {
+                var url = Editor.AssetDB._url(p);
                 if (Url.extname(url) === ".fire") {
-                    results.push({ url: url, uuid: Fire.AssetDB._pathToUuid[p] });
+                    results.push({ url: url, uuid: Editor.AssetDB._pathToUuid[p] });
                 }
             }
             plugin.sendToPanel( 'default', 'build-settings:query-scenes-results', {
@@ -22,3 +23,4 @@ module.exports = {
     unload: function (plugin) {
     },
 };
+})();

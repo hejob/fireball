@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Fireball</title>
+
+        <script src="fire://ext/pace/pace.min.js"></script>
+        <link rel="stylesheet" href="fire://static/pace.css">
+        <script>
+            Pace.once( 'hide', function () {
+                var launchPage = document.getElementById('launch-page');
+                launchPage.remove();
+            });
+        </script>
+
+        <script type="text/javascript" src="fire://page-init.js"></script>
+        <link rel="stylesheet" href="fire://launch.css">
+    </head>
+
+    <body>
+        <div id="launch-page">
+            <div class="v-center-wrapper">
+                <span class="flex"></span>
+                <div class="h-center-wrapper">
+                    <span class="flex"></span>
+                    <img class="logo" src="fire://static/img/logo-with-text.png"></img>
+                    <span class="flex"></span>
+                </div>
+                <div class="status">Loading Fireball...</div>
+                <span class="flex"></span>
+                <div class="copyright">
+                    &copy 2014 Fireball LLC All rights reserved. <span>Privacy Policy</span>
+                </div>
+            </div>
+        </div>
+
+        <main-window></main-window>
+
+        <script type="text/javascript" src="fire://ext/svg.js/dist/svg.js"></script>
+        <script type="text/javascript" src="fire://ext/chroma-js/chroma.js"></script>
+        <script type="text/javascript" src="fire://metrics.js"></script>
+
+        <script type="text/javascript" src="fire://src/core/core.js" charset="utf-8"></script>
+        <script type="text/javascript" src="fire://src/engine/engine.js" charset="utf-8"></script>
+        <script type="text/javascript" src="fire://src/runtime/cocos/runtime.js" charset="utf-8"></script>
+        <script type="text/javascript" src="fire://src/editor-share/editor-share.js" charset="utf-8"></script>
+        <script type="text/javascript" src="fire://src/editor/editor.js" charset="utf-8"></script>
+
+        <link rel="stylesheet" href="fire://ext/fontawesome/css/font-awesome.css">
+
+        <link rel="import" href="fire://ext/polymer/polymer.html">
+        <link rel="import" href="fire://src/editor-ui/editor-ui.html">
+        <link rel="import" href="fire://src/editor/main-window/main-window.html">
+
+        <!-- start Segment --><script type="text/javascript">
+            !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.1";
+                analytics.load("JMbDRl5fN9kEE9D9sDhs7Cyt59gjS2nT");
+                analytics.page()
+            }}();
+        </script><!-- end Segment -->
+    </body>
+</html>

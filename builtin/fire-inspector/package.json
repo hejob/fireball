@@ -1,0 +1,33 @@
+{
+  "name": "fire-inspector",
+  "version": "0.2.1",
+  "description": "Fireball builtin inspector",
+  "author": "Firebox Technology",
+  "fireball": {
+    "main": "editor/main.js",
+    "menus": [
+      {
+        "path": "Fireball/Panels/Inspector",
+        "message": "fire-inspector:open"
+      }
+    ],
+    "panels": {
+      "default": {
+        "type": "dockable",
+        "view": "editor/panel/fire-inspector.html",
+        "ctor": "FireInspector",
+        "title": "Inspector",
+        "width": 300,
+        "min-width": 240,
+        "messages": [
+          "asset:changed",
+          "asset:moved",
+          "asset:saved",
+          "component:added",
+          "component:removed",
+          "selection:activated"
+        ]
+      }
+    }
+  }
+}

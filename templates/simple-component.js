@@ -12,7 +12,7 @@ var Comp = Fire.Class({
     },
     
     // use this for initialization
-    onStart: function () {
+    start: function () {
         
     },
 

@@ -1,0 +1,44 @@
+{
+  "name": "fire-hierarchy",
+  "version": "0.2.1",
+  "description": "Fireball builtin hierarchy view",
+  "author": "Firebox Technology",
+  "fireball": {
+    "main": "editor/main.js",
+    "menus": [
+      {
+        "path": "Fireball/Panels/Hierarchy",
+        "message": "fire-hierarchy:open"
+      }
+    ],
+    "panels": {
+      "default": {
+        "type": "dockable",
+        "view": "editor/panel/fire-hierarchy.html",
+        "ctor": "FireHierarchy",
+        "title": "Hierarchy",
+        "width": 200,
+        "messages": [
+          "scene:launched",
+          "entity:created",
+          "entity:removed",
+          "entity:renamed",
+          "entity:parent-changed",
+          "entity:index-changed",
+          "entity:hint",
+          "hierarchy-menu:create-entity",
+          "hierarchy-menu:create-child-entity",
+          "hierarchy-menu:rename",
+          "hierarchy-menu:delete",
+          "hierarchy-menu:duplicate",
+          "selection:entity:selected",
+          "selection:entity:unselected",
+          "selection:entity:hover",
+          "selection:entity:hoverout",
+          "selection:entity:activated",
+          "selection:entity:deactivated"
+        ]
+      }
+    }
+  }
+}

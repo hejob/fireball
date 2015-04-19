@@ -1,0 +1,50 @@
+:host {
+  width: 600px;
+  position: absolute;
+  margin-left: 50%;
+  left: -300px;
+  z-index: 999;
+  background: #303030;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #808080;
+  font-size: 12px;
+  overflow: hidden;
+}
+.prop {
+  height: 24px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+.bar {
+  width: 100%;
+  height: 22px;
+  background: #242424;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 1px solid #474747;
+  padding: 5px;
+}
+.bar fire-ui-button {
+  float: right;
+  margin-right: 15px;
+}
+.bar i {
+  margin-right: 3px;
+}
+.title {
+  height: 22px;
+  width: 100%;
+  background: #242424;
+  border-bottom: 1px solid #474747;
+  color: #fff;
+  padding-left: 10px;
+  font-size: 12px;
+}
+.title fire-ui-label {
+  line-height: 22px;
+}
+.section {
+  padding: 5px;
+}

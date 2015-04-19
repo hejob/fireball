@@ -5,6 +5,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var exec = require('child_process').exec;
+var del = require('del');
 
 var shellVersion = require('./package.json')['fire-shell-version'];
 var nativeModules = require('./package.json')['native-modules'];
@@ -38,6 +39,13 @@ gulp.task('get-fire-shell', ['install-downloader'], function(cb) {
         outputDir: 'fire-shell',
         chinaMirror: true
     }, cb);
+});
+
+gulp.task('remove-native-modules', function(cb) {
+    var modulePaths = nativeModules.map(function(name) {
+      return 'node_modules/' + name;
+    });
+    del(modulePaths, cb);
 });
 
 gulp.task('get-native-module', ['install-downloader'], function(cb) {

@@ -2,17 +2,25 @@
 <head>
     <title>Fireball Dashboard</title>
 
-    <script type="text/javascript" src="fire://page-init.js"></script>
     <script>
-        var ipc = require('ipc');
-        var Fire = {
+        var Ipc = require('ipc');
+        var Editor = {
             sendToCore: function ( message ) {
                 'use strict';
                 var args = [].slice.call( arguments );
-                ipc.send.apply( ipc, ['fire:send2core'].concat( args ) );
+                Ipc.send.apply( Ipc, ['editor:send2core'].concat( args ) );
+            },
+            requireIpcEvent: {
+                '__is_ipc_option__': true,
+                'require-ipc-event': true,
+            },
+            selfExcluded: {
+                '__is_ipc_option__': true,
+                'self-excluded': true,
             },
         };
     </script>
+    <script type="text/javascript" src="fire://page-init.js"></script>
 
     <style>
         body {

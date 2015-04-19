@@ -1,3 +1,4 @@
+(function () {
 var SpriteAnimationClip = require('sprite-animation-clip');
 
 /**
@@ -166,3 +167,4 @@ function _wrap (_value, _maxValue, _wrapMode) {
 Fire.SpriteAnimationState = SpriteAnimationState;
 
 module.exports = SpriteAnimationState;
+})();

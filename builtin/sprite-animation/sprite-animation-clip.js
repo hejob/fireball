@@ -1,3 +1,4 @@
+(function () {
 
 /**
  * @class SpriteAnimationClip
@@ -181,3 +182,4 @@ Fire.addCustomAssetMenu(SpriteAnimationClip, "New Sprite Animation");
 Fire.SpriteAnimationClip = SpriteAnimationClip;
 
 module.exports = SpriteAnimationClip;
+})();

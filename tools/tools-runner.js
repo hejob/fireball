@@ -4,14 +4,15 @@ var Path = require('path');
 var WinCMDTools = ['gulp'];
 
 var cwd;
+var EditorCwd;
 var standalone = typeof Fire === 'undefined';
 if (standalone) {
     Fire = require('../src/core/core');
-    FIRE_PATH = Path.dirname(__dirname);
+    EditorCwd = Path.dirname(__dirname);
     cwd = process.cwd();
 }
 else {
-    cwd = FIRE_PATH;
+    cwd = EditorCwd;
 }
 
 var ToolsRunner = {

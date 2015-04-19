@@ -1,8 +1,8 @@
 {
   "name": "build-settings",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "The build settings for Fireball Engine",
-  "author": "KamiSama <kamisama.lwh@qq.com>",
+  "author": "Firebox Technology",
   "fireball": {
     "main": "editor/main.js",
     "menus": [
@@ -14,15 +14,26 @@
     "panels": {
       "default": {
         "type": "fixed-size",
-        "view": "editor/build-settings.html",
+        "view": "editor/panel/build-settings.html",
         "ctor": "BuildSettings",
         "title": "Build Settings",
         "width": 500,
-        "height": 530,
+        "height": 550,
         "min-width": 500,
         "min-height": 500,
-        "messages": {
-          "build-settings:query-scenes-results": "query-scene-results"
+        "messages": [
+          "panel:open",
+          "build-settings:query-scenes-results"
+        ],
+        "profiles": {
+          "project": {
+            "projectName": "",
+            "defaultScene": "",
+            "sceneList": [],
+            "isDebug": true,
+            "platform": "web-mobile",
+            "buildPath": ""
+          }
         }
       }
     }

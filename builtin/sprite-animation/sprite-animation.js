@@ -1,3 +1,4 @@
+(function () {
 var SpriteAnimationClip = require('sprite-animation-clip');
 var SpriteAnimationState = require('sprite-animation-state');
 
@@ -235,3 +236,4 @@ var SpriteAnimation = Fire.Class({
 Fire.SpriteAnimation = SpriteAnimation;
 
 Fire.addComponentMenu(SpriteAnimation, 'Sprite Animation');
+})();

@@ -1,0 +1,27 @@
+{
+  "name": "atlas-editor",
+  "version": "0.2.1",
+  "description": "The Atlas Editor for Fireball Engine",
+  "author": "Firebox Technology",
+  "fireball": {
+    "main": "editor/main.js",
+    "panels": {
+      "default": {
+        "type": "dockable",
+        "view": "editor/panel/atlas-editor.html",
+        "ctor": "AtlasEditor",
+        "title": "Atlas Editor",
+        "width": 800,
+        "height": 600,
+        "min-width": 400,
+        "min-height": 400,
+        "messages": [
+          "panel:open",
+          "asset:changed",
+          "fire-inspector:asset-dirty",
+          "fire-inspector:meta-dirty"
+        ]
+      }
+    }
+  }
+}
